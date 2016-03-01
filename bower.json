@@ -1,0 +1,39 @@
+{
+  "name": "vue-materialize-components",
+  "homepage": "http://www.appcomponents.org",
+  "authors": [
+    "mjanys <martinjanys@gmail.com>"
+  ],
+  "description": "Web components of http://materializecss.com/",
+  "main": [
+    "dist/vue-materialize.js",
+    "dist/vue-materialize.js.map",
+    "dist/vue-materialize.min.js",
+    "dist/vue-materialize.css",
+    "dist/vue-materialize.css.map",
+    "dist/vue-materialize.min.css"
+  ],
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "material",
+    "materialize",
+    "vue-components",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "assets",
+    "node_modules",
+    "bower_components",
+    "docs",
+    "src",
+    "build",
+    "gulpfile.js",
+    "index.html",
+    "webpack*.js",
+    "utils"
+  ]
+}

@@ -5,20 +5,16 @@ var optimist = require('optimist');
 var pkg = require('./package.json');
 
 var ENV = optimist.argv.env || 'dev';
-var dir = ENV === 'docs' ? 'docs' : 'dist';
-var fileName = (ENV === 'dist') ? 
-    `./${dir}/${pkg.name}.min` : 
-    `./${dir}/${pkg.name}`;
 
 /**
  * Entry + output
  */
-if (ENV !== 'docs') {
+if (ENV === 'dist') {
     config.entry = './src/components/index.ts';
 
     config.output = {
-        filename: `${fileName}.js`,
-        library: pkg.library,
+        filename: `./dist/${pkg.name}.min.js`,
+        library: `${pkg.library}`,
         libraryTarget: 'umd'
     };
 }
@@ -26,8 +22,8 @@ else {
     config.entry = './src/docs/index.ts';
 
     config.output = {
-        filename: `${fileName}.js`,
-        library: `${pkg.library}docs`,
+        filename: `./docs/${pkg.name}.js`,
+        library: `${pkg.library}Docs`,
         libraryTarget: 'umd'
     };
 }

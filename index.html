@@ -10,16 +10,15 @@
 
     <body>
         <div id="content">
-            <badge>1</badge>
+            <nav>
+                <a v-for="nav in navs" v-link="{ path: nav.url }">{{nav.title}}</a>
+            </nav>
+            <router-view></router-view>
         </div>
 
         <script src="docs/vue-materialize-components.js"></script>
         <script>
-            Vue.debug = true;
-            new Vue({
-                el: '#content',
-                components: VueMaterializeComponents
-            });
+            window.vueMaterializeDocs.run('#content');
         </script>
     </body>
 </html>

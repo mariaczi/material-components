@@ -7,18 +7,18 @@ var template = require('./badge.html');
         /**
          * String of badge represents new event, string is used as label
          */
-        "new": {
+        alert: {
             type: String,
             required: false,
-            "default": "now"
+            "default": null
         }
     },
     template: template
 })
-class Badge {
+export default class Badge {
+    private alert: String;
+
     get classes() {
-        return this.new ? ['new'] : [''];
+        return this.alert ? ['new'] : [];
     }
 }
-
-export default Badge

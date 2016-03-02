@@ -273,5 +273,5 @@ declare namespace vuejs {
 declare var Vue: vuejs.VueStatic;
 
 declare module "vue" {
-    export = Vue;
+    export default Vue;
 }

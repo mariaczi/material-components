@@ -5,29 +5,45 @@ var optimist = require('optimist');
 var pkg = require('./package.json');
 
 var ENV = optimist.argv.env || 'dev';
+var dir = ENV === 'docs' ? 'docs' : 'dist';
 var fileName = (ENV === 'dist') ? 
-    './dist/' + pkg.name + '.min' : 
-    './dist/' + pkg.name;
+    `./${dir}/${pkg.name}.min` : 
+    `./${dir}/${pkg.name}`;
 
 /**
- * Output
+ * Entry + output
  */
-config.output = {
-    filename: fileName + '.js',
-    library: pkg.library,
-    libraryTarget: 'umd'
-};
+if (ENV !== 'docs') {
+    config.entry = './src/components/index.ts';
+
+    config.output = {
+        filename: `${fileName}.js`,
+        library: pkg.library,
+        libraryTarget: 'umd'
+    };
+}
+else {
+    config.entry = './src/docs/index.ts';
+
+    config.output = {
+        filename: `${fileName}.js`,
+        library: `${pkg.library}docs`,
+        libraryTarget: 'umd'
+    };
+}
 
 /**
  * ENV
  */
 config.plugins.push(new webpack.DefinePlugin({
     'process.env': {
-        NODE_ENV: '"' + ENV + '"'
+        NODE_ENV: `"${ENV}"`
     }
 }));
 
-// plugins for production
+/**
+ * Dist
+ */
 if (ENV === 'dist') {
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         sourceMap: false,
@@ -39,7 +55,7 @@ if (ENV === 'dist') {
 /**
  * devtool
  */
-if (ENV === 'dev') {
+if (ENV !== 'dist') {
     config.devtool = 'source-map'
 }
 

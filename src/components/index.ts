@@ -1,7 +1,7 @@
 import badge from './badge';
 
-const vueMaterialize = {
+const VueMaterializeComponents = {
     'badge': badge
 };
 
-export default vueMaterialize;
+export default VueMaterializeComponents;

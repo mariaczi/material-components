@@ -1,0 +1,9 @@
+<style type="text/css" scoped>
+    span.badge.new:after {
+        content: " {{new}}";
+    }
+</style>
+
+<span class="badge" :class="classes">
+    <slot></slot>
+</span>

@@ -2,8 +2,13 @@ import collections from './badges/collections';
 
 const docsPages: [Route] = [
     {
-        url: "/collections",
-        title: "Collections",
+        url: "/badges/collections",
+        title: "Badges / collections",
+        component: collections
+    },
+    {
+        url: "/badges/dropdown",
+        title: "Badges / dropdown",
         component: collections
     }
 ];

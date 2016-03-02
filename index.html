@@ -11,7 +11,11 @@
     <body>
         <div id="content">
             <nav>
-                <a v-for="nav in navs" v-link="{ path: nav.url }">{{nav.title}}</a>
+                <ul>
+                    <li v-for="nav in navs">
+                        <a v-link="{ path: nav.url }">{{nav.title}}</a>
+                    </li>
+                </ul>
             </nav>
             <router-view></router-view>
         </div>

@@ -2,14 +2,16 @@ import Component from 'vue-class-component';
 
 var template = require('./collections.html');
 
-import collection from 'src/components/collection';
-import collectionItem from 'src/components/collection-item';
+import badge from '../../../components/badge';
+import collection from '../../../components/collection';
+import collectionItem from '../../../components/collection-item';
 
 @Component({
     template: template,
     components: {
         collection,
-        collectionItem
+        collectionItem,
+        badge
     }
 })
 export default class Collections {

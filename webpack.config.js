@@ -20,7 +20,12 @@ module.exports = {
             },
             {
                 test: /\.html$/,
+                exclude: /\.snippet\.html$/,
                 loader: 'html'
+            },
+            {
+                test: /\.snippet\.html$/,
+                loader: 'html!highlightjs?lang=html'
             },
             {
                 test: /\.json$/,

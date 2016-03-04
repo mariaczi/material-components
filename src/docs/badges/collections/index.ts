@@ -15,5 +15,5 @@ import collectionItem from '../../../components/collection-item';
     }
 })
 export default class Collections {
-
 }
+

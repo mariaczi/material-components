@@ -14,7 +14,7 @@
     "dist/vue-materialize.min.css"
   ],
   "moduleType": [
-    "amd",
+    "commonjs",
     "globals"
   ],
   "keywords": [
@@ -31,6 +31,7 @@
     "docs",
     "src",
     "build",
+    "dist",
     "gulpfile.js",
     "index.html",
     "webpack*.js",

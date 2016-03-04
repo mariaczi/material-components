@@ -1,15 +1,15 @@
-import collections from './badges/collections';
+import badges from './badges';
 
 const docsPages: [Route] = [
     {
-        url: "/badges/collections",
-        title: "Badges / collections",
-        component: collections
+        url: "/badges",
+        title: "Badges",
+        component: badges
     },
     {
-        url: "/badges/dropdown",
-        title: "Badges / dropdown",
-        component: collections
+        url: "/buttons",
+        title: "Buttons",
+        component: null
     }
 ];
 

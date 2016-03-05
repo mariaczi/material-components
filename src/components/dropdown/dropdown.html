@@ -1,0 +1,17 @@
+<ul class="dropdown-content"
+    v-on-click-away="hide"
+    :class="{active: active}" :style="style">
+    <slot></slot>
+</ul>
+
+<span @click="show">
+    <slot name="button">
+        <btn href="javascript:void(0)"
+             classes="dropdown-button"
+             :class="{active: active}">
+            {{label}}
+            <i class="mdi-navigation-arrow-drop-down right"></i>
+        </btn>
+    </slot>
+</span>
+

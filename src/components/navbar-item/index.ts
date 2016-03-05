@@ -7,7 +7,7 @@ var template = require('./navbar-item.html');
         href: {
             type: String,
             required: false,
-            "default": "javascript:void(0)"
+            "default": ""
         },
         active: {
             type: Boolean,

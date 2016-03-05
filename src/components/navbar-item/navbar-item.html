@@ -1,6 +1,6 @@
 <li :class="{active: active}">
-    <slot name="link">
-        <a :href="href">
+    <slot name="content">
+        <a v-if="href" :href="href">
             <slot></slot>
         </a>
     </slot>

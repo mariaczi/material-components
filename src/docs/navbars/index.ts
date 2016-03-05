@@ -7,6 +7,8 @@ import navbarFixed from './fixed';
 import navbarDropdown from './dropdown';
 import navbarIconLinks from './icon-links';
 import navbarButtons from './buttons';
+import navbarSearch from './search';
+import navbarMobileCollapse from './mobile-collapse';
 import snippet from '../snippet';
 
 var template = require('./navbars.html');
@@ -22,6 +24,8 @@ var template = require('./navbars.html');
         navbarDropdown,
         navbarIconLinks,
         navbarButtons,
+        navbarSearch,
+        navbarMobileCollapse,
         snippet
     }
 })
@@ -35,7 +39,9 @@ export default class Navbars {
             navbarFixedSnippet: require('./fixed/navbars.snippet.html'),
             navbarDropdownSnippet: require('./dropdown/navbars.snippet.html'),
             navbarIconLinksSnippet: require('./icon-links/navbars.snippet.html'),
-            navbarButtonsSnippet: require('./icon-links/navbars.snippet.html')
+            navbarButtonsSnippet: require('./icon-links/navbars.snippet.html'),
+            navbarSearchSnippet: require('./search/navbars.snippet.html'),
+            navbarMobileCollapseSnippet: require('./search/navbars.snippet.html')
         }
     }
 }

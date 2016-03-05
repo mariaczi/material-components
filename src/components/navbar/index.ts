@@ -1,4 +1,6 @@
 import Component from 'vue-class-component';
+import icon from '../icon';
+import sidenavOverlay from '../sidenav-overlay';
 
 var template = require('./navbar.html');
 
@@ -42,7 +44,16 @@ const DEFAULT_CLASSES = ["hide-on-med-and-down"];
             type: String,
             required: false,
             "default": ""
+        },
+        hamburger: {
+            type: Boolean,
+            required: false,
+            "default": false
         }
+    },
+    components: {
+        icon,
+        sidenavOverlay
     },
     template: template
 })
@@ -52,6 +63,26 @@ export default class Navbar {
     private left: boolean;
     private center: boolean;
     private fixed: boolean;
+
+    private sideMenu: boolean;
+
+    data() {
+        return {
+            sideMenu: false
+        }
+    }
+
+    openSideMenu() {
+        if (!this.sideMenu) {
+            this.sideMenu = true;
+        }
+    }
+
+    closeSideMenu() {
+        if (this.sideMenu) {
+            this.sideMenu = false;
+        }
+    }
 
     get logoClasses() {
         var classes: string[] = [];
@@ -85,5 +116,14 @@ export default class Navbar {
         }
         
         return classes;
+    }
+
+    get computedStyle() {
+        if (this.sideMenu) {
+            return {
+                left: 0
+            }
+        }
+        return {};
     }
 }

@@ -1,15 +1,11 @@
-<h2 class="header">Icon Links</h2>
+<h2 class="header">Buttons</h2>
 
 <navbar title="Logo" right>
     <navbar-item href="javascript:void(0)">A link</navbar-item>
-    <navbar-item href="javascript:void(0)">
-        <slot name="link">
-            <btn class="waves-effect waves-light">A button</btn>
-        </slot>
+    <navbar-item>
+        <btn slot="content" class="waves-effect waves-light">A button</btn>
     </navbar-item>
-    <navbar-item href="javascript:void(0)">
-        <slot name="link">
-            <btn class="waves-effect waves-light" large>A large button</btn>
-        </slot>
+    <navbar-item>
+        <btn slot="content" class="waves-effect waves-light" large>A large button</btn>
     </navbar-item>
 </navbar>

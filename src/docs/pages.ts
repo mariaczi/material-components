@@ -1,16 +1,17 @@
 import badges from './badges';
+import navbars from './navbars';
 
 const docsPages: [Route] = [
     {
         url: "/badges",
         title: "Badges",
         component: badges
-    }/*,
+    },
     {
-        url: "/buttons",
-        title: "Buttons",
-        component: null
-    }*/
+        url: "/navbars",
+        title: "Navbars",
+        component: navbars
+    }
 ];
 
 export = docsPages;

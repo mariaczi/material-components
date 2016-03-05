@@ -1,0 +1,11 @@
+<h2 class="header">Fixes</h2>
+
+<btn @click="toggleFixed">
+    Toggle display fixed menu
+</btn>
+
+<navbar title="Logo" left fixed v-if="showFixed" bg-color="blue darken-4">
+    <navbar-item href="javascript:alert('sass.html')">Sass</navbar-item>
+    <navbar-item href="javascript:alert('badges.html')">Components</navbar-item>
+    <navbar-item href="javascript:alert('collapsible.html')">JavaScript</navbar-item>
+</navbar>

@@ -17,8 +17,8 @@ var template = require('./dropdown-list.html');
         "dropdown::close": function () {
             this.hide();
         },
-        "dropdown::show": function (e) {
-            this.show(e);
+        "dropdown::open": function (e) {
+            this.open(e);
         }
     },
     template: template
@@ -37,10 +37,10 @@ export default class DropdownList {
     }
 
     toggle(e: any) {
-        (!this.active ? this.show : this.hide)(e);
+        (!this.active ? this.open : this.hide)(e);
     }
 
-    show(e: any) {
+    open(e: any) {
         if (!this.active) {
             this.style = this.computeStyle(e.currentTarget);
             this.active = true;
@@ -63,9 +63,10 @@ export default class DropdownList {
     }
 
     computeStyle(element: HTMLElement) {
+        var offset = this.offset(element);
         var width = element.offsetWidth || 100;
-        var top = element.offsetTop  || 0;
-        var left = element.offsetLeft  || 0;
+        var top = offset.top  || 0;
+        var left = offset.left  || 0;
 
         return {
             width: width+'px',
@@ -74,6 +75,20 @@ export default class DropdownList {
             left: left+'px',
             opacity: 1,
             display: 'block'
+        };
+    }
+
+    offset(element: any) {
+        var top = 0, left = 0;
+        do {
+            top += element.offsetTop  || 0;
+            left += element.offsetLeft || 0;
+            element = element.offsetParent;
+        } while(element);
+
+        return {
+            top: top,
+            left: left
         };
     }
 }

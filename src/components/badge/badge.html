@@ -1,9 +1,11 @@
-<style type="text/css" scoped>
+<style type="text/css">
     span.badge.new:after {
-        content: " {{alert}}";
+        content: "";
     }
 </style>
 
-<span class="badge" :class="classes">
+<span class="badge" :class="alert ? 'new' : ''">
     <slot></slot>
+
+    <span v-if="alert" class="new">{{alert}}</span>
 </span>

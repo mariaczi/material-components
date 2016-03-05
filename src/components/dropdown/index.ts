@@ -2,7 +2,6 @@ import Component from 'vue-class-component';
 import btn from '../button';
 import dropdownList from '../dropdown-list';
 import dropdownItem from '../dropdown-item';
-import onClickAway from '../../directives/click-away';
 
 var template = require('./dropdown.html');
 
@@ -33,7 +32,7 @@ var template = require('./dropdown.html');
 export default class Dropdown {
     show(e) {
         var self: any = this;
-        self.$broadcast("dropdown::show", e);
+        self.$broadcast("dropdown::open", e);
     }
 
     close() {

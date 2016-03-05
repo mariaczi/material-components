@@ -17,8 +17,4 @@ var template = require('./badge.html');
 })
 export default class Badge {
     private alert: String;
-
-    get classes() {
-        return this.alert ? ['new'] : [];
-    }
 }

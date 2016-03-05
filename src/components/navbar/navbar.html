@@ -1,0 +1,23 @@
+<style type="text/css" scoped>
+    .navbar-fixed {
+        position: absolute;
+        top: 0;
+    }
+</style>
+
+<div :class="{'navbar-fixed': fixed}"
+     :style="fixed ? {position: 'absolute', top: 0}: {}">
+    <nav>
+        <div class="nav-wrapper" :class="bgColor">
+            <slot name="logo">
+                <a href="javascript:void(0)" class="brand-logo" :class="logoClasses">
+                    {{title}}
+                </a>
+            </slot>
+
+            <ul :class="listClasses">
+                <slot></slot>
+            </ul>
+        </div>
+    </nav>
+</div>

@@ -1,8 +1,8 @@
 <!--props: type, classes, icon, iconAlignRight, large, disabled-->
 
 <a :class="computedClasses">
-    <i class="material-icons"
+    <icon
        v-if="icon"
-       :class="iconAlignRight ? 'right' : 'left'">{{icon}}</i>
+       :right="iconAlignRight">{{icon}}</icon>
     <slot></slot>
 </a>

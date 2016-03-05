@@ -2,6 +2,7 @@ import Component from 'vue-class-component';
 import icon from '../icon';
 import sidenavOverlay from '../sidenav-overlay';
 
+require('./navbar.scss');
 var template = require('./navbar.html');
 
 const DEFAULT_CLASSES = ["hide-on-med-and-down"];
@@ -124,6 +125,6 @@ export default class Navbar {
                 left: 0
             }
         }
-        return {};
+        return null;
     }
 }

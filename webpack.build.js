@@ -4,6 +4,8 @@ var webpack = require('webpack');
 var optimist = require('optimist');
 var pkg = require('./package.json');
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var ENV = optimist.argv.env || 'dev';
 
 /**
@@ -17,6 +19,7 @@ if (ENV === 'dist') {
         library: `${pkg.library}`,
         libraryTarget: 'umd'
     };
+    config.plugins.push(new ExtractTextPlugin(`./dist/${pkg.name}.css`))
 }
 else {
     config.entry = './src/docs/index.ts';
@@ -26,6 +29,7 @@ else {
         library: `${pkg.library}Docs`,
         libraryTarget: 'umd'
     };
+    config.plugins.push(new ExtractTextPlugin(`./docs/${pkg.name}.css`))
 }
 
 /**

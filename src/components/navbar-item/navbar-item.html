@@ -1,5 +1,7 @@
-<li :class="{active: active}" >
-    <a :href="href">
-        <slot></slot>
-    </a>
+<li :class="{active: active}">
+    <slot name="link">
+        <a :href="href">
+            <slot></slot>
+        </a>
+    </slot>
 </li>

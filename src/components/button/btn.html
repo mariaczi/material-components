@@ -1,6 +1,9 @@
 <!--props: type, classes, icon, iconAlignRight, large, disabled-->
 
-<a :class="computedClasses">
+<a :class="computedClasses"
+   @mousedown="showEffect"
+   @mouseleave="hideEffect"
+   @mouseup="hideEffect">
     <icon
        v-if="icon"
        :right="iconAlignRight">{{icon}}</icon>

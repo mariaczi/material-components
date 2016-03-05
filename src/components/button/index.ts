@@ -1,5 +1,6 @@
 import Component from 'vue-class-component';
 import icon from '../icon';
+import {Effect} from '../../materialize';
 
 var template = require('./btn.html');
 
@@ -50,6 +51,17 @@ export default class Btn {
     private iconAlignRight: boolean;
     private large: boolean;
     private disabled: boolean;
+
+    // TODO mixin 
+    showEffect(e) {
+        var self: any = this;
+        Effect.show(e, self.$el);
+    }
+
+    hideEffect(e) {
+        var self: any = this;
+        Effect.hide(e, self.$el);
+    }
 
     get computedClasses() {
         var classes = [];

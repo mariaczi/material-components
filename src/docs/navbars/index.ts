@@ -5,6 +5,8 @@ import navbarCenter from './center-align';
 import navbarActiveItems from './active-items';
 import navbarFixed from './fixed';
 import navbarDropdown from './dropdown';
+import navbarIconLinks from './icon-links';
+import navbarButtons from './buttons';
 import snippet from '../snippet';
 
 var template = require('./navbars.html');
@@ -18,6 +20,8 @@ var template = require('./navbars.html');
         navbarActiveItems,
         navbarFixed,
         navbarDropdown,
+        navbarIconLinks,
+        navbarButtons,
         snippet
     }
 })
@@ -29,7 +33,9 @@ export default class Navbars {
             navbarCenterSnippet: require('./center-align/navbars.snippet.html'),
             navbarActiveItemsSnippet: require('./active-items/navbars.snippet.html'),
             navbarFixedSnippet: require('./fixed/navbars.snippet.html'),
-            navbarDropdownSnippet: require('./dropdown/navbars.snippet.html')
+            navbarDropdownSnippet: require('./dropdown/navbars.snippet.html'),
+            navbarIconLinksSnippet: require('./icon-links/navbars.snippet.html'),
+            navbarButtonsSnippet: require('./icon-links/navbars.snippet.html')
         }
     }
 }

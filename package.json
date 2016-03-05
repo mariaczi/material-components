@@ -8,7 +8,7 @@
     "url": "git+https://github.com/appcomponents/vue-js-materialize-components.git"
   },
   "scripts": {
-    "dev": "webpack -w --colors --progress --config webpack.build.js --env dev",
+    "dev": "webpack --watch --colors --progress --config webpack.build.js --env dev",
     "dist": "webpack --colors --progress --config  webpack.build.js --env dist",
     "docs": "webpack --colors --progress --config  webpack.build.js --env docs"
   },

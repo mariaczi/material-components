@@ -20,10 +20,10 @@ export default class DropdownItem {
         }
     }
 
-    closeIfNecessary() {
+    closeIfEnable() {
         if (this.closing) {
             var self: any = this;
-            self.$dispatch('dropdown::close');
+            self.$dispatch("dropdown::close");
         }
     }
 }

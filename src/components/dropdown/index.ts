@@ -22,6 +22,12 @@ var template = require('./dropdown.html');
         dropdownList,
         dropdownItem
     },
+    events: {
+        "dropdown::close": function () {
+            // propagate event to children
+            this.$broadcast("dropdown::close");
+        }
+    },
     template: template
 })
 export default class Dropdown {

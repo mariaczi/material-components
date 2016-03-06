@@ -4,6 +4,7 @@ import {Effect} from '../../materialize';
 
 var template = require('./btn.html');
 
+// todo  classes array ws string
 @Component({
     props: {
         type: {

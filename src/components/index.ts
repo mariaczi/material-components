@@ -1,3 +1,5 @@
+require('./animations.scss');
+
 import btn from './button';
 import badge from './badge';
 import collection from './collection';

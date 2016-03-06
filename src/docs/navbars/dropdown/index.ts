@@ -6,7 +6,8 @@ import dropdown from '../../../components/dropdown';
 import dropdownItem from '../../../components/dropdown-item';
 import dropdownList from '../../../components/dropdown-list';
 import icon from '../../../components/icon';
-import eventWrapper from '../../../components/event-wrapper';
+
+import events from '../../../mixins/events';
 
 var template = require('./navbars.html');
 
@@ -19,18 +20,11 @@ var template = require('./navbars.html');
         dropdown,
         dropdownItem,
         dropdownList,
-        icon,
-        eventWrapper
-    }
+        icon
+    },
+    mixins: [
+        events
+    ]
 })
 export default class DropdownNavbar {
-    data() {
-        return {
-        }
-    }
-
-    broadcast(event, $event) {
-        var self: any = this;
-        self.$broadcast(event, $event);
-    }
 }

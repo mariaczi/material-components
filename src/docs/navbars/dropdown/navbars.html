@@ -1,16 +1,14 @@
-<event-wrapper :events="['dropdown::close', 'dropdown::open']">
-    <dropdown-list>
-        <dropdown-item closing>one</dropdown-item>
-        <dropdown-item closing>two</dropdown-item>
-        <dropdown-item class="divider"></dropdown-item>
-        <dropdown-item closing>three</dropdown-item>
-    </dropdown-list>
+<dropdown-list>
+    <dropdown-item closing>one</dropdown-item>
+    <dropdown-item closing>two</dropdown-item>
+    <dropdown-item class="divider"></dropdown-item>
+    <dropdown-item closing>three</dropdown-item>
+</dropdown-list>
 
-    <navbar title="Logo" right>
-        <navbar-item href="javascript:alert('sass.html')">Sass</navbar-item>
-        <navbar-item href="javascript:alert('badges.html')">Components</navbar-item>
-        <navbar-item href="javascript:void(0)" @click="broadcast('dropdown::open', $event)">
-            Dropdown<icon right>arrow_drop_down</icon>
-        </navbar-item>
-    </navbar>
-</event-wrapper>
+<navbar title="Logo" right>
+    <navbar-item href="javascript:alert('sass.html')">Sass</navbar-item>
+    <navbar-item href="javascript:alert('badges.html')">Components</navbar-item>
+    <navbar-item href="javascript:void(0)" @click="broadcast('dropdown::open', $event)">
+        Dropdown<icon right>arrow_drop_down</icon>
+    </navbar-item>
+</navbar>

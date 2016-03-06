@@ -30,7 +30,7 @@ var template = require('./dropdown.html');
     template: template
 })
 export default class Dropdown {
-    show(e) {
+    open(e) {
         var self: any = this;
         self.$broadcast("dropdown::open", e);
     }

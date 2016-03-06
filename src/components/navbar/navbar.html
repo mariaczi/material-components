@@ -3,7 +3,8 @@
     <nav>
         <div class="nav-wrapper" :class="bgColor">
             <slot name="logo">
-                <a href="javascript:void(0)" class="brand-logo" :class="logoClasses">
+                <a v-if="title"
+                   href="javascript:void(0)" class="brand-logo" :class="logoClasses">
                     {{title}}
                 </a>
                 <a v-if="hamburger" href="javascript:void(0)" class="button-collapse"

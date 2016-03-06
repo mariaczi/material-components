@@ -1,5 +1,6 @@
 import Component from 'vue-class-component';
 
+require('./badge.scss');
 var template = require('./badge.html');
 
 @Component({

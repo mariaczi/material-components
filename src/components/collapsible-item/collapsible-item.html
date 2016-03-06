@@ -1,0 +1,10 @@
+<li>
+    <slot name="content">
+        <div @click="toggle" class="collapsible-header">
+            <slot name="header"></slot>
+        </div>
+        <div v-if="active" transition="collapsible" class="collapsible-body" :style="computedStyle">
+            <slot name="body"></slot>
+        </div>
+    </slot>
+</li>

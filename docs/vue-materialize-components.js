@@ -6633,19 +6633,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var defaultCollapsible_1 = __webpack_require__(50);
+	var popoutCollapsible_1 = __webpack_require__(115);
+	var expendableCollapsible_1 = __webpack_require__(119);
 	var snippet_1 = __webpack_require__(43);
 	var template = __webpack_require__(58);
 	var Collapsibles = (function () {
 	    function Collapsibles() {}
 	    Collapsibles.prototype.data = function () {
 	        return {
-	            defaultCollapsibleSnippet: __webpack_require__(59)
+	            defaultCollapsibleSnippet: __webpack_require__(59),
+	            popoutCollapsibleSnippet: __webpack_require__(117),
+	            expendableCollapsibleSnippet: __webpack_require__(118)
 	        };
 	    };
 	    Collapsibles = __decorate([vue_class_component_1["default"]({
 	        template: template,
 	        components: {
 	            defaultCollapsible: defaultCollapsible_1["default"],
+	            popoutCollapsible: popoutCollapsible_1["default"],
+	            expendableCollapsible: expendableCollapsible_1["default"],
 	            snippet: snippet_1["default"]
 	        }
 	    })], Collapsibles);
@@ -6711,7 +6717,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	var template = __webpack_require__(57);
 	var Collapsible = (function () {
 	    function Collapsible() {}
+	    Object.defineProperty(Collapsible.prototype, "computedClasses", {
+	        get: function get() {
+	            if (this.popout) {
+	                return ["popout"];
+	            } else {
+	                return [];
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Collapsible = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            popout: {
+	                type: Boolean,
+	                required: false,
+	                "default": false
+	            },
+	            expendable: {
+	                type: Boolean,
+	                required: false,
+	                "default": false
+	            }
+	        },
 	        template: template,
 	        components: {
 	            collapsibleItem: collapsible_item_1["default"]
@@ -6719,7 +6748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        events: {
 	            'collapsible::open': function collapsibleOpen(uid) {
 	                // propagate event to children
-	                this.$broadcast('collapsible::open', uid);
+	                this.$broadcast('collapsible::open', uid, this.expendable);
 	            },
 	            'collapsible::close': function collapsibleClose(uid) {
 	                // propagate event to children
@@ -6799,14 +6828,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
-	    CollapsibleItem.prototype.open = function (uid) {
+	    CollapsibleItem.prototype.open = function (uid, expendable) {
 	        if (uid === null) {
 	            this.openThis();
 	        } else {
 	            if (uid == this._uid) {
 	                this.openThis();
 	            } else {
-	                if (!this.expandable) {
+	                if (!expendable) {
 	                    this.closeThis();
 	                }
 	            }
@@ -6843,18 +6872,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        self.$nextTick(callback);
 	    };
 	    CollapsibleItem = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            expandable: {
-	                type: Boolean,
-	                required: false,
-	                "default": false
-	            }
-	        },
 	        template: template,
 	        mixins: [events_1["default"]],
 	        events: {
-	            'collapsible::open': function collapsibleOpen(uid) {
-	                this.open(uid);
+	            'collapsible::open': function collapsibleOpen(uid, expendable) {
+	                this.open(uid, expendable);
 	            },
 	            'collapsible::close': function collapsibleClose(uid) {
 	                this.close(uid);
@@ -6891,7 +6913,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "<li>\r\n    <slot name=\"content\">\r\n        <div @click=\"toggle\" class=\"collapsible-header\">\r\n            <slot name=\"header\"></slot>\r\n        </div>\r\n        <div v-el:body class=\"collapsible-body\" :style=\"computedStyle\">\r\n            <slot name=\"body\"></slot>\r\n        </div>\r\n    </slot>\r\n</li>\r\n";
+	module.exports = "<li :class=\"{active: active}\">\r\n    <slot name=\"content\">\r\n        <div @click=\"toggle\" class=\"collapsible-header\">\r\n            <slot name=\"header\"></slot>\r\n        </div>\r\n        <div v-el:body class=\"collapsible-body\" :style=\"computedStyle\">\r\n            <slot name=\"body\"></slot>\r\n        </div>\r\n    </slot>\r\n</li>\r\n";
 
 /***/ },
 /* 56 */
@@ -7377,19 +7399,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 57 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"collapsible\">\r\n    <slot></slot>\r\n</ul>";
+	module.exports = "<ul class=\"collapsible\" :class=\"computedClasses\">\r\n    <slot></slot>\r\n</ul>";
 
 /***/ },
 /* 58 */
 /***/ function(module, exports) {
 
-	module.exports = "<h2 class=\"header\">Collapsible</h2>\r\n<div class=\"doc-example\">\r\n    <!--<collections></collections>-->\r\n\r\n    <!--<snippet>{{{collectionsSnippet}}}</snippet>-->\r\n</div>\r\n\r\n<h2 class=\"header\">Popout</h2>\r\n<div class=\"doc-example\">\r\n    <default-collapsible></default-collapsible>\r\n\r\n    <snippet>{{{defaultCollapsibleSnippet}}}</snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Accordion</h2>\r\n<div class=\"doc-example\">\r\n    <!--<collections></collections>-->\r\n\r\n    <!--<snippet>{{{collectionsSnippet}}}</snippet>-->\r\n</div>\r\n\r\n<h2 class=\"header\">Expandable</h2>\r\n<div class=\"doc-example\">\r\n    <!--<collections></collections>-->\r\n\r\n    <!--<snippet>{{{collectionsSnippet}}}</snippet>-->\r\n</div>\r\n";
+	module.exports = "<h2 class=\"header\">Accordion</h2>\r\n<div class=\"doc-example\">\r\n    <default-collapsible></default-collapsible>\r\n\r\n    <snippet>{{{defaultCollapsibleSnippet}}}</snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Popout</h2>\r\n<div class=\"doc-example\">\r\n    <popout-collapsible></popout-collapsible>\r\n\r\n    <snippet>{{{popoutCollapsibleSnippet}}}</snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Expandable</h2>\r\n<div class=\"doc-example\">\r\n    <expendable-collapsible></expendable-collapsible>\r\n\r\n    <snippet>{{{expendableCollapsibleSnippet}}}</snippet>\r\n</div>\r\n";
 
 /***/ },
 /* 59 */
 /***/ function(module, exports) {
 
-	module.exports = "";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>filter_drama<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>First<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>place<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>Second<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>whatshot<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>Third<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible</span>&gt;</span>";
 
 /***/ },
 /* 60 */
@@ -8431,6 +8453,96 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";
+
+/***/ },
+/* 115 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(116);
+	var collapsible_1 = __webpack_require__(52);
+	var collapsible_item_1 = __webpack_require__(53);
+	var icon_1 = __webpack_require__(22);
+	var PopoutCollapsible = (function () {
+	    function PopoutCollapsible() {}
+	    PopoutCollapsible = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            icon: icon_1["default"],
+	            collapsible: collapsible_1["default"],
+	            collapsibleItem: collapsible_item_1["default"]
+	        }
+	    })], PopoutCollapsible);
+	    return PopoutCollapsible;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = PopoutCollapsible;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 116 */
+/***/ function(module, exports) {
+
+	module.exports = "<collapsible popout>\r\n    <collapsible-item>\r\n        <div slot=\"header\"><icon>filter_drama</icon>First</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </collapsible-item>\r\n    <collapsible-item>\r\n        <div slot=\"header\"><icon>place</icon>Second</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </collapsible-item>\r\n    <collapsible-item>\r\n        <div slot=\"header\"><icon>whatshot</icon>Third</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </collapsible-item>\r\n</collapsible>";
+
+/***/ },
+/* 117 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible</span> <span class=\"hljs-attribute\">popout</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>filter_drama<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>First<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>place<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>Second<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>whatshot<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>Third<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible</span>&gt;</span>";
+
+/***/ },
+/* 118 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible</span> <span class=\"hljs-attribute\">expendable</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>filter_drama<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>First<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>place<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>Second<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">icon</span>&gt;</span>whatshot<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">icon</span>&gt;</span>Third<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">collapsible</span>&gt;</span>";
+
+/***/ },
+/* 119 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(120);
+	var collapsible_1 = __webpack_require__(52);
+	var collapsible_item_1 = __webpack_require__(53);
+	var icon_1 = __webpack_require__(22);
+	var ExpendableCollapsible = (function () {
+	    function ExpendableCollapsible() {}
+	    ExpendableCollapsible = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            icon: icon_1["default"],
+	            collapsible: collapsible_1["default"],
+	            collapsibleItem: collapsible_item_1["default"]
+	        }
+	    })], ExpendableCollapsible);
+	    return ExpendableCollapsible;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = ExpendableCollapsible;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 120 */
+/***/ function(module, exports) {
+
+	module.exports = "<collapsible expendable>\r\n    <collapsible-item>\r\n        <div slot=\"header\"><icon>filter_drama</icon>First</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </collapsible-item>\r\n    <collapsible-item>\r\n        <div slot=\"header\"><icon>place</icon>Second</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </collapsible-item>\r\n    <collapsible-item>\r\n        <div slot=\"header\"><icon>whatshot</icon>Third</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </collapsible-item>\r\n</collapsible>";
 
 /***/ }
 /******/ ])

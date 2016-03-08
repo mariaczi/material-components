@@ -6,20 +6,13 @@ var template = require('./collapsible-item.html');
 var Velocity = require('velocity-animate');
 
 @Component({
-    props: {
-        expandable: {
-            type: Boolean,
-            required: false,
-            "default": false
-        }
-    },
     template: template,
     mixins: [
         events
     ],
     events: {
-        'collapsible::open': function (uid) {
-            this.open(uid);
+        'collapsible::open': function (uid, expendable) {
+            this.open(uid, expendable);
         },
         'collapsible::close': function (uid) {
             this.close(uid);
@@ -29,7 +22,6 @@ var Velocity = require('velocity-animate');
 export default class CollapsibleItem {
     private _uid: number;
     private active: boolean;
-    private expandable: boolean;
 
     data() {
         return {
@@ -72,7 +64,7 @@ export default class CollapsibleItem {
         }
     }
 
-    open(uid) {
+    open(uid, expendable: boolean) {
         if (uid === null) {
             this.openThis();
         }
@@ -81,7 +73,7 @@ export default class CollapsibleItem {
                 this.openThis();
             }
             else {
-                if (!this.expandable) {
+                if (!expendable) {
                     this.closeThis();
                 }
             }

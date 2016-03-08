@@ -5,6 +5,18 @@ import collapsibleItem from '../collapsible-item';
 var template = require('./collapsible.html');
 
 @Component({
+    props: {
+        popout: {
+            type: Boolean,
+            required: false,
+            "default": false
+        },
+        expendable: {
+            type: Boolean,
+            required: false,
+            "default": false
+        }
+    },
     template: template,
     components: {
         collapsibleItem
@@ -12,14 +24,23 @@ var template = require('./collapsible.html');
     events: {
         'collapsible::open': function (uid) {
             // propagate event to children
-            this.$broadcast('collapsible::open', uid);
+            this.$broadcast('collapsible::open', uid, this.expendable);
         },
         'collapsible::close': function (uid) {
-            // propagate event to children
+           // propagate event to children
             this.$broadcast('collapsible::close', uid);
         }
     }
 })
 export default class Collapsible {
-    
+    private popout: boolean;
+
+    get computedClasses() {
+        if (this.popout) {
+            return ["popout"];
+        }
+        else {
+            return [];
+        }
+    }
 }

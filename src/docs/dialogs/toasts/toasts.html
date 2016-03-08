@@ -1,0 +1,24 @@
+<p>
+    <btn @click="toast('I am a toast!', 4000)">
+        TOAST!
+    </btn>
+</p>
+
+<p>
+    <btn @click="toast('<span>I am toast content</span>', 5000)">
+        TOAST with content!
+    </btn>
+</p>
+
+<p>
+    <btn @click="makeAToast('I am toast')">
+        TOAST with callback!
+    </btn>
+</p>
+
+<p>
+    <btn @click="toast('I am a toast!', 3000, 'rounded')">
+        Rounded TOAST
+    </btn>
+</p>
+

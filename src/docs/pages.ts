@@ -2,6 +2,7 @@ import badges from './badges';
 import collapsibles from './collapsibles';
 import navbars from './navbars';
 import modals from './modals';
+import dialogs from './dialogs';
 
 const docsPages: [Route] = [
     {
@@ -23,6 +24,11 @@ const docsPages: [Route] = [
         url: "/navbars",
         title: "Navbars",
         component: navbars
+    },
+    {
+        url: "/dialogs",
+        title: "Dialogs",
+        component: dialogs
     }
 ];
 

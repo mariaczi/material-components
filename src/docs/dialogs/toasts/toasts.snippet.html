@@ -1,0 +1,23 @@
+<btn @click="toast('I am a toast!', 4000)">
+    // this.toast(message, displayLength, className, completeCallback);
+    TOAST!
+</btn>
+
+<btn @click="toast('<span>I am toast content</span>', 5000)">
+    TOAST with content!
+</btn>
+
+<btn @click="makeAToast('I am toast')">
+    // makeATast: function(msg) {
+    //   this.toast(msg, 4000, '', function() {
+    //     alert('Your toast was dismissed');
+    //   })
+    // }
+    TOAST with callback!
+</btn>
+
+<btn @click="toast('I am a toast!', 3000, 'rounded')">
+    Rounded TOAST
+</btn>
+
+

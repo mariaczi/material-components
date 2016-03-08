@@ -31,6 +31,16 @@ const ESC = 27;
             this.close();
         }
     },
+    watch: {
+        active: function (active) {
+            if (active) {
+                window.document.body.style.overflow = 'hidden';
+            }
+            else {
+                window.document.body.style.overflow = 'visible';
+            }
+        }
+    },
     template: template
 })
 export default class Modal {

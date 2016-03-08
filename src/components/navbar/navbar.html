@@ -25,6 +25,6 @@
     </nav>
 
     <div @click="closeSideMenu">
-        <sidenav-overlay v-if="sideMenu"></sidenav-overlay>
+        <sidenav-overlay v-if="sideMenu" transition="modal-overlay"></sidenav-overlay>
     </div>
 </div>

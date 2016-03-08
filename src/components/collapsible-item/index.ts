@@ -46,7 +46,7 @@ export default class CollapsibleItem {
     openThis() {
         if (!this.active) {
             this.active = true;
-            this.onNextTick(function () {
+            this.onNextTick(() => {
                 Velocity(this._body, 'slideDown', this._slideConfig);
             });
         }
@@ -83,7 +83,7 @@ export default class CollapsibleItem {
     closeThis() {
         if (this.active) {
             this.active = false;
-            this.onNextTick(function () {
+            this.onNextTick(() => {
                 this._body.style.display = 'block';
                 Velocity(this._body, 'slideUp', this._slideConfig);
             })

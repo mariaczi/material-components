@@ -6500,7 +6500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"sidenav-overlay\" style=\"opacity: 1;\" class=\"\"></div>";
+	module.exports = "<div id=\"sidenav-overlay\"></div>";
 
 /***/ },
 /* 37 */
@@ -6513,7 +6513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "<div :class=\"{'navbar-fixed': fixed}\"\r\n     :style=\"fixed ? {position: 'absolute', top: 0}: {}\">\r\n    <nav>\r\n        <div class=\"nav-wrapper\" :class=\"bgColor\">\r\n            <slot name=\"logo\">\r\n                <a v-if=\"title\"\r\n                   href=\"javascript:void(0)\" class=\"brand-logo\" :class=\"logoClasses\">\r\n                    {{title}}\r\n                </a>\r\n                <a v-if=\"hamburger\" href=\"javascript:void(0)\" class=\"button-collapse\"\r\n                   @click=\"openSideMenu\">\r\n                    <icon>menu</icon>\r\n                </a>\r\n            </slot>\r\n\r\n            <slot name=\"content\">\r\n                <ul :class=\"listClasses\">\r\n                    <slot></slot>\r\n                </ul>\r\n                <ul v-if=\"sideMenu\" transition=\"side-nav\" :style=\"computedStyle\" class=\"side-nav\">\r\n                    <slot></slot>\r\n                </ul>\r\n            </slot>\r\n        </div>\r\n    </nav>\r\n\r\n    <div @click=\"closeSideMenu\">\r\n        <sidenav-overlay v-if=\"sideMenu\"></sidenav-overlay>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div :class=\"{'navbar-fixed': fixed}\"\r\n     :style=\"fixed ? {position: 'absolute', top: 0}: {}\">\r\n    <nav>\r\n        <div class=\"nav-wrapper\" :class=\"bgColor\">\r\n            <slot name=\"logo\">\r\n                <a v-if=\"title\"\r\n                   href=\"javascript:void(0)\" class=\"brand-logo\" :class=\"logoClasses\">\r\n                    {{title}}\r\n                </a>\r\n                <a v-if=\"hamburger\" href=\"javascript:void(0)\" class=\"button-collapse\"\r\n                   @click=\"openSideMenu\">\r\n                    <icon>menu</icon>\r\n                </a>\r\n            </slot>\r\n\r\n            <slot name=\"content\">\r\n                <ul :class=\"listClasses\">\r\n                    <slot></slot>\r\n                </ul>\r\n                <ul v-if=\"sideMenu\" transition=\"side-nav\" :style=\"computedStyle\" class=\"side-nav\">\r\n                    <slot></slot>\r\n                </ul>\r\n            </slot>\r\n        </div>\r\n    </nav>\r\n\r\n    <div @click=\"closeSideMenu\">\r\n        <sidenav-overlay v-if=\"sideMenu\" transition=\"modal-overlay\"></sidenav-overlay>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
 /* 40 */
@@ -6806,10 +6806,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    CollapsibleItem.prototype.openThis = function () {
+	        var _this = this;
 	        if (!this.active) {
 	            this.active = true;
 	            this.onNextTick(function () {
-	                Velocity(this._body, 'slideDown', this._slideConfig);
+	                Velocity(_this._body, 'slideDown', _this._slideConfig);
 	            });
 	        }
 	    };
@@ -6842,11 +6843,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    CollapsibleItem.prototype.closeThis = function () {
+	        var _this = this;
 	        if (this.active) {
 	            this.active = false;
 	            this.onNextTick(function () {
-	                this._body.style.display = 'block';
-	                Velocity(this._body, 'slideUp', this._slideConfig);
+	                _this._body.style.display = 'block';
+	                Velocity(_this._body, 'slideUp', _this._slideConfig);
 	            });
 	        }
 	    };
@@ -8168,6 +8170,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            },
 	            'modal::close': function modalClose() {
 	                this.close();
+	            }
+	        },
+	        watch: {
+	            active: function active(_active) {
+	                if (_active) {
+	                    window.document.body.style.overflow = 'hidden';
+	                } else {
+	                    window.document.body.style.overflow = 'visible';
+	                }
 	            }
 	        },
 	        template: template

@@ -23,19 +23,6 @@ nav span.badge.new .new {
   animation-duration: 0.2s;
   -webkit-animation-name: slideOutLeft;
   animation-name: slideOutLeft; }
-.collapsible-transition {
-  overflow: hidden;
-  height: auto;
-  max-height: 1000px;
-  -webkit-transition: max-height 0.65s ease-in-out;
-  transition: max-height 0.65s ease-in-out; }
-
-.collapsible-enter, .collapsible-leave {
-  max-height: 0;
-  height: 0; }
-
-.collapsible-leave {
-  display: none !important; }
 .modal-overlay-transition {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;

@@ -2,7 +2,6 @@ import Component from 'vue-class-component';
 
 import collapsibleItem from '../collapsible-item';
 
-require('./collapsible.scss');
 var template = require('./collapsible.html');
 
 @Component({

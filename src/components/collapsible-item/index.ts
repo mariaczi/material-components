@@ -3,6 +3,7 @@ import Component from 'vue-class-component';
 import events from '../../mixins/events';
 
 var template = require('./collapsible-item.html');
+var Velocity = require('velocity-animate');
 
 @Component({
     props: {
@@ -44,10 +45,30 @@ export default class CollapsibleItem {
         }
         return null;
     }
+    
+    get _body() {
+        var self: any = this;
+        return self.$els.body;
+    }
 
     openThis() {
         if (!this.active) {
             this.active = true;
+            this.onNextTick(function () {
+                Velocity(this._body, 'slideDown', this._slideConfig);
+            });
+        }
+    }
+
+    get _slideConfig() {
+        var self = this;
+        return {
+            duration: 350,
+            easing: "easeOutQuart",
+            queue: false,
+            complete: function() {
+                self._body.style.height = '';
+            }
         }
     }
 
@@ -70,6 +91,10 @@ export default class CollapsibleItem {
     closeThis() {
         if (this.active) {
             this.active = false;
+            this.onNextTick(function () {
+                this._body.style.display = 'block';
+                Velocity(this._body, 'slideUp', this._slideConfig);
+            })
         }
     }
 
@@ -92,5 +117,10 @@ export default class CollapsibleItem {
         else {
             self.$dispatch('collapsible::open', this._uid);
         }
+    }
+
+    onNextTick(callback) {
+        var self: any = this;
+        self.$nextTick(callback);
     }
 }

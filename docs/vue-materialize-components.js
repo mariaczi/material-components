@@ -5409,6 +5409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var badges_1 = __webpack_require__(5);
 	var collapsibles_1 = __webpack_require__(53);
+	var dropdowns_1 = __webpack_require__(133);
 	var navbars_1 = __webpack_require__(69);
 	var modals_1 = __webpack_require__(99);
 	var dialogs_1 = __webpack_require__(118);
@@ -5420,6 +5421,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    url: "/collapsibles",
 	    title: "Collapsibles",
 	    component: collapsibles_1['default']
+	}, {
+	    url: "/dropdowns",
+	    title: "Dropdowns",
+	    component: dropdowns_1['default']
 	}, {
 	    url: "/modals",
 	    title: "Modals",
@@ -5746,6 +5751,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var button_1 = __webpack_require__(21);
 	var dropdown_list_1 = __webpack_require__(30);
 	var dropdown_item_1 = __webpack_require__(31);
+	// todo props
 	var template = __webpack_require__(35);
 	var Dropdown = (function () {
 	    function Dropdown() {}
@@ -6872,7 +6878,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            closing: {
 	                type: Boolean,
 	                required: false,
-	                "default": false
+	                "default": true
 	            }
 	        },
 	        template: template
@@ -9012,6 +9018,93 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return { x: newX, y: newY };
 	};
 	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var snippet_1 = __webpack_require__(47);
+	var default_1 = __webpack_require__(134);
+	var events_1 = __webpack_require__(58);
+	var template = __webpack_require__(136);
+	var Modals = (function () {
+	    function Modals() {}
+	    Modals.prototype.data = function () {
+	        return {
+	            defaultDropdownSnippet: __webpack_require__(137)
+	        };
+	    };
+	    Modals = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            defaultDropdown: default_1["default"],
+	            snippet: snippet_1["default"]
+	        },
+	        mixins: [events_1["default"]]
+	    })], Modals);
+	    return Modals;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Modals;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(135);
+	var dropdown_1 = __webpack_require__(20);
+	var dropdown_item_1 = __webpack_require__(31);
+	var DefaultDropdown = (function () {
+	    function DefaultDropdown() {}
+	    DefaultDropdown = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            dropdown: dropdown_1["default"],
+	            dropdownItem: dropdown_item_1["default"]
+	        }
+	    })], DefaultDropdown);
+	    return DefaultDropdown;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = DefaultDropdown;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 135 */
+/***/ function(module, exports) {
+
+	module.exports = "<dropdown title=\"Drop me\">\r\n    <dropdown-item>\r\n        one\r\n    </dropdown-item>\r\n    <dropdown-item>\r\n        two\r\n    </dropdown-item>\r\n    <li class=\"divider\"></li>\r\n    <dropdown-item>\r\n        three\r\n    </dropdown-item>\r\n</dropdown>";
+
+/***/ },
+/* 136 */
+/***/ function(module, exports) {
+
+	module.exports = "<h2 class=\"header\">Dropdown</h2>\r\n<div class=\"doc-example\">\r\n    <default-dropdown></default-dropdown>\r\n\r\n    <snippet>{{{defaultDropdownSnippet}}}</snippet>\r\n</div>\r\n";
+
+/***/ },
+/* 137 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">dropdown</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Drop me\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">dropdown-item</span>&gt;</span>\r\n        one\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">dropdown-item</span>&gt;</span>\r\n        two\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"divider\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">dropdown-item</span>&gt;</span>\r\n        three\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">dropdown</span>&gt;</span>";
 
 /***/ }
 /******/ ])

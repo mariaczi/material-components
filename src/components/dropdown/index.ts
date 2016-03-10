@@ -2,7 +2,7 @@ import Component from 'vue-class-component';
 import btn from '../button';
 import dropdownList from '../dropdown-list';
 import dropdownItem from '../dropdown-item';
-
+// todo props
 var template = require('./dropdown.html');
 
 @Component({

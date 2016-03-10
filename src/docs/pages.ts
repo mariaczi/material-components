@@ -1,5 +1,6 @@
 import badges from './badges';
 import collapsibles from './collapsibles';
+import dropdowns from './dropdowns';
 import navbars from './navbars';
 import modals from './modals';
 import dialogs from './dialogs';
@@ -14,6 +15,11 @@ const docsPages: [Route] = [
         url: "/collapsibles",
         title: "Collapsibles",
         component: collapsibles
+    },
+    {
+        url: "/dropdowns",
+        title: "Dropdowns",
+        component: dropdowns
     },
     {
         url: "/modals",

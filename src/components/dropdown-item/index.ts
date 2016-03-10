@@ -7,7 +7,7 @@ var template = require('./dropdown-item.html');
         closing: {
             type: Boolean,
             required: false,
-            "default": false
+            "default": true
         }
     },
     template: template

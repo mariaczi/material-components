@@ -8626,7 +8626,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Dialogs.prototype.data = function () {
 	        return {
 	            toastsSnippet: __webpack_require__(124),
-	            tooltipSnippet: __webpack_require__(125)
+	            tooltipsSnippet: __webpack_require__(125)
 	        };
 	    };
 	    Dialogs = __decorate([vue_class_component_1["default"]({
@@ -8739,7 +8739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 125 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">btn</span> @<span class=\"hljs-attribute\">mouseover</span>=<span class=\"hljs-value\">\"tooltip($event, 'I am right tooltip!', 'right')\"</span>&gt;</span>\r\n    RIGHT\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">btn</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">btn</span> @<span class=\"hljs-attribute\">mouseover</span>=<span class=\"hljs-value\">\"tooltip($event, 'I am right tooltip!', 'bottom')\"</span>&gt;</span>\r\n    BOTTOM\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">btn</span>&gt;</span>";
 
 /***/ },
 /* 126 */
@@ -8863,6 +8863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	var Velocity = __webpack_require__(27);
+	// todo swap tooltip if oversize window
 	function default_1(element, message, position, delay) {
 	    if (position === void 0) {
 	        position = 'top';

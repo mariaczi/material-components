@@ -17,7 +17,7 @@ export default class Dialogs {
     data() {
         return {
             toastsSnippet: require('./toasts/toasts.snippet.html'),
-            tooltipSnippet: require('./tooltips/tooltips.snippet.html')
+            tooltipsSnippet: require('./tooltips/tooltips.snippet.html')
         }
     }
 }

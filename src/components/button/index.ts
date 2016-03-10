@@ -1,6 +1,6 @@
 import Component from 'vue-class-component';
+import Effect from '../../materialize/effect';
 import icon from '../icon';
-import {Effect} from '../../materialize';
 import toast from '../../mixins/toast';
 import tooltip from '../../mixins/tooltip';
 

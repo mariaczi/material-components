@@ -1,4 +1,4 @@
-import {toast as toastFn} from '../../materialize';
+import {toast as toastFn} from '../../materialize/toast';
 
 export default {
     methods: {

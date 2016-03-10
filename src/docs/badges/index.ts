@@ -15,7 +15,7 @@ var template = require('./badges.html');
         snippet
     }
 })
-export default class Badges {
+export default class MdBadges {
     data() {
         return {
             collectionsSnippet: require('./collections/collections.snippet.html'),

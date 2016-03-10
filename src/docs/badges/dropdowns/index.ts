@@ -1,7 +1,7 @@
 import Component from 'vue-class-component';
 import dropdown from '../../../components/dropdown';
 import dropdownItem from '../../../components/dropdown-item';
-import badge from '../../../components/badge';
+import mdBadge from '../../../components/badge';
 
 var template = require('./dropdowns.html');
 
@@ -10,7 +10,7 @@ var template = require('./dropdowns.html');
     components: {
         dropdown,
         dropdownItem,
-        badge
+        mdBadge
     }
 })
 export default class Dropdowns {

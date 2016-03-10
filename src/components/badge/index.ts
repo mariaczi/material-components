@@ -16,6 +16,6 @@ var template = require('./badge.html');
     },
     template: template
 })
-export default class Badge {
+export default class MdBadge {
     private alert: String;
 }

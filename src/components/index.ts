@@ -1,6 +1,6 @@
 require('./animations.scss');
 
-import badge from './badge';
+import mdBadge from './badge';
 import btn from './button';
 import collapsible from './collapsible';
 import collection from './collection';
@@ -17,7 +17,7 @@ import navbarItem from './navbar-item';
 import sidenavOverlay from './sidenav-overlay';
 
 const VueMaterializeComponents = {
-    badge,
+    mdBadge,
     btn,
     collapsible,
     collection,

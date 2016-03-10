@@ -2,7 +2,7 @@ import Component from 'vue-class-component';
 
 var template = require('./collections.html');
 
-import badge from '../../../components/badge';
+import mdBadge from '../../../components/badge';
 import collection from '../../../components/collection';
 import collectionItem from '../../../components/collection-item';
 
@@ -11,7 +11,7 @@ import collectionItem from '../../../components/collection-item';
     components: {
         collection,
         collectionItem,
-        badge
+        mdBadge
     }
 })
 export default class Collections {

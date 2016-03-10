@@ -1,5 +1,5 @@
 import Component from 'vue-class-component';
-import badge from '../../../components/badge';
+import mdBadge from '../../../components/badge';
 import btn from '../../../components/button';
 import navbar from '../../../components/navbar';
 import navbarItem from '../../../components/navbar-item';
@@ -10,7 +10,7 @@ var template = require('./navbars.html');
 @Component({
     template: template,
     components: {
-        badge,
+        mdBadge,
         btn,
         navbar,
         navbarItem,

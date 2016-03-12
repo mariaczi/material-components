@@ -1,21 +1,21 @@
 import Component from 'vue-class-component';
-import collections from './collections';
-import dropdowns from  './dropdowns';
-import navbars from  './navbars';
-import snippet from '../snippet';
+import docCollections from './collections';
+import docDropdowns from  './dropdowns';
+import docNavbars from  './navbars';
+import docSnippet from '../snippet';
 
 var template = require('./badges.html');
 
 @Component({
     template: template,
     components: {
-        collections,
-        dropdowns,
-        navbars,
-        snippet
+        docCollections,
+        docDropdowns,
+        docNavbars,
+        docSnippet
     }
 })
-export default class MdBadges {
+export default class Badges {
     data() {
         return {
             collectionsSnippet: require('./collections/collections.snippet.html'),

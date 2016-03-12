@@ -31,7 +31,7 @@
 	 * @param {number} right
 	 * @param {number} bottom
 	 * @param {number} left
-	 * @return {jQuery}		A collection of elements
+	 * @return {jQuery}		A mdCollection of elements
 	 */
 	function findElements(top, right, bottom, left) {
 		var hits = $();
@@ -160,7 +160,7 @@
 
 	/**
 	 * Enables ScrollSpy using a selector
-	 * @param {jQuery|string} selector  The elements collection, or a selector
+	 * @param {jQuery|string} selector  The elements mdCollection, or a selector
 	 * @param {Object=} options	Optional.
         throttle : number -> scrollspy throttling. Default: 100 ms
         offsetTop : number -> offset from top. Default: 0
@@ -267,7 +267,7 @@
 	};
 
 	/**
-	 * Enables ScrollSpy on a collection of elements
+	 * Enables ScrollSpy on a mdCollection of elements
 	 * e.g. $('.scrollSpy').scrollSpy()
 	 * @param {Object=} options	Optional.
 											throttle : number -> scrollspy throttling. Default: 100 ms

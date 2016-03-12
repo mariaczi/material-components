@@ -640,7 +640,7 @@ DatePicker.prototype.parse = function( type, value, options ) {
  */
 DatePicker.prototype.formats = (function() {
 
-    // Return the length of the first word in a collection.
+    // Return the length of the first word in a mdCollection.
     function getWordLengthFromCollection( string, collection, dateObject ) {
 
         // Grab the first word from the string.
@@ -703,7 +703,7 @@ DatePicker.prototype.formats = (function() {
             var collection = this.settings.monthsShort
 
             // If there's a string, get length of the relevant month from the short
-            // months collection. Otherwise return the selected month from that collection.
+            // months mdCollection. Otherwise return the selected month from that mdCollection.
             return string ? getWordLengthFromCollection( string, collection, dateObject ) : collection[ dateObject.month ]
         },
         mmmm: function( string, dateObject ) {
@@ -711,7 +711,7 @@ DatePicker.prototype.formats = (function() {
             var collection = this.settings.monthsFull
 
             // If there's a string, get length of the relevant month from the full
-            // months collection. Otherwise return the selected month from that collection.
+            // months mdCollection. Otherwise return the selected month from that mdCollection.
             return string ? getWordLengthFromCollection( string, collection, dateObject ) : collection[ dateObject.month ]
         },
         yy: function( string, dateObject ) {
@@ -812,7 +812,7 @@ DatePicker.prototype.flipEnable = function(val) {
 
 
 /**
- * Mark a collection of dates as “disabled”.
+ * Mark a mdCollection of dates as “disabled”.
  */
 DatePicker.prototype.deactivate = function( type, datesToDisable ) {
 
@@ -851,7 +851,7 @@ DatePicker.prototype.deactivate = function( type, datesToDisable ) {
                 }
             }
 
-            // If nothing was found, add the validated unit to the collection.
+            // If nothing was found, add the validated unit to the mdCollection.
             if ( !matchFound ) {
                 if (
                     _.isInteger( unitToDisable ) ||
@@ -865,13 +865,13 @@ DatePicker.prototype.deactivate = function( type, datesToDisable ) {
         })
     }
 
-    // Return the updated collection.
+    // Return the updated mdCollection.
     return disabledItems
 } //DatePicker.prototype.deactivate
 
 
 /**
- * Mark a collection of dates as “enabled”.
+ * Mark a mdCollection of dates as “enabled”.
  */
 DatePicker.prototype.activate = function( type, datesToEnable ) {
 
@@ -909,7 +909,7 @@ DatePicker.prototype.activate = function( type, datesToEnable ) {
 
                 disabledUnit = disabledItems[index]
 
-                // When an exact match is found, remove it from the collection.
+                // When an exact match is found, remove it from the mdCollection.
                 if ( calendar.isDateExact( disabledUnit, unitToEnable ) ) {
                     matchFound = disabledItems[index] = null
                     isExactRange = true
@@ -950,14 +950,14 @@ DatePicker.prototype.activate = function( type, datesToEnable ) {
                 }
             }
 
-            // If something is still matched, add it into the collection.
+            // If something is still matched, add it into the mdCollection.
             if ( matchFound ) {
                 disabledItems.push( matchFound )
             }
         })
     }
 
-    // Return the updated collection.
+    // Return the updated mdCollection.
     return disabledItems.filter(function( val ) { return val != null })
 } //DatePicker.prototype.activate
 
@@ -980,7 +980,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
         maxLimitObject = calendarItem.max,
 
 
-        // Create the calendar table head using a copy of weekday labels collection.
+        // Create the calendar table head using a copy of weekday labels mdCollection.
         // * We do a copy so we don't mutate the original array.
         tableHead = (function( collection, fullCollection ) {
 
@@ -1050,7 +1050,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
               monthsCollection = settings.monthsShort;
             }
 
-            // If there are months to select, add a dropdown menu.
+            // If there are months to select, add a mdDropdown menu.
             if ( settings.selectMonths  && override == undefined) {
 
                 return _.node( 'select',
@@ -1107,7 +1107,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // divide in half to get half before and half after focused year.
             numberYears = settings.selectYears === true ? 5 : ~~( settings.selectYears / 2 )
 
-            // If there are years to select, add a dropdown menu.
+            // If there are years to select, add a mdDropdown menu.
             if ( numberYears ) {
 
                 var
@@ -1317,15 +1317,15 @@ return _.node(
     // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
     _.node(
         'div',
-        _.node( 'button', settings.today, "btn-flat picker__today",
+        _.node( 'button', settings.today, "mdButton-flat picker__today",
             'type=button data-pick=' + nowObject.pick +
             ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node( 'button', settings.clear, "btn-flat picker__clear",
+        _.node( 'button', settings.clear, "mdButton-flat picker__clear",
             'type=button data-clear=1' +
             ( isOpen ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node('button', settings.close, "btn-flat picker__close",
+        _.node('button', settings.close, "mdButton-flat picker__close",
             'type=button data-close=true ' +
             ( isOpen ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ),
@@ -1347,7 +1347,7 @@ DatePicker.defaults = (function( prefix ) {
         labelMonthNext: 'Next month',
         labelMonthPrev: 'Previous month',
 
-        // The title label to use for the dropdown selectors
+        // The title label to use for the mdDropdown selectors
         labelMonthSelect: 'Select a month',
         labelYearSelect: 'Select a year',
 

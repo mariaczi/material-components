@@ -46,7 +46,7 @@
         });
       }
 
-      $modal.find(".modal-close").on('click.close', function(e) {
+      $modal.find(".mdModal-close").on('click.close', function(e) {
         $modal.closeModal(options);
       });
 
@@ -66,7 +66,7 @@
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
-          // Handle modal ready callback
+          // Handle mdModal ready callback
           complete: function() {
             if (typeof(options.ready) === "function") {
               options.ready();
@@ -81,7 +81,7 @@
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
-          // Handle modal ready callback
+          // Handle mdModal ready callback
           complete: function() {
             if (typeof(options.ready) === "function") {
               options.ready();
@@ -109,7 +109,7 @@
       // Disable scrolling
       $('body').css('overflow', '');
 
-      $modal.find('.modal-close').off('click.close');
+      $modal.find('.mdModal-close').off('click.close');
       $(document).off('keyup.leanModal' + overlayID);
 
       $overlay.velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
@@ -121,7 +121,7 @@
           duration: options.out_duration,
           queue: false,
           ease: "easeOutCubic",
-          // Handle modal ready callback
+          // Handle mdModal ready callback
           complete: function() {
             $overlay.css({display:"none"});
 

@@ -1,6 +1,6 @@
 import Component from 'vue-class-component';
 
-import collapsibleItem from '../collapsible-item';
+import mdCollapsibleItem from '../collapsible-item';
 
 var template = require('./collapsible.html');
 
@@ -19,7 +19,7 @@ var template = require('./collapsible.html');
     },
     template: template,
     components: {
-        collapsibleItem
+        mdCollapsibleItem
     },
     events: {
         'collapsible::open': function (uid) {

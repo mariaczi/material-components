@@ -1,9 +1,10 @@
 import Component from 'vue-class-component';
+
 import mdBadge from '../../../components/badge';
-import btn from '../../../components/button';
-import navbar from '../../../components/navbar';
-import navbarItem from '../../../components/navbar-item';
-import snippet from '../../snippet';
+import mdButton from '../../../components/button';
+import mdNavbar from '../../../components/navbar';
+import mdNavbarItem from '../../../components/navbar-item';
+import mdSnippet from '../../snippet';
 
 var template = require('./navbars.html');
 
@@ -11,10 +12,10 @@ var template = require('./navbars.html');
     template: template,
     components: {
         mdBadge,
-        btn,
-        navbar,
-        navbarItem,
-        snippet
+        mdButton,
+        mdNavbar,
+        mdNavbarItem,
+        mdSnippet
     }
 })
 export default class FixedNavbars {

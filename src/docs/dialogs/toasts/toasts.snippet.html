@@ -1,23 +1,23 @@
-<btn @click="toast('I am a toast!', 4000)">
+<md-button @click="toast('I am a toast!', 4000)">
     // this.toast(message, displayLength, className, completeCallback);
     TOAST!
-</btn>
+</md-button>
 
-<btn @click="toast('<span>I am toast content</span>', 5000)">
+<md-button @click="toast('<span>I am toast content</span>', 5000)">
     TOAST with content!
-</btn>
+</md-button>
 
-<btn @click="makeAToast('I am toast')">
+<md-button @click="makeAToast('I am toast')">
     // makeATast: function(msg) {
     //   this.toast(msg, 4000, '', function() {
     //     alert('Your toast was dismissed');
     //   })
     // }
     TOAST with callback!
-</btn>
+</md-button>
 
-<btn @click="toast('I am a toast!', 3000, 'rounded')">
+<md-button @click="toast('I am a toast!', 3000, 'rounded')">
     Rounded TOAST
-</btn>
+</md-button>
 
 

@@ -1,32 +1,33 @@
 import Component from 'vue-class-component';
-import navbarLeft from './left-align';
-import navbarRight from './right-align';
-import navbarCenter from './center-align';
-import navbarActiveItems from './active-items';
-import navbarFixed from './fixed';
-import navbarDropdown from './dropdown';
-import navbarIconLinks from './icon-links';
-import navbarButtons from './buttons';
-import navbarSearch from './search';
-import navbarMobileCollapse from './mobile-collapse';
-import snippet from '../snippet';
+
+import docNavbarLeft from './left-align';
+import docNavbarRight from './right-align';
+import docNavbarCenter from './center-align';
+import docNavbarActiveItems from './active-items';
+import docNavbarFixed from './fixed';
+import docNavbarDropdown from './dropdown';
+import docNavbarIconLinks from './icon-links';
+import docNavbarButtons from './buttons';
+import docNavbarSearch from './search';
+import docNavbarMobileCollapse from './mobile-collapse';
+import docSnippet from '../snippet';
 
 var template = require('./navbars.html');
 
 @Component({
     template: template,
     components: {
-        navbarLeft,
-        navbarRight,
-        navbarCenter,
-        navbarActiveItems,
-        navbarFixed,
-        navbarDropdown,
-        navbarIconLinks,
-        navbarButtons,
-        navbarSearch,
-        navbarMobileCollapse,
-        snippet
+        docNavbarLeft,
+        docNavbarRight,
+        docNavbarCenter,
+        docNavbarActiveItems,
+        docNavbarFixed,
+        docNavbarDropdown,
+        docNavbarIconLinks,
+        docNavbarButtons,
+        docNavbarSearch,
+        docNavbarMobileCollapse,
+        docSnippet
     }
 })
 export default class Navbars {

@@ -2,14 +2,14 @@ import Component from 'vue-class-component';
 
 var template = require('./default.html');
 
-import dropdown from '../../../components/dropdown';
-import dropdownItem from '../../../components/dropdown-item';
+import mdDropdown from '../../../components/dropdown';
+import mdDropdownItem from '../../../components/dropdown-item';
 
 @Component({
     template: template,
     components: {
-        dropdown,
-        dropdownItem
+        mdDropdown,
+        mdDropdownItem
     }
 })
 export default class DefaultDropdown {

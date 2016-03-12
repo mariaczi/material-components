@@ -1,6 +1,6 @@
 import Component from 'vue-class-component';
 import Effect from '../../materialize/effect';
-import icon from '../icon';
+import mdIcon from '../icon';
 import toast from '../../mixins/toast';
 import tooltip from '../../mixins/tooltip';
 
@@ -43,7 +43,7 @@ var template = require('./btn.html');
         }
     },
     components: {
-        icon
+        mdIcon
     },
     mixins: [
         toast,
@@ -51,7 +51,7 @@ var template = require('./btn.html');
     ],
     template: template
 })
-export default class Btn {
+export default class Button {
     private type: string;
     private classes: string[];
     private icon: string;

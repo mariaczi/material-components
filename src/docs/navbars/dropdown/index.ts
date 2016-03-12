@@ -1,11 +1,12 @@
 import Component from 'vue-class-component';
+
 import mdBadge from '../../../components/badge';
-import navbar from '../../../components/navbar';
-import navbarItem from '../../../components/navbar-item';
-import dropdown from '../../../components/dropdown';
-import dropdownItem from '../../../components/dropdown-item';
-import dropdownList from '../../../components/dropdown-list';
-import icon from '../../../components/icon';
+import mdNavbar from '../../../components/navbar';
+import mdNavbarItem from '../../../components/navbar-item';
+import mdDropdown from '../../../components/dropdown';
+import mdDropdownItem from '../../../components/dropdown-item';
+import mdDropdownList from '../../../components/dropdown-list';
+import mdIcon from '../../../components/icon';
 
 import events from '../../../mixins/events';
 
@@ -15,12 +16,12 @@ var template = require('./navbars.html');
     template: template,
     components: {
         mdBadge,
-        navbar,
-        navbarItem,
-        dropdown,
-        dropdownItem,
-        dropdownList,
-        icon
+        mdNavbar,
+        mdNavbarItem,
+        mdDropdown,
+        mdDropdownItem,
+        mdDropdownList,
+        mdIcon
     },
     mixins: [
         events

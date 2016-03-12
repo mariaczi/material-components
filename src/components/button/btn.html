@@ -4,8 +4,8 @@
    @mousedown="showEffect"
    @mouseleave="hideEffect"
    @mouseup="hideEffect">
-    <icon
+    <md-icon
        v-if="icon"
-       :right="iconAlignRight">{{icon}}</icon>
+       :right="iconAlignRight">{{icon}}</md-icon>
     <slot></slot>
 </a>

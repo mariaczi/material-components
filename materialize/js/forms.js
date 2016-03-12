@@ -44,7 +44,7 @@
         // Reset select
         formReset.find('select.initialized').each(function () {
           var reset_text = formReset.find('option[selected]').text();
-          formReset.siblings('input.select-dropdown').val(reset_text);
+          formReset.siblings('input.select-mdDropdown').val(reset_text);
         });
       }
     });
@@ -291,7 +291,7 @@
       $select.data('select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
-      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
+      var options = $('<ul id="select-options-' + uniqueID +'" class="mdDropdown-content select-mdDropdown ' + (multiple ? 'multiple-select-mdDropdown' : '') + '"></ul>'),
           selectChildren = $select.children('option, optgroup'),
           valuesSelected = [],
           optionsHover = false;
@@ -299,7 +299,7 @@
       var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
       // Function that renders and appends the option taking into
-      // account type and possible image icon.
+      // account type and possible image mdIcon.
       var appendOptionWithIcon = function(select, option, type) {
         // Add disabled attr if disabled
         var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
@@ -328,7 +328,7 @@
         }
       };
 
-      /* Create dropdown structure. */
+      /* Create mdDropdown structure. */
       if (selectChildren.length) {
         selectChildren.each(function() {
           if ($(this).is('option')) {
@@ -388,7 +388,7 @@
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
+      var $newSelect = $('<input type="text" class="select-mdDropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
@@ -407,8 +407,8 @@
 
       $newSelect.on({
         'focus': function (){
-          if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
-            $('input.select-dropdown').trigger('close');
+          if ($('ul.select-mdDropdown').not(options[0]).is(':visible')) {
+            $('input.select-mdDropdown').trigger('close');
           }
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
@@ -552,7 +552,7 @@
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
+      select.siblings('ul.mdDropdown-content').find('li').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);
@@ -574,7 +574,7 @@
         value = select.find('option:disabled').eq(0).text();
       }
 
-      select.siblings('input.select-dropdown').val(value);
+      select.siblings('input.select-mdDropdown').val(value);
     }
   };
 

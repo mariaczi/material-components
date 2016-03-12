@@ -1,18 +1,18 @@
-<dropdown-list>
-    <dropdown-item closing>one</dropdown-item>
-    <dropdown-item closing>two</dropdown-item>
-    <dropdown-item class="divider"></dropdown-item>
-    <dropdown-item closing>three</dropdown-item>
-</dropdown-list>
+<md-dropdown-list>
+    <md-dropdown-item closing>one</md-dropdown-item>
+    <md-dropdown-item closing>two</md-dropdown-item>
+    <md-dropdown-item class="divider"></md-dropdown-item>
+    <md-dropdown-item closing>three</md-dropdown-item>
+</md-dropdown-list>
 
-<navbar title="Logo" right>
-    <navbar-item href="javascript:alert('sass.html')">Sass</navbar-item>
-    <navbar-item href="javascript:alert('badges.html')">Components</navbar-item>
-    <navbar-item href="javascript:void(0)"
+<md-navbar title="Logo" right>
+    <md-navbar-item href="javascript:alert('sass.html')">Sass</md-navbar-item>
+    <md-navbar-item href="javascript:alert('badges.html')">Components</md-navbar-item>
+    <md-navbar-item href="javascript:void(0)"
                  @click="broadcast('dropdown::open')">
-        Dropdown<icon right>arrow_drop_down</icon>
-    </navbar-item>
-</navbar>
+        Dropdown<md-icon right>arrow_drop_down</md-icon>
+    </md-navbar-item>
+</md-navbar>
 
 <script>
     function broadcast(event, $event) {

@@ -3,12 +3,13 @@ import Component from 'vue-class-component';
 var template = require('./toasts.html');
 
 import toast from '../../../mixins/toast';
-import btn from '../../../components/button';
+
+import mdButton from '../../../components/button';
 
 @Component({
     template: template,
     components: {
-        btn
+        mdButton
     },
     mixins: [
         toast

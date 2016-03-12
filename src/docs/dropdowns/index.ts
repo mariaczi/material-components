@@ -1,6 +1,7 @@
 import Component from 'vue-class-component';
-import snippet from '../snippet';
-import defaultDropdown from './default';
+
+import docSnippet from '../snippet';
+import docDefaultDropdown from './default';
 
 import events from '../../mixins/events';
 
@@ -9,8 +10,8 @@ var template = require('./dropdowns.html');
 @Component({
     template: template,
     components: {
-        defaultDropdown,
-        snippet
+        docSnippet,
+        docDefaultDropdown
     },
     mixins: [
         events

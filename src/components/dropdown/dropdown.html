@@ -1,15 +1,15 @@
-<dropdown-list>
+<md-dropdown-list>
     <slot></slot>
-</dropdown-list>
+</md-dropdown-list>
 
 <span @click="open">
     <slot name="button">
-        <btn href="javascript:void(0)"
+        <md-button href="javascript:void(0)"
              :classes="['dropdown-button']"
              :class="{active: active}">
             {{title}}
             <i class="mdi-navigation-arrow-drop-down right"></i>
-        </btn>
+        </md-button>
     </slot>
 </span>
 

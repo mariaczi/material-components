@@ -1,6 +1,7 @@
 import Component from 'vue-class-component';
-import dropdown from '../../../components/dropdown';
-import dropdownItem from '../../../components/dropdown-item';
+
+import mdDropdown from '../../../components/dropdown';
+import mdDropdownItem from '../../../components/dropdown-item';
 import mdBadge from '../../../components/badge';
 
 var template = require('./dropdowns.html');
@@ -8,8 +9,8 @@ var template = require('./dropdowns.html');
 @Component({
     template: template,
     components: {
-        dropdown,
-        dropdownItem,
+        mdDropdown,
+        mdDropdownItem,
         mdBadge
     }
 })

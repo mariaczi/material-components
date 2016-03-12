@@ -11,7 +11,7 @@
     var defaults = {
       inDuration: 300,
       outDuration: 225,
-      constrain_width: true, // Constrains width of dropdown to the activator
+      constrain_width: true, // Constrains width of mdDropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false,
@@ -45,11 +45,11 @@
 
     updateOptions();
 
-    // Attach dropdown to its activator
+    // Attach mdDropdown to its activator
     origin.after(activates);
 
     /*
-      Helper function to position and resize dropdown.
+      Helper function to position and resize mdDropdown.
       Used in hover and click handler.
     */
     function placeDropdown(eventType) {
@@ -97,7 +97,7 @@
       }
       // Vertical bottom offscreen detection
       if (offsetTop + activates.innerHeight() > windowHeight) {
-        // If going upwards still goes offscreen, just crop height of dropdown.
+        // If going upwards still goes offscreen, just crop height of mdDropdown.
         if (offsetTop + originHeight - activates.innerHeight() < 0) {
           var adjustedHeight = windowHeight - offsetTop - verticalOffset;
           activates.css('max-height', adjustedHeight);
@@ -121,7 +121,7 @@
         leftPosition =  offsetRight + gutterSpacing;
       }
 
-      // Position dropdown
+      // Position mdDropdown
       activates.css({
         position: 'absolute',
         top: origin.position().top + verticalOffset,
@@ -129,7 +129,7 @@
       });
 
 
-      // Show dropdown
+      // Show mdDropdown
       activates.stop(true, true).css('opacity', 0)
         .slideDown({
         queue: false,
@@ -155,7 +155,7 @@
     if (options.hover) {
       var open = false;
       origin.unbind('click.' + origin.attr('id'));
-      // Hover handler to show dropdown
+      // Hover handler to show mdDropdown
       origin.on('mouseenter', function(e){ // Mouse over
         if (open === false) {
           placeDropdown();
@@ -163,9 +163,9 @@
         }
       });
       origin.on('mouseleave', function(e){
-        // If hover on origin then to something other than dropdown content, then close
+        // If hover on origin then to something other than mdDropdown content, then close
         var toEl = e.toElement || e.relatedTarget; // added browser compatibility for target element
-        if(!$(toEl).closest('.dropdown-content').is(activates)) {
+        if(!$(toEl).closest('.mdDropdown-content').is(activates)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
@@ -174,7 +174,7 @@
 
       activates.on('mouseleave', function(e){ // Mouse out
         var toEl = e.toElement || e.relatedTarget;
-        if(!$(toEl).closest('.dropdown-button').is(origin)) {
+        if(!$(toEl).closest('.mdDropdown-button').is(origin)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
@@ -183,13 +183,13 @@
 
     // Click
     } else {
-      // Click handler to show dropdown
+      // Click handler to show mdDropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
         if (!isFocused) {
           if ( origin[0] == e.currentTarget &&
                !origin.hasClass('active') &&
-               ($(e.target).closest('.dropdown-content').length === 0)) {
+               ($(e.target).closest('.mdDropdown-content').length === 0)) {
             e.preventDefault(); // Prevents button click from moving window
             placeDropdown('click');
           }
@@ -220,9 +220,9 @@
 
 
    });
-  }; // End dropdown plugin
+  }; // End mdDropdown plugin
 
   $(document).ready(function(){
-    $('.dropdown-button').dropdown();
+    $('.mdDropdown-button').dropdown();
   });
 }( jQuery ));

@@ -9,7 +9,7 @@
                 </a>
                 <a v-if="hamburger" href="javascript:void(0)" class="button-collapse"
                    @click="openSideMenu">
-                    <icon>menu</icon>
+                    <md-icon>menu</md-icon>
                 </a>
             </slot>
 
@@ -25,6 +25,6 @@
     </nav>
 
     <div @click="closeSideMenu">
-        <sidenav-overlay v-if="sideMenu" transition="modal-overlay"></sidenav-overlay>
+        <md-sidenav-overlay v-if="sideMenu" transition="modal-overlay"></md-sidenav-overlay>
     </div>
 </div>

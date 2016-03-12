@@ -322,12 +322,12 @@ if ($) {
 
       var $this = $(this);
 
-      var $panel_headers = $(this).find('> li > .collapsible-header');
+      var $panel_headers = $(this).find('> li > .mdCollapsible-header');
 
       var collapsible_type = $this.data("collapsible");
 
       // Turn off any existing event handlers
-       $this.off('click.collapse', '> li > .collapsible-header');
+       $this.off('click.collapse', '> li > .mdCollapsible-header');
        $panel_headers.off('click.collapse');
 
 
@@ -337,7 +337,7 @@ if ($) {
 
       // Accordion Open
       function accordionOpen(object) {
-        $panel_headers = $this.find('> li > .collapsible-header');
+        $panel_headers = $this.find('> li > .mdCollapsible-header');
         if (object.hasClass('active')) {
             object.parent().addClass('active');
         }
@@ -345,14 +345,14 @@ if ($) {
             object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.mdCollapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
         else{
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.mdCollapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
 
         $panel_headers.not(object).removeClass('active').parent().removeClass('active');
-        $panel_headers.not(object).parent().children('.collapsible-body').stop(true,false).slideUp(
+        $panel_headers.not(object).parent().children('.mdCollapsible-body').stop(true,false).slideUp(
           {
             duration: 350,
             easing: "easeOutQuart",
@@ -373,10 +373,10 @@ if ($) {
             object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.mdCollapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
         else{
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.mdCollapsible-body').stop(true,false).slideUp({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
       }
 
@@ -399,15 +399,15 @@ if ($) {
        */
       function getPanelHeader(object) {
 
-        return object.closest('li > .collapsible-header');
+        return object.closest('li > .mdCollapsible-header');
       }
 
       /*****  End Helper Functions  *****/
 
 
 
-      // Add click handler to only direct collapsible header children
-      $this.on('click.collapse', '> li > .collapsible-header', function(e) {
+      // Add click handler to only direct mdCollapsible header children
+      $this.on('click.collapse', '> li > .mdCollapsible-header', function(e) {
         var $header = $(this),
             element = $(e.target);
 
@@ -429,7 +429,7 @@ if ($) {
       });
 
       // Open first active
-      var $panel_headers = $this.find('> li > .collapsible-header');
+      var $panel_headers = $this.find('> li > .mdCollapsible-header');
       if (options.accordion || collapsible_type === "accordion" || collapsible_type === undefined) { // Handle Accordion
         accordionOpen($panel_headers.filter('.active').first());
       }
@@ -443,7 +443,7 @@ if ($) {
   };
 
   $(document).ready(function(){
-    $('.collapsible').collapsible();
+    $('.mdCollapsible').collapsible();
   });
 }( jQuery ));;(function ($) {
 
@@ -458,7 +458,7 @@ if ($) {
     var defaults = {
       inDuration: 300,
       outDuration: 225,
-      constrain_width: true, // Constrains width of dropdown to the activator
+      constrain_width: true, // Constrains width of mdDropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
       belowOrigin: false,
@@ -492,11 +492,11 @@ if ($) {
 
     updateOptions();
 
-    // Attach dropdown to its activator
+    // Attach mdDropdown to its activator
     origin.after(activates);
 
     /*
-      Helper function to position and resize dropdown.
+      Helper function to position and resize mdDropdown.
       Used in hover and click handler.
     */
     function placeDropdown(eventType) {
@@ -544,7 +544,7 @@ if ($) {
       }
       // Vertical bottom offscreen detection
       if (offsetTop + activates.innerHeight() > windowHeight) {
-        // If going upwards still goes offscreen, just crop height of dropdown.
+        // If going upwards still goes offscreen, just crop height of mdDropdown.
         if (offsetTop + originHeight - activates.innerHeight() < 0) {
           var adjustedHeight = windowHeight - offsetTop - verticalOffset;
           activates.css('max-height', adjustedHeight);
@@ -568,7 +568,7 @@ if ($) {
         leftPosition =  offsetRight + gutterSpacing;
       }
 
-      // Position dropdown
+      // Position mdDropdown
       activates.css({
         position: 'absolute',
         top: origin.position().top + verticalOffset,
@@ -576,7 +576,7 @@ if ($) {
       });
 
 
-      // Show dropdown
+      // Show mdDropdown
       activates.stop(true, true).css('opacity', 0)
         .slideDown({
         queue: false,
@@ -602,7 +602,7 @@ if ($) {
     if (options.hover) {
       var open = false;
       origin.unbind('click.' + origin.attr('id'));
-      // Hover handler to show dropdown
+      // Hover handler to show mdDropdown
       origin.on('mouseenter', function(e){ // Mouse over
         if (open === false) {
           placeDropdown();
@@ -610,9 +610,9 @@ if ($) {
         }
       });
       origin.on('mouseleave', function(e){
-        // If hover on origin then to something other than dropdown content, then close
+        // If hover on origin then to something other than mdDropdown content, then close
         var toEl = e.toElement || e.relatedTarget; // added browser compatibility for target element
-        if(!$(toEl).closest('.dropdown-content').is(activates)) {
+        if(!$(toEl).closest('.mdDropdown-content').is(activates)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
@@ -621,7 +621,7 @@ if ($) {
 
       activates.on('mouseleave', function(e){ // Mouse out
         var toEl = e.toElement || e.relatedTarget;
-        if(!$(toEl).closest('.dropdown-button').is(origin)) {
+        if(!$(toEl).closest('.mdDropdown-button').is(origin)) {
           activates.stop(true, true);
           hideDropdown();
           open = false;
@@ -630,13 +630,13 @@ if ($) {
 
     // Click
     } else {
-      // Click handler to show dropdown
+      // Click handler to show mdDropdown
       origin.unbind('click.' + origin.attr('id'));
       origin.bind('click.'+origin.attr('id'), function(e){
         if (!isFocused) {
           if ( origin[0] == e.currentTarget &&
                !origin.hasClass('active') &&
-               ($(e.target).closest('.dropdown-content').length === 0)) {
+               ($(e.target).closest('.mdDropdown-content').length === 0)) {
             e.preventDefault(); // Prevents button click from moving window
             placeDropdown('click');
           }
@@ -667,10 +667,10 @@ if ($) {
 
 
    });
-  }; // End dropdown plugin
+  }; // End mdDropdown plugin
 
   $(document).ready(function(){
-    $('.dropdown-button').dropdown();
+    $('.mdDropdown-button').dropdown();
   });
 }( jQuery ));;(function($) {
     var _stack = 0,
@@ -720,7 +720,7 @@ if ($) {
         });
       }
 
-      $modal.find(".modal-close").on('click.close', function(e) {
+      $modal.find(".mdModal-close").on('click.close', function(e) {
         $modal.closeModal(options);
       });
 
@@ -740,7 +740,7 @@ if ($) {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
-          // Handle modal ready callback
+          // Handle mdModal ready callback
           complete: function() {
             if (typeof(options.ready) === "function") {
               options.ready();
@@ -755,7 +755,7 @@ if ($) {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
-          // Handle modal ready callback
+          // Handle mdModal ready callback
           complete: function() {
             if (typeof(options.ready) === "function") {
               options.ready();
@@ -783,7 +783,7 @@ if ($) {
       // Disable scrolling
       $('body').css('overflow', '');
 
-      $modal.find('.modal-close').off('click.close');
+      $modal.find('.mdModal-close').off('click.close');
       $(document).off('keyup.leanModal' + overlayID);
 
       $overlay.velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
@@ -795,7 +795,7 @@ if ($) {
           duration: options.out_duration,
           queue: false,
           ease: "easeOutCubic",
-          // Handle modal ready callback
+          // Handle mdModal ready callback
           complete: function() {
             $overlay.css({display:"none"});
 
@@ -883,7 +883,7 @@ if ($) {
         var originalHeight = origin.height();
 
 
-        // If already modal, return to original
+        // If already mdModal, return to original
         if (doneAnimating === false) {
           returnToOriginal();
           return false;
@@ -2049,7 +2049,7 @@ $(document).ready(function(){
 
         // if closeOnClick, then add close event for all a tags in side sideNav
         if (options.closeOnClick === true) {
-          menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
+          menu_id.on("click.itemclick", "a:not(.mdCollapsible-header)", function(){
             removeMenu();
           });
         }
@@ -2330,7 +2330,7 @@ $(document).ready(function(){
 	 * @param {number} right
 	 * @param {number} bottom
 	 * @param {number} left
-	 * @return {jQuery}		A collection of elements
+	 * @return {jQuery}		A mdCollection of elements
 	 */
 	function findElements(top, right, bottom, left) {
 		var hits = $();
@@ -2459,7 +2459,7 @@ $(document).ready(function(){
 
 	/**
 	 * Enables ScrollSpy using a selector
-	 * @param {jQuery|string} selector  The elements collection, or a selector
+	 * @param {jQuery|string} selector  The elements mdCollection, or a selector
 	 * @param {Object=} options	Optional.
         throttle : number -> scrollspy throttling. Default: 100 ms
         offsetTop : number -> offset from top. Default: 0
@@ -2566,7 +2566,7 @@ $(document).ready(function(){
 	};
 
 	/**
-	 * Enables ScrollSpy on a collection of elements
+	 * Enables ScrollSpy on a mdCollection of elements
 	 * e.g. $('.scrollSpy').scrollSpy()
 	 * @param {Object=} options	Optional.
 											throttle : number -> scrollspy throttling. Default: 100 ms
@@ -2626,7 +2626,7 @@ $(document).ready(function(){
         // Reset select
         formReset.find('select.initialized').each(function () {
           var reset_text = formReset.find('option[selected]').text();
-          formReset.siblings('input.select-dropdown').val(reset_text);
+          formReset.siblings('input.select-mdDropdown').val(reset_text);
         });
       }
     });
@@ -2873,7 +2873,7 @@ $(document).ready(function(){
       $select.data('select-id', uniqueID);
       var wrapper = $('<div class="select-wrapper"></div>');
       wrapper.addClass($select.attr('class'));
-      var options = $('<ul id="select-options-' + uniqueID +'" class="dropdown-content select-dropdown ' + (multiple ? 'multiple-select-dropdown' : '') + '"></ul>'),
+      var options = $('<ul id="select-options-' + uniqueID +'" class="mdDropdown-content select-mdDropdown ' + (multiple ? 'multiple-select-mdDropdown' : '') + '"></ul>'),
           selectChildren = $select.children('option, optgroup'),
           valuesSelected = [],
           optionsHover = false;
@@ -2881,7 +2881,7 @@ $(document).ready(function(){
       var label = $select.find('option:selected').html() || $select.find('option:first').html() || "";
 
       // Function that renders and appends the option taking into
-      // account type and possible image icon.
+      // account type and possible image mdIcon.
       var appendOptionWithIcon = function(select, option, type) {
         // Add disabled attr if disabled
         var disabledClass = (option.is(':disabled')) ? 'disabled ' : '';
@@ -2910,7 +2910,7 @@ $(document).ready(function(){
         }
       };
 
-      /* Create dropdown structure. */
+      /* Create mdDropdown structure. */
       if (selectChildren.length) {
         selectChildren.each(function() {
           if ($(this).is('option')) {
@@ -2970,7 +2970,7 @@ $(document).ready(function(){
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
 
-      var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
+      var $newSelect = $('<input type="text" class="select-mdDropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
       $newSelect.before(dropdownIcon);
 
@@ -2989,8 +2989,8 @@ $(document).ready(function(){
 
       $newSelect.on({
         'focus': function (){
-          if ($('ul.select-dropdown').not(options[0]).is(':visible')) {
-            $('input.select-dropdown').trigger('close');
+          if ($('ul.select-mdDropdown').not(options[0]).is(':visible')) {
+            $('input.select-mdDropdown').trigger('close');
           }
           if (!options.is(':visible')) {
             $(this).trigger('open', ['focus']);
@@ -3134,7 +3134,7 @@ $(document).ready(function(){
         entriesArray.splice(index, 1);
       }
 
-      select.siblings('ul.dropdown-content').find('li').eq(entryIndex).toggleClass('active');
+      select.siblings('ul.mdDropdown-content').find('li').eq(entryIndex).toggleClass('active');
 
       // use notAdded instead of true (to detect if the option is selected or not)
       select.find('option').eq(entryIndex).prop('selected', notAdded);
@@ -3156,7 +3156,7 @@ $(document).ready(function(){
         value = select.find('option:disabled').eq(0).text();
       }
 
-      select.siblings('input.select-dropdown').val(value);
+      select.siblings('input.select-mdDropdown').val(value);
     }
   };
 
@@ -3585,17 +3585,17 @@ $(document).ready(function(){
     $.fn.reverse = [].reverse;
 
     // Hover behaviour: make sure this doesn't work on .click-to-toggle FABs!
-    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle)', function(e) {
+    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-mdButton:not(.click-to-toggle)', function(e) {
       var $this = $(this);
       openFABMenu($this);
     });
-    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle)', function(e) {
+    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-mdButton:not(.click-to-toggle)', function(e) {
       var $this = $(this);
       closeFABMenu($this);
     });
 
     // Toggle-on-click behaviour.
-    $(document).on('click.fixedActionBtn', '.fixed-action-btn.click-to-toggle > a', function(e) {
+    $(document).on('click.fixedActionBtn', '.fixed-action-mdButton.click-to-toggle > a', function(e) {
       var $this = $(this);
       var $menu = $this.parent();
       if ($menu.hasClass('active')) {
@@ -3632,12 +3632,12 @@ $(document).ready(function(){
       }
 
       $this.addClass('active');
-      $this.find('ul .btn-floating').velocity(
+      $this.find('ul .mdButton-floating').velocity(
         { scaleY: ".4", scaleX: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
         { duration: 0 });
 
       var time = 0;
-      $this.find('ul .btn-floating').reverse().each( function () {
+      $this.find('ul .mdButton-floating').reverse().each( function () {
         $(this).velocity(
           { opacity: "1", scaleX: "1", scaleY: "1", translateY: "0", translateX: '0'},
           { duration: 80, delay: time });
@@ -3660,8 +3660,8 @@ $(document).ready(function(){
 
     $this.removeClass('active');
     var time = 0;
-    $this.find('ul .btn-floating').velocity("stop", true);
-    $this.find('ul .btn-floating').velocity(
+    $this.find('ul .mdButton-floating').velocity("stop", true);
+    $this.find('ul .mdButton-floating').velocity(
       { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
       { duration: 80 }
     );
@@ -3763,7 +3763,7 @@ $(document).ready(function(){
           }
         }
       }).bind('panend', function(e) {
-        // Reset if collection is moved back into original position
+        // Reset if mdCollection is moved back into original position
         if (Math.abs(e.gesture.deltaX) < ($(this).innerWidth() / 2)) {
           swipeRight = false;
           swipeLeft = false;
@@ -4364,10 +4364,10 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                             thingName = '_' + thingName
                         }
 
-                        // Make sure the thing methods collection exists.
+                        // Make sure the thing methods mdCollection exists.
                         STATE.methods[ thingName ] = STATE.methods[ thingName ] || []
 
-                        // Add the method to the relative method collection.
+                        // Add the method to the relative method mdCollection.
                         STATE.methods[ thingName ].push( thingMethod )
                     }
                 }
@@ -5631,7 +5631,7 @@ DatePicker.prototype.parse = function( type, value, options ) {
  */
 DatePicker.prototype.formats = (function() {
 
-    // Return the length of the first word in a collection.
+    // Return the length of the first word in a mdCollection.
     function getWordLengthFromCollection( string, collection, dateObject ) {
 
         // Grab the first word from the string.
@@ -5694,7 +5694,7 @@ DatePicker.prototype.formats = (function() {
             var collection = this.settings.monthsShort
 
             // If there's a string, get length of the relevant month from the short
-            // months collection. Otherwise return the selected month from that collection.
+            // months mdCollection. Otherwise return the selected month from that mdCollection.
             return string ? getWordLengthFromCollection( string, collection, dateObject ) : collection[ dateObject.month ]
         },
         mmmm: function( string, dateObject ) {
@@ -5702,7 +5702,7 @@ DatePicker.prototype.formats = (function() {
             var collection = this.settings.monthsFull
 
             // If there's a string, get length of the relevant month from the full
-            // months collection. Otherwise return the selected month from that collection.
+            // months mdCollection. Otherwise return the selected month from that mdCollection.
             return string ? getWordLengthFromCollection( string, collection, dateObject ) : collection[ dateObject.month ]
         },
         yy: function( string, dateObject ) {
@@ -5803,7 +5803,7 @@ DatePicker.prototype.flipEnable = function(val) {
 
 
 /**
- * Mark a collection of dates as “disabled”.
+ * Mark a mdCollection of dates as “disabled”.
  */
 DatePicker.prototype.deactivate = function( type, datesToDisable ) {
 
@@ -5842,7 +5842,7 @@ DatePicker.prototype.deactivate = function( type, datesToDisable ) {
                 }
             }
 
-            // If nothing was found, add the validated unit to the collection.
+            // If nothing was found, add the validated unit to the mdCollection.
             if ( !matchFound ) {
                 if (
                     _.isInteger( unitToDisable ) ||
@@ -5856,13 +5856,13 @@ DatePicker.prototype.deactivate = function( type, datesToDisable ) {
         })
     }
 
-    // Return the updated collection.
+    // Return the updated mdCollection.
     return disabledItems
 } //DatePicker.prototype.deactivate
 
 
 /**
- * Mark a collection of dates as “enabled”.
+ * Mark a mdCollection of dates as “enabled”.
  */
 DatePicker.prototype.activate = function( type, datesToEnable ) {
 
@@ -5900,7 +5900,7 @@ DatePicker.prototype.activate = function( type, datesToEnable ) {
 
                 disabledUnit = disabledItems[index]
 
-                // When an exact match is found, remove it from the collection.
+                // When an exact match is found, remove it from the mdCollection.
                 if ( calendar.isDateExact( disabledUnit, unitToEnable ) ) {
                     matchFound = disabledItems[index] = null
                     isExactRange = true
@@ -5941,14 +5941,14 @@ DatePicker.prototype.activate = function( type, datesToEnable ) {
                 }
             }
 
-            // If something is still matched, add it into the collection.
+            // If something is still matched, add it into the mdCollection.
             if ( matchFound ) {
                 disabledItems.push( matchFound )
             }
         })
     }
 
-    // Return the updated collection.
+    // Return the updated mdCollection.
     return disabledItems.filter(function( val ) { return val != null })
 } //DatePicker.prototype.activate
 
@@ -5971,7 +5971,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
         maxLimitObject = calendarItem.max,
 
 
-        // Create the calendar table head using a copy of weekday labels collection.
+        // Create the calendar table head using a copy of weekday labels mdCollection.
         // * We do a copy so we don't mutate the original array.
         tableHead = (function( collection, fullCollection ) {
 
@@ -6041,7 +6041,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
               monthsCollection = settings.monthsShort;
             }
 
-            // If there are months to select, add a dropdown menu.
+            // If there are months to select, add a mdDropdown menu.
             if ( settings.selectMonths  && override == undefined) {
 
                 return _.node( 'select',
@@ -6098,7 +6098,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // divide in half to get half before and half after focused year.
             numberYears = settings.selectYears === true ? 5 : ~~( settings.selectYears / 2 )
 
-            // If there are years to select, add a dropdown menu.
+            // If there are years to select, add a mdDropdown menu.
             if ( numberYears ) {
 
                 var
@@ -6308,15 +6308,15 @@ return _.node(
     // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
     _.node(
         'div',
-        _.node( 'button', settings.today, "btn-flat picker__today",
+        _.node( 'button', settings.today, "mdButton-flat picker__today",
             'type=button data-pick=' + nowObject.pick +
             ( isOpen && !calendar.disabled(nowObject) ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node( 'button', settings.clear, "btn-flat picker__clear",
+        _.node( 'button', settings.clear, "mdButton-flat picker__clear",
             'type=button data-clear=1' +
             ( isOpen ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ) +
-        _.node('button', settings.close, "btn-flat picker__close",
+        _.node('button', settings.close, "mdButton-flat picker__close",
             'type=button data-close=true ' +
             ( isOpen ? '' : ' disabled' ) + ' ' +
             _.ariaAttr({ controls: calendar.$node[0].id }) ),
@@ -6338,7 +6338,7 @@ DatePicker.defaults = (function( prefix ) {
         labelMonthNext: 'Next month',
         labelMonthPrev: 'Previous month',
 
-        // The title label to use for the dropdown selectors
+        // The title label to use for the mdDropdown selectors
         labelMonthSelect: 'Select a month',
         labelYearSelect: 'Select a year',
 

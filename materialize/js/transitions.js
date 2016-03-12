@@ -92,7 +92,7 @@
           }
         }
       }).bind('panend', function(e) {
-        // Reset if collection is moved back into original position
+        // Reset if mdCollection is moved back into original position
         if (Math.abs(e.gesture.deltaX) < ($(this).innerWidth() / 2)) {
           swipeRight = false;
           swipeLeft = false;

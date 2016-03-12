@@ -1,6 +1,7 @@
 import Component from 'vue-class-component';
-import icon from '../icon';
-import sidenavOverlay from '../sidenav-overlay';
+
+import mdIcon from '../icon';
+import mdSidenavOverlay from '../sidenav-overlay';
 
 require('./navbar.scss');
 var template = require('./navbar.html');
@@ -53,8 +54,8 @@ const DEFAULT_CLASSES = ["hide-on-med-and-down"];
         }
     },
     components: {
-        icon,
-        sidenavOverlay
+        mdIcon,
+        mdSidenavOverlay
     },
     template: template
 })

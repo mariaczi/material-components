@@ -1,8 +1,9 @@
 import Component from 'vue-class-component';
+
 import mdBadge from '../../../components/badge';
-import navbar from '../../../components/navbar';
-import navbarItem from '../../../components/navbar-item';
-import icon from '../../../components/icon';
+import mdNavbar from '../../../components/navbar';
+import mdNavbarItem from '../../../components/navbar-item';
+import mdIcon from '../../../components/icon';
 
 var template = require('./navbars.html');
 
@@ -10,9 +11,9 @@ var template = require('./navbars.html');
     template: template,
     components: {
         mdBadge,
-        navbar,
-        navbarItem,
-        icon
+        mdNavbar,
+        mdNavbarItem,
+        mdIcon
     }
 })
 export default class IconLinksNavbar {

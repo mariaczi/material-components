@@ -1,40 +1,40 @@
-import mdBadges from './badges';
-import collapsibles from './collapsibles';
-import dropdowns from './dropdowns';
-import navbars from './navbars';
-import modals from './modals';
-import dialogs from './dialogs';
+import docsBadges from './badges';
+import docsCollapsibles from './collapsibles';
+import docsDropdowns from './dropdowns';
+import docsNavbars from './navbars';
+import docsModals from './modals';
+import docsDialogs from './dialogs';
 
 const docsPages: [Route] = [
     {
         url: "/badges",
         title: "Badges",
-        component: mdBadges
+        component: docsBadges
     },
     {
         url: "/collapsibles",
         title: "Collapsibles",
-        component: collapsibles
+        component: docsCollapsibles
     },
     {
         url: "/dropdowns",
         title: "Dropdowns",
-        component: dropdowns
+        component: docsDropdowns
     },
     {
         url: "/modals",
         title: "Modals",
-        component: modals
+        component: docsModals
     },
     {
         url: "/navbars",
         title: "Navbars",
-        component: navbars
+        component: docsNavbars
     },
     {
         url: "/dialogs",
         title: "Dialogs",
-        component: dialogs
+        component: docsDialogs
     }
 ];
 

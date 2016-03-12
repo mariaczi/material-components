@@ -1,16 +1,16 @@
 import Component from 'vue-class-component';
-import toasts from './toasts';
-import tooltips from './tooltips';
-import snippet from '../snippet';
+import docToasts from './toasts';
+import docTooltips from './tooltips';
+import docSnippet from '../snippet';
 
 var template = require('./dialogs.html');
 
 @Component({
     template: template,
     components: {
-        toasts,
-        tooltips,
-        snippet
+        docToasts,
+        docTooltips,
+        docSnippet
     }
 })
 export default class Dialogs {

@@ -1,7 +1,7 @@
 import Component from 'vue-class-component';
-import btn from '../button';
-import dropdownList from '../dropdown-list';
-import dropdownItem from '../dropdown-item';
+import mdButton from '../button';
+import mdDropdownList from '../dropdown-list';
+import mdDropdownItem from '../dropdown-item';
 // todo props
 var template = require('./dropdown.html');
 
@@ -17,9 +17,9 @@ var template = require('./dropdown.html');
         }
     },
     components: {
-        btn,
-        dropdownList,
-        dropdownItem
+        mdButton,
+        mdDropdownList,
+        mdDropdownItem
     },
     events: {
         "dropdown::close": function () {

@@ -1,14 +1,16 @@
 import Component from 'vue-class-component';
-import btn from '../button';
-import dropdownItem from '../dropdown-item';
+
+import mbButton from '../button';
+import mdDropdownItem from '../dropdown-item';
+
 import onClickAway from '../../directives/click-away';
 
 var template = require('./dropdown-list.html');
 
 @Component({
     components: {
-        btn,
-        dropdownItem
+        mbButton,
+        mdDropdownItem
     },
     directives: {
         onClickAway

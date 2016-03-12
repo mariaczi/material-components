@@ -1,14 +1,15 @@
 import Component from 'vue-class-component';
-import navbar from '../../../components/navbar';
-import icon from '../../../components/icon';
+
+import mdNavbar from '../../../components/navbar';
+import mdIcon from '../../../components/icon';
 
 var template = require('./navbars.html');
 
 @Component({
     template: template,
     components: {
-        navbar,
-        icon
+        mdNavbar,
+        mdIcon
     }
 })
 export default class SearchNavbar {

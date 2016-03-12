@@ -1,6 +1,7 @@
 // todo better animation    
 import Component from 'vue-class-component';
-import leanOverlay from '../lean-overlay';
+
+import mdLeanOverlay from '../lean-overlay';
 
 require('./modal.scss');
 var template = require('./modal.html');
@@ -21,7 +22,7 @@ const ESC = 27;
         }
     },
     components: {
-        leanOverlay
+        mdLeanOverlay
     },
     events: {
         'modal::open': function () {
@@ -93,7 +94,7 @@ export default class Modal {
     }
 
     get transition() {
-        return this.bottom ? 'modal-bottom' : 'modal';
+        return this.bottom ? 'mdModal-bottom' : 'modal';
     }
 
     open() {

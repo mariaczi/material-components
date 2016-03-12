@@ -1,8 +1,8 @@
 import Component from 'vue-class-component';
-import snippet from '../snippet';
-import defaultModal from './default';
-import fixedFooterModal from './fixed-footer';
-import bottomModal from './bottom';
+import docSnippet from '../snippet';
+import docDefaultModal from './default';
+import docFixedFooterModal from './fixed-footer';
+import docBottomModal from './bottom';
 
 import events from '../../mixins/events';
 
@@ -11,10 +11,10 @@ var template = require('./modals.html');
 @Component({
     template: template,
     components: {
-        defaultModal,
-        fixedFooterModal,
-        bottomModal,
-        snippet
+        docSnippet,
+        docDefaultModal,
+        docFixedFooterModal,
+        docBottomModal
     },
     mixins: [
         events

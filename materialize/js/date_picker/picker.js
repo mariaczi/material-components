@@ -496,10 +496,10 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                             thingName = '_' + thingName
                         }
 
-                        // Make sure the thing methods collection exists.
+                        // Make sure the thing methods mdCollection exists.
                         STATE.methods[ thingName ] = STATE.methods[ thingName ] || []
 
-                        // Add the method to the relative method collection.
+                        // Add the method to the relative method mdCollection.
                         STATE.methods[ thingName ].push( thingMethod )
                     }
                 }

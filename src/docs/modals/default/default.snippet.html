@@ -1,16 +1,16 @@
-<modal>
+<md-modal>
     <h4>Modal Header</h4>
     <p>A bunch of text</p>
 
     <span slot="footer">
-        <btn href="javascript:void(0)" class="waves-effect waves-green btn-flat"
+        <md-button href="javascript:void(0)" class="waves-effect waves-green btn-flat"
              @click="broadcast('modal::close')">
             Agree
-        </btn>
+        </md-button>
     </span>
-</modal>
+</md-modal>
 
-<btn href="javascript:void(0)"
+<md-button href="javascript:void(0)"
      @click="broadcast('modal::open')">
     Modal
-</btn>
+</md-button>

@@ -31,7 +31,7 @@
         var originalHeight = origin.height();
 
 
-        // If already modal, return to original
+        // If already mdModal, return to original
         if (doneAnimating === false) {
           returnToOriginal();
           return false;

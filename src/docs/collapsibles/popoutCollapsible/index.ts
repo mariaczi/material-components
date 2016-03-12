@@ -2,16 +2,16 @@ import Component from 'vue-class-component';
 
 var template = require('./popoutCollapsible.html');
 
-import collapsible from '../../../components/collapsible';
-import collapsibleItem from '../../../components/collapsible-item';
-import icon from '../../../components/icon';
+import mdCollapsible from '../../../components/collapsible';
+import mdCollapsibleItem from '../../../components/collapsible-item';
+import mdIcon from '../../../components/icon';
 
 @Component({
     template: template,
     components: {
-        icon,
-        collapsible,
-        collapsibleItem,
+        mdIcon,
+        mdCollapsible,
+        mdCollapsibleItem,
     }
 })
 export default class PopoutCollapsible {

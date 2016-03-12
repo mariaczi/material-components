@@ -1,18 +1,18 @@
 import Component from 'vue-class-component';
-import defaultCollapsible from './defaultCollapsible';
-import popoutCollapsible from './popoutCollapsible';
-import expendableCollapsible from './expendableCollapsible';
-import snippet from '../snippet';
+import docDefaultCollapsible from './defaultCollapsible';
+import docPopoutCollapsible from './popoutCollapsible';
+import docExpendableCollapsible from './expendableCollapsible';
+import docSnippet from '../snippet';
 
 var template = require('./collapsibles.html');
 
 @Component({
     template: template,
     components: {
-        defaultCollapsible,
-        popoutCollapsible,
-        expendableCollapsible,
-        snippet
+        docDefaultCollapsible,
+        docPopoutCollapsible,
+        docExpendableCollapsible,
+        docSnippet
     }
 })
 export default class Collapsibles {

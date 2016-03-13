@@ -149,6 +149,13 @@ export default class MaterialBox {
                 queue: false, easing: 'easeOutQuad'
             }
         );
-        
+
+        this.img.style.height = '';
+        this.img.style.top = '';
+        this.img.style.left = '';
+        this.img.style.width = '';
+        this.img.style.maxWidth = '';
+        this.img.style.position = '';
+        this.img.style.zIndex = '';
     };
 }

@@ -4,6 +4,7 @@ import docsDropdowns from './dropdowns';
 import docsNavbars from './navbars';
 import docsModals from './modals';
 import docsDialogs from './dialogs';
+import docsMedia from './media';
 
 const docsPages: [Route] = [
     {
@@ -25,6 +26,11 @@ const docsPages: [Route] = [
         url: "/modals",
         title: "Modals",
         component: docsModals
+    },
+    {
+        url: "/media",
+        title: "Media",
+        component: docsMedia
     },
     {
         url: "/navbars",

@@ -78,6 +78,9 @@ nav span.badge.new .new {
   padding-left: 72px;
   position: relative;
   color: black !important; }
+.md-image .materialbox-caption {
+  opacity: 1;
+  z-index: 1003; }
 @-webkit-keyframes slideInLeft {
   from {
     -webkit-transform: translate3d(-105%, 0, 0);
@@ -135,6 +138,30 @@ nav span.badge.new .new {
 @keyframes fadeOut-0-5 {
   from {
     opacity: 0.5; }
+  to {
+    opacity: 0; } }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
   to {
     opacity: 0; } }
 
@@ -217,5 +244,19 @@ nav span.badge.new .new {
     visibility: hidden;
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0); } }
+
+.modal-transition {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+.fade-leave {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut; }
 
 /*# sourceMappingURL=vue-materialize-components.css.map*/

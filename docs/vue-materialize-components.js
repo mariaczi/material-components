@@ -62,7 +62,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var VueRouterModule = __webpack_require__(2);
 	var VueRouter = VueRouterModule;
 	var mapping = __webpack_require__(3);
-	var App = __webpack_require__(132);
+	var App = __webpack_require__(142);
 	module.exports = {
 	    run: function (app) {
 	        Vue.config.debug = true;
@@ -5413,6 +5413,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var navbars_1 = __webpack_require__(75);
 	var modals_1 = __webpack_require__(105);
 	var dialogs_1 = __webpack_require__(124);
+	var media_1 = __webpack_require__(132);
 	var docsPages = [{
 	    url: "/badges",
 	    title: "Badges",
@@ -5429,6 +5430,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    url: "/modals",
 	    title: "Modals",
 	    component: modals_1['default']
+	}, {
+	    url: "/media",
+	    title: "Media",
+	    component: media_1['default']
 	}, {
 	    url: "/navbars",
 	    title: "Navbars",
@@ -8974,12 +8979,343 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var snippet_1 = __webpack_require__(48);
+	var image_1 = __webpack_require__(133);
+	var template = __webpack_require__(140);
+	var Media = (function () {
+	    function Media() {}
+	    Media.prototype.data = function () {
+	        return {
+	            imageSnippet: __webpack_require__(141)
+	        };
+	    };
+	    Media = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            docSnippet: snippet_1["default"],
+	            docImage: image_1["default"]
+	        }
+	    })], Media);
+	    return Media;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Media;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(134);
+	var image_1 = __webpack_require__(135);
+	var Image = (function () {
+	    function Image() {}
+	    Image = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdImage: image_1["default"]
+	        }
+	    })], Image);
+	    return Image;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Image;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 134 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-image src=\"http://lorempixel.com/512/512/\" width=\"512\" height=\"512\"></md-image>\r\n\r\n<md-image src=\"http://lorempixel.com/512/1024/\"\r\n          caption=\"A picture ...\"\r\n          width=\"256\" height=\"512\"></md-image>\r\n";
+
+/***/ },
+/* 135 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var materialbox_1 = __webpack_require__(136);
+	var lean_overlay_1 = __webpack_require__(109);
+	__webpack_require__(137);
+	var template = __webpack_require__(139);
+	var ESC = 27;
+	var Image = (function () {
+	    function Image() {}
+	    Image.prototype.data = function () {
+	        return {
+	            active: false
+	        };
+	    };
+	    Image.prototype.ready = function () {
+	        var self = this;
+	        var img = self.$els.img;
+	        var placeholder = self.$els.placeholder;
+	        this.materialBox = new materialbox_1["default"](img, placeholder);
+	        // Return on ESC
+	        window.addEventListener('keyup', function (e) {
+	            if (e.keyCode === ESC) {
+	                self.close();
+	            }
+	        });
+	    };
+	    Image.prototype.compiled = function () {
+	        var self = this;
+	        // todo: remove hack webpack img src loading
+	        self.$els.img.setAttribute('src', this.src);
+	    };
+	    Image.prototype.toggle = function () {
+	        if (this.active) {
+	            this.close();
+	        } else {
+	            this.maximialize();
+	        }
+	    };
+	    Image.prototype.maximialize = function () {
+	        if (!this.active) {
+	            this.active = true;
+	            this.originalSizes = this.getSizes();
+	            this.materialBox.maximalize(this.originalSizes);
+	        }
+	    };
+	    Image.prototype.close = function () {
+	        if (this.active) {
+	            this.active = false;
+	            this.materialBox.close(this.originalSizes);
+	        }
+	    };
+	    Image.prototype.getSizes = function () {
+	        var self = this;
+	        var el = self.$els.img;
+	        return {
+	            width: el.offsetWidth,
+	            height: el.offsetHeight,
+	            left: el.offsetLeft,
+	            top: el.offsetTop
+	        };
+	    };
+	    Image = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            src: {
+	                type: String,
+	                required: true
+	            },
+	            caption: {
+	                type: String,
+	                required: false,
+	                "default": null
+	            },
+	            height: {
+	                type: String,
+	                required: false,
+	                "default": null
+	            },
+	            width: {
+	                type: String,
+	                required: false,
+	                "default": null
+	            }
+	        },
+	        components: {
+	            mdLeanOverlay: lean_overlay_1["default"]
+	        },
+	        template: template
+	    })], Image);
+	    return Image;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Image;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var Velocity = __webpack_require__(27);
+	var inDuration = 275;
+	var outDuration = 200;
+	var MaterialBox = (function () {
+	    function MaterialBox(img, placeholder) {
+	        this.overlayActive = false;
+	        this.img = img;
+	        this.placeholder = placeholder;
+	    }
+	    MaterialBox.prototype.maximalize = function (sizes) {
+	        var originalWidth = sizes.width;
+	        var originalHeight = sizes.height;
+	        var ancestorsChanged;
+	        var ancestor;
+	        var windowWidth = window.innerWidth;
+	        var windowHeight = window.innerHeight;
+	        // Set states
+	        this.overlayActive = true;
+	        // Set positioning for placeholder
+	        this.placeholder.style.width = this.placeholder.offsetWidth + 'px';
+	        this.placeholder.style.height = this.placeholder.offsetHeight + 'px';
+	        this.placeholder.style.position = 'relative';
+	        this.placeholder.style.top = 0 + 'px';
+	        this.placeholder.style.left = 0 + 'px';
+	        // Find ancestor with overflow: hidden; and remove it
+	        ancestorsChanged = undefined;
+	        ancestor = this.placeholder.parentElement;
+	        var count = 0;
+	        while (ancestor !== null && ancestor !== document) {
+	            var curr = ancestor;
+	            if (curr.style.overflow === 'hidden') {
+	                curr.style.overflow = 'visible';
+	                if (ancestorsChanged === undefined) {
+	                    ancestorsChanged = curr;
+	                } else {
+	                    ancestorsChanged = ancestorsChanged.add(curr);
+	                }
+	            }
+	            ancestor = ancestor.parentElement;
+	        }
+	        // Set css on origin
+	        this.img.style.position = 'absolute';
+	        this.img.style.zIndex = '1003';
+	        // Resize Image
+	        var ratio = 0;
+	        var widthPercent = originalWidth / windowWidth;
+	        var heightPercent = originalHeight / windowHeight;
+	        var newWidth = 0;
+	        var newHeight = 0;
+	        if (widthPercent > heightPercent) {
+	            ratio = originalHeight / originalWidth;
+	            newWidth = windowWidth * 0.9;
+	            newHeight = windowWidth * 0.9 * ratio;
+	        } else {
+	            ratio = originalWidth / originalHeight;
+	            newWidth = windowHeight * 0.9 * ratio;
+	            newHeight = windowHeight * 0.9;
+	        }
+	        // Animate image + set z-index
+	        if (this.img.classList.contains('responsive-img')) {
+	            Velocity(this.img, { 'max-width': newWidth, 'width': originalWidth }, { duration: 0, queue: false,
+	                complete: function complete() {
+	                    this.img.style.left = 0 + 'px';
+	                    this.img.style.top = 0 + 'px';
+	                    Velocity(this.img, {
+	                        height: newHeight,
+	                        width: newWidth,
+	                        left: window.scrollX + windowWidth / 2 - this.placeholder.offsetLeft - newWidth / 2,
+	                        top: window.scrollY + windowHeight / 2 - this.placeholder.offsetTop - newHeight / 2
+	                    }, {
+	                        duration: inDuration,
+	                        queue: false,
+	                        easing: 'easeOutQuad'
+	                    });
+	                } // End Complete
+	            }); // End Velocity
+	        } else {
+	                this.img.style.left = 0 + 'px';
+	                this.img.style.top = 0 + 'px';
+	                Velocity(this.img, {
+	                    height: newHeight,
+	                    width: newWidth,
+	                    left: window.scrollX + windowWidth / 2 - this.placeholder.offsetLeft - newWidth / 2,
+	                    top: window.scrollY + windowHeight / 2 - this.placeholder.offsetTop - newHeight / 2
+	                }, {
+	                    duration: inDuration,
+	                    queue: false,
+	                    easing: 'easeOutQuad'
+	                }); // End Velocity
+	            }
+	        // Return on scroll
+	        window.addEventListener('scroll', function () {
+	            if (this.overlayActive) {
+	                this.returnToOriginal();
+	            }
+	        });
+	    };
+	    ;
+	    MaterialBox.prototype.close = function (sizes) {
+	        this.returnToOriginal(sizes);
+	    };
+	    MaterialBox.prototype.returnToOriginal = function (sizes) {
+	        var windowWidth = window.innerWidth;
+	        var windowHeight = window.innerHeight;
+	        var originalWidth = sizes.width;
+	        var originalHeight = sizes.height;
+	        Velocity(this.img, "stop", true);
+	        // Resize Image
+	        Velocity(this.img, {
+	            width: originalWidth,
+	            height: originalHeight,
+	            left: 0,
+	            top: 0
+	        }, {
+	            duration: outDuration,
+	            queue: false, easing: 'easeOutQuad'
+	        });
+	    };
+	    ;
+	    return MaterialBox;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports['default'] = MaterialBox;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 137 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 138 */,
+/* 139 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"md-image\">\r\n    <div v-el:placeholder class=\"material-placeholder\">\r\n        <img @click=\"toggle\" :height=\"height\" :width=\"width\"\r\n             v-el:img\r\n             class=\"materialboxed\"\r\n             :class=\"{active: active}\">\r\n    </div>\r\n\r\n    <md-lean-overlay v-if=\"active\" @click=\"toggle\" transition=\"modal-overlay\"></md-lean-overlay>\r\n    <div v-if=\"active && caption\" transition=\"fade\" class=\"materialbox-caption\" style=\"display: block\">\r\n        {{caption}}\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 140 */
+/***/ function(module, exports) {
+
+	module.exports = "<h2 class=\"header\">Material box</h2>\r\n<div class=\"doc-example\">\r\n    <doc-image></doc-image>\r\n\r\n    <doc-snippet>{{{imageSnippet}}}</doc-snippet>\r\n</div>\r\n";
+
+/***/ },
+/* 141 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/512/\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"512\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/1024/\"</span>\r\n          <span class=\"hljs-attribute\">caption</span>=<span class=\"hljs-value\">\"A picture ...\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"256\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n";
+
+/***/ },
+/* 142 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/// <reference path="../typings/ts.d.ts"/>
 	"use strict";
 	var VueModule = __webpack_require__(1);
 	var Vue = VueModule;
 	var pages = __webpack_require__(4);
-	var components_1 = __webpack_require__(133);
+	var components_1 = __webpack_require__(143);
 	module.exports = Vue.extend({
 	    components: components_1['default'],
 	    data: function data() {
@@ -8991,11 +9327,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=doc-app.js.map
 
 /***/ },
-/* 133 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	__webpack_require__(134);
+	__webpack_require__(144);
 	var badge_1 = __webpack_require__(9);
 	var button_1 = __webpack_require__(21);
 	var collapsible_1 = __webpack_require__(57);
@@ -9004,8 +9340,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dropdown_1 = __webpack_require__(20);
 	var dropdown_item_1 = __webpack_require__(32);
 	var dropdown_list_1 = __webpack_require__(31);
-	var event_wrapper_1 = __webpack_require__(136);
+	var event_wrapper_1 = __webpack_require__(146);
 	var icon_1 = __webpack_require__(23);
+	var image_1 = __webpack_require__(135);
 	var lean_overlay_1 = __webpack_require__(109);
 	var modal_1 = __webpack_require__(108);
 	var navbar_1 = __webpack_require__(39);
@@ -9022,6 +9359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    mdDropdownList: dropdown_list_1['default'],
 	    mdEventWrapper: event_wrapper_1['default'],
 	    mdIcon: icon_1['default'],
+	    mdImage: image_1['default'],
 	    mdLeanOverlay: lean_overlay_1['default'],
 	    mdModal: modal_1['default'],
 	    mdNavbar: navbar_1['default'],
@@ -9033,14 +9371,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 134 */
+/* 144 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 135 */,
-/* 136 */
+/* 145 */,
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9052,7 +9390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(137);
+	var template = __webpack_require__(147);
 	var EventWrapper = (function () {
 	    function EventWrapper() {}
 	    EventWrapper.prototype.ready = function () {
@@ -9081,7 +9419,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 137 */
+/* 147 */
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";

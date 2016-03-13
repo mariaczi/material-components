@@ -1,4 +1,4 @@
-require('./animations.scss');
+require('./transitions.scss');
 
 import mdBadge from './badge';
 import mdButton from './button';
@@ -10,6 +10,7 @@ import mdDropdownItem from './dropdown-item';
 import mdDropdownList from './dropdown-list';
 import mdEventWrapper from './event-wrapper';
 import mdIcon from './icon';
+import mdImage from './image';
 import mdLeanOverlay from './lean-overlay';
 import mdModal from './modal';
 import mdNavbar from './navbar';
@@ -27,6 +28,7 @@ const VueMaterializeComponents = {
     mdDropdownList,
     mdEventWrapper,
     mdIcon,
+    mdImage,
     mdLeanOverlay,
     mdModal,
     mdNavbar,

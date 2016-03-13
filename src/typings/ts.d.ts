@@ -5,3 +5,11 @@ declare interface Route {
     title: string;
     component: any;
 }
+
+declare interface SliderData {
+    activeItem: number;
+    itemsCount: number;
+    intervalHandler: any;
+    interval: number;
+    handler: any;
+}

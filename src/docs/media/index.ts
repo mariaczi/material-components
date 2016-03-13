@@ -1,7 +1,8 @@
 import Component from 'vue-class-component';
 
 import docSnippet from '../snippet';
-import docImage from './image';
+import docImages from './images';
+import docSliders from './sliders';
 
 var template = require('./media.html');
 
@@ -9,13 +10,15 @@ var template = require('./media.html');
     template: template,
     components: {
         docSnippet,
-        docImage
+        docImages,
+        docSliders
     }
 })
 export default class Media {
     data() {
         return {
-            imageSnippet: require('./image/image.snippet.html')
+            imagesSnippet: require('./images/image.snippet.html'),
+            slidesSnippet: require('./sliders/sliders.snippet.html')
         }
     }
 }

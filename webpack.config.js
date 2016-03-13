@@ -19,6 +19,11 @@ module.exports = {
                 loader: 'ts'
             },
             {
+                //IMAGE LOADER
+                test: /(jpe?g|png|gif|svg|img)$/i,
+                loader:'file'
+            },
+            {
                 test: /\.html$/,
                 exclude: /\.snippet\.html$/,
                 loader: 'html'

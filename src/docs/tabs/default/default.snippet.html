@@ -1,0 +1,21 @@
+<md-tabs class="z-depth-1">
+    <md-tab><a href="#!/tabs/1">Test 1</a></md-tab>
+    <md-tab name="second"><a href="#!/tabs/2">Test 2</a></md-tab>
+    <md-tab disabled><a href="#!/tabs/3">Disabled Tab</a></md-tab>
+    <md-tab><a href="#!/tabs/4">Test 4</a></md-tab>
+    <md-tab><a href="#!/tabs/5">Test 5</a></md-tab>
+</md-tabs>
+
+<md-button @click="broadcast('tabs::select', 0)">
+    Select TEST 1
+</md-button>
+
+<script>
+    var component = {
+        events: {
+            'tabs::on-select': function (tab) {
+                this.selected = tab;
+            }
+        }
+    }
+</script>

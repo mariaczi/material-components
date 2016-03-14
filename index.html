@@ -17,7 +17,7 @@
         <div id="content">
             <md-navbar left hamburger>
                 <md-navbar-item v-for="nav in navs">
-                    <a v-link="{ path: nav.url }" slot="content">{{nav.title}}</a>
+                    <a v-link="{ path: nav.link }" slot="content">{{nav.title}}</a>
                 </md-navbar-item>
             </md-navbar>
             <router-view></router-view>

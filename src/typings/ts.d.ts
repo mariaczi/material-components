@@ -2,8 +2,10 @@ declare function require (id: string): any;
 
 declare interface Route {
     url: string;
+    link: string;
     title: string;
     component: any;
+    subRoutes?: any;
 }
 
 declare interface SliderData {

@@ -94,7 +94,7 @@ export default class Modal {
     }
 
     get transition() {
-        return this.bottom ? 'mdModal-bottom' : 'modal';
+        return this.bottom ? 'modal-bottom' : 'modal';
     }
 
     open() {

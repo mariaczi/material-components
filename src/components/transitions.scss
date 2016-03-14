@@ -1,17 +1,5 @@
 @import "animations";
 
-.modal-transition {
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-
-
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-
 .fade-leave {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;

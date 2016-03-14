@@ -78,12 +78,6 @@ export default class Navbar {
     private center: boolean;
     private fixed: boolean;
 
-    data() {
-        return {
-            sideMenu: false
-        }
-    }
-
     get logoClasses() {
         var classes: string[] = [];
 
@@ -116,15 +110,6 @@ export default class Navbar {
         }
         
         return classes;
-    }
-
-    get computedStyle() {
-        if (this.sideMenu) {
-            return {
-                left: 0
-            }
-        }
-        return null;
     }
     
     openSideMenu() {

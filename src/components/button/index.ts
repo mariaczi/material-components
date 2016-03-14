@@ -40,6 +40,11 @@ var template = require('./btn.html');
             type: Boolean,
             required: false,
             "default": false
+        },
+        floating: {
+            type: Boolean,
+            required: false,
+            "default": false
         }
     },
     components: {
@@ -58,8 +63,9 @@ export default class Button {
     private iconAlignRight: boolean;
     private large: boolean;
     private disabled: boolean;
+    private floating: boolean;
 
-    // TODO mixin 
+    // TODO mixin
     showEffect(e) {
         var self: any = this;
         Effect.show(e, self.$el);
@@ -86,6 +92,10 @@ export default class Button {
         // disabled
         if (this.disabled) {
             classes.push("disabled")
+        }
+
+        if (this.floating) {
+            classes.push("btn-floating")
         }
         return classes;
     }

@@ -36,9 +36,11 @@ export default class Slider {
     }
 
     handler() {
-        this.activeItem = (this.activeItem + 1) % this.itemsCount;
         var self: any = this;
-        self.$broadcast('slider::activate', this.activeItem);
+        if (self.$children) {
+            this.activeItem = (this.activeItem + 1) % this.itemsCount;
+            self.$broadcast('slider::activate', this.activeItem);
+        }
     }
 
     setupInterval() {

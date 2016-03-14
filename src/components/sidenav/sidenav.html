@@ -1,0 +1,7 @@
+<ul v-if="active" transition="side-nav" :style="computedStyle" class="side-nav">
+    <slot></slot>
+</ul>
+
+<div @click="close">
+    <md-sidenav-overlay v-if="active" transition="modal-overlay"></md-sidenav-overlay>
+</div>

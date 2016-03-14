@@ -14,7 +14,7 @@ import mdImage from './image';
 import mdLeanOverlay from './lean-overlay';
 import mdModal from './modal';
 import mdNavbar from './navbar';
-import mdNavbarItem from './navbar-item';
+import mdNavItem from './nav-item';
 import mdSidenavOverlay from './sidenav-overlay';
 
 const VueMaterializeComponents = {
@@ -32,7 +32,7 @@ const VueMaterializeComponents = {
     mdLeanOverlay,
     mdModal,
     mdNavbar,
-    mdNavbarItem,
+    mdNavItem,
     mdSidenavOverlay
 };
 

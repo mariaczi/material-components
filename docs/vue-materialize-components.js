@@ -7136,7 +7136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var template = __webpack_require__(47);
 	var Navbars = (function () {
 	    function Navbars() {}
@@ -7148,7 +7148,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"]
+	            mdNavItem: nav_item_1["default"]
 	        }
 	    })], Navbars);
 	    return Navbars;
@@ -7171,7 +7171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var icon_1 = __webpack_require__(23);
-	var sidenav_overlay_1 = __webpack_require__(40);
+	var sidenav_1 = __webpack_require__(171);
 	__webpack_require__(42);
 	var template = __webpack_require__(44);
 	var DEFAULT_CLASSES = ["hide-on-med-and-down"];
@@ -7181,16 +7181,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return {
 	            sideMenu: false
 	        };
-	    };
-	    Navbar.prototype.openSideMenu = function () {
-	        if (!this.sideMenu) {
-	            this.sideMenu = true;
-	        }
-	    };
-	    Navbar.prototype.closeSideMenu = function () {
-	        if (this.sideMenu) {
-	            this.sideMenu = false;
-	        }
 	    };
 	    Object.defineProperty(Navbar.prototype, "logoClasses", {
 	        get: function get() {
@@ -7239,6 +7229,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
+	    Navbar.prototype.openSideMenu = function () {
+	        var self = this;
+	        self.$broadcast('sidenav::open');
+	    };
+	    Navbar.prototype.closeSideMenu = function () {
+	        var self = this;
+	        self.$broadcast('sidenav::close');
+	    };
 	    Navbar = __decorate([vue_class_component_1["default"]({
 	        props: {
 	            title: {
@@ -7282,11 +7280,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	                type: Boolean,
 	                required: false,
 	                "default": false
+	            },
+	            closeOnClick: {
+	                type: Boolean,
+	                required: false,
+	                "default": false
 	            }
 	        },
 	        components: {
 	            mdIcon: icon_1["default"],
-	            mdSidenavOverlay: sidenav_overlay_1["default"]
+	            mdSidenav: sidenav_1["default"]
+	        },
+	        events: {
+	            'nav-item::clicked': function navItemClicked() {
+	                if (this.closeOnClick) {
+	                    this.$broadcast('sidenav::close');
+	                }
+	            }
 	        },
 	        template: template
 	    })], Navbar);
@@ -7338,56 +7348,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<div :class=\"{'navbar-fixed': fixed}\"\r\n     :style=\"fixed ? {position: 'absolute', top: 0}: {}\">\r\n    <nav>\r\n        <div class=\"nav-wrapper\" :class=\"bgColor\">\r\n            <slot name=\"logo\">\r\n                <a v-if=\"title\"\r\n                   href=\"javascript:void(0)\" class=\"brand-logo\" :class=\"logoClasses\">\r\n                    {{title}}\r\n                </a>\r\n                <a v-if=\"hamburger\" href=\"javascript:void(0)\" class=\"button-collapse\"\r\n                   @click=\"openSideMenu\">\r\n                    <md-icon>menu</md-icon>\r\n                </a>\r\n            </slot>\r\n\r\n            <slot name=\"content\">\r\n                <ul :class=\"listClasses\">\r\n                    <slot></slot>\r\n                </ul>\r\n                <ul v-if=\"sideMenu\" transition=\"side-nav\" :style=\"computedStyle\" class=\"side-nav\">\r\n                    <slot></slot>\r\n                </ul>\r\n            </slot>\r\n        </div>\r\n    </nav>\r\n\r\n    <div @click=\"closeSideMenu\">\r\n        <md-sidenav-overlay v-if=\"sideMenu\" transition=\"modal-overlay\"></md-sidenav-overlay>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div :class=\"{'navbar-fixed': fixed}\"\r\n     :style=\"fixed ? {position: 'absolute', top: 0}: {}\">\r\n    <nav>\r\n        <div class=\"nav-wrapper\" :class=\"bgColor\">\r\n            <slot name=\"logo\">\r\n                <a v-if=\"title\"\r\n                   href=\"javascript:void(0)\" class=\"brand-logo\" :class=\"logoClasses\">\r\n                    {{title}}\r\n                </a>\r\n                <a v-if=\"hamburger\" href=\"javascript:void(0)\" class=\"button-collapse\"\r\n                   @click=\"openSideMenu\">\r\n                    <md-icon>menu</md-icon>\r\n                </a>\r\n            </slot>\r\n\r\n            <slot name=\"content\">\r\n                <ul :class=\"listClasses\">\r\n                    <slot></slot>\r\n                </ul>\r\n                <md-sidenav :close-on-click=\"closeOnClick\"> <!-- only if is active -->\r\n                    <slot></slot>\r\n                </md-sidenav>\r\n            </slot>\r\n        </div>\r\n    </nav>\r\n</div>\r\n";
 
 /***/ },
-/* 45 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(46);
-	var NavbarItem = (function () {
-	    function NavbarItem() {}
-	    NavbarItem = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            href: {
-	                type: String,
-	                required: false,
-	                "default": ""
-	            },
-	            active: {
-	                type: Boolean,
-	                required: false,
-	                "default": false
-	            }
-	        },
-	        template: template
-	    })], NavbarItem);
-	    return NavbarItem;
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = NavbarItem;
-	//# sourceMappingURL=index.js.map
-
-/***/ },
-/* 46 */
-/***/ function(module, exports) {
-
-	module.exports = "<li :class=\"{active: active}\">\r\n    <slot name=\"content\">\r\n        <a v-if=\"href\" :href=\"href\">\r\n            <slot></slot>\r\n        </a>\r\n    </slot>\r\n</li>";
-
-/***/ },
+/* 45 */,
+/* 46 */,
 /* 47 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-navbar-item href=\"javascript:alert('sass')\">sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('sass')\">sass <md-badge alert=\"new\">4</md-badge></md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('sass')\">sass</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:alert('sass')\">sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('sass')\">sass <md-badge alert=\"new\">4</md-badge></md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('sass')\">sass</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 48 */
@@ -7442,7 +7411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 53 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"new\"</span>&gt;</span>4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"new\"</span>&gt;</span>4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n";
 
 /***/ },
 /* 54 */
@@ -8015,7 +7984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var template = __webpack_require__(77);
 	var LeftAlignNavbars = (function () {
 	    function LeftAlignNavbars() {}
@@ -8027,7 +7996,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"]
+	            mdNavItem: nav_item_1["default"]
 	        }
 	    })], LeftAlignNavbars);
 	    return LeftAlignNavbars;
@@ -8040,7 +8009,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 77 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar title=\"Logo\" left>\r\n    <md-navbar-item href=\"javascript:alert('sass.html')\">Sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('badges.html')\">Components</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-navbar title=\"Logo\" left>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 78 */
@@ -8057,7 +8026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var template = __webpack_require__(79);
 	var RightAlignNavbar = (function () {
 	    function RightAlignNavbar() {}
@@ -8066,7 +8035,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"]
+	            mdNavItem: nav_item_1["default"]
 	        }
 	    })], RightAlignNavbar);
 	    return RightAlignNavbar;
@@ -8079,7 +8048,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 79 */
 /***/ function(module, exports) {
 
-	module.exports = "<h2 class=\"header\">Right align</h2>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-navbar-item href=\"javascript:alert('sass.html')\">Sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('badges.html')\">Components</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<h2 class=\"header\">Right align</h2>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 80 */
@@ -8096,7 +8065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var template = __webpack_require__(81);
 	var CenterAlignNavbar = (function () {
 	    function CenterAlignNavbar() {}
@@ -8105,7 +8074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"]
+	            mdNavItem: nav_item_1["default"]
 	        }
 	    })], CenterAlignNavbar);
 	    return CenterAlignNavbar;
@@ -8118,7 +8087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 81 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar title=\"Logo\" center left>\r\n    <md-navbar-item href=\"javascript:alert('sass.html')\">Sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('badges.html')\">Components</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-navbar title=\"Logo\" center left>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 82 */
@@ -8135,7 +8104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var template = __webpack_require__(83);
 	var ActiveItemNavbar = (function () {
 	    function ActiveItemNavbar() {}
@@ -8144,7 +8113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"]
+	            mdNavItem: nav_item_1["default"]
 	        }
 	    })], ActiveItemNavbar);
 	    return ActiveItemNavbar;
@@ -8157,7 +8126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 83 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar title=\"Logo\" left center>\r\n    <md-navbar-item href=\"javascript:alert('sass.html')\">Sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('badges.html')\">Components</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('collapsible.html')\" active>JavaScript</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-navbar title=\"Logo\" left center>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\" active>JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 84 */
@@ -8175,7 +8144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badge_1 = __webpack_require__(9);
 	var button_1 = __webpack_require__(21);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var snippet_1 = __webpack_require__(48);
 	var template = __webpack_require__(85);
 	var FixedNavbars = (function () {
@@ -8194,7 +8163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            mdBadge: badge_1["default"],
 	            mdButton: button_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"],
+	            mdNavItem: nav_item_1["default"],
 	            mdSnippet: snippet_1["default"]
 	        }
 	    })], FixedNavbars);
@@ -8208,7 +8177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 85 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-button @click=\"toggleFixed\">\r\n    Toggle display fixed menu\r\n</md-button>\r\n\r\n<md-navbar title=\"Logo\" left fixed v-if=\"showFixed\" bg-color=\"blue darken-4\">\r\n    <md-navbar-item href=\"javascript:alert('sass.html')\">Sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('badges.html')\">Components</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-button @click=\"toggleFixed\">\r\n    Toggle display fixed menu\r\n</md-button>\r\n\r\n<md-navbar title=\"Logo\" left fixed v-if=\"showFixed\" bg-color=\"blue darken-4\">\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 86 */
@@ -8225,7 +8194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var dropdown_1 = __webpack_require__(20);
 	var dropdown_item_1 = __webpack_require__(32);
 	var dropdown_list_1 = __webpack_require__(31);
@@ -8239,7 +8208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"],
+	            mdNavItem: nav_item_1["default"],
 	            mdDropdown: dropdown_1["default"],
 	            mdDropdownItem: dropdown_item_1["default"],
 	            mdDropdownList: dropdown_list_1["default"],
@@ -8257,7 +8226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 87 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-dropdown-list>\r\n    <md-dropdown-item closing>one</md-dropdown-item>\r\n    <md-dropdown-item closing>two</md-dropdown-item>\r\n    <md-dropdown-item class=\"divider\"></md-dropdown-item>\r\n    <md-dropdown-item closing>three</md-dropdown-item>\r\n</md-dropdown-list>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-navbar-item href=\"javascript:alert('sass.html')\">Sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('badges.html')\">Components</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:void(0)\" @click=\"broadcast('dropdown::open', $event)\">\r\n        Dropdown<md-icon right>arrow_drop_down</md-icon>\r\n    </md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-dropdown-list>\r\n    <md-dropdown-item closing>one</md-dropdown-item>\r\n    <md-dropdown-item closing>two</md-dropdown-item>\r\n    <md-dropdown-item class=\"divider\"></md-dropdown-item>\r\n    <md-dropdown-item closing>three</md-dropdown-item>\r\n</md-dropdown-list>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\" @click=\"broadcast('dropdown::open', $event)\">\r\n        Dropdown<md-icon right>arrow_drop_down</md-icon>\r\n    </md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 88 */
@@ -8274,7 +8243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var icon_1 = __webpack_require__(23);
 	var template = __webpack_require__(89);
 	var IconLinksNavbar = (function () {
@@ -8287,7 +8256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"],
+	            mdNavItem: nav_item_1["default"],
 	            mdIcon: icon_1["default"]
 	        }
 	    })], IconLinksNavbar);
@@ -8301,7 +8270,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 89 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-navbar-item href=\"javascript:void(0)\"><md-icon>search</md-icon></md-navbar-item>\r\n    <md-navbar-item href=\"javascript:void(0)\"><md-icon>view_module</md-icon></md-navbar-item>\r\n    <md-navbar-item href=\"javascript:void(0)\"><md-icon>refresh</md-icon></md-navbar-item>\r\n    <md-navbar-item href=\"javascript:void(0)\"><md-icon>more_vert</md-icon></md-navbar-item>\r\n</md-navbar>\r\n\r\n<hr/>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-navbar-item href=\"javascript:void(0)\"><md-icon left>search</md-icon>Link with Left Icon</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:void(0)\"><md-icon right>view_module</md-icon>Link with Right Icon</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>search</md-icon></md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>view_module</md-icon></md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>refresh</md-icon></md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>more_vert</md-icon></md-nav-item>\r\n</md-navbar>\r\n\r\n<hr/>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon left>search</md-icon>Link with Left Icon</md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon right>view_module</md-icon>Link with Right Icon</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 90 */
@@ -8319,7 +8288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badge_1 = __webpack_require__(9);
 	var button_1 = __webpack_require__(21);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var icon_1 = __webpack_require__(23);
 	var template = __webpack_require__(91);
 	var ButtonsNavbar = (function () {
@@ -8330,7 +8299,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            mdBadge: badge_1["default"],
 	            mdButton: button_1["default"],
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"],
+	            mdNavItem: nav_item_1["default"],
 	            mdIcon: icon_1["default"]
 	        }
 	    })], ButtonsNavbar);
@@ -8344,7 +8313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 91 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-navbar-item href=\"javascript:void(0)\">A link</md-navbar-item>\r\n    <md-navbar-item>\r\n        <md-button slot=\"content\" class=\"waves-effect waves-light\">A button</md-button>\r\n    </md-navbar-item>\r\n    <md-navbar-item>\r\n        <md-button slot=\"content\" class=\"waves-effect waves-light\" large>A large button</md-button>\r\n    </md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:void(0)\">A link</md-nav-item>\r\n    <md-nav-item>\r\n        <md-button slot=\"content\" class=\"waves-effect waves-light\">A button</md-button>\r\n    </md-nav-item>\r\n    <md-nav-item>\r\n        <md-button slot=\"content\" class=\"waves-effect waves-light\" large>A large button</md-button>\r\n    </md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 92 */
@@ -8400,7 +8369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var icon_1 = __webpack_require__(23);
 	var template = __webpack_require__(95);
 	var MobileCollase = (function () {
@@ -8412,7 +8381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        template: template,
 	        components: {
 	            mdNavbar: navbar_1["default"],
-	            mdNavbarItem: navbar_item_1["default"],
+	            mdNavItem: nav_item_1["default"],
 	            mdIcon: icon_1["default"]
 	        }
 	    })], MobileCollase);
@@ -8426,7 +8395,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "<h2 class=\"header\">Mobile Collapse</h2>\r\n\r\n<md-navbar title=\"Logo\" hamburger>\r\n    <md-navbar-item href=\"javascript:alert('sass.html')\">Sass</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('badges.html')\">Components</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('collapsible.html')\">Javascript</md-navbar-item>\r\n    <md-navbar-item href=\"javascript:alert('mobile.html')\">Mobile</md-navbar-item>\r\n</md-navbar>\r\n";
+	module.exports = "<h2 class=\"header\">Mobile Collapse</h2>\r\n\r\n<md-navbar title=\"Logo\" hamburger>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">Javascript</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('mobile.html')\">Mobile</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
 /* 96 */
@@ -8438,43 +8407,43 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 97 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
 /* 98 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
 /* 99 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">center</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">center</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
 /* 100 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span> <span class=\"hljs-attribute\">center</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span> <span class=\"hljs-attribute\">active</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span> <span class=\"hljs-attribute\">center</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span> <span class=\"hljs-attribute\">active</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
 /* 101 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span> <span class=\"hljs-attribute\">fixed</span> <span class=\"hljs-attribute\">bg-color</span>=<span class=\"hljs-value\">\"blue darken-4\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span> <span class=\"hljs-attribute\">fixed</span> <span class=\"hljs-attribute\">bg-color</span>=<span class=\"hljs-value\">\"blue darken-4\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
 /* 102 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-list</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>one<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>two<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"divider\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>three<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-list</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:alert('sass.html')\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:alert('badges.html')\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>\r\n                 @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('dropdown::open')\"</span>&gt;</span>\r\n        Dropdown<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>arrow_drop_down<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span>&gt;</span><span class=\"actionscript\">\r\n    <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">broadcast</span><span class=\"hljs-params\">(event, $event)</span> </span>{\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(event, $event);\r\n    }\r\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-list</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>one<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>two<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"divider\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>three<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-list</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:alert('sass.html')\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:alert('badges.html')\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>\r\n                 @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('dropdown::open')\"</span>&gt;</span>\r\n        Dropdown<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>arrow_drop_down<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span>&gt;</span><span class=\"actionscript\">\r\n    <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">broadcast</span><span class=\"hljs-params\">(event, $event)</span> </span>{\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(event, $event);\r\n    }\r\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
 
 /***/ },
 /* 103 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>search<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>view_module<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>refresh<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>more_vert<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">left</span>&gt;</span>search<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Link with Left Icon<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>view_module<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Link with Right Icon<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>search<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>view_module<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>refresh<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>more_vert<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">left</span>&gt;</span>search<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Link with Left Icon<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>view_module<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Link with Right Icon<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n";
 
 /***/ },
 /* 104 */
@@ -9385,9 +9354,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setupInterval();
 	    };
 	    Slider.prototype.handler = function () {
-	        this.activeItem = (this.activeItem + 1) % this.itemsCount;
 	        var self = this;
-	        self.$broadcast('slider::activate', this.activeItem);
+	        if (self.$children) {
+	            this.activeItem = (this.activeItem + 1) % this.itemsCount;
+	            self.$broadcast('slider::activate', this.activeItem);
+	        }
 	    };
 	    Slider.prototype.setupInterval = function () {
 	        this.intervalHandler = setInterval(this.handler, this.interval);
@@ -9846,7 +9817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var lean_overlay_1 = __webpack_require__(109);
 	var modal_1 = __webpack_require__(108);
 	var navbar_1 = __webpack_require__(39);
-	var navbar_item_1 = __webpack_require__(45);
+	var nav_item_1 = __webpack_require__(169);
 	var sidenav_overlay_1 = __webpack_require__(40);
 	var VueMaterializeComponents = {
 	    mdBadge: badge_1['default'],
@@ -9863,7 +9834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    mdLeanOverlay: lean_overlay_1['default'],
 	    mdModal: modal_1['default'],
 	    mdNavbar: navbar_1['default'],
-	    mdNavbarItem: navbar_item_1['default'],
+	    mdNavItem: nav_item_1['default'],
 	    mdSidenavOverlay: sidenav_overlay_1['default']
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -9966,6 +9937,153 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tabs</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"z-depth-1\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tabs</span>&gt;</span>\r\n";
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(170);
+	var NavItem = (function () {
+	    function NavItem() {}
+	    NavItem.prototype.click = function () {
+	        var self = this;
+	        self.$dispatch('nav-item::clicked');
+	    };
+	    NavItem = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            href: {
+	                type: String,
+	                required: false,
+	                'default': ''
+	            },
+	            active: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        template: template
+	    })], NavItem);
+	    return NavItem;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = NavItem;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 170 */
+/***/ function(module, exports) {
+
+	module.exports = "<li @click=\"click\" :class=\"{active: active}\">\r\n    <slot name=\"content\">\r\n        <a v-if=\"href\" :href=\"href\">\r\n            <slot></slot>\r\n        </a>\r\n    </slot>\r\n</li>";
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var sidenav_overlay_1 = __webpack_require__(40);
+	__webpack_require__(172);
+	var template = __webpack_require__(174);
+	var ESC = 27;
+	var SideNav = (function () {
+	    function SideNav() {}
+	    SideNav.prototype.data = function () {
+	        return {
+	            active: false
+	        };
+	    };
+	    SideNav.prototype.ready = function () {
+	        var self = this;
+	        window.document.addEventListener('keydown', function (evt) {
+	            evt = evt || window.event;
+	            if (evt.keyCode == ESC) {
+	                self.close();
+	            }
+	        });
+	    };
+	    Object.defineProperty(SideNav.prototype, "computedStyle", {
+	        get: function get() {
+	            if (this.active) {
+	                return {
+	                    left: 0
+	                };
+	            }
+	            return null;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    SideNav.prototype.open = function () {
+	        if (!this.active) {
+	            this.active = true;
+	        }
+	    };
+	    SideNav.prototype.close = function () {
+	        if (this.active) {
+	            this.active = false;
+	        }
+	    };
+	    SideNav.prototype.closeIfNecessary = function () {
+	        if (this.closeOnClick) {
+	            this.close();
+	        }
+	    };
+	    SideNav = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            closeOnClick: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        events: {
+	            'sidenav::open': function sidenavOpen() {
+	                this.open();
+	            },
+	            'sidenav::close': function sidenavClose() {
+	                this.close();
+	            }
+	        },
+	        components: {
+	            mdSidenavOverlay: sidenav_overlay_1["default"]
+	        },
+	        template: template
+	    })], SideNav);
+	    return SideNav;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = SideNav;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 172 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 173 */,
+/* 174 */
+/***/ function(module, exports) {
+
+	module.exports = "<ul v-if=\"active\" transition=\"side-nav\" :style=\"computedStyle\" class=\"side-nav\">\r\n    <slot></slot>\r\n</ul>\r\n\r\n<div @click=\"close\">\r\n    <md-sidenav-overlay v-if=\"active\" transition=\"modal-overlay\"></md-sidenav-overlay>\r\n</div>\r\n";
 
 /***/ }
 /******/ ])

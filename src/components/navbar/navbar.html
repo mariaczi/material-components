@@ -17,14 +17,10 @@
                 <ul :class="listClasses">
                     <slot></slot>
                 </ul>
-                <ul v-if="sideMenu" transition="side-nav" :style="computedStyle" class="side-nav">
+                <md-sidenav :close-on-click="closeOnClick"> <!-- only if is active -->
                     <slot></slot>
-                </ul>
+                </md-sidenav>
             </slot>
         </div>
     </nav>
-
-    <div @click="closeSideMenu">
-        <md-sidenav-overlay v-if="sideMenu" transition="modal-overlay"></md-sidenav-overlay>
-    </div>
 </div>

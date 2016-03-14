@@ -1,7 +1,7 @@
 import Component from 'vue-class-component';
 
 import mdIcon from '../icon';
-import mdSidenavOverlay from '../sidenav-overlay';
+import mdSidenav from '../sidenav';
 
 require('./navbar.scss');
 var template = require('./navbar.html');
@@ -51,11 +51,23 @@ const DEFAULT_CLASSES = ["hide-on-med-and-down"];
             type: Boolean,
             required: false,
             "default": false
+        },
+        closeOnClick: {
+            type: Boolean,
+            required: false,
+            "default": false
         }
     },
     components: {
         mdIcon,
-        mdSidenavOverlay
+        mdSidenav
+    },
+    events: {
+        'nav-item::clicked': function () {
+            if (this.closeOnClick) {
+                this.$broadcast('sidenav::close');
+            }
+        }
     },
     template: template
 })
@@ -66,23 +78,9 @@ export default class Navbar {
     private center: boolean;
     private fixed: boolean;
 
-    private sideMenu: boolean;
-
     data() {
         return {
             sideMenu: false
-        }
-    }
-
-    openSideMenu() {
-        if (!this.sideMenu) {
-            this.sideMenu = true;
-        }
-    }
-
-    closeSideMenu() {
-        if (this.sideMenu) {
-            this.sideMenu = false;
         }
     }
 
@@ -127,5 +125,15 @@ export default class Navbar {
             }
         }
         return null;
+    }
+    
+    openSideMenu() {
+        var self: any = this;
+        self.$broadcast('sidenav::open');
+    }
+
+    closeSideMenu() {
+        var self: any = this;
+        self.$broadcast('sidenav::close');
     }
 }

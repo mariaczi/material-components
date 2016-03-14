@@ -1,7 +1,7 @@
 import Component from 'vue-class-component';
 import mdBadge from '../../../components/badge';
 import mdNavbar from '../../../components/navbar';
-import mdNavbarItem from '../../../components/navbar-item';
+import mdNavItem from '../../../components/nav-item';
 
 var template = require('./navbars.html');
 
@@ -10,7 +10,7 @@ var template = require('./navbars.html');
     components: {
         mdBadge,
         mdNavbar,
-        mdNavbarItem
+        mdNavItem
     }
 })
 export default class CenterAlignNavbar {

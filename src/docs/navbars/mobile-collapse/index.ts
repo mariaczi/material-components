@@ -1,7 +1,7 @@
 import Component from 'vue-class-component';
 
 import mdNavbar from '../../../components/navbar';
-import mdNavbarItem from '../../../components/navbar-item';
+import mdNavItem from '../../../components/nav-item';
 import mdIcon from '../../../components/icon';
 
 var template = require('./navbars.html');
@@ -10,7 +10,7 @@ var template = require('./navbars.html');
     template: template,
     components: {
         mdNavbar,
-        mdNavbarItem,
+        mdNavItem,
         mdIcon
     }
 })

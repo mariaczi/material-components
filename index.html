@@ -15,10 +15,10 @@
 
     <body>
         <div id="content">
-            <md-navbar left hamburger>
-                <md-navbar-item v-for="nav in navs">
+            <md-navbar close-on-click left hamburger>
+                <md-nav-item v-for="nav in navs">
                     <a v-link="{ path: nav.link }" slot="content">{{nav.title}}</a>
-                </md-navbar-item>
+                </md-nav-item>
             </md-navbar>
             <router-view></router-view>
         </div>

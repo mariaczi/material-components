@@ -2,7 +2,7 @@ import Component from 'vue-class-component';
 
 import mdBadge from '../../../components/badge';
 import mdNavbar from '../../../components/navbar';
-import mdNavbarItem from '../../../components/navbar-item';
+import mdNavItem from '../../../components/nav-item';
 import mdDropdown from '../../../components/dropdown';
 import mdDropdownItem from '../../../components/dropdown-item';
 import mdDropdownList from '../../../components/dropdown-list';
@@ -17,7 +17,7 @@ var template = require('./navbars.html');
     components: {
         mdBadge,
         mdNavbar,
-        mdNavbarItem,
+        mdNavItem,
         mdDropdown,
         mdDropdownItem,
         mdDropdownList,

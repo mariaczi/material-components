@@ -2,24 +2,26 @@
      :style="fixed ? {position: 'absolute', top: 0}: {}">
     <nav>
         <div class="nav-wrapper" :class="bgColor">
-            <slot name="logo">
-                <a v-if="title"
-                   href="javascript:void(0)" class="brand-logo" :class="logoClasses">
-                    {{title}}
-                </a>
-                <a v-if="hamburger" href="javascript:void(0)" class="button-collapse"
-                   @click="openSideMenu">
-                    <md-icon>menu</md-icon>
-                </a>
-            </slot>
-
             <slot name="content">
-                <ul :class="listClasses">
-                    <slot></slot>
-                </ul>
-                <md-sidenav :close-on-click="closeOnClick"> <!-- only if is active -->
-                    <slot></slot>
-                </md-sidenav>
+                <slot name="logo">
+                    <a v-if="title"
+                       href="javascript:void(0)" class="brand-logo" :class="logoClasses">
+                        {{title}}
+                    </a>
+                    <a v-if="hamburger" href="javascript:void(0)" class="button-collapse"
+                       @click="openSideMenu">
+                        <md-icon>menu</md-icon>
+                    </a>
+                </slot>
+
+                <slot name="navs">
+                    <ul :class="listClasses">
+                        <slot></slot>
+                    </ul>
+                    <md-sidenav :close-on-click="closeOnClick"> <!-- only if is active -->
+                        <slot></slot>
+                    </md-sidenav>
+                </slot>
             </slot>
         </div>
     </nav>

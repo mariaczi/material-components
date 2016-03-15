@@ -1,4 +1,5 @@
 import docsBadges from './badges';
+import docsBreadcrumbs from './breadcrumbs';
 import docsButtons from './buttons';
 import docsCollapsibles from './collapsibles';
 import docsDropdowns from './dropdowns';
@@ -14,6 +15,12 @@ const docsPages: [Route] = [
         link: "/badges",
         title: "Badges",
         component: docsBadges
+    },
+    {
+        url: "/breadcrumbs",
+        link: "/breadcrumbs",
+        title: "Breadcrumbs",
+        component: docsBreadcrumbs
     },
     {
         url: "/buttons",

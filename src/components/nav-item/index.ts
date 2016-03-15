@@ -13,7 +13,7 @@ var template = require('./nav-item.html');
             type: Boolean,
             required: false,
             'default': false
-        },
+        }
     },
     template: template
 })

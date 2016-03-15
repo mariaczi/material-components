@@ -62,7 +62,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var VueRouterModule = __webpack_require__(2);
 	var VueRouter = VueRouterModule;
 	var mapping = __webpack_require__(3);
-	var App = __webpack_require__(193);
+	var App = __webpack_require__(218);
 	module.exports = {
 	    run: function (app) {
 	        Vue.config.debug = true;
@@ -5408,16 +5408,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	var badges_1 = __webpack_require__(5);
-	var breadcrumbs_1 = __webpack_require__(58);
-	var buttons_1 = __webpack_require__(63);
-	var cards_1 = __webpack_require__(199);
-	var collapsibles_1 = __webpack_require__(84);
-	var dropdowns_1 = __webpack_require__(100);
-	var navbars_1 = __webpack_require__(105);
-	var modals_1 = __webpack_require__(135);
-	var dialogs_1 = __webpack_require__(154);
-	var media_1 = __webpack_require__(162);
-	var tabs_1 = __webpack_require__(181);
+	var breadcrumbs_1 = __webpack_require__(59);
+	var buttons_1 = __webpack_require__(64);
+	var cards_1 = __webpack_require__(85);
+	var chips_1 = __webpack_require__(100);
+	var collapsibles_1 = __webpack_require__(109);
+	var dropdowns_1 = __webpack_require__(125);
+	var navbars_1 = __webpack_require__(130);
+	var modals_1 = __webpack_require__(160);
+	var dialogs_1 = __webpack_require__(179);
+	var media_1 = __webpack_require__(187);
+	var tabs_1 = __webpack_require__(206);
 	var docsPages = [{
 	    url: "/badges",
 	    link: "/badges",
@@ -5443,6 +5444,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    link: "/collapsibles",
 	    title: "Collapsibles",
 	    component: collapsibles_1['default']
+	}, {
+	    url: "/chips",
+	    link: "/chips",
+	    title: "Chips",
+	    component: chips_1['default']
 	}, {
 	    url: "/dropdowns",
 	    link: "/dropdowns",
@@ -5492,16 +5498,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var collections_1 = __webpack_require__(7);
 	var dropdowns_1 = __webpack_require__(19);
-	var navbars_1 = __webpack_require__(38);
-	var snippet_1 = __webpack_require__(52);
-	var template = __webpack_require__(54);
+	var navbars_1 = __webpack_require__(39);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(55);
 	var Badges = (function () {
 	    function Badges() {}
 	    Badges.prototype.data = function () {
 	        return {
-	            collectionsSnippet: __webpack_require__(55),
-	            dropdownsSnippet: __webpack_require__(56),
-	            navbarsSnippet: __webpack_require__(57)
+	            collectionsSnippet: __webpack_require__(56),
+	            dropdownsSnippet: __webpack_require__(57),
+	            navbarsSnippet: __webpack_require__(58)
 	        };
 	    };
 	    Badges = __decorate([vue_class_component_1["default"]({
@@ -5748,9 +5754,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var dropdown_1 = __webpack_require__(20);
-	var dropdown_item_1 = __webpack_require__(32);
+	var dropdown_item_1 = __webpack_require__(33);
 	var badge_1 = __webpack_require__(9);
-	var template = __webpack_require__(37);
+	var template = __webpack_require__(38);
 	var Dropdowns = (function () {
 	    function Dropdowns() {}
 	    Dropdowns.prototype.closeDropdown = function () {
@@ -5785,10 +5791,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var button_1 = __webpack_require__(21);
-	var dropdown_list_1 = __webpack_require__(31);
-	var dropdown_item_1 = __webpack_require__(32);
+	var dropdown_list_1 = __webpack_require__(32);
+	var dropdown_item_1 = __webpack_require__(33);
 	// todo props
-	var template = __webpack_require__(36);
+	var template = __webpack_require__(37);
 	var Dropdown = (function () {
 	    function Dropdown() {}
 	    Dropdown.prototype.open = function (e) {
@@ -5842,11 +5848,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var icon_1 = __webpack_require__(23);
-	var toast_1 = __webpack_require__(25);
-	var tooltip_1 = __webpack_require__(28);
-	var wave_effect_1 = __webpack_require__(218);
-	var template = __webpack_require__(30);
+	var icon_1 = __webpack_require__(22);
+	var toast_1 = __webpack_require__(24);
+	var tooltip_1 = __webpack_require__(27);
+	var wave_effect_1 = __webpack_require__(29);
+	var template = __webpack_require__(31);
 	// todo  classes array ws string
 	var Button = (function () {
 	    function Button() {}
@@ -5932,180 +5938,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 22 */
-/***/ function(module, exports) {
-
-	"use strict";
-	/*!
-	 * Materialize v0.97.5 (http://materializecss.com)
-	 * Copyright 2014-2015 Materialize
-	 * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
-	 */
-	/**
-	 * Disable mousedown event for 500ms during and after touch
-	 */
-	var TouchHandler = {
-	    /* uses an integer rather than bool so there's no issues with
-	     * needing to clear timeouts if another touch event occurred
-	     * within the 500ms. Cannot mouseup between touchstart and
-	     * touchend, nor in the 500ms after touchend. */
-	    touches: 0,
-	    allowEvent: function allowEvent(e) {
-	        var allow = true;
-	        if (e.type === 'touchstart') {
-	            TouchHandler.touches += 1; //push
-	        } else if (e.type === 'touchend' || e.type === 'touchcancel') {
-	                setTimeout(function () {
-	                    if (TouchHandler.touches > 0) {
-	                        TouchHandler.touches -= 1; //pop after 500ms
-	                    }
-	                }, 500);
-	            } else if (e.type === 'mousedown' && TouchHandler.touches > 0) {
-	                allow = false;
-	            }
-	        return allow;
-	    },
-	    touchup: function touchup(e) {
-	        TouchHandler.allowEvent(e);
-	    }
-	};
-	// Find exact position of element
-	function isWindow(obj) {
-	    return obj !== null && obj === obj.window;
-	}
-	function getWindow(elem) {
-	    return isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
-	}
-	function offset(elem) {
-	    var docElem,
-	        win,
-	        box = { top: 0, left: 0 },
-	        doc = elem && elem.ownerDocument;
-	    docElem = doc.documentElement;
-	    if (typeof elem.getBoundingClientRect !== typeof undefined) {
-	        box = elem.getBoundingClientRect();
-	    }
-	    win = getWindow(doc);
-	    return {
-	        top: box.top + win.pageYOffset - docElem.clientTop,
-	        left: box.left + win.pageXOffset - docElem.clientLeft
-	    };
-	}
-	function convertStyle(obj) {
-	    var style = '';
-	    for (var a in obj) {
-	        if (obj.hasOwnProperty(a)) {
-	            style += a + ':' + obj[a] + ';';
-	        }
-	    }
-	    return style;
-	}
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = {
-	    // Effect delay
-	    duration: 750,
-	    show: function show(e, element) {
-	        // Disable right click
-	        if (e.button === 2) {
-	            return false;
-	        }
-	        var el = element || this;
-	        // Create ripple
-	        var ripple = document.createElement('div');
-	        ripple.className = 'waves-ripple';
-	        el.appendChild(ripple);
-	        // Get click coordinate and element witdh
-	        var pos = offset(el);
-	        var relativeY = e.pageY - pos.top;
-	        var relativeX = e.pageX - pos.left;
-	        var scale = 'scale(' + el.clientWidth / 100 * 10 + ')';
-	        // Support for touch devices
-	        if ('touches' in e) {
-	            relativeY = e.touches[0].pageY - pos.top;
-	            relativeX = e.touches[0].pageX - pos.left;
-	        }
-	        // Attach data to element
-	        ripple.setAttribute('data-hold', Date.now().toString());
-	        ripple.setAttribute('data-scale', scale);
-	        ripple.setAttribute('data-x', relativeX.toString());
-	        ripple.setAttribute('data-y', relativeY.toString());
-	        // Set ripple position
-	        var rippleStyle = {
-	            'top': relativeY + 'px',
-	            'left': relativeX + 'px'
-	        };
-	        ripple.className = ripple.className + ' waves-notransition';
-	        ripple.setAttribute('style', convertStyle(rippleStyle));
-	        ripple.className = ripple.className.replace('waves-notransition', '');
-	        // Scale the ripple
-	        rippleStyle['-webkit-transform'] = scale;
-	        rippleStyle['-moz-transform'] = scale;
-	        rippleStyle['-ms-transform'] = scale;
-	        rippleStyle['-o-transform'] = scale;
-	        rippleStyle.transform = scale;
-	        rippleStyle.opacity = '1';
-	        rippleStyle['-webkit-transition-duration'] = this.duration + 'ms';
-	        rippleStyle['-moz-transition-duration'] = this.duration + 'ms';
-	        rippleStyle['-o-transition-duration'] = this.duration + 'ms';
-	        rippleStyle['transition-duration'] = this.duration + 'ms';
-	        rippleStyle['-webkit-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-	        rippleStyle['-moz-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-	        rippleStyle['-o-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-	        rippleStyle['transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
-	        ripple.setAttribute('style', convertStyle(rippleStyle));
-	    },
-	    hide: function hide(e, el) {
-	        var _this = this;
-	        TouchHandler.touchup(e);
-	        var width = el.clientWidth * 1.4;
-	        // Get first ripple
-	        var ripple = null;
-	        var ripples = el.getElementsByClassName('waves-ripple');
-	        if (ripples.length > 0) {
-	            ripple = ripples[ripples.length - 1];
-	        } else {
-	            return false;
-	        }
-	        var relativeX = ripple.getAttribute('data-x');
-	        var relativeY = ripple.getAttribute('data-y');
-	        var scale = ripple.getAttribute('data-scale');
-	        // Get delay beetween mousedown and mouse leave
-	        var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
-	        var delay = 350 - diff;
-	        if (delay < 0) {
-	            delay = 0;
-	        }
-	        // Fade out ripple after delay
-	        setTimeout(function () {
-	            var style = {
-	                'top': relativeY + 'px',
-	                'left': relativeX + 'px',
-	                'opacity': '0',
-	                // Duration
-	                '-webkit-transition-duration': _this.duration + 'ms',
-	                '-moz-transition-duration': _this.duration + 'ms',
-	                '-o-transition-duration': _this.duration + 'ms',
-	                'transition-duration': _this.duration + 'ms',
-	                '-webkit-transform': scale,
-	                '-moz-transform': scale,
-	                '-ms-transform': scale,
-	                '-o-transform': scale,
-	                'transform': scale
-	            };
-	            ripple.setAttribute('style', convertStyle(style));
-	            setTimeout(function () {
-	                try {
-	                    el.removeChild(ripple);
-	                } catch (e) {
-	                    return false;
-	                }
-	            }, _this.duration);
-	        }, delay);
-	    }
-	};
-	//# sourceMappingURL=index.js.map
-
-/***/ },
-/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6117,7 +5949,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(24);
+	var template = __webpack_require__(23);
 	var Icon = (function () {
 	    function Icon() {}
 	    Icon = __decorate([vue_class_component_1["default"]({
@@ -6142,17 +5974,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = "<i class=\"material-icons\"\r\n   :class=\"{right: right, left: left || !right}\"> <!-- left is default-->\r\n    <slot></slot>\r\n</i>\r\n";
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var toast_1 = __webpack_require__(26);
+	var toast_1 = __webpack_require__(25);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports["default"] = {
 	    methods: {
@@ -6164,11 +5996,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Vel = __webpack_require__(27);
+	var Vel = __webpack_require__(26);
 	/*!
 	 * Materialize v0.97.5 (http://materializecss.com)
 	 * Copyright 2014-2015 Materialize
@@ -6282,7 +6114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS.org (1.2.3). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */ /*************************
@@ -6762,7 +6594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                       then the DOM is queried for the element's current values as a last resort. */ /* Note: Conversely, animation reversal (and looping) *always* perform inter-call value transfers; they never requery the DOM. */
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6771,7 +6603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2014-2015 Materialize
 	 * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
 	 */
-	var tooltip_1 = __webpack_require__(29);
+	var tooltip_1 = __webpack_require__(28);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports["default"] = {
 	    methods: {
@@ -6784,11 +6616,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Velocity = __webpack_require__(27);
+	var Velocity = __webpack_require__(26);
 	// todo swap tooltip if oversize window
 	function default_1(element, message, position, delay) {
 	    if (position === void 0) {
@@ -6940,13 +6772,216 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var effect_1 = __webpack_require__(30);
+	var waveEffect = {
+	    bind: function bind() {
+	        var _this = this;
+	        this.el.addEventListener("mousedown", function (e) {
+	            effect_1["default"].show(e, _this.el);
+	        });
+	        this.el.addEventListener("mouseleave", function (e) {
+	            effect_1["default"].hide(e, _this.el);
+	        });
+	        this.el.addEventListener("mouseup", function (e) {
+	            effect_1["default"].hide(e, _this.el);
+	        });
+	    },
+	    unbind: function unbind() {
+	        this.el.removeEventListener("mousedown");
+	        this.el.removeEventListener("mouseleave");
+	        this.el.removeEventListener("mouseup");
+	    }
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = waveEffect;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
 /* 30 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/*!
+	 * Materialize v0.97.5 (http://materializecss.com)
+	 * Copyright 2014-2015 Materialize
+	 * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+	 */
+	/**
+	 * Disable mousedown event for 500ms during and after touch
+	 */
+	var TouchHandler = {
+	    /* uses an integer rather than bool so there's no issues with
+	     * needing to clear timeouts if another touch event occurred
+	     * within the 500ms. Cannot mouseup between touchstart and
+	     * touchend, nor in the 500ms after touchend. */
+	    touches: 0,
+	    allowEvent: function allowEvent(e) {
+	        var allow = true;
+	        if (e.type === 'touchstart') {
+	            TouchHandler.touches += 1; //push
+	        } else if (e.type === 'touchend' || e.type === 'touchcancel') {
+	                setTimeout(function () {
+	                    if (TouchHandler.touches > 0) {
+	                        TouchHandler.touches -= 1; //pop after 500ms
+	                    }
+	                }, 500);
+	            } else if (e.type === 'mousedown' && TouchHandler.touches > 0) {
+	                allow = false;
+	            }
+	        return allow;
+	    },
+	    touchup: function touchup(e) {
+	        TouchHandler.allowEvent(e);
+	    }
+	};
+	// Find exact position of element
+	function isWindow(obj) {
+	    return obj !== null && obj === obj.window;
+	}
+	function getWindow(elem) {
+	    return isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
+	}
+	function offset(elem) {
+	    var docElem,
+	        win,
+	        box = { top: 0, left: 0 },
+	        doc = elem && elem.ownerDocument;
+	    docElem = doc.documentElement;
+	    if (typeof elem.getBoundingClientRect !== typeof undefined) {
+	        box = elem.getBoundingClientRect();
+	    }
+	    win = getWindow(doc);
+	    return {
+	        top: box.top + win.pageYOffset - docElem.clientTop,
+	        left: box.left + win.pageXOffset - docElem.clientLeft
+	    };
+	}
+	function convertStyle(obj) {
+	    var style = '';
+	    for (var a in obj) {
+	        if (obj.hasOwnProperty(a)) {
+	            style += a + ':' + obj[a] + ';';
+	        }
+	    }
+	    return style;
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports['default'] = {
+	    // Effect delay
+	    duration: 750,
+	    show: function show(e, element) {
+	        // Disable right click
+	        if (e.button === 2) {
+	            return false;
+	        }
+	        var el = element || this;
+	        // Create ripple
+	        var ripple = document.createElement('div');
+	        ripple.className = 'waves-ripple';
+	        el.appendChild(ripple);
+	        // Get click coordinate and element witdh
+	        var pos = offset(el);
+	        var relativeY = e.pageY - pos.top;
+	        var relativeX = e.pageX - pos.left;
+	        var scale = 'scale(' + el.clientWidth / 100 * 10 + ')';
+	        // Support for touch devices
+	        if ('touches' in e) {
+	            relativeY = e.touches[0].pageY - pos.top;
+	            relativeX = e.touches[0].pageX - pos.left;
+	        }
+	        // Attach data to element
+	        ripple.setAttribute('data-hold', Date.now().toString());
+	        ripple.setAttribute('data-scale', scale);
+	        ripple.setAttribute('data-x', relativeX.toString());
+	        ripple.setAttribute('data-y', relativeY.toString());
+	        // Set ripple position
+	        var rippleStyle = {
+	            'top': relativeY + 'px',
+	            'left': relativeX + 'px'
+	        };
+	        ripple.className = ripple.className + ' waves-notransition';
+	        ripple.setAttribute('style', convertStyle(rippleStyle));
+	        ripple.className = ripple.className.replace('waves-notransition', '');
+	        // Scale the ripple
+	        rippleStyle['-webkit-transform'] = scale;
+	        rippleStyle['-moz-transform'] = scale;
+	        rippleStyle['-ms-transform'] = scale;
+	        rippleStyle['-o-transform'] = scale;
+	        rippleStyle.transform = scale;
+	        rippleStyle.opacity = '1';
+	        rippleStyle['-webkit-transition-duration'] = this.duration + 'ms';
+	        rippleStyle['-moz-transition-duration'] = this.duration + 'ms';
+	        rippleStyle['-o-transition-duration'] = this.duration + 'ms';
+	        rippleStyle['transition-duration'] = this.duration + 'ms';
+	        rippleStyle['-webkit-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+	        rippleStyle['-moz-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+	        rippleStyle['-o-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+	        rippleStyle['transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
+	        ripple.setAttribute('style', convertStyle(rippleStyle));
+	    },
+	    hide: function hide(e, el) {
+	        var _this = this;
+	        TouchHandler.touchup(e);
+	        var width = el.clientWidth * 1.4;
+	        // Get first ripple
+	        var ripple = null;
+	        var ripples = el.getElementsByClassName('waves-ripple');
+	        if (ripples.length > 0) {
+	            ripple = ripples[ripples.length - 1];
+	        } else {
+	            return false;
+	        }
+	        var relativeX = ripple.getAttribute('data-x');
+	        var relativeY = ripple.getAttribute('data-y');
+	        var scale = ripple.getAttribute('data-scale');
+	        // Get delay beetween mousedown and mouse leave
+	        var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
+	        var delay = 350 - diff;
+	        if (delay < 0) {
+	            delay = 0;
+	        }
+	        // Fade out ripple after delay
+	        setTimeout(function () {
+	            var style = {
+	                'top': relativeY + 'px',
+	                'left': relativeX + 'px',
+	                'opacity': '0',
+	                // Duration
+	                '-webkit-transition-duration': _this.duration + 'ms',
+	                '-moz-transition-duration': _this.duration + 'ms',
+	                '-o-transition-duration': _this.duration + 'ms',
+	                'transition-duration': _this.duration + 'ms',
+	                '-webkit-transform': scale,
+	                '-moz-transform': scale,
+	                '-ms-transform': scale,
+	                '-o-transform': scale,
+	                'transform': scale
+	            };
+	            ripple.setAttribute('style', convertStyle(style));
+	            setTimeout(function () {
+	                try {
+	                    el.removeChild(ripple);
+	                } catch (e) {
+	                    return false;
+	                }
+	            }, _this.duration);
+	        }, delay);
+	    }
+	};
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = "<a :class=\"computedClasses\" v-wave-effect>\r\n    <md-icon\r\n       v-if=\"icon\"\r\n       :right=\"iconAlignRight\">{{icon}}</md-icon>\r\n    <slot></slot>\r\n</a>";
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6959,9 +6994,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var button_1 = __webpack_require__(21);
-	var dropdown_item_1 = __webpack_require__(32);
-	var click_away_1 = __webpack_require__(34);
-	var template = __webpack_require__(35);
+	var dropdown_item_1 = __webpack_require__(33);
+	var click_away_1 = __webpack_require__(35);
+	var template = __webpack_require__(36);
 	var DropdownList = (function () {
 	    function DropdownList() {}
 	    DropdownList.prototype.data = function () {
@@ -7044,7 +7079,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7056,7 +7091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(33);
+	var template = __webpack_require__(34);
 	var DropdownItem = (function () {
 	    function DropdownItem() {}
 	    DropdownItem.prototype.data = function () {
@@ -7085,13 +7120,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	module.exports = "<li @click=\"closeIfEnable\">\r\n    <a href=\"javascript:void(0)\">\r\n        <slot></slot>\r\n    </a>\r\n</li>";
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7125,25 +7160,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"dropdown-content\"\r\n    v-on-click-away=\"hide\"\r\n    :class=\"{active: active}\" :style=\"style\">\r\n    <slot></slot>\r\n</ul>\r\n";
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-dropdown-list>\r\n    <slot></slot>\r\n</md-dropdown-list>\r\n\r\n<span @click=\"open\">\r\n    <slot name=\"button\">\r\n        <md-button href=\"javascript:void(0)\"\r\n             :classes=\"['dropdown-button']\"\r\n             :class=\"{active: active}\">\r\n            {{title}}\r\n            <i class=\"mdi-navigation-arrow-drop-down right\"></i>\r\n        </md-button>\r\n    </slot>\r\n</span>\r\n\r\n";
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-dropdown title=\"Dropdown\">\r\n    <md-dropdown-item>\r\n        one <md-badge>1</md-badge>\r\n    </md-dropdown-item>\r\n    <md-dropdown-item>\r\n        two <md-badge alert=\"new\">1</md-badge>\r\n    </md-dropdown-item>\r\n    <md-dropdown-item>\r\n        three\r\n    </md-dropdown-item>\r\n    <md-dropdown-item closing>\r\n        <md-badge alert=\"close\"></md-badge>\r\n    </md-dropdown-item>\r\n</md-dropdown>";
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7156,9 +7191,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var template = __webpack_require__(51);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var template = __webpack_require__(52);
 	var Navbars = (function () {
 	    function Navbars() {}
 	    Navbars.prototype.data = function () {
@@ -7179,7 +7214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7191,10 +7226,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var icon_1 = __webpack_require__(23);
-	var sidenav_1 = __webpack_require__(40);
-	__webpack_require__(46);
-	var template = __webpack_require__(48);
+	var icon_1 = __webpack_require__(22);
+	var sidenav_1 = __webpack_require__(41);
+	__webpack_require__(47);
+	var template = __webpack_require__(49);
 	var DEFAULT_CLASSES = ["hide-on-med-and-down"];
 	var Navbar = (function () {
 	    function Navbar() {}
@@ -7311,7 +7346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7323,9 +7358,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var sidenav_overlay_1 = __webpack_require__(41);
-	__webpack_require__(43);
-	var template = __webpack_require__(45);
+	var sidenav_overlay_1 = __webpack_require__(42);
+	__webpack_require__(44);
+	var template = __webpack_require__(46);
 	var ESC = 27;
 	var SideNav = (function () {
 	    function SideNav() {}
@@ -7398,7 +7433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7410,7 +7445,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(42);
+	var template = __webpack_require__(43);
 	var SidenavOverlay = (function () {
 	    function SidenavOverlay() {}
 	    SidenavOverlay = __decorate([vue_class_component_1["default"]({
@@ -7423,39 +7458,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"sidenav-overlay\"></div>";
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 44 */,
-/* 45 */
+/* 45 */,
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul v-if=\"active\" transition=\"side-nav\" :style=\"computedStyle\" class=\"side-nav\">\r\n    <slot></slot>\r\n</ul>\r\n\r\n<div @click=\"close\">\r\n    <md-sidenav-overlay v-if=\"active\" transition=\"modal-overlay\"></md-sidenav-overlay>\r\n</div>\r\n";
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 47 */,
-/* 48 */
+/* 48 */,
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = "<div :class=\"{'navbar-fixed': fixed}\"\r\n     :style=\"fixed ? {position: 'absolute', top: 0}: {}\">\r\n    <nav>\r\n        <div class=\"nav-wrapper\" :class=\"bgColor\">\r\n            <slot name=\"content\">\r\n                <slot name=\"logo\">\r\n                    <a v-if=\"title\"\r\n                       href=\"javascript:void(0)\" class=\"brand-logo\" :class=\"logoClasses\">\r\n                        {{title}}\r\n                    </a>\r\n                    <a v-if=\"hamburger\" href=\"javascript:void(0)\" class=\"button-collapse\"\r\n                       @click=\"openSideMenu\">\r\n                        <md-icon>menu</md-icon>\r\n                    </a>\r\n                </slot>\r\n\r\n                <slot name=\"navs\">\r\n                    <ul :class=\"listClasses\">\r\n                        <slot></slot>\r\n                    </ul>\r\n                    <md-sidenav :close-on-click=\"closeOnClick\"> <!-- only if is active -->\r\n                        <slot></slot>\r\n                    </md-sidenav>\r\n                </slot>\r\n            </slot>\r\n        </div>\r\n    </nav>\r\n</div>\r\n";
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7467,7 +7502,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(50);
+	var template = __webpack_require__(51);
 	var NavItem = (function () {
 	    function NavItem() {}
 	    NavItem.prototype.click = function () {
@@ -7496,19 +7531,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	module.exports = "<li @click=\"click\" :class=\"{active: active}\">\r\n    <slot name=\"content\">\r\n        <a v-if=\"href\" :href=\"href\">\r\n            <slot></slot>\r\n        </a>\r\n    </slot>\r\n</li>";
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:alert('sass')\">sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('sass')\">sass <md-badge alert=\"new\">4</md-badge></md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('sass')\">sass</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7520,7 +7555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(53);
+	var template = __webpack_require__(54);
 	var Snippet = (function () {
 	    function Snippet() {}
 	    Snippet = __decorate([vue_class_component_1["default"]({
@@ -7533,37 +7568,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	module.exports = "<pre><slot></slot></pre>";
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Collections</h2>\r\n<div class=\"doc-example\">\r\n    <doc-collections></doc-collections>\r\n\r\n    <doc-snippet>{{{collectionsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Badges in Dropdown</h2>\r\n<div class=\"doc-example\">\r\n    <doc-dropdowns></doc-dropdowns>\r\n\r\n    <doc-snippet>{{{dropdownsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Badges in Navbar</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbars></doc-navbars>\r\n\r\n    <doc-snippet>{{{navbarsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n";
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span>Item 1<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span>&gt;</span>1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span>Item 2<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"new\"</span>&gt;</span>4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span>Item 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span>Item 4<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span>&gt;</span>14<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection</span>&gt;</span>";
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Dropdown\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n        one <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span>&gt;</span>1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n        two <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"new\"</span>&gt;</span>1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n        three\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"close\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown</span>&gt;</span>";
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"new\"</span>&gt;</span>4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"\"</span>&gt;</span>sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n";
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7575,14 +7610,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var default_1 = __webpack_require__(59);
-	var snippet_1 = __webpack_require__(52);
-	var template = __webpack_require__(61);
+	var default_1 = __webpack_require__(60);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(62);
 	var Breadcrumbs = (function () {
 	    function Breadcrumbs() {}
 	    Breadcrumbs.prototype.data = function () {
 	        return {
-	            breadcrumbsSnippet: __webpack_require__(62)
+	            breadcrumbsSnippet: __webpack_require__(63)
 	        };
 	    };
 	    Breadcrumbs = __decorate([vue_class_component_1["default"]({
@@ -7599,7 +7634,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7611,8 +7646,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(60);
-	var navbar_1 = __webpack_require__(39);
+	var template = __webpack_require__(61);
+	var navbar_1 = __webpack_require__(40);
 	var DefaultBreadcrumbs = (function () {
 	    function DefaultBreadcrumbs() {}
 	    DefaultBreadcrumbs = __decorate([vue_class_component_1["default"]({
@@ -7628,25 +7663,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-navbar>\r\n    <div class=\"col s12\" slot=\"content\">\r\n        <a href=\"javascript:void(0)\" class=\"breadcrumb\">First</a>\r\n        <a href=\"javascript:void(0)\" class=\"breadcrumb\">Second</a>\r\n        <a href=\"javascript:void(0)\" class=\"breadcrumb\">Third</a>\r\n    </div>\r\n</md-navbar>";
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Breadcrumbs</h2>\r\n<div class=\"doc-example\">\r\n    <doc-breadcrumbs></doc-breadcrumbs>\r\n\r\n    <doc-snippet>{{{breadcrumbsSnippet}}}</doc-snippet>\r\n</div>";
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"col s12\"</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"breadcrumb\"</span>&gt;</span>First<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"breadcrumb\"</span>&gt;</span>Second<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"breadcrumb\"</span>&gt;</span>Third<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7658,22 +7693,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var raised_1 = __webpack_require__(64);
-	var floating_1 = __webpack_require__(66);
-	var fab_1 = __webpack_require__(68);
-	var fab_horizontal_1 = __webpack_require__(74);
-	var fab_click_1 = __webpack_require__(76);
-	var snippet_1 = __webpack_require__(52);
-	var template = __webpack_require__(78);
+	var raised_1 = __webpack_require__(65);
+	var floating_1 = __webpack_require__(67);
+	var fab_1 = __webpack_require__(69);
+	var fab_horizontal_1 = __webpack_require__(75);
+	var fab_click_1 = __webpack_require__(77);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(79);
 	var Butons = (function () {
 	    function Butons() {}
 	    Butons.prototype.data = function () {
 	        return {
-	            raisedButtonsSnippet: __webpack_require__(79),
-	            floatingButtonsSnippet: __webpack_require__(80),
-	            fabButtonsSnippet: __webpack_require__(81),
-	            fabHorizontalButtonsSnippet: __webpack_require__(82),
-	            fabClickButtonsSnippet: __webpack_require__(83)
+	            raisedButtonsSnippet: __webpack_require__(80),
+	            floatingButtonsSnippet: __webpack_require__(81),
+	            fabButtonsSnippet: __webpack_require__(82),
+	            fabHorizontalButtonsSnippet: __webpack_require__(83),
+	            fabClickButtonsSnippet: __webpack_require__(84)
 	        };
 	    };
 	    Butons = __decorate([vue_class_component_1["default"]({
@@ -7694,7 +7729,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7707,8 +7742,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var button_1 = __webpack_require__(21);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(65);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(66);
 	var RaisedButtons = (function () {
 	    function RaisedButtons() {}
 	    RaisedButtons = __decorate([vue_class_component_1["default"]({
@@ -7725,13 +7760,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-button class=\"waves-effect waves-light\">Stuff</md-button>\r\n<md-button class=\"waves-effect waves-light\"><md-icon left>cloud</md-icon>button</md-button>\r\n<md-button class=\"waves-effect waves-light\"><md-icon right>cloud</md-icon>button</md-button>\r\n";
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7744,8 +7779,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var button_1 = __webpack_require__(21);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(67);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(68);
 	var FloatingButtons = (function () {
 	    function FloatingButtons() {}
 	    FloatingButtons = __decorate([vue_class_component_1["default"]({
@@ -7762,13 +7797,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-button class=\"waves-effect waves-light red\" floating large><md-icon>add</md-icon></md-button>\r\n";
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7780,10 +7815,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var fab_1 = __webpack_require__(69);
+	var fab_1 = __webpack_require__(70);
 	var button_1 = __webpack_require__(21);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(73);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(74);
 	var FabButtons = (function () {
 	    function FabButtons() {}
 	    FabButtons = __decorate([vue_class_component_1["default"]({
@@ -7801,7 +7836,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7814,10 +7849,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var button_1 = __webpack_require__(21);
-	var icon_1 = __webpack_require__(23);
-	__webpack_require__(70);
-	var Velocity = __webpack_require__(27);
-	var template = __webpack_require__(72);
+	var icon_1 = __webpack_require__(22);
+	__webpack_require__(71);
+	var Velocity = __webpack_require__(26);
+	var template = __webpack_require__(73);
 	var Fab = (function () {
 	    function Fab() {}
 	    Fab.prototype.data = function () {
@@ -7901,26 +7936,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 71 */,
-/* 72 */
+/* 72 */,
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "<div v-el:fab class=\"md-fab fixed-action-btn\" :class=\"{horizontal: horizontal}\">\r\n    <slot name=\"button\">\r\n        <md-button floating large class=\"red\">\r\n            <slot name=\"icon\">\r\n                <md-icon class=\"large\">\r\n                    <slot name=\"icon-name\">\r\n                        menu\r\n                    </slot>\r\n                </md-icon>\r\n            </slot>\r\n        </md-button>\r\n    </slot>\r\n    <ul :style=\"{visibility: active ? 'visible' : 'hidden'}\">\r\n        <slot></slot>\r\n    </ul>\r\n</div>";
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = "<div style=\"position: relative\">\r\n    <md-fab style=\"position: absolute\">\r\n        <li><md-button floating class=\"red\"><md-icon>insert_chart</md-icon></md-button></li>\r\n        <li><md-button floating class=\"yellow darken-1\"><md-icon>format_quote</md-icon></md-button></li>\r\n        <li><md-button floating class=\"green\"><md-icon>publish</md-icon></md-button></li>\r\n        <li><md-button floating class=\"blue\"><md-icon>attach_file</md-icon></md-button></li>\r\n    </md-fab>\r\n</div>";
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7932,10 +7967,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var fab_1 = __webpack_require__(69);
+	var fab_1 = __webpack_require__(70);
 	var button_1 = __webpack_require__(21);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(75);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(76);
 	var FabButtons = (function () {
 	    function FabButtons() {}
 	    FabButtons = __decorate([vue_class_component_1["default"]({
@@ -7953,13 +7988,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports) {
 
 	module.exports = "<div style=\"position: relative\">\r\n    <md-fab horizontal style=\"position: absolute\">\r\n        <template slot=\"icon-name\">edit</template>\r\n        <li><md-button floating class=\"red\"><md-icon>insert_chart</md-icon></md-button></li>\r\n        <li><md-button floating class=\"yellow darken-1\"><md-icon>format_quote</md-icon></md-button></li>\r\n        <li><md-button floating class=\"green\"><md-icon>publish</md-icon></md-button></li>\r\n        <li><md-button floating class=\"blue\"><md-icon>attach_file</md-icon></md-button></li>\r\n    </md-fab>\r\n</div>\r\n";
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7971,10 +8006,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var fab_1 = __webpack_require__(69);
+	var fab_1 = __webpack_require__(70);
 	var button_1 = __webpack_require__(21);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(77);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(78);
 	var ClickFabButtons = (function () {
 	    function ClickFabButtons() {}
 	    ClickFabButtons = __decorate([vue_class_component_1["default"]({
@@ -7992,49 +8027,49 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports) {
 
 	module.exports = "<div style=\"position: relative\">\r\n    <md-fab horizontal event=\"click\" style=\"position: absolute\">\r\n        <template slot=\"icon-name\">add</template>\r\n        <li><md-button floating class=\"red\"><md-icon>insert_chart</md-icon></md-button></li>\r\n        <li><md-button floating class=\"yellow darken-1\"><md-icon>format_quote</md-icon></md-button></li>\r\n        <li><md-button floating class=\"green\"><md-icon>publish</md-icon></md-button></li>\r\n        <li><md-button floating class=\"blue\"><md-icon>attach_file</md-icon></md-button></li>\r\n    </md-fab>\r\n</div>\r\n";
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Raised</h2>\r\n<div class=\"doc-example\">\r\n    <doc-raised-buttons></doc-raised-buttons>\r\n\r\n    <doc-snippet>{{{raisedButtonsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Floating</h2>\r\n<div class=\"doc-example\">\r\n    <doc-floating-buttons></doc-floating-buttons>\r\n\r\n    <doc-snippet>{{{floatingButtonsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">FAB</h2>\r\n<div class=\"doc-example\">\r\n    <doc-fab-buttons></doc-fab-buttons>\r\n\r\n    <doc-snippet>{{{fabButtonsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">FAB horizontal</h2>\r\n<div class=\"doc-example\">\r\n    <doc-fab-horizontal-buttons></doc-fab-horizontal-buttons>\r\n\r\n    <doc-snippet>{{{fabHorizontalButtonsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Only click</h2>\r\n<div class=\"doc-example\">\r\n    <doc-fab-click-buttons></doc-fab-click-buttons>\r\n\r\n    <doc-snippet>{{{fabClickButtonsSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-light\"</span>&gt;</span>Stuff<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-light\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">left</span>&gt;</span>cloud<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>button<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-light\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>cloud<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>button<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n";
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"btn-large waves-effect waves-light red\"</span> <span class=\"hljs-attribute\">floating</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>add<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>";
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-fab</span> <span class=\"hljs-attribute\">horizontal</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"red\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>insert_chart<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"yellow darken-1\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>format_quote<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"green\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>publish<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"blue\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>attach_file<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-fab</span>&gt;</span>";
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-fab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">template</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"icon-name\"</span>&gt;</span>edit<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">template</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"red\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>insert_chart<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"yellow darken-1\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>format_quote<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"green\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>publish<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"blue\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>attach_file<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-fab</span>&gt;</span>";
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-fab</span> <span class=\"hljs-attribute\">horizontal</span> <span class=\"hljs-attribute\">event</span>=<span class=\"hljs-value\">\"click\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">template</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"icon-name\"</span>&gt;</span>add<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">template</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"red\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>insert_chart<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"yellow darken-1\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>format_quote<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"green\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>publish<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">floating</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"blue\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>attach_file<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-fab</span>&gt;</span>";
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8046,18 +8081,473 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var defaultCollapsible_1 = __webpack_require__(85);
-	var popoutCollapsible_1 = __webpack_require__(92);
-	var expendableCollapsible_1 = __webpack_require__(94);
-	var snippet_1 = __webpack_require__(52);
+	var default_1 = __webpack_require__(86);
+	var image_1 = __webpack_require__(92);
+	var reveal_1 = __webpack_require__(94);
+	var snippet_1 = __webpack_require__(53);
 	var template = __webpack_require__(96);
+	var Cards = (function () {
+	    function Cards() {}
+	    Cards.prototype.data = function () {
+	        return {
+	            defaultCardSnippet: __webpack_require__(97),
+	            imageCardSnippet: __webpack_require__(98),
+	            revealCardSnippet: __webpack_require__(99)
+	        };
+	    };
+	    Cards = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            docDefaultCard: default_1["default"],
+	            docImageCard: image_1["default"],
+	            docRevealCard: reveal_1["default"],
+	            docSnippet: snippet_1["default"]
+	        }
+	    })], Cards);
+	    return Cards;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Cards;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 86 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(87);
+	var card_1 = __webpack_require__(88);
+	var DefaultCard = (function () {
+	    function DefaultCard() {}
+	    DefaultCard = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdCard: card_1["default"]
+	        }
+	    })], DefaultCard);
+	    return DefaultCard;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = DefaultCard;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 87 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m6\">\r\n        <md-card class=\"blue-grey darken-1\" content-class=\"white-text\">\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n\r\n            <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 88 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	__webpack_require__(89);
+	var Velocity = __webpack_require__(26);
+	var template = __webpack_require__(91);
+	var Card = (function () {
+	    function Card() {}
+	    Card.prototype.data = function () {
+	        return {
+	            active: false
+	        };
+	    };
+	    Card.prototype.ready = function () {
+	        var _this = this;
+	        var self = this;
+	        var activators = self.$el.querySelectorAll('.activator');
+	        Array.prototype.slice.call(activators).forEach(function (activator) {
+	            activator.addEventListener('click', _this.open);
+	        });
+	        var revealClose = self.$els.revealClose;
+	        if (revealClose) {
+	            revealClose.addEventListener('click', this.close);
+	        }
+	    };
+	    Card.prototype.open = function () {
+	        if (!this.active) {
+	            this.active = true;
+	            var self = this;
+	            var reveal = self.$els.reveal;
+	            if (reveal) {
+	                reveal.style.display = 'block';
+	                Velocity(reveal, "stop", false);
+	                Velocity(reveal, { translateY: '-100%' }, { duration: 300, queue: false, easing: 'easeInOutQuad' });
+	            }
+	        }
+	    };
+	    Card.prototype.close = function () {
+	        if (this.active) {
+	            this.active = false;
+	            var self = this;
+	            var reveal = self.$els.reveal;
+	            if (reveal) {
+	                Velocity(reveal, { translateY: 0 }, {
+	                    duration: 225,
+	                    queue: false,
+	                    easing: 'easeInOutQuad',
+	                    complete: function complete() {
+	                        reveal.style.display = 'none';
+	                    }
+	                });
+	            }
+	        }
+	    };
+	    Object.defineProperty(Card.prototype, "imageSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'image' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Card.prototype, "titleSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'title' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Card.prototype, "actionsSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'actions' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Card.prototype, "revealSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'reveal' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Card = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            contentClass: {
+	                required: false,
+	                'default': null
+	            },
+	            titleInImage: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            },
+	            small: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            },
+	            medium: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            },
+	            large: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        template: template
+	    })], Card);
+	    return Card;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Card;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 89 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 90 */,
+/* 91 */
+/***/ function(module, exports) {
+
+	module.exports = "<div :style=\"{overflow: revealSlot ? 'hidden' : 'initial'}\"\r\n     :class=\"{small: small, medium: medium, large: large}\"\r\n     class=\"md-card card\">\r\n    <slot name=\"card-content\">\r\n        <slot name=\"card-image\">\r\n            <div v-if=\"imageSlot\" class=\"card-image\">\r\n                <slot name=\"image\"></slot>\r\n                <div v-if=\"titleSlot && titleInImage\" class=\"card-title\">\r\n                    <slot name=\"title\"></slot>\r\n                </div>\r\n            </div>\r\n        </slot>\r\n\r\n        <div class=\"card-content\" :class=\"contentClass\">\r\n            <div v-if=\"titleSlot && !titleInImage\" class=\"card-title\">\r\n                <slot name=\"title\"></slot>\r\n            </div>\r\n            <slot></slot>\r\n        </div>\r\n\r\n        <slot name=\"card-action\">\r\n            <div v-if=\"actionsSlot\" class=\"card-action\">\r\n                <slot name=\"actions\"></slot>\r\n            </div>\r\n        </slot>\r\n\r\n        <div v-if=\"revealSlot\" v-el:reveal class=\"card-reveal\">\r\n            <i v-el:reveal-close class=\"material-icons right close\">close</i>\r\n            <slot name=\"reveal\"></slot>\r\n        </div>\r\n    </slot>\r\n</div>";
+
+/***/ },
+/* 92 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(93);
+	var card_1 = __webpack_require__(88);
+	var ImageCard = (function () {
+	    function ImageCard() {}
+	    ImageCard = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdCard: card_1["default"]
+	        }
+	    })], ImageCard);
+	    return ImageCard;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = ImageCard;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 93 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m7\">\r\n        <md-card title-in-image>\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n            <div slot=\"image\">\r\n                <img src=\"http://materializecss.com/images/sample-1.jpg\">\r\n            </div>\r\n            <div>\r\n                <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n            </div>\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 94 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var card_1 = __webpack_require__(88);
+	var icon_1 = __webpack_require__(22);
+	var wave_effect_1 = __webpack_require__(29);
+	var template = __webpack_require__(95);
+	var RevealCard = (function () {
+	    function RevealCard() {}
+	    RevealCard = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        directives: {
+	            waveEffect: wave_effect_1["default"]
+	        },
+	        components: {
+	            mdCard: card_1["default"],
+	            mdIcon: icon_1["default"]
+	        }
+	    })], RevealCard);
+	    return RevealCard;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = RevealCard;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 95 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m8\">\r\n        <md-card>\r\n            <span slot=\"title\" class=\"activator\">\r\n                Card Title<md-icon right>more_vert</md-icon>\r\n            </span>\r\n            <div slot=\"image\" v-wave-effect class=\"waves-effect waves-block waves-light\">\r\n                <img class=\"activator\" src=\"http://materializecss.com/images/office.jpg\">\r\n            </div>\r\n            <p>\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </p>\r\n            <div slot=\"reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Card Title</span>\r\n                <p>Here is some more information about this product that is only revealed once clicked on.</p>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 96 */
+/***/ function(module, exports) {
+
+	module.exports = "<h2 class=\"header\">Default card</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-card></doc-default-card>\r\n\r\n    <doc-snippet>{{{defaultCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Card with image</h2>\r\n<div class=\"doc-example\">\r\n    <doc-image-card></doc-image-card>\r\n\r\n    <doc-snippet>{{{imageCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Reveal card</h2>\r\n<div class=\"doc-example\">\r\n    <doc-reveal-card></doc-reveal-card>\r\n\r\n    <doc-snippet>{{{revealCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n\r\n";
+
+/***/ },
+/* 97 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"row\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"col s12 m6\"</span>&gt;</span>\r\n        <span class=\"hljs-comment\">&lt;!-- CARD --&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"blue-grey darken-1\"</span> <span class=\"hljs-attribute\">content-class</span>=<span class=\"hljs-value\">\"white-text\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n                Card Title\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>I am a very simple card. I am good at containing small bits of information.\r\n                I am convenient because I require little markup to use effectively.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
+
+/***/ },
+/* 98 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n        Card Title\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/sample-1.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>I am a very simple card. I am good at containing small bits of information.\r\n            I am convenient because I require little markup to use effectively.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
+
+/***/ },
+/* 99 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span>&gt;</span>\r\n        Card Title<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>more_vert<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-comment\">&lt;!-- wave effect directive --&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span> <span class=\"hljs-attribute\">v-wave-effect</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-block waves-light\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/office.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"reveal\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-title grey-text text-darken-4\"</span>&gt;</span>Card Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Here is some more information about this product that is only revealed once clicked on.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
+
+/***/ },
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var default_1 = __webpack_require__(101);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(107);
+	var Chips = (function () {
+	    function Chips() {}
+	    Chips.prototype.data = function () {
+	        return {
+	            defaultChipSnippet: __webpack_require__(108)
+	        };
+	    };
+	    Chips = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            docDefaultChip: default_1["default"],
+	            docSnippet: snippet_1["default"]
+	        }
+	    })], Chips);
+	    return Chips;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Chips;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 101 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(102);
+	var chip_1 = __webpack_require__(103);
+	var DefaultChip = (function () {
+	    function DefaultChip() {}
+	    DefaultChip = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdChip: chip_1["default"]
+	        }
+	    })], DefaultChip);
+	    return DefaultChip;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = DefaultChip;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 102 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-chip>\r\n    <img src=\"http://materializecss.com/images/yuna.jpg\" alt=\"Contact Person\">\r\n    Jane Doe\r\n</md-chip>\r\n\r\n<md-chip closeable>\r\n    Tag\r\n</md-chip>\r\n\r\n";
+
+/***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	__webpack_require__(104);
+	var template = __webpack_require__(106);
+	var Chip = (function () {
+	    function Chip() {}
+	    Chip.prototype.data = function () {
+	        return {
+	            closed: false
+	        };
+	    };
+	    Chip = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            closeable: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        template: template
+	    })], Chip);
+	    return Chip;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Chip;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 104 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 105 */,
+/* 106 */
+/***/ function(module, exports) {
+
+	module.exports = "<div v-if=\"!closed\" class=\"chip\" transition=\"chip\">\r\n    <slot></slot>\r\n    <i v-if=\"closeable\"\r\n       @click=\"closed = true\" class=\"material-icons\">close</i>\r\n</div>";
+
+/***/ },
+/* 107 */
+/***/ function(module, exports) {
+
+	module.exports = "<h2 class=\"header\">Chips</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-chip></doc-default-chip>\r\n\r\n    <doc-snippet>{{{defaultChipSnippet}}}</doc-snippet>\r\n</div>\r\n";
+
+/***/ },
+/* 108 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-chip</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/yuna.jpg\"</span> <span class=\"hljs-attribute\">alt</span>=<span class=\"hljs-value\">\"Contact Person\"</span>&gt;</span>\r\n    Jane Doe\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-chip</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-chip</span> <span class=\"hljs-attribute\">closeable</span>&gt;</span>\r\n    Tag\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-chip</span>&gt;</span>";
+
+/***/ },
+/* 109 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var defaultCollapsible_1 = __webpack_require__(110);
+	var popoutCollapsible_1 = __webpack_require__(117);
+	var expendableCollapsible_1 = __webpack_require__(119);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(121);
 	var Collapsibles = (function () {
 	    function Collapsibles() {}
 	    Collapsibles.prototype.data = function () {
 	        return {
-	            defaultCollapsibleSnippet: __webpack_require__(97),
-	            popoutCollapsibleSnippet: __webpack_require__(98),
-	            expendableCollapsibleSnippet: __webpack_require__(99)
+	            defaultCollapsibleSnippet: __webpack_require__(122),
+	            popoutCollapsibleSnippet: __webpack_require__(123),
+	            expendableCollapsibleSnippet: __webpack_require__(124)
 	        };
 	    };
 	    Collapsibles = __decorate([vue_class_component_1["default"]({
@@ -8076,7 +8566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 85 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8088,10 +8578,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(86);
-	var collapsible_1 = __webpack_require__(87);
-	var collapsible_item_1 = __webpack_require__(88);
-	var icon_1 = __webpack_require__(23);
+	var template = __webpack_require__(111);
+	var collapsible_1 = __webpack_require__(112);
+	var collapsible_item_1 = __webpack_require__(113);
+	var icon_1 = __webpack_require__(22);
 	var DefaultCollapsible = (function () {
 	    function DefaultCollapsible() {}
 	    DefaultCollapsible = __decorate([vue_class_component_1["default"]({
@@ -8109,13 +8599,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 86 */
+/* 111 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-collapsible>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>filter_drama</md-icon>First</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>place</md-icon>Second</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>whatshot</md-icon>Third</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n</md-collapsible>";
 
 /***/ },
-/* 87 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8127,8 +8617,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var collapsible_item_1 = __webpack_require__(88);
-	var template = __webpack_require__(91);
+	var collapsible_item_1 = __webpack_require__(113);
+	var template = __webpack_require__(116);
 	var Collapsible = (function () {
 	    function Collapsible() {}
 	    Object.defineProperty(Collapsible.prototype, "computedClasses", {
@@ -8177,7 +8667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 88 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8189,9 +8679,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var events_1 = __webpack_require__(89);
-	var template = __webpack_require__(90);
-	var Velocity = __webpack_require__(27);
+	var events_1 = __webpack_require__(114);
+	var template = __webpack_require__(115);
+	var Velocity = __webpack_require__(26);
 	var CollapsibleItem = (function () {
 	    function CollapsibleItem() {}
 	    CollapsibleItem.prototype.data = function () {
@@ -8306,7 +8796,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 89 */
+/* 114 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -8326,19 +8816,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 90 */
+/* 115 */
 /***/ function(module, exports) {
 
 	module.exports = "<li :class=\"{active: active}\">\r\n    <slot name=\"content\">\r\n        <div @click=\"toggle\" class=\"collapsible-header\">\r\n            <slot name=\"header\"></slot>\r\n        </div>\r\n        <div v-el:body class=\"collapsible-body\" :style=\"computedStyle\">\r\n            <slot name=\"body\"></slot>\r\n        </div>\r\n    </slot>\r\n</li>\r\n";
 
 /***/ },
-/* 91 */
+/* 116 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"collapsible\" :class=\"computedClasses\">\r\n    <slot></slot>\r\n</ul>";
 
 /***/ },
-/* 92 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8350,10 +8840,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(93);
-	var collapsible_1 = __webpack_require__(87);
-	var collapsible_item_1 = __webpack_require__(88);
-	var icon_1 = __webpack_require__(23);
+	var template = __webpack_require__(118);
+	var collapsible_1 = __webpack_require__(112);
+	var collapsible_item_1 = __webpack_require__(113);
+	var icon_1 = __webpack_require__(22);
 	var PopoutCollapsible = (function () {
 	    function PopoutCollapsible() {}
 	    PopoutCollapsible = __decorate([vue_class_component_1["default"]({
@@ -8371,13 +8861,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 93 */
+/* 118 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-collapsible popout>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>filter_drama</md-icon>First</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>place</md-icon>Second</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>whatshot</md-icon>Third</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n</md-collapsible>";
 
 /***/ },
-/* 94 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8389,10 +8879,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(95);
-	var collapsible_1 = __webpack_require__(87);
-	var collapsible_item_1 = __webpack_require__(88);
-	var icon_1 = __webpack_require__(23);
+	var template = __webpack_require__(120);
+	var collapsible_1 = __webpack_require__(112);
+	var collapsible_item_1 = __webpack_require__(113);
+	var icon_1 = __webpack_require__(22);
 	var ExpendableCollapsible = (function () {
 	    function ExpendableCollapsible() {}
 	    ExpendableCollapsible = __decorate([vue_class_component_1["default"]({
@@ -8410,37 +8900,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 95 */
+/* 120 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-collapsible expendable>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>filter_drama</md-icon>First</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>place</md-icon>Second</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n    <md-collapsible-item>\r\n        <div slot=\"header\"><md-icon>whatshot</md-icon>Third</div>\r\n        <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n    </md-collapsible-item>\r\n</md-collapsible>";
 
 /***/ },
-/* 96 */
+/* 121 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Accordion</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-collapsible></doc-default-collapsible>\r\n\r\n    <doc-snippet>{{{defaultCollapsibleSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Popout</h2>\r\n<div class=\"doc-example\">\r\n    <doc-popout-collapsible></doc-popout-collapsible>\r\n\r\n    <doc-snippet>{{{popoutCollapsibleSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Expandable</h2>\r\n<div class=\"doc-example\">\r\n    <doc-expendable-collapsible></doc-expendable-collapsible>\r\n\r\n    <doc-snippet>{{{expendableCollapsibleSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 97 */
+/* 122 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>filter_drama<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>First<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>place<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Second<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>whatshot<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Third<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible</span>&gt;</span>";
 
 /***/ },
-/* 98 */
+/* 123 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible</span> <span class=\"hljs-attribute\">popout</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>filter_drama<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>First<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>place<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Second<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>whatshot<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Third<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible</span>&gt;</span>";
 
 /***/ },
-/* 99 */
+/* 124 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible</span> <span class=\"hljs-attribute\">expendable</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>filter_drama<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>First<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>place<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Second<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>whatshot<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Third<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"body\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Lorem ipsum dolor sit amet.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collapsible</span>&gt;</span>";
 
 /***/ },
-/* 100 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8452,15 +8942,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var snippet_1 = __webpack_require__(52);
-	var default_1 = __webpack_require__(101);
-	var events_1 = __webpack_require__(89);
-	var template = __webpack_require__(103);
+	var snippet_1 = __webpack_require__(53);
+	var default_1 = __webpack_require__(126);
+	var events_1 = __webpack_require__(114);
+	var template = __webpack_require__(128);
 	var Modals = (function () {
 	    function Modals() {}
 	    Modals.prototype.data = function () {
 	        return {
-	            defaultDropdownSnippet: __webpack_require__(104)
+	            defaultDropdownSnippet: __webpack_require__(129)
 	        };
 	    };
 	    Modals = __decorate([vue_class_component_1["default"]({
@@ -8478,7 +8968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 101 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8490,9 +8980,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(102);
+	var template = __webpack_require__(127);
 	var dropdown_1 = __webpack_require__(20);
-	var dropdown_item_1 = __webpack_require__(32);
+	var dropdown_item_1 = __webpack_require__(33);
 	var DefaultDropdown = (function () {
 	    function DefaultDropdown() {}
 	    DefaultDropdown = __decorate([vue_class_component_1["default"]({
@@ -8509,25 +8999,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 102 */
+/* 127 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-dropdown title=\"Drop me\">\r\n    <md-dropdown-item>\r\n        one\r\n    </md-dropdown-item>\r\n    <md-dropdown-item>\r\n        two\r\n    </md-dropdown-item>\r\n    <li class=\"divider\"></li>\r\n    <md-dropdown-item>\r\n        three\r\n    </md-dropdown-item>\r\n</md-dropdown>";
 
 /***/ },
-/* 103 */
+/* 128 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Dropdown</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-dropdown></doc-default-dropdown>\r\n\r\n    <doc-snippet>{{{defaultDropdownSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 104 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Drop me\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n        one\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n        two\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"divider\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n        three\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown</span>&gt;</span>";
 
 /***/ },
-/* 105 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8539,32 +9029,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var left_align_1 = __webpack_require__(106);
-	var right_align_1 = __webpack_require__(108);
-	var center_align_1 = __webpack_require__(110);
-	var active_items_1 = __webpack_require__(112);
-	var fixed_1 = __webpack_require__(114);
-	var dropdown_1 = __webpack_require__(116);
-	var icon_links_1 = __webpack_require__(118);
-	var buttons_1 = __webpack_require__(120);
-	var search_1 = __webpack_require__(122);
-	var mobile_collapse_1 = __webpack_require__(124);
-	var snippet_1 = __webpack_require__(52);
-	var template = __webpack_require__(126);
+	var left_align_1 = __webpack_require__(131);
+	var right_align_1 = __webpack_require__(133);
+	var center_align_1 = __webpack_require__(135);
+	var active_items_1 = __webpack_require__(137);
+	var fixed_1 = __webpack_require__(139);
+	var dropdown_1 = __webpack_require__(141);
+	var icon_links_1 = __webpack_require__(143);
+	var buttons_1 = __webpack_require__(145);
+	var search_1 = __webpack_require__(147);
+	var mobile_collapse_1 = __webpack_require__(149);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(151);
 	var Navbars = (function () {
 	    function Navbars() {}
 	    Navbars.prototype.data = function () {
 	        return {
-	            navbarRightSnippet: __webpack_require__(127),
-	            navbarLeftSnippet: __webpack_require__(128),
-	            navbarCenterSnippet: __webpack_require__(129),
-	            navbarActiveItemsSnippet: __webpack_require__(130),
-	            navbarFixedSnippet: __webpack_require__(131),
-	            navbarDropdownSnippet: __webpack_require__(132),
-	            navbarIconLinksSnippet: __webpack_require__(133),
-	            navbarButtonsSnippet: __webpack_require__(133),
-	            navbarSearchSnippet: __webpack_require__(134),
-	            navbarMobileCollapseSnippet: __webpack_require__(134)
+	            navbarRightSnippet: __webpack_require__(152),
+	            navbarLeftSnippet: __webpack_require__(153),
+	            navbarCenterSnippet: __webpack_require__(154),
+	            navbarActiveItemsSnippet: __webpack_require__(155),
+	            navbarFixedSnippet: __webpack_require__(156),
+	            navbarDropdownSnippet: __webpack_require__(157),
+	            navbarIconLinksSnippet: __webpack_require__(158),
+	            navbarButtonsSnippet: __webpack_require__(158),
+	            navbarSearchSnippet: __webpack_require__(159),
+	            navbarMobileCollapseSnippet: __webpack_require__(159)
 	        };
 	    };
 	    Navbars = __decorate([vue_class_component_1["default"]({
@@ -8590,7 +9080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 106 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8603,9 +9093,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var template = __webpack_require__(107);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var template = __webpack_require__(132);
 	var LeftAlignNavbars = (function () {
 	    function LeftAlignNavbars() {}
 	    LeftAlignNavbars.prototype.data = function () {
@@ -8626,13 +9116,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 107 */
+/* 132 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-navbar title=\"Logo\" left>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 108 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8645,9 +9135,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var template = __webpack_require__(109);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var template = __webpack_require__(134);
 	var RightAlignNavbar = (function () {
 	    function RightAlignNavbar() {}
 	    RightAlignNavbar = __decorate([vue_class_component_1["default"]({
@@ -8665,13 +9155,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 109 */
+/* 134 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Right align</h2>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 110 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8684,9 +9174,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var template = __webpack_require__(111);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var template = __webpack_require__(136);
 	var CenterAlignNavbar = (function () {
 	    function CenterAlignNavbar() {}
 	    CenterAlignNavbar = __decorate([vue_class_component_1["default"]({
@@ -8704,13 +9194,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 111 */
+/* 136 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-navbar title=\"Logo\" center left>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 112 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8723,9 +9213,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var template = __webpack_require__(113);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var template = __webpack_require__(138);
 	var ActiveItemNavbar = (function () {
 	    function ActiveItemNavbar() {}
 	    ActiveItemNavbar = __decorate([vue_class_component_1["default"]({
@@ -8743,13 +9233,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 113 */
+/* 138 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-navbar title=\"Logo\" left center>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\" active>JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 114 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8763,10 +9253,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var button_1 = __webpack_require__(21);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var snippet_1 = __webpack_require__(52);
-	var template = __webpack_require__(115);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(140);
 	var FixedNavbars = (function () {
 	    function FixedNavbars() {}
 	    FixedNavbars.prototype.data = function () {
@@ -8794,13 +9284,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 115 */
+/* 140 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-button @click=\"toggleFixed\">\r\n    Toggle display fixed menu\r\n</md-button>\r\n\r\n<md-navbar title=\"Logo\" left fixed v-if=\"showFixed\" bg-color=\"blue darken-4\">\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">JavaScript</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 116 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8813,14 +9303,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
 	var dropdown_1 = __webpack_require__(20);
-	var dropdown_item_1 = __webpack_require__(32);
-	var dropdown_list_1 = __webpack_require__(31);
-	var icon_1 = __webpack_require__(23);
-	var events_1 = __webpack_require__(89);
-	var template = __webpack_require__(117);
+	var dropdown_item_1 = __webpack_require__(33);
+	var dropdown_list_1 = __webpack_require__(32);
+	var icon_1 = __webpack_require__(22);
+	var events_1 = __webpack_require__(114);
+	var template = __webpack_require__(142);
 	var DropdownNavbar = (function () {
 	    function DropdownNavbar() {}
 	    DropdownNavbar = __decorate([vue_class_component_1["default"]({
@@ -8843,13 +9333,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 117 */
+/* 142 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-dropdown-list>\r\n    <md-dropdown-item closing>one</md-dropdown-item>\r\n    <md-dropdown-item closing>two</md-dropdown-item>\r\n    <md-dropdown-item class=\"divider\"></md-dropdown-item>\r\n    <md-dropdown-item closing>three</md-dropdown-item>\r\n</md-dropdown-list>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\" @click=\"broadcast('dropdown::open', $event)\">\r\n        Dropdown<md-icon right>arrow_drop_down</md-icon>\r\n    </md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 118 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8862,10 +9352,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(119);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(144);
 	var IconLinksNavbar = (function () {
 	    function IconLinksNavbar() {}
 	    IconLinksNavbar.prototype.data = function () {
@@ -8887,13 +9377,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 119 */
+/* 144 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>search</md-icon></md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>view_module</md-icon></md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>refresh</md-icon></md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon>more_vert</md-icon></md-nav-item>\r\n</md-navbar>\r\n\r\n<hr/>\r\n\r\n<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon left>search</md-icon>Link with Left Icon</md-nav-item>\r\n    <md-nav-item href=\"javascript:void(0)\"><md-icon right>view_module</md-icon>Link with Right Icon</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 120 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8907,10 +9397,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var badge_1 = __webpack_require__(9);
 	var button_1 = __webpack_require__(21);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(121);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(146);
 	var ButtonsNavbar = (function () {
 	    function ButtonsNavbar() {}
 	    ButtonsNavbar = __decorate([vue_class_component_1["default"]({
@@ -8930,13 +9420,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 121 */
+/* 146 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-navbar title=\"Logo\" right>\r\n    <md-nav-item href=\"javascript:void(0)\">A link</md-nav-item>\r\n    <md-nav-item>\r\n        <md-button slot=\"content\" class=\"waves-effect waves-light\">A button</md-button>\r\n    </md-nav-item>\r\n    <md-nav-item>\r\n        <md-button slot=\"content\" class=\"waves-effect waves-light\" large>A large button</md-button>\r\n    </md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 122 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8948,9 +9438,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var navbar_1 = __webpack_require__(39);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(123);
+	var navbar_1 = __webpack_require__(40);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(148);
 	var SearchNavbar = (function () {
 	    function SearchNavbar() {}
 	    SearchNavbar.prototype.data = function () {
@@ -8970,13 +9460,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 123 */
+/* 148 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Search</h2>\r\n\r\n<md-navbar>\r\n    <form slot=\"content\">\r\n        <!-- todo input field -->\r\n        <div class=\"input-field\">\r\n            <input id=\"search\" type=\"search\" required>\r\n            <label for=\"search\"><md-icon>search</md-icon></label>\r\n            <i class=\"material-icons\">close</i>\r\n        </div>\r\n    </form>\r\n</md-navbar>";
 
 /***/ },
-/* 124 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -8988,10 +9478,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var icon_1 = __webpack_require__(23);
-	var template = __webpack_require__(125);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var icon_1 = __webpack_require__(22);
+	var template = __webpack_require__(150);
 	var MobileCollase = (function () {
 	    function MobileCollase() {}
 	    MobileCollase.prototype.data = function () {
@@ -9012,67 +9502,67 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 125 */
+/* 150 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Mobile Collapse</h2>\r\n\r\n<md-navbar title=\"Logo\" hamburger>\r\n    <md-nav-item href=\"javascript:alert('sass.html')\">Sass</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('badges.html')\">Components</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('collapsible.html')\">Javascript</md-nav-item>\r\n    <md-nav-item href=\"javascript:alert('mobile.html')\">Mobile</md-nav-item>\r\n</md-navbar>\r\n";
 
 /***/ },
-/* 126 */
+/* 151 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"doc-example\">\r\n    <doc-navbar-right></doc-navbar-right>\r\n    <doc-snippet>{{{navbarRightSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Left Aligned</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbar-left></doc-navbar-left>\r\n    <doc-snippet>{{{navbarLeftSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Center Aligned</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbar-center></doc-navbar-center>\r\n    <doc-snippet>{{{navbarCenterSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Active items</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbar-active-items></doc-navbar-active-items>\r\n    <doc-snippet>{{{navbarActiveItemsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Fixes</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbar-fixed></doc-navbar-fixed>\r\n    <doc-snippet>{{{navbarFixedSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Dropdown Menu</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbar-dropdown></doc-navbar-dropdown>\r\n    <doc-snippet>{{{navbarDropdownSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Icon Links</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbar-icon-links></doc-navbar-icon-links>\r\n    <doc-snippet>{{{navbarIconLinksSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Buttons</h2>\r\n<div class=\"doc-example\">\r\n    <doc-navbar-buttons></doc-navbar-buttons>\r\n    <doc-snippet>{{{navbarButtonsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<div class=\"doc-example\">\r\n    <doc-navbar-search></doc-navbar-search>\r\n    <doc-snippet>{{{navbarSearchSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<div class=\"doc-example\">\r\n    <doc-navbar-mobile-collapse></doc-navbar-mobile-collapse>\r\n    <doc-snippet>{{{navbarMobileCollapseSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 127 */
+/* 152 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
-/* 128 */
+/* 153 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
-/* 129 */
+/* 154 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">center</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
-/* 130 */
+/* 155 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span> <span class=\"hljs-attribute\">center</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span> <span class=\"hljs-attribute\">active</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
-/* 131 */
+/* 156 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">left</span> <span class=\"hljs-attribute\">fixed</span> <span class=\"hljs-attribute\">bg-color</span>=<span class=\"hljs-value\">\"blue darken-4\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"sass.html\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"badges.html\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"collapsible.html\"</span>&gt;</span>JavaScript<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
-/* 132 */
+/* 157 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-list</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>one<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>two<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"divider\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>three<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-list</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:alert('sass.html')\"</span>&gt;</span>Sass<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:alert('badges.html')\"</span>&gt;</span>Components<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>\r\n                 @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('dropdown::open')\"</span>&gt;</span>\r\n        Dropdown<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>arrow_drop_down<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span>&gt;</span><span class=\"actionscript\">\r\n    <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">broadcast</span><span class=\"hljs-params\">(event, $event)</span> </span>{\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(event, $event);\r\n    }\r\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
 
 /***/ },
-/* 133 */
+/* 158 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>search<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>view_module<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>refresh<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>more_vert<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Logo\"</span> <span class=\"hljs-attribute\">right</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">left</span>&gt;</span>search<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Link with Left Icon<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-nav-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>view_module<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>Link with Right Icon<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-nav-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n";
 
 /***/ },
-/* 134 */
+/* 159 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">form</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"input-field\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">input</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"search\"</span> <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">\"search\"</span> <span class=\"hljs-attribute\">required</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">label</span> <span class=\"hljs-attribute\">for</span>=<span class=\"hljs-value\">\"search\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>search<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">label</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>close<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">form</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
-/* 135 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9084,19 +9574,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var snippet_1 = __webpack_require__(52);
-	var default_1 = __webpack_require__(136);
-	var fixed_footer_1 = __webpack_require__(144);
-	var bottom_1 = __webpack_require__(146);
-	var events_1 = __webpack_require__(89);
-	var template = __webpack_require__(150);
+	var snippet_1 = __webpack_require__(53);
+	var default_1 = __webpack_require__(161);
+	var fixed_footer_1 = __webpack_require__(169);
+	var bottom_1 = __webpack_require__(171);
+	var events_1 = __webpack_require__(114);
+	var template = __webpack_require__(175);
 	var Modals = (function () {
 	    function Modals() {}
 	    Modals.prototype.data = function () {
 	        return {
-	            defaultModalSnippet: __webpack_require__(151),
-	            fixedFooterModalSnippet: __webpack_require__(152),
-	            bottomModalSnippet: __webpack_require__(153)
+	            defaultModalSnippet: __webpack_require__(176),
+	            fixedFooterModalSnippet: __webpack_require__(177),
+	            bottomModalSnippet: __webpack_require__(178)
 	        };
 	    };
 	    Modals = __decorate([vue_class_component_1["default"]({
@@ -9116,7 +9606,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 136 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9128,10 +9618,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(137);
+	var template = __webpack_require__(162);
 	var button_1 = __webpack_require__(21);
-	var modal_1 = __webpack_require__(138);
-	var events_1 = __webpack_require__(89);
+	var modal_1 = __webpack_require__(163);
+	var events_1 = __webpack_require__(114);
 	var DefaultModal = (function () {
 	    function DefaultModal() {}
 	    DefaultModal = __decorate([vue_class_component_1["default"]({
@@ -9149,13 +9639,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 137 */
+/* 162 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-modal>\r\n    <h4>Modal Header</h4>\r\n    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>\r\n\r\n    <span slot=\"footer\">\r\n        <md-button href=\"javascript:void(0)\" class=\"waves-effect waves-green btn-flat\"\r\n             @click=\"broadcast('modal::close')\">\r\n            Agree\r\n        </md-button>\r\n        <md-button href=\"javascript:void(0)\" class=\"waves-effect waves-green btn-flat\"\r\n             @click=\"broadcast('modal::close')\">\r\n            Disagree\r\n        </md-button>\r\n    </span>\r\n</md-modal>\r\n\r\n<md-button href=\"javascript:void(0)\"\r\n     @click=\"broadcast('modal::open')\">\r\n    Modal\r\n</md-button>";
 
 /***/ },
-/* 138 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9168,9 +9658,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	// todo better animation   
 	var vue_class_component_1 = __webpack_require__(6);
-	var lean_overlay_1 = __webpack_require__(139);
-	__webpack_require__(141);
-	var template = __webpack_require__(143);
+	var lean_overlay_1 = __webpack_require__(164);
+	__webpack_require__(166);
+	var template = __webpack_require__(168);
 	var ESC = 27;
 	var Modal = (function () {
 	    function Modal() {}
@@ -9281,7 +9771,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 139 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9293,7 +9783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(140);
+	var template = __webpack_require__(165);
 	var LeanOverlay = (function () {
 	    function LeanOverlay() {}
 	    LeanOverlay = __decorate([vue_class_component_1["default"]({
@@ -9306,26 +9796,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 140 */
+/* 165 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"lean-overlay\" style=\"z-index: 1002; display: block; opacity: 0.5;\"></div>";
 
 /***/ },
-/* 141 */
+/* 166 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 142 */,
-/* 143 */
+/* 167 */,
+/* 168 */
 /***/ function(module, exports) {
 
 	module.exports = "<div v-if=\"active\" :transition=\"transition\"\r\n     :style=\"computedStyle\" class=\"modal\" :class=\"computedClasses\">\r\n    <slot name=\"content\">\r\n        <div class=\"modal-content\">\r\n            <slot></slot>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n            <slot name=\"footer\"></slot>\r\n        </div>\r\n    </slot>\r\n</div>\r\n\r\n<md-lean-overlay v-if=\"active\" transition=\"modal-overlay\"\r\n              @click=\"close\">\r\n</md-lean-overlay>";
 
 /***/ },
-/* 144 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9337,10 +9827,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(145);
+	var template = __webpack_require__(170);
 	var button_1 = __webpack_require__(21);
-	var modal_1 = __webpack_require__(138);
-	var events_1 = __webpack_require__(89);
+	var modal_1 = __webpack_require__(163);
+	var events_1 = __webpack_require__(114);
 	var FifexFooterModal = (function () {
 	    function FifexFooterModal() {}
 	    FifexFooterModal = __decorate([vue_class_component_1["default"]({
@@ -9358,13 +9848,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 145 */
+/* 170 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-modal class=\"modal-fixed-footer\">\r\n    <h4>Modal Header</h4>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n    <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\n    </p>\r\n\r\n    <span slot=\"footer\">\r\n        <md-button href=\"javascript:void(0)\" class=\"waves-effect waves-green btn-flat\"\r\n             @click=\"broadcast('modal::close')\">\r\n            Agree\r\n        </md-button>\r\n        <md-button href=\"javascript:void(0)\" class=\"waves-effect waves-green btn-flat\"\r\n             @click=\"broadcast('modal::close')\">\r\n            Diagree\r\n        </md-button>\r\n    </span>\r\n</md-modal>\r\n\r\n<md-button href=\"javascript:void(0)\"\r\n     @click=\"broadcast('modal::open')\">\r\n    Modal - fixed footer\r\n</md-button>\r\n";
 
 /***/ },
-/* 146 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9376,14 +9866,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	__webpack_require__(147);
-	var template = __webpack_require__(149);
+	__webpack_require__(172);
+	var template = __webpack_require__(174);
 	var collection_1 = __webpack_require__(15);
 	var collection_item_1 = __webpack_require__(17);
 	var button_1 = __webpack_require__(21);
-	var modal_1 = __webpack_require__(138);
-	var icon_1 = __webpack_require__(23);
-	var events_1 = __webpack_require__(89);
+	var modal_1 = __webpack_require__(163);
+	var icon_1 = __webpack_require__(22);
+	var events_1 = __webpack_require__(114);
 	var BottomModal = (function () {
 	    function BottomModal() {}
 	    BottomModal = __decorate([vue_class_component_1["default"]({
@@ -9404,44 +9894,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 147 */
+/* 172 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 148 */,
-/* 149 */
+/* 173 */,
+/* 174 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-modal bottom>\r\n    <md-collection>\r\n        <md-collection-item class=\"avatar\">\r\n            <img src=\"http://materializecss.com/images/yuna.jpg\" alt=\"\" class=\"circle\">\r\n            <span class=\"title\">Title</span>\r\n            <p>First Line <br> Second Line </p>\r\n            <a href=\"javascript:void(0)\" class=\"secondary-content\"><i class=\"material-icons\">grade</i></a>\r\n        </md-collection-item>\r\n        <md-collection-item class=\"avatar\">\r\n            <md-icon class=\"circle\">folder</md-icon>\r\n            <span class=\"title\">Title</span>\r\n            <p>First Line <br> Second Line </p>\r\n            <a href=\"javascript:void(0)\" class=\"secondary-content\"><i class=\"material-icons\">grade</i></a>\r\n        </md-collection-item>\r\n        <md-collection-item class=\"avatar\">\r\n            <md-icon class=\"circle green\">assessment</md-icon>\r\n            <span class=\"title\">Title</span>\r\n            <p>First Line <br> Second Line </p>\r\n            <a href=\"javascript:void(0)\" class=\"secondary-content\"><i class=\"material-icons\">grade</i></a>\r\n        </md-collection-item>\r\n        <md-collection-item class=\"avatar\">\r\n            <md-icon class=\"circle red\">play_arrow</md-icon>\r\n            <span class=\"title\">Title</span>\r\n            <p>First Line <br> Second Line </p>\r\n            <a href=\"javascript:void(0)\" class=\"secondary-content\"><i class=\"material-icons\">grade</i></a>\r\n        </md-collection-item>\r\n    </md-collection>\r\n</md-modal>\r\n\r\n<md-button href=\"javascript:void(0)\"\r\n     @click=\"broadcast('modal::open')\">\r\n    Modal - bottom style\r\n</md-button>";
 
 /***/ },
-/* 150 */
+/* 175 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Modal</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-modal></doc-default-modal>\r\n\r\n    <doc-snippet>{{{defaultModalSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Modal - fixed footer</h2>\r\n<div class=\"doc-example\">\r\n    <doc-fixed-footer-modal></doc-fixed-footer-modal>\r\n\r\n    <doc-snippet>{{{fixedFooterModalSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Modal - bottom</h2>\r\n<p>\r\n    TODO: warn keep modals in different component due events\r\n</p>\r\n<div class=\"doc-example\">\r\n    <doc-bottom-modal></doc-bottom-modal>\r\n\r\n    <doc-snippet>{{{bottomModalSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 151 */
+/* 176 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h4</span>&gt;</span>Modal Header<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h4</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>A bunch of text<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"footer\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-green btn-flat\"</span>\r\n             @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('modal::close')\"</span>&gt;</span>\r\n            Agree\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>\r\n     @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>";
 
 /***/ },
-/* 152 */
+/* 177 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"modal-fixed-footer\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h4</span>&gt;</span>Modal Header<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h4</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>A bunch of text<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"footer\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-green btn-flat\"</span>\r\n             @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('modal::close')\"</span>&gt;</span>\r\n            Agree\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>\r\n     @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal - fixed footer\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n";
 
 /***/ },
-/* 153 */
+/* 178 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-comment\">&lt;!-- Simple --&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span> <span class=\"hljs-attribute\">bottom</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h4</span>&gt;</span>Modal Header<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h4</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>A bunch of text<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"footer\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-green btn-flat\"</span>\r\n             @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('modal::close')\"</span>&gt;</span>\r\n            Agree\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>\r\n     @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal - bottom style\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n\r\n<span class=\"hljs-comment\">&lt;!-- Complex --&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span> <span class=\"hljs-attribute\">bottom</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/yuna.jpg\"</span> <span class=\"hljs-attribute\">alt</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span>folder<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle green\"</span>&gt;</span>assessment<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle red\"</span>&gt;</span>play_arrow<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>\r\n     @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal - bottom style\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>";
 
 /***/ },
-/* 154 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9453,16 +9943,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var toasts_1 = __webpack_require__(155);
-	var tooltips_1 = __webpack_require__(157);
-	var snippet_1 = __webpack_require__(52);
-	var template = __webpack_require__(159);
+	var toasts_1 = __webpack_require__(180);
+	var tooltips_1 = __webpack_require__(182);
+	var snippet_1 = __webpack_require__(53);
+	var template = __webpack_require__(184);
 	var Dialogs = (function () {
 	    function Dialogs() {}
 	    Dialogs.prototype.data = function () {
 	        return {
-	            toastsSnippet: __webpack_require__(160),
-	            tooltipsSnippet: __webpack_require__(161)
+	            toastsSnippet: __webpack_require__(185),
+	            tooltipsSnippet: __webpack_require__(186)
 	        };
 	    };
 	    Dialogs = __decorate([vue_class_component_1["default"]({
@@ -9480,7 +9970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 155 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9492,8 +9982,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(156);
-	var toast_1 = __webpack_require__(25);
+	var template = __webpack_require__(181);
+	var toast_1 = __webpack_require__(24);
 	var button_1 = __webpack_require__(21);
 	var Toasts = (function () {
 	    function Toasts() {}
@@ -9517,13 +10007,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 156 */
+/* 181 */
 /***/ function(module, exports) {
 
 	module.exports = "<p>\r\n    <md-button @click=\"toast('I am a toast!', 4000)\">\r\n        TOAST!\r\n    </md-button>\r\n</p>\r\n\r\n<p>\r\n    <md-button @click=\"toast('<span>I am toast content</span>', 5000)\">\r\n        TOAST with content!\r\n    </md-button>\r\n</p>\r\n\r\n<p>\r\n    <md-button @click=\"makeAToast('I am toast')\">\r\n        TOAST with callback!\r\n    </md-button>\r\n</p>\r\n\r\n<p>\r\n    <md-button @click=\"toast('I am a toast!', 3000, 'rounded')\">\r\n        Rounded TOAST\r\n    </md-button>\r\n</p>\r\n\r\n";
 
 /***/ },
-/* 157 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9535,8 +10025,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(158);
-	var tooltip_1 = __webpack_require__(28);
+	var template = __webpack_require__(183);
+	var tooltip_1 = __webpack_require__(27);
 	var button_1 = __webpack_require__(21);
 	var Tooltips = (function () {
 	    function Tooltips() {}
@@ -9554,31 +10044,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 158 */
+/* 183 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"row\">\r\n    <p>\r\n        <md-button @mouseover=\"tooltip($event, 'I am bottom tooltip!', 'bottom')\"\r\n             class=\"col s4 offset-s4 l2 offset-l1\">\r\n            BOTTOM\r\n        </md-button>\r\n    </p>\r\n\r\n    <p>\r\n        <md-button @mouseover=\"tooltip($event, 'I am top tooltip!', 'top')\"\r\n             class=\"col s4 offset-s4 l2 offset-l1\">\r\n            TOP\r\n        </md-button>\r\n    </p>\r\n\r\n    <p>\r\n        <md-button @mouseover=\"tooltip($event, 'I am left tooltip!', 'left')\"\r\n             class=\"col s4 offset-s4 l2 offset-l1\">\r\n            LEFT\r\n        </md-button>\r\n    </p>\r\n\r\n    <p>\r\n        <md-button @mouseover=\"tooltip($event, 'I am right tooltip!', 'right')\"\r\n             class=\"col s4 offset-s4 l2 offset-l1\">\r\n            RIGHT\r\n        </md-button>\r\n    </p>\r\n</div>\r\n";
 
 /***/ },
-/* 159 */
+/* 184 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Toasts</h2>\r\n<p>\r\n    Toasts are provided by mixin\r\n</p>\r\n<div class=\"doc-example\">\r\n    <doc-toasts></doc-toasts>\r\n\r\n    <doc-snippet>{{{toastsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Tooltips</h2>\r\n<div class=\"doc-example\">\r\n    <doc-tooltips></doc-tooltips>\r\n\r\n    <doc-snippet>{{{tooltipsSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 160 */
+/* 185 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"toast('I am a toast!', 4000)\"</span>&gt;</span>\r\n    // this.toast(message, displayLength, className, completeCallback);\r\n    TOAST!\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"toast('&lt;span&gt;I am toast content&lt;/span&gt;', 5000)\"</span>&gt;</span>\r\n    TOAST with content!\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"makeAToast('I am toast')\"</span>&gt;</span>\r\n    // makeATast: function(msg) {\r\n    //   this.toast(msg, 4000, '', function() {\r\n    //     alert('Your toast was dismissed');\r\n    //   })\r\n    // }\r\n    TOAST with callback!\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"toast('I am a toast!', 3000, 'rounded')\"</span>&gt;</span>\r\n    Rounded TOAST\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n\r\n\r\n";
 
 /***/ },
-/* 161 */
+/* 186 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> @<span class=\"hljs-attribute\">mouseover</span>=<span class=\"hljs-value\">\"tooltip($event, 'I am right tooltip!', 'bottom')\"</span>&gt;</span>\r\n    BOTTOM\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>";
 
 /***/ },
-/* 162 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9590,16 +10080,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var snippet_1 = __webpack_require__(52);
-	var images_1 = __webpack_require__(163);
-	var sliders_1 = __webpack_require__(170);
-	var template = __webpack_require__(178);
+	var snippet_1 = __webpack_require__(53);
+	var images_1 = __webpack_require__(188);
+	var sliders_1 = __webpack_require__(195);
+	var template = __webpack_require__(203);
 	var Media = (function () {
 	    function Media() {}
 	    Media.prototype.data = function () {
 	        return {
-	            imagesSnippet: __webpack_require__(179),
-	            slidesSnippet: __webpack_require__(180)
+	            imagesSnippet: __webpack_require__(204),
+	            slidesSnippet: __webpack_require__(205)
 	        };
 	    };
 	    Media = __decorate([vue_class_component_1["default"]({
@@ -9617,7 +10107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 163 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9629,8 +10119,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(164);
-	var image_1 = __webpack_require__(165);
+	var template = __webpack_require__(189);
+	var image_1 = __webpack_require__(190);
 	var Image = (function () {
 	    function Image() {}
 	    Image = __decorate([vue_class_component_1["default"]({
@@ -9646,13 +10136,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 164 */
+/* 189 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-image src=\"http://lorempixel.com/512/512/\" width=\"512\" height=\"512\"></md-image>\r\n\r\n<md-image src=\"http://lorempixel.com/512/1024/\"\r\n          caption=\"A picture ...\"\r\n          width=\"256\" height=\"512\"></md-image>\r\n";
 
 /***/ },
-/* 165 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9664,10 +10154,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var materialbox_1 = __webpack_require__(166);
-	var lean_overlay_1 = __webpack_require__(139);
-	__webpack_require__(167);
-	var template = __webpack_require__(169);
+	var materialbox_1 = __webpack_require__(191);
+	var lean_overlay_1 = __webpack_require__(164);
+	__webpack_require__(192);
+	var template = __webpack_require__(194);
 	var ESC = 27;
 	var Image = (function () {
 	    function Image() {}
@@ -9757,11 +10247,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 166 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Velocity = __webpack_require__(27);
+	var Velocity = __webpack_require__(26);
 	var inDuration = 275;
 	var outDuration = 200;
 	var MaterialBox = (function () {
@@ -9894,20 +10384,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 167 */
+/* 192 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 168 */,
-/* 169 */
+/* 193 */,
+/* 194 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"md-image\">\r\n    <div v-el:placeholder class=\"material-placeholder\">\r\n        <img @click=\"toggle\" :height=\"height\" :width=\"width\"\r\n             v-el:img\r\n             class=\"materialboxed\"\r\n             :class=\"{active: active}\">\r\n    </div>\r\n\r\n    <md-lean-overlay v-if=\"active\" @click=\"toggle\" transition=\"modal-overlay\"></md-lean-overlay>\r\n    <div v-if=\"active && caption\" transition=\"fade\" class=\"materialbox-caption\" style=\"display: block\">\r\n        {{caption}}\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
-/* 170 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9919,9 +10409,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(171);
-	var slider_1 = __webpack_require__(172);
-	var slide_1 = __webpack_require__(176);
+	var template = __webpack_require__(196);
+	var slider_1 = __webpack_require__(197);
+	var slide_1 = __webpack_require__(201);
 	var Slides = (function () {
 	    function Slides() {}
 	    Slides = __decorate([vue_class_component_1["default"]({
@@ -9938,13 +10428,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 171 */
+/* 196 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-slider>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/1\" align=\"left\">\r\n        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h3>\r\n    </md-slide>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/2\" align=\"right\">\r\n        <h3>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</h3>\r\n    </md-slide>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/3\" align=\"center\">\r\n        <h3>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</h3>\r\n    </md-slide>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/4\" align=\"left\">\r\n        <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</h3>\r\n    </md-slide>\r\n</md-slider>";
 
 /***/ },
-/* 172 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -9956,8 +10446,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	__webpack_require__(173);
-	var template = __webpack_require__(175);
+	__webpack_require__(198);
+	var template = __webpack_require__(200);
 	var Slider = (function () {
 	    function Slider() {}
 	    Slider.prototype.data = function () {
@@ -10012,20 +10502,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 173 */
+/* 198 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 174 */,
-/* 175 */
+/* 199 */,
+/* 200 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"slider\">\r\n    <ul class=\"slides\">\r\n        <slot></slot>\r\n    </ul>\r\n    <ul class=\"indicators\">\r\n        <li v-for=\"index in itemsCount\"\r\n            @click=\"setActive(index)\"\r\n            @mouseover=\"activeItem == index && clearInterval(index)\"\r\n            @mouseout=\"setupInterval(index)\"\r\n            :class=\"{active: activeItem == index}\" class=\"indicator-item\"></li>\r\n    </ul>\r\n</div>";
 
 /***/ },
-/* 176 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10039,7 +10529,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var VueModule = __webpack_require__(1);
 	var vue = VueModule;
-	var template = __webpack_require__(177);
+	var template = __webpack_require__(202);
 	var Slide = (function () {
 	    function Slide() {}
 	    Slide.prototype.compiled = function () {
@@ -10104,31 +10594,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 177 */
+/* 202 */
 /***/ function(module, exports) {
 
 	module.exports = "<li :class=\"computedClasses\">\r\n    <img v-el:img>\r\n    <div class=\"caption\" :class=\"align + '-align'\">\r\n        <slot></slot>\r\n    </div>\r\n</li>";
 
 /***/ },
-/* 178 */
+/* 203 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Material box</h2>\r\n<div class=\"doc-example\">\r\n    <doc-images></doc-images>\r\n\r\n    <doc-snippet>{{{imagesSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Slides</h2>\r\n<div class=\"doc-example\">\r\n    <doc-sliders></doc-sliders>\r\n\r\n    <doc-snippet>{{{slidesSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 179 */
+/* 204 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/512/\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"512\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/1024/\"</span>\r\n          <span class=\"hljs-attribute\">caption</span>=<span class=\"hljs-value\">\"A picture ...\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"256\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n";
 
 /***/ },
-/* 180 */
+/* 205 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slider</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/1\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"left\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/2\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"right\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/3\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"center\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/4\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"left\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slider</span>&gt;</span>";
 
 /***/ },
-/* 181 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10140,16 +10630,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var snippet_1 = __webpack_require__(52);
-	var default_1 = __webpack_require__(182);
-	var scrollable_1 = __webpack_require__(188);
-	var template = __webpack_require__(190);
+	var snippet_1 = __webpack_require__(53);
+	var default_1 = __webpack_require__(207);
+	var scrollable_1 = __webpack_require__(213);
+	var template = __webpack_require__(215);
 	var Tabs = (function () {
 	    function Tabs() {}
 	    Tabs.prototype.data = function () {
 	        return {
-	            defaultTabsSnippet: __webpack_require__(191),
-	            docScrollableTabsSnippet: __webpack_require__(192)
+	            defaultTabsSnippet: __webpack_require__(216),
+	            docScrollableTabsSnippet: __webpack_require__(217)
 	        };
 	    };
 	    Tabs = __decorate([vue_class_component_1["default"]({
@@ -10167,7 +10657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 182 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10179,11 +10669,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(183);
-	var tabs_1 = __webpack_require__(184);
-	var tab_1 = __webpack_require__(186);
+	var template = __webpack_require__(208);
+	var tabs_1 = __webpack_require__(209);
+	var tab_1 = __webpack_require__(211);
 	var button_1 = __webpack_require__(21);
-	var events_1 = __webpack_require__(89);
+	var events_1 = __webpack_require__(114);
 	var DefaultTabs = (function () {
 	    function DefaultTabs() {}
 	    DefaultTabs.prototype.data = function () {
@@ -10219,13 +10709,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 183 */
+/* 208 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-tabs class=\"z-depth-1\">\r\n    <md-tab><a href=\"#!/tabs/1\">Test 1</a></md-tab>\r\n    <md-tab name=\"second\"><a href=\"#!/tabs/2\">Test 2</a></md-tab>\r\n    <md-tab disabled><a href=\"#!/tabs/3\">Disabled Tab</a></md-tab>\r\n    <md-tab><a href=\"#!/tabs/4\">Test 4</a></md-tab>\r\n    <md-tab><a href=\"#!/tabs/5\">Test 5</a></md-tab>\r\n</md-tabs>\r\n\r\n<div style=\"padding: 10px\">\r\n    Selected:\r\n    {{tab | json}}\r\n</div>\r\n<div style=\"padding: 10px\">\r\n    <md-button @click=\"broadcast('tabs::select', 0)\">\r\n        Select TEST 1\r\n    </md-button>\r\n</div>\r\n";
 
 /***/ },
-/* 184 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10237,8 +10727,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var Velocity = __webpack_require__(27);
-	var template = __webpack_require__(185);
+	var Velocity = __webpack_require__(26);
+	var template = __webpack_require__(210);
 	var Tabs = (function () {
 	    function Tabs() {}
 	    Tabs.prototype.data = function () {
@@ -10283,13 +10773,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 185 */
+/* 210 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"tabs\">\r\n    <slot></slot>\r\n    <div v-el:indicator class=\"indicator\"></div>\r\n</ul>";
 
 /***/ },
-/* 186 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10301,7 +10791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(187);
+	var template = __webpack_require__(212);
 	var Tab = (function () {
 	    function Tab() {}
 	    Object.defineProperty(Tab.prototype, "computedClasses", {
@@ -10380,13 +10870,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 187 */
+/* 212 */
 /***/ function(module, exports) {
 
 	module.exports = "<li @click=\"setAsSelected\" class=\"tab col\" :class=\"computedClasses\">\r\n    <slot></slot>\r\n</li>";
 
 /***/ },
-/* 188 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10398,9 +10888,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(189);
-	var tabs_1 = __webpack_require__(184);
-	var tab_1 = __webpack_require__(186);
+	var template = __webpack_require__(214);
+	var tabs_1 = __webpack_require__(209);
+	var tab_1 = __webpack_require__(211);
 	var ScrollableTabs = (function () {
 	    function ScrollableTabs() {}
 	    ScrollableTabs = __decorate([vue_class_component_1["default"]({
@@ -10417,31 +10907,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 189 */
+/* 214 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-tabs class=\"z-depth-1\">\r\n    <md-tab class=\"s3\"><a href=\"javascript:void(0)\">Test 1</a></md-tab>\r\n    <md-tab class=\"s3\"><a class=\"active\" href=\"javascript:void(0)\">Test 2</a></md-tab>\r\n    <md-tab class=\"s3\"><a href=\"javascript:void(0)\">Test 4</a></md-tab>\r\n    <md-tab class=\"s3\"><a href=\"javascript:void(0)\">Test 1</a></md-tab>\r\n    <md-tab class=\"s3\"><a class=\"active\" href=\"javascript:void(0)\">Test 2</a></md-tab>\r\n    <md-tab class=\"s3\" disabled><a href=\"javascript:void(0)\">Disabled Tab</a></md-tab>\r\n    <md-tab class=\"s3\"><a href=\"javascript:void(0)\">Test 4</a></md-tab>\r\n    <md-tab class=\"s3\"><a href=\"javascript:void(0)\">Test 1</a></md-tab>\r\n    <md-tab class=\"s3\"><a class=\"active\" href=\"javascript:void(0)\">Test 2</a></md-tab>\r\n    <md-tab class=\"s3\" disabled><a href=\"javascript:void(0)\">Disabled Tab</a></md-tab>\r\n    <md-tab class=\"s3\"><a href=\"javascript:void(0)\">Test 4</a></md-tab>\r\n</md-tabs>\r\n";
 
 /***/ },
-/* 190 */
+/* 215 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 class=\"header\">Tabs</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-tabs></doc-default-tabs>\r\n\r\n    <doc-snippet>{{{defaultTabsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Scrollable</h2>\r\n<div class=\"doc-example\">\r\n    <doc-scrollable-tabs></doc-scrollable-tabs>\r\n\r\n    <doc-snippet>{{{docScrollableTabsSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
-/* 191 */
+/* 216 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tabs</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"z-depth-1\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/1\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"second\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/2\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/3\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/4\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/5\"</span>&gt;</span>Test 5<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tabs</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"broadcast('tabs::select', 0)\"</span>&gt;</span>\r\n    Select TEST 1\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span>&gt;</span><span class=\"actionscript\">\r\n    <span class=\"hljs-keyword\">var</span> component = {\r\n        events: {\r\n            <span class=\"hljs-string\">'tabs::on-select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(tab)</span> </span>{\r\n                <span class=\"hljs-keyword\">this</span>.selected = tab;\r\n            }\r\n        }\r\n    }\r\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
 
 /***/ },
-/* 192 */
+/* 217 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tabs</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"z-depth-1\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tabs</span>&gt;</span>\r\n";
 
 /***/ },
-/* 193 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../typings/ts.d.ts"/>
@@ -10449,7 +10939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var VueModule = __webpack_require__(1);
 	var Vue = VueModule;
 	var pages = __webpack_require__(4);
-	var components_1 = __webpack_require__(194);
+	var components_1 = __webpack_require__(219);
 	module.exports = Vue.extend({
 	    components: components_1['default'],
 	    data: function data() {
@@ -10461,27 +10951,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=doc-app.js.map
 
 /***/ },
-/* 194 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	__webpack_require__(195);
+	__webpack_require__(220);
 	var badge_1 = __webpack_require__(9);
 	var button_1 = __webpack_require__(21);
-	var collapsible_1 = __webpack_require__(87);
+	var collapsible_1 = __webpack_require__(112);
 	var collection_1 = __webpack_require__(15);
 	var collection_item_1 = __webpack_require__(17);
 	var dropdown_1 = __webpack_require__(20);
-	var dropdown_item_1 = __webpack_require__(32);
-	var dropdown_list_1 = __webpack_require__(31);
-	var event_wrapper_1 = __webpack_require__(197);
-	var icon_1 = __webpack_require__(23);
-	var image_1 = __webpack_require__(165);
-	var lean_overlay_1 = __webpack_require__(139);
-	var modal_1 = __webpack_require__(138);
-	var navbar_1 = __webpack_require__(39);
-	var nav_item_1 = __webpack_require__(49);
-	var sidenav_overlay_1 = __webpack_require__(41);
+	var dropdown_item_1 = __webpack_require__(33);
+	var dropdown_list_1 = __webpack_require__(32);
+	var event_wrapper_1 = __webpack_require__(222);
+	var icon_1 = __webpack_require__(22);
+	var image_1 = __webpack_require__(190);
+	var lean_overlay_1 = __webpack_require__(164);
+	var modal_1 = __webpack_require__(163);
+	var navbar_1 = __webpack_require__(40);
+	var nav_item_1 = __webpack_require__(50);
+	var sidenav_overlay_1 = __webpack_require__(42);
 	var VueMaterializeComponents = {
 	    mdBadge: badge_1['default'],
 	    mdButton: button_1['default'],
@@ -10505,14 +10995,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 195 */
+/* 220 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 196 */,
-/* 197 */
+/* 221 */,
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -10524,7 +11014,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(198);
+	var template = __webpack_require__(223);
 	var EventWrapper = (function () {
 	    function EventWrapper() {}
 	    EventWrapper.prototype.ready = function () {
@@ -10553,364 +11043,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 198 */
+/* 223 */
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";
-
-/***/ },
-/* 199 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var vue_class_component_1 = __webpack_require__(6);
-	var default_1 = __webpack_require__(200);
-	var image_1 = __webpack_require__(207);
-	var reveal_1 = __webpack_require__(209);
-	var snippet_1 = __webpack_require__(52);
-	var template = __webpack_require__(202);
-	var Cards = (function () {
-	    function Cards() {}
-	    Cards.prototype.data = function () {
-	        return {
-	            defaultCardSnippet: __webpack_require__(203),
-	            imageCardSnippet: __webpack_require__(206),
-	            revealCardSnippet: __webpack_require__(211)
-	        };
-	    };
-	    Cards = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        components: {
-	            docDefaultCard: default_1["default"],
-	            docImageCard: image_1["default"],
-	            docRevealCard: reveal_1["default"],
-	            docSnippet: snippet_1["default"]
-	        }
-	    })], Cards);
-	    return Cards;
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Cards;
-	//# sourceMappingURL=index.js.map
-
-/***/ },
-/* 200 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(201);
-	var card_1 = __webpack_require__(204);
-	var DefaultCard = (function () {
-	    function DefaultCard() {}
-	    DefaultCard = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        components: {
-	            mdCard: card_1["default"]
-	        }
-	    })], DefaultCard);
-	    return DefaultCard;
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = DefaultCard;
-	//# sourceMappingURL=index.js.map
-
-/***/ },
-/* 201 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m6\">\r\n        <md-card class=\"blue-grey darken-1\" content-class=\"white-text\">\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n\r\n            <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
-
-/***/ },
-/* 202 */
-/***/ function(module, exports) {
-
-	module.exports = "<h2 class=\"header\">Default card</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-card></doc-default-card>\r\n\r\n    <doc-snippet>{{{defaultCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Card with image</h2>\r\n<div class=\"doc-example\">\r\n    <doc-image-card></doc-image-card>\r\n\r\n    <doc-snippet>{{{imageCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Reveal card</h2>\r\n<div class=\"doc-example\">\r\n    <doc-reveal-card></doc-reveal-card>\r\n\r\n    <doc-snippet>{{{revealCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n\r\n";
-
-/***/ },
-/* 203 */
-/***/ function(module, exports) {
-
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"row\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"col s12 m6\"</span>&gt;</span>\r\n        <span class=\"hljs-comment\">&lt;!-- CARD --&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"blue-grey darken-1\"</span> <span class=\"hljs-attribute\">content-class</span>=<span class=\"hljs-value\">\"white-text\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n                Card Title\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>I am a very simple card. I am good at containing small bits of information.\r\n                I am convenient because I require little markup to use effectively.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
-
-/***/ },
-/* 204 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var vue_class_component_1 = __webpack_require__(6);
-	__webpack_require__(213);
-	var Velocity = __webpack_require__(27);
-	var template = __webpack_require__(205);
-	var Card = (function () {
-	    function Card() {}
-	    Card.prototype.data = function () {
-	        return {
-	            active: false
-	        };
-	    };
-	    Card.prototype.ready = function () {
-	        var _this = this;
-	        var self = this;
-	        var activators = self.$el.querySelectorAll('.activator');
-	        Array.prototype.slice.call(activators).forEach(function (activator) {
-	            activator.addEventListener('click', _this.open);
-	        });
-	        var revealClose = self.$els.revealClose;
-	        if (revealClose) {
-	            revealClose.addEventListener('click', this.close);
-	        }
-	    };
-	    Card.prototype.open = function () {
-	        if (!this.active) {
-	            this.active = true;
-	            var self = this;
-	            var reveal = self.$els.reveal;
-	            if (reveal) {
-	                reveal.style.display = 'block';
-	                Velocity(reveal, "stop", false);
-	                Velocity(reveal, { translateY: '-100%' }, { duration: 300, queue: false, easing: 'easeInOutQuad' });
-	            }
-	        }
-	    };
-	    Card.prototype.close = function () {
-	        if (this.active) {
-	            this.active = false;
-	            var self = this;
-	            var reveal = self.$els.reveal;
-	            if (reveal) {
-	                Velocity(reveal, { translateY: 0 }, {
-	                    duration: 225,
-	                    queue: false,
-	                    easing: 'easeInOutQuad',
-	                    complete: function complete() {
-	                        reveal.style.display = 'none';
-	                    }
-	                });
-	            }
-	        }
-	    };
-	    Object.defineProperty(Card.prototype, "imageSlot", {
-	        get: function get() {
-	            var self = this;
-	            return 'image' in self._slotContents;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Card.prototype, "titleSlot", {
-	        get: function get() {
-	            var self = this;
-	            return 'title' in self._slotContents;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Card.prototype, "actionsSlot", {
-	        get: function get() {
-	            var self = this;
-	            return 'actions' in self._slotContents;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Card.prototype, "revealSlot", {
-	        get: function get() {
-	            var self = this;
-	            return 'reveal' in self._slotContents;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Card = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            contentClass: {
-	                required: false,
-	                'default': null
-	            },
-	            titleInImage: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            },
-	            small: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            },
-	            medium: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            },
-	            large: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        template: template
-	    })], Card);
-	    return Card;
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Card;
-	//# sourceMappingURL=index.js.map
-
-/***/ },
-/* 205 */
-/***/ function(module, exports) {
-
-	module.exports = "<div :style=\"{overflow: revealSlot ? 'hidden' : 'initial'}\"\r\n     :class=\"{small: small, medium: medium, large: large}\"\r\n     class=\"md-card card\">\r\n    <slot name=\"card-content\">\r\n        <slot name=\"card-image\">\r\n            <div v-if=\"imageSlot\" class=\"card-image\">\r\n                <slot name=\"image\"></slot>\r\n                <div v-if=\"titleSlot && titleInImage\" class=\"card-title\">\r\n                    <slot name=\"title\"></slot>\r\n                </div>\r\n            </div>\r\n        </slot>\r\n\r\n        <div class=\"card-content\" :class=\"contentClass\">\r\n            <div v-if=\"titleSlot && !titleInImage\" class=\"card-title\">\r\n                <slot name=\"title\"></slot>\r\n            </div>\r\n            <slot></slot>\r\n        </div>\r\n\r\n        <slot name=\"card-action\">\r\n            <div v-if=\"actionsSlot\" class=\"card-action\">\r\n                <slot name=\"actions\"></slot>\r\n            </div>\r\n        </slot>\r\n\r\n        <div v-if=\"revealSlot\" v-el:reveal class=\"card-reveal\">\r\n            <i v-el:reveal-close class=\"material-icons right close\">close</i>\r\n            <slot name=\"reveal\"></slot>\r\n        </div>\r\n    </slot>\r\n</div>";
-
-/***/ },
-/* 206 */
-/***/ function(module, exports) {
-
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n        Card Title\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/sample-1.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>I am a very simple card. I am good at containing small bits of information.\r\n            I am convenient because I require little markup to use effectively.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
-
-/***/ },
-/* 207 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(208);
-	var card_1 = __webpack_require__(204);
-	var ImageCard = (function () {
-	    function ImageCard() {}
-	    ImageCard = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        components: {
-	            mdCard: card_1["default"]
-	        }
-	    })], ImageCard);
-	    return ImageCard;
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = ImageCard;
-	//# sourceMappingURL=index.js.map
-
-/***/ },
-/* 208 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m7\">\r\n        <md-card title-in-image>\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n            <div slot=\"image\">\r\n                <img src=\"http://materializecss.com/images/sample-1.jpg\">\r\n            </div>\r\n            <div>\r\n                <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n            </div>\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
-
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var vue_class_component_1 = __webpack_require__(6);
-	var card_1 = __webpack_require__(204);
-	var icon_1 = __webpack_require__(23);
-	var wave_effect_1 = __webpack_require__(218);
-	var template = __webpack_require__(210);
-	var RevealCard = (function () {
-	    function RevealCard() {}
-	    RevealCard = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        directives: {
-	            waveEffect: wave_effect_1["default"]
-	        },
-	        components: {
-	            mdCard: card_1["default"],
-	            mdIcon: icon_1["default"]
-	        }
-	    })], RevealCard);
-	    return RevealCard;
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = RevealCard;
-	//# sourceMappingURL=index.js.map
-
-/***/ },
-/* 210 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m8\">\r\n        <md-card>\r\n            <span slot=\"title\" class=\"activator\">\r\n                Card Title<md-icon right>more_vert</md-icon>\r\n            </span>\r\n            <div slot=\"image\" v-wave-effect class=\"waves-effect waves-block waves-light\">\r\n                <img class=\"activator\" src=\"http://materializecss.com/images/office.jpg\">\r\n            </div>\r\n            <p>\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </p>\r\n            <div slot=\"reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Card Title</span>\r\n                <p>Here is some more information about this product that is only revealed once clicked on.</p>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>\r\n";
-
-/***/ },
-/* 211 */
-/***/ function(module, exports) {
-
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span>&gt;</span>\r\n        Card Title<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>more_vert<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-comment\">&lt;!-- wave effect directive --&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span> <span class=\"hljs-attribute\">v-wave-effect</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-block waves-light\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/office.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"reveal\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-title grey-text text-darken-4\"</span>&gt;</span>Card Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Here is some more information about this product that is only revealed once clicked on.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
-
-/***/ },
-/* 212 */,
-/* 213 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var effect_1 = __webpack_require__(22);
-	var waveEffect = {
-	    bind: function bind() {
-	        var _this = this;
-	        this.el.addEventListener("mousedown", function (e) {
-	            effect_1["default"].show(e, _this.el);
-	        });
-	        this.el.addEventListener("mouseleave", function (e) {
-	            effect_1["default"].hide(e, _this.el);
-	        });
-	        this.el.addEventListener("mouseup", function (e) {
-	            effect_1["default"].hide(e, _this.el);
-	        });
-	    },
-	    unbind: function unbind() {
-	        this.el.removeEventListener("mousedown");
-	        this.el.removeEventListener("mouseleave");
-	        this.el.removeEventListener("mouseup");
-	    }
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = waveEffect;
-	//# sourceMappingURL=index.js.map
 
 /***/ }
 /******/ ])

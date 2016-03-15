@@ -2,6 +2,7 @@ import docsBadges from './badges';
 import docsBreadcrumbs from './breadcrumbs';
 import docsButtons from './buttons';
 import docsCards from './cards';
+import docsChips from './chips';
 import docsCollapsibles from './collapsibles';
 import docsDropdowns from './dropdowns';
 import docsNavbars from './navbars';
@@ -40,6 +41,12 @@ const docsPages: [Route] = [
         link: "/collapsibles",
         title: "Collapsibles",
         component: docsCollapsibles
+    },
+    {
+        url: "/chips",
+        link: "/chips",
+        title: "Chips",
+        component: docsChips
     },
     {
         url: "/dropdowns",

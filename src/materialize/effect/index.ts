@@ -167,7 +167,7 @@ export default {
         }
 
         // Fade out ripple after delay
-        setTimeout(function() {
+        setTimeout(() => {
             var style = {
                 'top': relativeY+'px',
                 'left': relativeX+'px',
@@ -187,7 +187,7 @@ export default {
 
             ripple.setAttribute('style', convertStyle(style));
 
-            setTimeout(function() {
+            setTimeout(() => {
                 try {
                     el.removeChild(ripple);
                 } catch(e) {

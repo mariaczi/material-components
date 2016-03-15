@@ -5410,6 +5410,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badges_1 = __webpack_require__(5);
 	var breadcrumbs_1 = __webpack_require__(58);
 	var buttons_1 = __webpack_require__(63);
+	var cards_1 = __webpack_require__(199);
 	var collapsibles_1 = __webpack_require__(84);
 	var dropdowns_1 = __webpack_require__(100);
 	var navbars_1 = __webpack_require__(105);
@@ -5432,6 +5433,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    link: "/buttons",
 	    title: "Buttons",
 	    component: buttons_1['default']
+	}, {
+	    url: "/cards",
+	    link: "/cards",
+	    title: "Cards",
+	    component: cards_1['default']
 	}, {
 	    url: "/collapsibles",
 	    link: "/collapsibles",
@@ -10557,6 +10563,323 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var default_1 = __webpack_require__(200);
+	var image_1 = __webpack_require__(207);
+	var reveal_1 = __webpack_require__(209);
+	var snippet_1 = __webpack_require__(52);
+	var template = __webpack_require__(202);
+	var Cards = (function () {
+	    function Cards() {}
+	    Cards.prototype.data = function () {
+	        return {
+	            defaultCardSnippet: __webpack_require__(203),
+	            imageCardSnippet: __webpack_require__(206),
+	            revealCardSnippet: __webpack_require__(211)
+	        };
+	    };
+	    Cards = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            docDefaultCard: default_1["default"],
+	            docImageCard: image_1["default"],
+	            docRevealCard: reveal_1["default"],
+	            docSnippet: snippet_1["default"]
+	        }
+	    })], Cards);
+	    return Cards;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Cards;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(201);
+	var card_1 = __webpack_require__(204);
+	var DefaultCard = (function () {
+	    function DefaultCard() {}
+	    DefaultCard = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdCard: card_1["default"]
+	        }
+	    })], DefaultCard);
+	    return DefaultCard;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = DefaultCard;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 201 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m6\">\r\n        <md-card class=\"blue-grey darken-1\" content-class=\"white-text\">\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n\r\n            <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 202 */
+/***/ function(module, exports) {
+
+	module.exports = "<h2 class=\"header\">Default card</h2>\r\n<div class=\"doc-example\">\r\n    <doc-default-card></doc-default-card>\r\n\r\n    <doc-snippet>{{{defaultCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Card with image</h2>\r\n<div class=\"doc-example\">\r\n    <doc-image-card></doc-image-card>\r\n\r\n    <doc-snippet>{{{imageCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Reveal card</h2>\r\n<div class=\"doc-example\">\r\n    <doc-reveal-card></doc-reveal-card>\r\n\r\n    <doc-snippet>{{{revealCardSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n\r\n";
+
+/***/ },
+/* 203 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"row\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"col s12 m6\"</span>&gt;</span>\r\n        <span class=\"hljs-comment\">&lt;!-- CARD --&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"blue-grey darken-1\"</span> <span class=\"hljs-attribute\">content-class</span>=<span class=\"hljs-value\">\"white-text\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n                Card Title\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>I am a very simple card. I am good at containing small bits of information.\r\n                I am convenient because I require little markup to use effectively.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	__webpack_require__(213);
+	var Velocity = __webpack_require__(27);
+	var template = __webpack_require__(205);
+	var Card = (function () {
+	    function Card() {}
+	    Card.prototype.data = function () {
+	        return {
+	            active: false
+	        };
+	    };
+	    Card.prototype.ready = function () {
+	        var _this = this;
+	        var self = this;
+	        var activators = self.$el.querySelectorAll('.activator');
+	        Array.prototype.slice.call(activators).forEach(function (activator) {
+	            activator.addEventListener('click', _this.open);
+	        });
+	        var revealClose = self.$els.revealClose;
+	        if (revealClose) {
+	            revealClose.addEventListener('click', this.close);
+	        }
+	    };
+	    Card.prototype.open = function () {
+	        if (!this.active) {
+	            this.active = true;
+	            var self = this;
+	            var reveal = self.$els.reveal;
+	            if (reveal) {
+	                reveal.style.display = 'block';
+	                Velocity(reveal, "stop", false);
+	                Velocity(reveal, { translateY: '-100%' }, { duration: 300, queue: false, easing: 'easeInOutQuad' });
+	            }
+	        }
+	    };
+	    Card.prototype.close = function () {
+	        if (this.active) {
+	            this.active = false;
+	            var self = this;
+	            var reveal = self.$els.reveal;
+	            if (reveal) {
+	                Velocity(reveal, { translateY: 0 }, {
+	                    duration: 225,
+	                    queue: false,
+	                    easing: 'easeInOutQuad',
+	                    complete: function complete() {
+	                        reveal.style.display = 'none';
+	                    }
+	                });
+	            }
+	        }
+	    };
+	    Object.defineProperty(Card.prototype, "imageSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'image' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Card.prototype, "titleSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'title' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Card.prototype, "actionsSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'actions' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Card.prototype, "revealSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'reveal' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Card = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            contentClass: {
+	                required: false,
+	                'default': null
+	            },
+	            titleInImage: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            },
+	            small: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            },
+	            medium: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            },
+	            large: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        template: template
+	    })], Card);
+	    return Card;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Card;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 205 */
+/***/ function(module, exports) {
+
+	module.exports = "<div :style=\"{overflow: revealSlot ? 'hidden' : 'initial'}\"\r\n     :class=\"{small: small, medium: medium, large: large}\"\r\n     class=\"md-card card\">\r\n    <slot name=\"card-content\">\r\n        <slot name=\"card-image\">\r\n            <div v-if=\"imageSlot\" class=\"card-image\">\r\n                <slot name=\"image\"></slot>\r\n                <div v-if=\"titleSlot && titleInImage\" class=\"card-title\">\r\n                    <slot name=\"title\"></slot>\r\n                </div>\r\n            </div>\r\n        </slot>\r\n\r\n        <div class=\"card-content\" :class=\"contentClass\">\r\n            <div v-if=\"titleSlot && !titleInImage\" class=\"card-title\">\r\n                <slot name=\"title\"></slot>\r\n            </div>\r\n            <slot></slot>\r\n        </div>\r\n\r\n        <slot name=\"card-action\">\r\n            <div v-if=\"actionsSlot\" class=\"card-action\">\r\n                <slot name=\"actions\"></slot>\r\n            </div>\r\n        </slot>\r\n\r\n        <div v-if=\"revealSlot\" v-el:reveal class=\"card-reveal\">\r\n            <i v-el:reveal-close class=\"material-icons right close\">close</i>\r\n            <slot name=\"reveal\"></slot>\r\n        </div>\r\n    </slot>\r\n</div>";
+
+/***/ },
+/* 206 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n        Card Title\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/sample-1.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>I am a very simple card. I am good at containing small bits of information.\r\n            I am convenient because I require little markup to use effectively.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
+
+/***/ },
+/* 207 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(208);
+	var card_1 = __webpack_require__(204);
+	var ImageCard = (function () {
+	    function ImageCard() {}
+	    ImageCard = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdCard: card_1["default"]
+	        }
+	    })], ImageCard);
+	    return ImageCard;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = ImageCard;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 208 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m7\">\r\n        <md-card title-in-image>\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n            <div slot=\"image\">\r\n                <img src=\"http://materializecss.com/images/sample-1.jpg\">\r\n            </div>\r\n            <div>\r\n                <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n            </div>\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 209 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(210);
+	var card_1 = __webpack_require__(204);
+	var icon_1 = __webpack_require__(23);
+	var RevealCard = (function () {
+	    function RevealCard() {}
+	    RevealCard = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdCard: card_1["default"],
+	            mdIcon: icon_1["default"]
+	        }
+	    })], RevealCard);
+	    return RevealCard;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = RevealCard;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 210 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col s12 m8\">\r\n        <md-card>\r\n            <span slot=\"title\" class=\"activator\">\r\n                Card Title<md-icon right>more_vert</md-icon>\r\n            </span>\r\n            <div slot=\"image\" class=\"waves-block waves-light\">\r\n                <img class=\"activator\" src=\"http://materializecss.com/images/office.jpg\">\r\n            </div>\r\n            <p>\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </p>\r\n            <div slot=\"reveal\">\r\n                <span class=\"card-title grey-text text-darken-4\">Card Title</span>\r\n                <p>Here is some more information about this product that is only revealed once clicked on.</p>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 211 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span>&gt;</span>\r\n        Card Title<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>more_vert<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-block waves-light\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/office.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"reveal\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-title grey-text text-darken-4\"</span>&gt;</span>Card Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Here is some more information about this product that is only revealed once clicked on.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
+
+/***/ },
+/* 212 */,
+/* 213 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ])

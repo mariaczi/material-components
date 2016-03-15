@@ -22,6 +22,8 @@ nav span.badge.new .new {
 .navbar-fixed {
   position: absolute;
   top: 0; }
+.md-card .activator, .md-card .close {
+  cursor: pointer; }
 .modal-overlay-transition {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;

@@ -1,8 +1,10 @@
 import Component from 'vue-class-component';
-import Effect from '../../materialize/effect';
 import mdIcon from '../icon';
+
 import toast from '../../mixins/toast';
 import tooltip from '../../mixins/tooltip';
+
+import waveEffect from '../../directives/wave-effect';
 
 var template = require('./btn.html');
 
@@ -50,6 +52,9 @@ var template = require('./btn.html');
     components: {
         mdIcon
     },
+    directives: {
+        waveEffect
+    },
     mixins: [
         toast,
         tooltip
@@ -64,17 +69,6 @@ export default class Button {
     private large: boolean;
     private disabled: boolean;
     private floating: boolean;
-
-    // TODO mixin
-    showEffect(e) {
-        var self: any = this;
-        Effect.show(e, self.$el);
-    }
-
-    hideEffect(e) {
-        var self: any = this;
-        Effect.hide(e, self.$el);
-    }
 
     get computedClasses() {
         var classes = [];

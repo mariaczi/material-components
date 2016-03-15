@@ -1,9 +1,4 @@
-<!--props: type, classes, icon, iconAlignRight, large, disabled-->
-
-<a :class="computedClasses"
-   @mousedown="showEffect"
-   @mouseleave="hideEffect"
-   @mouseup="hideEffect">
+<a :class="computedClasses" v-wave-effect>
     <md-icon
        v-if="icon"
        :right="iconAlignRight">{{icon}}</md-icon>

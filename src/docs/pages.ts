@@ -4,6 +4,7 @@ import docsButtons from './buttons';
 import docsCards from './cards';
 import docsChips from './chips';
 import docsCollapsibles from './collapsibles';
+import docsCollections from './collections';
 import docsDropdowns from './dropdowns';
 import docsNavbars from './navbars';
 import docsModals from './modals';
@@ -41,6 +42,12 @@ const docsPages: [Route] = [
         link: "/collapsibles",
         title: "Collapsibles",
         component: docsCollapsibles
+    },
+    {
+        url: "/collections",
+        link: "/collections",
+        title: "Collections",
+        component: docsCollections
     },
     {
         url: "/chips",

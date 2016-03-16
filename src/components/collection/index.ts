@@ -10,4 +10,9 @@ var mdCollectionItem = require('../collection-item');
     }
 })
 export default class Collection {
+
+    get headerSlot() {
+        var self: any = this;
+        return 'header' in self._slotContents;
+    }
 }

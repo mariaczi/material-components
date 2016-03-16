@@ -11,6 +11,7 @@ import docsModals from './modals';
 import docsDialogs from './dialogs';
 import docsMedia from './media';
 import docsTabs from './tabs';
+import docsPreloaders from './preloaders';
 
 const docsPages: [Route] = [
     {
@@ -90,6 +91,12 @@ const docsPages: [Route] = [
         link: "/tabs/4",
         title: "Tabs",
         component: docsTabs
+    },
+    {
+        url: "/preloaders",
+        link: "preloaders",
+        title: "Preloaders",
+        component: docsPreloaders
     }
 ];
 

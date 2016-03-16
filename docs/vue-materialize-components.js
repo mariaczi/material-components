@@ -5420,6 +5420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dialogs_1 = __webpack_require__(193);
 	var media_1 = __webpack_require__(201);
 	var tabs_1 = __webpack_require__(220);
+	var preloaders_1 = __webpack_require__(238);
 	var docsPages = [{
 	    url: "/badges",
 	    link: "/badges",
@@ -5485,6 +5486,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    link: "/tabs/4",
 	    title: "Tabs",
 	    component: tabs_1['default']
+	}, {
+	    url: "/preloaders",
+	    link: "preloaders",
+	    title: "Preloaders",
+	    component: preloaders_1['default']
 	}];
 	module.exports = docsPages;
 	//# sourceMappingURL=pages.js.map
@@ -11315,6 +11321,319 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var linear_determinate_1 = __webpack_require__(239);
+	var linear_indeterminate_1 = __webpack_require__(245);
+	var circular_1 = __webpack_require__(248);
+	var flashing_1 = __webpack_require__(253);
+	var snippet_1 = __webpack_require__(55);
+	var template = __webpack_require__(243);
+	var Preloaders = (function () {
+	    function Preloaders() {}
+	    Preloaders.prototype.data = function () {
+	        return {
+	            linearDeterminateSnippet: __webpack_require__(244),
+	            linearIndeterminateSnippet: __webpack_require__(247),
+	            circularSnippet: __webpack_require__(252),
+	            flashingSnippet: __webpack_require__(255)
+	        };
+	    };
+	    Preloaders = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            docLinearDeterminate: linear_determinate_1["default"],
+	            docLinearIndeterminate: linear_indeterminate_1["default"],
+	            docCircular: circular_1["default"],
+	            docFlashing: flashing_1["default"],
+	            docSnippet: snippet_1["default"]
+	        }
+	    })], Preloaders);
+	    return Preloaders;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Preloaders;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(240);
+	var linear_preloader_1 = __webpack_require__(241);
+	var LinearDeterminatePreloader = (function () {
+	    function LinearDeterminatePreloader() {}
+	    LinearDeterminatePreloader = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdLinearPreloader: linear_preloader_1["default"]
+	        }
+	    })], LinearDeterminatePreloader);
+	    return LinearDeterminatePreloader;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = LinearDeterminatePreloader;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 240 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-linear-preloader value=\"70\"></md-linear-preloader>";
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(242);
+	var LinearPreloader = (function () {
+	    function LinearPreloader() {}
+	    Object.defineProperty(LinearPreloader.prototype, "computedStyle", {
+	        get: function get() {
+	            if (this.value == null) {
+	                return {};
+	            } else {
+	                return {
+	                    width: this.value + '%'
+	                };
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    LinearPreloader = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            value: {
+	                required: false,
+	                'default': null
+	            }
+	        },
+	        template: template
+	    })], LinearPreloader);
+	    return LinearPreloader;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = LinearPreloader;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 242 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"progress\">\r\n    <div :class=\"{determinate: value != null, indeterminate: value == null}\" :style=\"computedStyle\"></div>\r\n</div>";
+
+/***/ },
+/* 243 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1>Linear</h1>\r\n\r\n<h2 class=\"header\">Determinate</h2>\r\n<div class=\"doc-example\">\r\n    <doc-linear-determinate></doc-linear-determinate>\r\n\r\n    <doc-snippet>{{{linearDeterminateSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Indeterminate</h2>\r\n<div class=\"doc-example\">\r\n    <doc-linear-indeterminate></doc-linear-indeterminate>\r\n\r\n    <doc-snippet>{{{linearIndeterminateSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Circular</h2>\r\n<div class=\"doc-example\">\r\n    <doc-circular></doc-circular>\r\n\r\n    <doc-snippet>{{{circularSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Flashing</h2>\r\n<div class=\"doc-example\">\r\n    <doc-flashing></doc-flashing>\r\n\r\n    <doc-snippet>{{{flashingSnippet}}}</doc-snippet>\r\n</div>\r\n";
+
+/***/ },
+/* 244 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-linear-preloader</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"70\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-linear-preloader</span>&gt;</span>";
+
+/***/ },
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(246);
+	var linear_preloader_1 = __webpack_require__(241);
+	var LinearIndeterminatePreloader = (function () {
+	    function LinearIndeterminatePreloader() {}
+	    LinearIndeterminatePreloader = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdLinearPreloader: linear_preloader_1["default"]
+	        }
+	    })], LinearIndeterminatePreloader);
+	    return LinearIndeterminatePreloader;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = LinearIndeterminatePreloader;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 246 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-linear-preloader></md-linear-preloader>";
+
+/***/ },
+/* 247 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-linear-preloader</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-linear-preloader</span>&gt;</span>";
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(249);
+	var circural_preloader_1 = __webpack_require__(250);
+	var CircularPreloader = (function () {
+	    function CircularPreloader() {}
+	    CircularPreloader = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdCircularPreloader: circural_preloader_1["default"]
+	        }
+	    })], CircularPreloader);
+	    return CircularPreloader;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = CircularPreloader;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 249 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col m4 s12\">\r\n        <md-circular-preloader size=\"large\" color=\"blue\"></md-circular-preloader>\r\n    </div>\r\n    <div class=\"col m4 s12\">\r\n        <md-circular-preloader color=\"red\"></md-circular-preloader>\r\n    </div>\r\n    <div class=\"col m4 s12\">\r\n        <md-circular-preloader size=\"small\" color=\"green\"></md-circular-preloader>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 250 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(251);
+	var CircularPreloader = (function () {
+	    function CircularPreloader() {}
+	    CircularPreloader = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            size: {
+	                type: String,
+	                required: false,
+	                'default': ''
+	            },
+	            color: {
+	                type: String,
+	                required: false,
+	                'default': ''
+	            },
+	            flashing: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        template: template
+	    })], CircularPreloader);
+	    return CircularPreloader;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = CircularPreloader;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 251 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"preloader-wrapper active\" :class=\"size\">\r\n    <div v-if=\"!flashing\" class=\"spinner-layer\" :class=\"'spinner-' + color + '-only'\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <!-- flashing -->\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-blue\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-red\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-yellow\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-green\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 252 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-circular-preloader</span> <span class=\"hljs-attribute\">size</span>=<span class=\"hljs-value\">\"large\"</span> <span class=\"hljs-attribute\">color</span>=<span class=\"hljs-value\">\"blue\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-circular-preloader</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-circular-preloader</span> <span class=\"hljs-attribute\">color</span>=<span class=\"hljs-value\">\"red\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-circular-preloader</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-circular-preloader</span> <span class=\"hljs-attribute\">size</span>=<span class=\"hljs-value\">\"small\"</span> <span class=\"hljs-attribute\">color</span>=<span class=\"hljs-value\">\"green\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-circular-preloader</span>&gt;</span>\r\n";
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(254);
+	var circural_preloader_1 = __webpack_require__(250);
+	var FlashingPreloader = (function () {
+	    function FlashingPreloader() {}
+	    FlashingPreloader = __decorate([vue_class_component_1["default"]({
+	        template: template,
+	        components: {
+	            mdCircularPreloader: circural_preloader_1["default"]
+	        }
+	    })], FlashingPreloader);
+	    return FlashingPreloader;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = FlashingPreloader;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 254 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <div class=\"col m4 s12\">\r\n        <md-circular-preloader flashing size=\"large\"></md-circular-preloader>\r\n    </div>\r\n    <div class=\"col m4 s12\">\r\n        <md-circular-preloader flashing></md-circular-preloader>\r\n    </div>\r\n    <div class=\"col m4 s12\">\r\n        <md-circular-preloader flashing size=\"small\"></md-circular-preloader>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 255 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-circular-preloader</span> <span class=\"hljs-attribute\">flashing</span> <span class=\"hljs-attribute\">size</span>=<span class=\"hljs-value\">\"large\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-circular-preloader</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-circular-preloader</span> <span class=\"hljs-attribute\">flashing</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-circular-preloader</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-circular-preloader</span> <span class=\"hljs-attribute\">flashing</span> <span class=\"hljs-attribute\">size</span>=<span class=\"hljs-value\">\"small\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-circular-preloader</span>&gt;</span>";
 
 /***/ }
 /******/ ])

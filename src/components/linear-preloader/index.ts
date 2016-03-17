@@ -15,13 +15,12 @@ export default class LinearPreloader {
     private value: number;
 
     get computedStyle() {
-        if (this.value == null) {
-            return {}
-        }
-        else {
+        if (this.value != null) {
             return {
                 width: this.value + '%'
             }
         }
+
+        return null;
     }
 }

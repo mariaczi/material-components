@@ -3,22 +3,24 @@ import Effect from '../../materialize/effect';
 
 var waveEffect: DirectiveOption = {
 
+    show: function (e) {
+        Effect.show(e, this.el);
+    },
+
+    hide: function (e) {
+        Effect.hide(e, this.el)
+    },
+
     bind: function() {
-        this.el.addEventListener("mousedown", (e) => {
-           Effect.show(e, this.el);
-        });
-        this.el.addEventListener("mouseleave", (e) => {
-           Effect.hide(e, this.el);
-        });
-        this.el.addEventListener("mouseup", (e) => {
-           Effect.hide(e, this.el);
-        });
+        this.el.addEventListener("mousedown", this.show);
+        this.el.addEventListener("mouseleave", this.hide);
+        this.el.addEventListener("mouseup", this.hide);
     },
 
     unbind: function() {
-        this.el.removeEventListener("mousedown");
-        this.el.removeEventListener("mouseleave");
-        this.el.removeEventListener("mouseup");
+        this.el.removeEventListener("mousedown", this.show);
+        this.el.removeEventListener("mouseleave", this.hide);
+        this.el.removeEventListener("mouseup", this.hide);
     },
     
 };

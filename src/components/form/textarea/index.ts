@@ -58,6 +58,11 @@ export default class TextArea {
         return 'default' in self._slotContents;
     }
 
+    get slotIcon() {
+        var self: any = this;
+        return 'icon-name' in self._slotContents;
+    }
+
     get labelClasses() {
         return {
             active: this.active || this.value,

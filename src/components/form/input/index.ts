@@ -58,6 +58,11 @@ export default class InputField {
         return 'default' in self._slotContents;
     }
 
+    get slotIcon() {
+        var self: any = this;
+        return 'icon-name' in self._slotContents;
+    }
+
    get labelClasses() {
        return {
            active: this.placeholder || this.active || this.value,

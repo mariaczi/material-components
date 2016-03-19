@@ -7178,7 +7178,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click=\"closeIfEnable\">\r\n    <a href=\"javascript:void(0)\">\r\n        <slot></slot>\r\n    </a>\r\n</li>";
+	module.exports = "<li @click.prevent=\"closeIfEnable\">\r\n    <a href=\"javascript:void(0)\">\r\n        <slot></slot>\r\n    </a>\r\n</li>";
 
 /***/ },
 /* 37 */
@@ -7230,7 +7230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 40 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-dropdown title=\"Dropdown\">\r\n    <md-dropdown-item closing=\"false\">\r\n        one <md-badge>1</md-badge>\r\n    </md-dropdown-item>\r\n    <md-dropdown-item closing=\"false\">\r\n        two <md-badge alert=\"new\">1</md-badge>\r\n    </md-dropdown-item>\r\n    <md-dropdown-item closing=\"false\">\r\n        three\r\n    </md-dropdown-item>\r\n    <md-dropdown-item closing>\r\n        <md-badge alert=\"close\"></md-badge>\r\n    </md-dropdown-item>\r\n</md-dropdown>";
+	module.exports = "<md-dropdown title=\"Dropdown\">\r\n    <md-dropdown-item :closing=\"false\">\r\n        one <md-badge>1</md-badge>\r\n    </md-dropdown-item>\r\n    <md-dropdown-item :closing=\"false\">\r\n        two <md-badge alert=\"new\">1</md-badge>\r\n    </md-dropdown-item>\r\n    <md-dropdown-item :closing=\"false\">\r\n        three\r\n    </md-dropdown-item>\r\n    <md-dropdown-item closing>\r\n        <md-badge alert=\"close\"></md-badge>\r\n    </md-dropdown-item>\r\n</md-dropdown>";
 
 /***/ },
 /* 41 */
@@ -7644,7 +7644,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 59 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Dropdown\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>=<span class=\"hljs-value\">\"false\"</span>&gt;</span>\r\n        one <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span>&gt;</span>1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>=<span class=\"hljs-value\">\"false\"</span>&gt;</span>\r\n        two <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"new\"</span>&gt;</span>1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>=<span class=\"hljs-value\">\"false\"</span>&gt;</span>\r\n        three\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"close\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown</span> <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Dropdown\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">:closing</span>=<span class=\"hljs-value\">\"false\"</span>&gt;</span>\r\n        one <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span>&gt;</span>1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">:closing</span>=<span class=\"hljs-value\">\"false\"</span>&gt;</span>\r\n        two <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"new\"</span>&gt;</span>1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">:closing</span>=<span class=\"hljs-value\">\"false\"</span>&gt;</span>\r\n        three\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-dropdown-item</span> <span class=\"hljs-attribute\">closing</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-badge</span> <span class=\"hljs-attribute\">alert</span>=<span class=\"hljs-value\">\"close\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-badge</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-dropdown</span>&gt;</span>";
 
 /***/ },
 /* 60 */
@@ -10073,7 +10073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 169 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click=\"select\" :class=\"computedClasses\">\r\n    <span>\r\n        <slot></slot>\r\n    </span>\r\n</li>";
+	module.exports = "<li @click.prevent=\"select\" :class=\"computedClasses\">\r\n    <span>\r\n        <slot></slot>\r\n    </span>\r\n</li>";
 
 /***/ },
 /* 170 */,
@@ -12731,19 +12731,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    twoWay: true,
 	    params: ['lazy', 'number', 'debounce'],
 	    bind: function bind() {
-	        var field = this.el.__vue__.$els.field || this.el.querySelector('.field');
-	        if (field) {
+	        this.field = this.el.__vue__.$els.field || this.el.querySelector('.field');
+	        if (this.field) {
 	            this.checkFilters = Vue.options.directives.model.checkFilters;
-	            this.el = field;
-	            this.el.__v_model = this;
+	            this.__el__ = this.el;
+	            this.el = this.field;
 	            handler.bind.call(this);
 	        } else {
 	            console.log('Error: No "field" on component');
 	        }
 	    },
 	    unbind: function unbind() {
-	        handler.unbind.call(this);
-	        this.el = this.__el__;
+	        if (this.field) {
+	            handler.unbind.call(this);
+	            this.el = this.__el__;
+	        }
 	    }
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });

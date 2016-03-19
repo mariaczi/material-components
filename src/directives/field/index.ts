@@ -11,12 +11,12 @@ var field: DirectiveOption = {
     params: ['lazy', 'number', 'debounce'],
 
     bind: function() {
-        var field = this.el.__vue__.$els.field || this.el.querySelector('.field');
-        if (field) {
+        this.field = this.el.__vue__.$els.field || this.el.querySelector('.field');
+        if (this.field) {
             this.checkFilters = Vue.options.directives.model.checkFilters;
 
-            this.el = field;
-            this.el.__v_model = this;
+            this.__el__= this.el;
+            this.el = this.field;
             handler.bind.call(this);
         }
         else {
@@ -25,8 +25,10 @@ var field: DirectiveOption = {
     },
 
     unbind: function() {
-        handler.unbind.call(this);
-        this.el = this.__el__;
+        if (this.field) {
+            handler.unbind.call(this);
+            this.el = this.__el__;
+        }
     },
     
 };

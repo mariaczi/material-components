@@ -6,6 +6,7 @@ import docsChips from './chips';
 import docsCollapsibles from './collapsibles';
 import docsCollections from './collections';
 import docsDropdowns from './dropdowns';
+import docsForms from './forms';
 import docsNavbars from './navbars';
 import docsModals from './modals';
 import docsDialogs from './dialogs';
@@ -62,6 +63,12 @@ const docsPages: [Route] = [
         link: "/dropdowns",
         title: "Dropdowns",
         component: docsDropdowns
+    },
+    {
+        url: "/forms",
+        link: "/forms",
+        title: "Forms",
+        component: docsForms
     },
     {
         url: "/modals",

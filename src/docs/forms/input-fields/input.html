@@ -1,0 +1,35 @@
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <md-input v-field="firstName" placeholder="Placeholder" class="col s6">
+                First Name
+            </md-input>
+            <md-input v-field="lastName" class="col s6">
+                Last name
+            </md-input>
+        </div>
+        <div class="row">
+            <div class="output col s6">
+                First name: {{firstName}}
+            </div>
+            <div class="output col s6">
+                Last name: {{lastName}}
+            </div>
+        </div>
+        <div class="row">
+            <md-input value="I am not editable" disabled class="col s12">
+                Disabled
+            </md-input>
+        </div>
+        <div class="row">
+            <md-input type="password" class="col s12">
+                Password
+            </md-input>
+        </div>
+        <div class="row">
+            <md-input type="email" class="col s12">
+                Email
+            </md-input>
+        </div>
+    </form>
+</div>

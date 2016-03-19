@@ -1,0 +1,12 @@
+<div class="input-field">
+    <i class="material-icons prefix">
+        <slot name="icon-name"></slot>
+    </i>
+    <input v-el:field
+           v-model="value"
+           :placeholder="placeholder" :id="id"
+           :type="type" class="field">
+    <label v-if="slot" :for="id" :class="labelClasses">
+        <slot></slot>
+    </label>
+</div>

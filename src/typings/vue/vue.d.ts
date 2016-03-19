@@ -156,7 +156,7 @@ declare namespace vuejs {
         $destroy?: $destroy;
         $compile?: $compile;
 
-        _init(options?: ComponentOption): void;
+        _init?(options?: ComponentOption): void;
     }
 
     interface VueConfig {

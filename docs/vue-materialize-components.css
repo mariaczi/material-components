@@ -34,6 +34,12 @@ nav span.badge.new .new {
   animation-duration: 0.1s;
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut; }
+.md-textarea textarea.materialize-textarea {
+  overflow: hidden;
+  margin-top: 1.6rem;
+  padding: 22px 0;
+  outline: none;
+  resize: none; }
 .modal-overlay-transition {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;

@@ -1,7 +1,7 @@
 /// <reference path="../typings/vue/vue.d.ts"/>
 /// <reference path="../typings/ts.d.ts"/>
 
-import VueModule = require('vue')
+import VueModule = require('vue');
 var Vue: any = VueModule;
 
 import VueRouterModule = require('vue-router')

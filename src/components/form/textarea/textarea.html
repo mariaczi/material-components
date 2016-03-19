@@ -1,0 +1,9 @@
+<div class="md-textarea input-field">
+    <textarea v-el:field
+              v-model="value"
+              :id="id" class="materialize-textarea field">
+    </textarea>
+    <label v-if="slot" :for="id" :class="labelClasses">
+        <slot></slot>
+    </label>
+</div>

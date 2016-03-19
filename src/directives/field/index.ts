@@ -15,8 +15,8 @@ var field: DirectiveOption = {
         if (field) {
             this.checkFilters = Vue.options.directives.model.checkFilters;
 
-            this.__el__ = this.el;
             this.el = field;
+            this.el.__v_model = this;
             handler.bind.call(this);
         }
         else {

@@ -2,6 +2,7 @@ import Component from 'vue-class-component';
 import docInputFields from './input-fields';
 import docInputIconFields from './input-icon-fields';
 import docTextareas from './textareas';
+import docSelects from './selects';
 import docSnippet from '../snippet';
 
 var template = require('./forms.html');
@@ -12,6 +13,7 @@ var template = require('./forms.html');
         docInputFields,
         docInputIconFields,
         docTextareas,
+        docSelects,
         docSnippet
     }
 })
@@ -20,7 +22,8 @@ export default class Forms {
         return {
             inputFieldsSnippet: require('./input-fields/input.snippet.html'),
             inputIconFieldsSnippet: require('./input-icon-fields/input-icon.snippet.html'),
-            textareasSnippet: require('./textareas/textarea.snippet.html')
+            textareasSnippet: require('./textareas/textarea.snippet.html'),
+            selectsSnippet: require('./selects/selects.snippet.html')
         }
     }
 }

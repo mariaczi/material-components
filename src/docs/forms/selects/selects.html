@@ -1,0 +1,19 @@
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <md-select v-field="value" class="col s6">
+                <md-option value="" disabled selected>Choose your option</md-option>
+                <md-option value="1">Option 1</md-option>
+                <md-option value="2">Option 2</md-option>
+                <md-option value="3">Option 3</md-option>
+
+                <span slot="label">Materialize Select</span>
+            </md-select>
+        </div>
+        <div class="row">
+            <div class="output col s6">
+                Select: {{value}}
+            </div>
+        </div>
+    </form>
+</div>

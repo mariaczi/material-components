@@ -1,15 +1,16 @@
-<md-dropdown-list>
-    <slot></slot>
-</md-dropdown-list>
+<div v-on-click-away="close">
+    <md-dropdown-list>
+        <slot></slot>
+    </md-dropdown-list>
 
-<span @click="open">
-    <slot name="button">
-        <md-button href="javascript:void(0)"
-             :classes="['dropdown-button']"
-             :class="{active: active}">
-            {{title}}
-            <i class="mdi-navigation-arrow-drop-down right"></i>
-        </md-button>
-    </slot>
-</span>
-
+    <span @click="open">
+        <slot name="button">
+            <md-button href="javascript:void(0)"
+                 :classes="['dropdown-button']"
+                 :class="{active: active}">
+                {{title}}
+                <i class="mdi-navigation-arrow-drop-down right"></i>
+            </md-button>
+        </slot>
+    </span>
+</div>

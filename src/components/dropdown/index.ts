@@ -2,7 +2,9 @@ import Component from 'vue-class-component';
 import mdButton from '../button';
 import mdDropdownList from '../dropdown-list';
 import mdDropdownItem from '../dropdown-item';
-// todo props
+
+import onClickAway from '../../directives/click-away';
+
 var template = require('./dropdown.html');
 
 @Component({
@@ -15,6 +17,9 @@ var template = require('./dropdown.html');
             required: false,
             "default": ""
         }
+    },
+    directives: {
+        onClickAway
     },
     components: {
         mdButton,

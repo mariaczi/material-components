@@ -27,13 +27,11 @@ var template = require('./dropdown-list.html');
 })
 export default class DropdownList {
     private active: boolean;
-    private clicked: boolean;
     private style: any;
 
     data() {
         return {
             active: false,
-            clicked: false,
             style: {}
         }
     }
@@ -46,7 +44,6 @@ export default class DropdownList {
         if (!this.active) {
             this.style = this.computeStyle(e.currentTarget);
             this.active = true;
-            this.clicked = true;
         }
     }
 
@@ -55,12 +52,9 @@ export default class DropdownList {
     }
 
     hide() {
-        if (this.active && !this.clicked) {
+        if (this.active) {
             this.style = {};
             this.active = false;
-        }
-        else {
-            this.clicked = false;
         }
     }
 

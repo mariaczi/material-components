@@ -19,7 +19,7 @@ export default class InputFileds {
 
     data() {
         return {
-            firstName: '',
+            firstName: 'Martin',
             lastName: ''
         }
     }

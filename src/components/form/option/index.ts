@@ -13,32 +13,18 @@ var template = require('./option.html');
             required: false,
             'default': false
         },
-        selected: {
-            type: Boolean,
-            required: false,
-            'default': false
-        },
         value: {
             required: true
         }
     },
     events: {
-        'select::select': function (value) {
-            this.setSelected(value);
+        'option::select': function (value, values) {
+            this.setSelected(value, values);
         },
-        'select::unselect': function (value) {
+        'option::unselect': function (value) {
             this.unsetSelected(value);
         }
     },
-    /*
-    watch: {
-        active: function (newVal, oldVal) {
-            if (newVal != oldVal) {
-                this.fireEvent(this.$els.field, 'change');
-            }
-        }
-    },
-    */
     directives: {
         booleanAttribute
     },
@@ -68,8 +54,8 @@ export default class SelectOption {
     get computedClasses() {
         return {
             disabled: this.disabled,
-            active: this.active,
-            selected: this.active
+            active: this.active && !this.disabled,
+            selected: this.active && !this.disabled
         };
     }
 
@@ -85,13 +71,16 @@ export default class SelectOption {
     select() {
         if (!this.active && !this.disabled) {
             this.active = true;
-            this.$dispatch('select::select', this.value, this);
+            this.$dispatch('select::select', this.value);
         }
     }
 
-    setSelected(value) {
+    setSelected(value, values) {
         if (!this.multiple) {
             this.active = this.value == value;
+        }
+        else if (values) { // all selected values
+            this.active = values.indexOf(this.value) >= 0;
         }
     }
 

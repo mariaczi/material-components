@@ -7,6 +7,9 @@ import onClickAway from '../../directives/click-away';
 
 var template = require('./dropdown.html');
 
+/**
+ * Todo: open to top on bootom of page
+ */
 @Component({
     props: {
         /**

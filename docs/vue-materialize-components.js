@@ -5850,6 +5850,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dropdown_item_1 = __webpack_require__(35);
 	var click_away_1 = __webpack_require__(37);
 	var template = __webpack_require__(39);
+	/**
+	 * Todo: open to top on bootom of page
+	 */
 	var Dropdown = (function () {
 	    function Dropdown() {}
 	    Dropdown.prototype.open = function (e) {
@@ -9374,7 +9377,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function InputFileds() {}
 	    InputFileds.prototype.data = function () {
 	        return {
-	            firstName: '',
+	            firstName: 'Martin',
 	            lastName: ''
 	        };
 	    };
@@ -9417,6 +9420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    InputField.prototype.ready = function () {
 	        this.setupDisabled();
+	        this.refreshValue();
 	    };
 	    Object.defineProperty(InputField.prototype, "field", {
 	        get: function get() {
@@ -9452,6 +9456,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
+	    InputField.prototype.refreshValue = function () {
+	        this.value = this.$els.field.value;
+	    };
 	    InputField.prototype.setActive = function (val) {
 	        this.active = val;
 	    };
@@ -9546,7 +9553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 150 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"input-field\">\r\n    <i v-if=\"slotIcon\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <slot name=\"input\">\r\n        <input v-el:field\r\n               v-model=\"value\"\r\n               :placeholder=\"placeholder\" :id=\"id\"\r\n               :type=\"type\" class=\"field\">\r\n    </slot>\r\n    <label v-if=\"slot\" :for=\"id\" :class=\"labelClasses\">\r\n        <slot></slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"input-field\">\r\n    <i v-if=\"slotIcon\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <input v-el:field\r\n           @change=\"refreshValue\"\r\n           :placeholder=\"placeholder\" :id=\"id\"\r\n           :type=\"type\" class=\"field\"/>\r\n    <label v-if=\"slot\" :for=\"id\" :class=\"labelClasses\">\r\n        <slot></slot>\r\n    </label>\r\n</div>";
 
 /***/ },
 /* 151 */
@@ -9653,7 +9660,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function Textarea() {}
 	    Textarea.prototype.data = function () {
 	        return {
-	            value: ''
+	            value: 'Text'
 	        };
 	    };
 	    Textarea = __decorate([vue_class_component_1["default"]({
@@ -9830,7 +9837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 160 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <md-textarea v-field=\"value\" class=\"col s6\">\r\n                Textarea:\r\n            </md-textarea>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Textarea: {{{value | eolToBr}}}\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>";
+	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <md-textarea v-field=\"value\" debounce=\"500\" class=\"col s6\">\r\n                Textarea:\r\n            </md-textarea>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Textarea: {{{value | eolToBr}}}\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>";
 
 /***/ },
 /* 161 */
@@ -9855,7 +9862,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Selects.prototype.data = function () {
 	        return {
 	            value: '',
-	            multipleValue: [],
+	            multipleValue: ['1', '3'],
 	            groupsValue: '1'
 	        };
 	    };
@@ -9897,6 +9904,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	__webpack_require__(165);
 	var Vue = __webpack_require__(1);
 	var template = __webpack_require__(167);
+	function getValue(el, multi, init) {
+	    var res = multi ? [] : null;
+	    var op, val, selected;
+	    for (var i = 0, l = el.options.length; i < l; i++) {
+	        op = el.options[i];
+	        selected = init ? op.hasAttribute('selected') : op.selected;
+	        if (selected) {
+	            val = op.hasOwnProperty('_value') ? op._value : op.value;
+	            if (multi) {
+	                res.push(val);
+	            } else {
+	                return val;
+	            }
+	        }
+	    }
+	    return res;
+	}
 	var SelectField = (function () {
 	    function SelectField() {}
 	    SelectField.prototype.data = function () {
@@ -9915,25 +9939,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for (var i = 0; i < options.length; i++) {
 	            var option = options[i];
 	            var opt = this.createOption(option);
-	            if (opt.selected) {
-	                this.defaultSelect = opt.value;
-	            }
 	            Vue.set(this.options, opt.value, opt);
 	        }
 	        this.$nextTick(function () {
-	            _this.valueSingle = _this.defaultSelect;
+	            _this.refreshValue();
+	            _this.refreshOptions();
 	        });
 	    };
 	    SelectField.prototype.createOption = function (option) {
 	        var content = option._slotContents["default"];
 	        var value = option.$data.value;
 	        var disabled = option.$data.disabled;
-	        var selected = option.$data.selected;
 	        return {
 	            content: content.textContent,
 	            value: value,
-	            disabled: disabled,
-	            selected: selected
+	            disabled: disabled
 	        };
 	    };
 	    Object.defineProperty(SelectField.prototype, "value", {
@@ -9944,7 +9964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (this.multiple) {
 	                this.valueMultiple = value;
 	            } else {
-	                this.valueSingle = value;
+	                this.valueSingle = value.length ? value[0] : value;
 	            }
 	        },
 	        enumerable: true,
@@ -9986,13 +10006,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
-	    Object.defineProperty(SelectField.prototype, "readonly", {
-	        get: function get() {
-	            return this.options[this.defaultSelect] ? this.options[this.defaultSelect].disabled : false;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
 	    Object.defineProperty(SelectField.prototype, "field", {
 	        get: function get() {
 	            return this.$els.field;
@@ -10015,20 +10028,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	    SelectField.prototype.setSelected = function (value) {
 	        var _this = this;
 	        (this.multiple ? this.setSelectedMultiple : this.setSelectedSingle)(value);
+	        this.$broadcast('option::select', value);
 	        this.$nextTick(function () {
 	            _this.fireEvent(_this.field, 'change');
 	        });
 	    };
 	    SelectField.prototype.setSelectedSingle = function (value) {
 	        this.valueSingle = value;
+	        this.selectOptionSingle(value);
 	        this.close();
+	    };
+	    SelectField.prototype.selectOptionSingle = function (value) {
+	        Array.prototype.slice.call(this.$els.field.options).forEach(function (o) {
+	            o.selected = value == o.value;
+	        });
 	    };
 	    SelectField.prototype.setSelectedMultiple = function (value) {
 	        this.valueMultiple.push(value);
+	        this.selectOptionMultiple(value);
+	    };
+	    SelectField.prototype.selectOptionMultiple = function (value) {
+	        Array.prototype.slice.call(this.$els.field.options).forEach(function (o) {
+	            if (value == o.value) {
+	                o.selected = true;
+	            }
+	        });
 	    };
 	    SelectField.prototype.unsetSelected = function (value) {
 	        var _this = this;
 	        (this.multiple ? this.unsetSelectedMultiple : this.unsetSelectedSingle)(value);
+	        this.$broadcast('option::unselect', value);
 	        this.$nextTick(function () {
 	            _this.fireEvent(_this.field, 'change');
 	        });
@@ -10038,6 +10067,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    SelectField.prototype.unsetSelectedMultiple = function (value) {
 	        this.valueMultiple.$remove(value);
+	        this.unsetOptionMultiple(value);
+	    };
+	    SelectField.prototype.unsetOptionMultiple = function (value) {
+	        Array.prototype.slice.call(this.$els.field.options).forEach(function (o) {
+	            if (value == o.value) {
+	                o.selected = false;
+	            }
+	        });
+	    };
+	    SelectField.prototype.refreshValue = function () {
+	        this.value = Array.prototype.slice.call(this.$els.field.selectedOptions).map(function (o) {
+	            return o.value;
+	        });
+	    };
+	    SelectField.prototype.refreshOptions = function () {
+	        var _this = this;
+	        Array.prototype.slice.call(this.$els.field.selectedOptions).forEach(function (o) {
+	            _this.$broadcast('option::select', o.value, _this.value);
+	        });
 	    };
 	    SelectField = __decorate([vue_class_component_1["default"]({
 	        props: {
@@ -10050,11 +10098,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        events: {
 	            'select::select': function selectSelect(value, option) {
 	                this.setSelected(value, option);
-	                this.$broadcast('select::select', value);
 	            },
 	            'select::unselect': function selectUnselect(value, option) {
 	                this.unsetSelected(value, option);
-	                this.$broadcast('select::unselect', value);
 	            }
 	        },
 	        components: {
@@ -10108,7 +10154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 167 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"md-select input-field\" v-click-away=\"close\">\r\n    <i v-if=\"slotIcon\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n\r\n    <div class=\"select-wrapper\">\r\n\r\n        <span class=\"caret\">▼</span>\r\n        <input @click=\"open\" readonly=\"readonly\" :value=\"valueContent\"\r\n               type=\"text\" class=\"select-dropdown\">\r\n\r\n        <md-dropdown-list :active=\"active\" class=\"select-dropdown\">\r\n            <slot></slot>\r\n        </md-dropdown-list>\r\n\r\n        <slot name=\"select\">\r\n            <select v-el:field\r\n                    v-model=\"value\"\r\n                    v-boolean-attribute:multiple=\"multiple\"\r\n                    :placeholder=\"placeholder\" :id=\"id\"\r\n                    :type=\"type\" class=\"field\">\r\n                <option v-for=\"opt in options\" :value=\"opt.value\" v-boolean-attribute:disabled=\"disabled\">{{opt.content}}</option>\r\n            </select>\r\n        </slot>\r\n    </div>\r\n    <label v-if=\"labelSlot\" :for=\"id\" :class=\"labelClasses\">\r\n        <slot name=\"label\"></slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"md-select input-field\" v-click-away=\"close\">\r\n    <i v-if=\"slotIcon\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n\r\n    <div class=\"select-wrapper\">\r\n\r\n        <span class=\"caret\">▼</span>\r\n        <input @click=\"open\" readonly=\"readonly\" :value=\"valueContent\"\r\n               type=\"text\" class=\"select-dropdown\">\r\n\r\n        <md-dropdown-list :active=\"active\" class=\"select-dropdown\">\r\n            <slot></slot>\r\n        </md-dropdown-list>\r\n\r\n        <select v-el:field\r\n                @change=\"refreshValue\"\r\n                v-boolean-attribute:multiple=\"multiple\"\r\n                :placeholder=\"placeholder\" :id=\"id\"\r\n                :type=\"type\" class=\"field\">\r\n            <option v-for=\"opt in options\" :value=\"opt.value\" v-boolean-attribute:disabled=\"opt.disabled\">{{opt.content}}</option>\r\n        </select>\r\n    </div>\r\n    <label v-if=\"labelSlot\" :for=\"id\" :class=\"labelClasses\">\r\n        <slot name=\"label\"></slot>\r\n    </label>\r\n</div>";
 
 /***/ },
 /* 168 */
@@ -10144,8 +10190,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        get: function get() {
 	            return {
 	                disabled: this.disabled,
-	                active: this.active,
-	                selected: this.active
+	                active: this.active && !this.disabled,
+	                selected: this.active && !this.disabled
 	            };
 	        },
 	        enumerable: true,
@@ -10161,12 +10207,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    SelectOption.prototype.select = function () {
 	        if (!this.active && !this.disabled) {
 	            this.active = true;
-	            this.$dispatch('select::select', this.value, this);
+	            this.$dispatch('select::select', this.value);
 	        }
 	    };
-	    SelectOption.prototype.setSelected = function (value) {
+	    SelectOption.prototype.setSelected = function (value, values) {
 	        if (!this.multiple) {
 	            this.active = this.value == value;
+	        } else if (values) {
+	            this.active = values.indexOf(this.value) >= 0;
 	        }
 	    };
 	    SelectOption.prototype.unselect = function () {
@@ -10187,32 +10235,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	                required: false,
 	                'default': false
 	            },
-	            selected: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            },
 	            value: {
 	                required: true
 	            }
 	        },
 	        events: {
-	            'select::select': function selectSelect(value) {
-	                this.setSelected(value);
+	            'option::select': function optionSelect(value, values) {
+	                this.setSelected(value, values);
 	            },
-	            'select::unselect': function selectUnselect(value) {
+	            'option::unselect': function optionUnselect(value) {
 	                this.unsetSelected(value);
 	            }
 	        },
-	        /*
-	        watch: {
-	            active: function (newVal, oldVal) {
-	                if (newVal != oldVal) {
-	                    this.fireEvent(this.$els.field, 'change');
-	                }
-	            }
-	        },
-	        */
 	        directives: {
 	            booleanAttribute: boolean_attribute_1["default"]
 	        },
@@ -10235,7 +10269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 170 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{value}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"value\" class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{multipleValue | json}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field:multiple=\"multipleValue\" multiple class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{groupsValue}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"groupsValue\" class=\"col s6\">\r\n                <md-optgroup label=\"team 1\">\r\n                    <md-option value=\"1\">Option 1</md-option>\r\n                    <md-option value=\"2\">Option 2</md-option>\r\n                </md-optgroup>\r\n                <md-optgroup label=\"team 2\">\r\n                    <md-option value=\"3\">Option 3</md-option>\r\n                    <md-option value=\"4\">Option 4</md-option>\r\n                </md-optgroup>\r\n                <span slot=\"label\">Optgroups</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n";
+	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{value}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"value\" class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{multipleValue | json}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field:multiple=\"multipleValue\" multiple class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{groupsValue}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"groupsValue\" class=\"col s6\">\r\n                <md-optgroup label=\"team 1\">\r\n                    <md-option value=\"1\" selected>Option 1</md-option>\r\n                    <md-option value=\"2\">Option 2</md-option>\r\n                </md-optgroup>\r\n                <md-optgroup label=\"team 2\">\r\n                    <md-option value=\"3\">Option 3</md-option>\r\n                    <md-option value=\"4\">Option 4</md-option>\r\n                </md-optgroup>\r\n                <span slot=\"label\">Optgroups</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n\r\n<!-- todo circles + browser default + disable -->";
 
 /***/ },
 /* 171 */
@@ -10259,7 +10293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 174 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-textarea</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"value\"</span>&gt;</span>\r\n    Textarea:\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-textarea</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-textarea</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"value\"</span> <span class=\"hljs-attribute\">debounce</span>=<span class=\"hljs-value\">\"500\"</span>&gt;</span>\r\n    Textarea:\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-textarea</span>&gt;</span>";
 
 /***/ },
 /* 175 */

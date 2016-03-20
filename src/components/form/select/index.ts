@@ -10,6 +10,24 @@ require('./select.scss');
 var Vue: any = require('vue');
 var template = require('./select.html');
 
+function getValue(el, multi, init?) {
+    var res = multi ? [] : null;
+    var op, val, selected;
+    for (var i = 0, l = el.options.length; i < l; i++) {
+        op = el.options[i];
+        selected = init ? op.hasAttribute('selected') : op.selected;
+        if (selected) {
+            val = op.hasOwnProperty('_value') ? op._value : op.value;
+            if (multi) {
+                res.push(val);
+            } else {
+                return val;
+            }
+        }
+    }
+    return res;
+}
+
 @Component({
     props: {
         multiple: {
@@ -21,11 +39,9 @@ var template = require('./select.html');
     events: {
         'select::select': function(value, option) {
             this.setSelected(value, option);
-            this.$broadcast('select::select', value);
         },
         'select::unselect': function(value, option) {
             this.unsetSelected(value, option);
-            this.$broadcast('select::unselect', value);
         }
     },
     components: {
@@ -69,28 +85,23 @@ export default class SelectField {
         for (var i = 0; i < options.length; i++) {
             var option = options[i];
             var opt: any = this.createOption(option);
-            if (opt.selected) {
-                this.defaultSelect = opt.value;
-            }
-
             Vue.set(this.options, opt.value, opt);
         }
         this.$nextTick(() => {
-            this.valueSingle = this.defaultSelect;
-        });
+            this.refreshValue();
+            this.refreshOptions();
+        })
     }
 
     createOption(option: any) {
         var content = option._slotContents.default;
         var value = option.$data.value;
         var disabled = option.$data.disabled;
-        var selected = option.$data.selected;
 
         return {
             content: content.textContent,
             value: value,
-            disabled: disabled,
-            selected: selected
+            disabled: disabled
         };
     }
 
@@ -103,7 +114,7 @@ export default class SelectField {
             this.valueMultiple = value;
         }
         else {
-            this.valueSingle = value;
+            this.valueSingle = value.length ? value[0] : value;
         }
     }
 
@@ -131,10 +142,6 @@ export default class SelectField {
         return 'label' in self._slotContents;
     }
 
-    get readonly() {
-        return this.options[this.defaultSelect] ? this.options[this.defaultSelect].disabled : false;
-    }
-
     get field() {
         return this.$els.field;
     }
@@ -155,6 +162,7 @@ export default class SelectField {
 
     setSelected(value) {
         (this.multiple ? this.setSelectedMultiple : this.setSelectedSingle)(value);
+        this.$broadcast('option::select', value);
         this.$nextTick(() => {
             this.fireEvent(this.field, 'change');
         });
@@ -162,15 +170,34 @@ export default class SelectField {
 
     setSelectedSingle(value) {
         this.valueSingle = value;
+        this.selectOptionSingle(value);
         this.close();
+    }
+
+    selectOptionSingle(value) {
+        Array.prototype.slice.call(this.$els.field.options)
+            .forEach((o) => {
+                o.selected = (value == o.value);
+            });
     }
 
     setSelectedMultiple(value) {
         this.valueMultiple.push(value);
+        this.selectOptionMultiple(value);
+    }
+
+    selectOptionMultiple(value) {
+        Array.prototype.slice.call(this.$els.field.options)
+            .forEach((o) => {
+                 if (value == o.value) {
+                     o.selected = true;
+                 }
+            });
     }
 
     unsetSelected(value) {
         (this.multiple ? this.unsetSelectedMultiple : this.unsetSelectedSingle)(value);
+        this.$broadcast('option::unselect', value);
         this.$nextTick(() => {
             this.fireEvent(this.field, 'change');
         });
@@ -182,6 +209,27 @@ export default class SelectField {
 
     unsetSelectedMultiple(value) {
         this.valueMultiple.$remove(value);
+        this.unsetOptionMultiple(value);
     }
 
+    unsetOptionMultiple(value) {
+        Array.prototype.slice.call(this.$els.field.options)
+            .forEach((o) => {
+                if (value == o.value) {
+                    o.selected = false;
+                }
+            });
+    }
+
+    refreshValue() {
+        this.value = Array.prototype.slice.call(this.$els.field.selectedOptions)
+            .map((o) => o.value);
+    }
+
+    refreshOptions() {
+        Array.prototype.slice.call(this.$els.field.selectedOptions)
+            .forEach((o) => {
+               this.$broadcast('option::select', o.value, this.value);
+            });
+    }
 }

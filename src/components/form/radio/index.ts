@@ -2,7 +2,7 @@ import Component from 'vue-class-component';
 
 import inputMixin from '../../../mixins/input';
 
-var template = require('./input.html');
+var template = require('./radio.html');
 
 @Component({
     props: {
@@ -32,9 +32,7 @@ var template = require('./input.html');
     ],
     template: template
 })
-export default class InputField {
-    private $els: any;
-
+export default class Radio {
     private value: string;
     private placeholder: string;
     private disabled: boolean;
@@ -48,7 +46,6 @@ export default class InputField {
 
     ready() {
         this.setupDisabled();
-        this.refreshValue()
     }
 
     get field(): HTMLElement {
@@ -72,10 +69,6 @@ export default class InputField {
            disabled: this.disabled
        }
    }
-
-    refreshValue() {
-        this.value = this.$els.field.value;
-    }
 
     setActive(val) {
         this.active = val;

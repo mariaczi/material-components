@@ -24,7 +24,7 @@ export default class Selects {
     data() {
         return {
             value: '',
-            multipleValue: [],
+            multipleValue: ['1', '3'],
             groupsValue: '1',
         }
     }

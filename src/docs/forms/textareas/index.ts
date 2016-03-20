@@ -26,7 +26,7 @@ export default class Textarea {
 
     data() {
         return {
-            value: '',
+            value: 'Text',
         }
     }
 }

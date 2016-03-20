@@ -9526,6 +9526,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            } else {
 	                element.fireEvent("on" + event);
 	            }
+	        },
+	        $getAllChildren: function $getAllChildren() {
+	            return this._getChildren(this);
+	        },
+	        _getChildren: function _getChildren(component) {
+	            var children = [];
+	            children = children.concat(component.$children);
+	            for (var i = 0; i < component.$children.length; i++) {
+	                children = children.concat(this._getChildren(component.$children[i]));
+	            }
+	            return children;
 	        }
 	    }
 	};
@@ -9836,6 +9847,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var select_1 = __webpack_require__(162);
 	var option_1 = __webpack_require__(168);
+	var optgroup_1 = __webpack_require__(294);
 	var field_1 = __webpack_require__(151);
 	var template = __webpack_require__(170);
 	var Selects = (function () {
@@ -9843,13 +9855,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Selects.prototype.data = function () {
 	        return {
 	            value: '',
-	            multipleValue: []
+	            multipleValue: [],
+	            groupsValue: '1'
 	        };
 	    };
 	    Selects = __decorate([vue_class_component_1["default"]({
 	        components: {
 	            mdSelect: select_1["default"],
-	            mdOption: option_1["default"]
+	            mdOption: option_1["default"],
+	            mdOptgroup: optgroup_1["default"]
 	        },
 	        directives: {
 	            field: field_1["default"]
@@ -9895,7 +9909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    SelectField.prototype.ready = function () {
 	        var _this = this;
-	        var options = this.$children.filter(function (c) {
+	        var options = this.$getAllChildren().filter(function (c) {
 	            return 'SelectOption' == c.$options.name;
 	        });
 	        for (var i = 0; i < options.length; i++) {
@@ -10221,7 +10235,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 170 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{value}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"value\" class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{multipleValue | json}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field:multiple=\"multipleValue\" multiple class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>";
+	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{value}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"value\" class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{multipleValue | json}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field:multiple=\"multipleValue\" multiple class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{groupsValue}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"groupsValue\" class=\"col s6\">\r\n                <md-optgroup label=\"team 1\">\r\n                    <md-option value=\"1\">Option 1</md-option>\r\n                    <md-option value=\"2\">Option 2</md-option>\r\n                </md-optgroup>\r\n                <md-optgroup label=\"team 2\">\r\n                    <md-option value=\"3\">Option 3</md-option>\r\n                    <md-option value=\"4\">Option 4</md-option>\r\n                </md-optgroup>\r\n                <span slot=\"label\">Optgroups</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n";
 
 /***/ },
 /* 171 */
@@ -10251,7 +10265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 175 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"value\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">disabled</span> <span class=\"hljs-attribute\">selected</span>&gt;</span>Choose your option<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Materialize Select<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"multipleValue\"</span> <span class=\"hljs-attribute\">multiple</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">disabled</span> <span class=\"hljs-attribute\">selected</span>&gt;</span>Choose your option<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Materialize Select<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"value\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">disabled</span> <span class=\"hljs-attribute\">selected</span>&gt;</span>Choose your option<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Materialize Select<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"multipleValue\"</span> <span class=\"hljs-attribute\">multiple</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">disabled</span> <span class=\"hljs-attribute\">selected</span>&gt;</span>Choose your option<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Materialize Select<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"groupsValue\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"col s6\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-optgroup</span> <span class=\"hljs-attribute\">label</span>=<span class=\"hljs-value\">\"team 1\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-optgroup</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-optgroup</span> <span class=\"hljs-attribute\">label</span>=<span class=\"hljs-value\">\"team 2\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"4\"</span>&gt;</span>Option 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-optgroup</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Optgroups<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>\r\n";
 
 /***/ },
 /* 176 */
@@ -12882,6 +12896,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports["default"] = booleanAttribute;
 	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(295);
+	var Optgroup = (function () {
+	    function Optgroup() {}
+	    Optgroup = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            label: {
+	                type: String,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        template: template
+	    })], Optgroup);
+	    return Optgroup;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Optgroup;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 295 */
+/***/ function(module, exports) {
+
+	module.exports = "<li class=\"optgroup\">\r\n    <span>\r\n        {{label}}\r\n    </span>\r\n</li>\r\n<slot></slot>";
 
 /***/ }
 /******/ ])

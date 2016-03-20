@@ -19,11 +19,11 @@ var template = require('./select.html');
         }
     },
     events: {
-        'select::select': function (value, option) {
+        'select::select': function(value, option) {
             this.setSelected(value, option);
             this.$broadcast('select::select', value);
         },
-        'select::unselect': function (value, option) {
+        'select::unselect': function(value, option) {
             this.unsetSelected(value, option);
             this.$broadcast('select::unselect', value);
         }
@@ -43,10 +43,8 @@ var template = require('./select.html');
 })
 export default class SelectField {
     private $els: any;
-    private $refs: any;
-    private $children: vuejs.Vue[];
+    private $getAllChildren: any;
     private $nextTick: any;
-    private $dispatch: any;
     private $broadcast: any;
     private fireEvent: any;
 
@@ -67,7 +65,7 @@ export default class SelectField {
     }
 
     ready() {
-        var options = this.$children.filter((c: any) => {return 'SelectOption' == c.$options.name});
+        var options = this.$getAllChildren().filter((c: any) => {return 'SelectOption' == c.$options.name});
         for (var i = 0; i < options.length; i++) {
             var option = options[i];
             var opt: any = this.createOption(option);

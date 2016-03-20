@@ -9546,11 +9546,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Vue = VueModule;
 	var handler = Vue.options.directives.model;
 	var field = {
+	    priority: 800,
 	    twoWay: true,
 	    params: ['lazy', 'number', 'debounce'],
 	    bind: function bind() {
 	        this.field = this.el.__vue__.$els.field || this.el.querySelector('.field');
 	        if (this.field) {
+	            if (this.arg) {
+	                this.field.setAttribute(this.arg, this.arg);
+	            }
 	            this.checkFilters = Vue.options.directives.model.checkFilters;
 	            this.__el__ = this.el;
 	            this.el = this.field;
@@ -9875,7 +9879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var input_1 = __webpack_require__(149);
 	var slot_1 = __webpack_require__(163);
 	var click_away_1 = __webpack_require__(37);
-	var boolean_attrbute_1 = __webpack_require__(164);
+	var boolean_attribute_1 = __webpack_require__(293);
 	__webpack_require__(165);
 	var Vue = __webpack_require__(1);
 	var template = __webpack_require__(167);
@@ -9884,7 +9888,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    SelectField.prototype.data = function () {
 	        return {
 	            active: false,
-	            value: null,
+	            valueSingle: null,
+	            valueMultiple: [],
 	            options: {}
 	        };
 	    };
@@ -9893,17 +9898,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var options = this.$children.filter(function (c) {
 	            return 'SelectOption' == c.$options.name;
 	        });
-	        var selected = null;
 	        for (var i = 0; i < options.length; i++) {
 	            var option = options[i];
 	            var opt = this.createOption(option);
 	            if (opt.selected) {
-	                selected = opt.value;
+	                this.defaultSelect = opt.value;
 	            }
 	            Vue.set(this.options, opt.value, opt);
 	        }
 	        this.$nextTick(function () {
-	            _this.value = selected;
+	            _this.valueSingle = _this.defaultSelect;
 	        });
 	    };
 	    SelectField.prototype.createOption = function (option) {
@@ -9918,9 +9922,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	            selected: selected
 	        };
 	    };
+	    Object.defineProperty(SelectField.prototype, "value", {
+	        get: function get() {
+	            return this.multiple ? this.valueMultiple : this.valueSingle;
+	        },
+	        set: function set(value) {
+	            if (this.multiple) {
+	                this.valueMultiple = value;
+	            } else {
+	                this.valueSingle = value;
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(SelectField.prototype, "valueContent", {
 	        get: function get() {
-	            return this.options[this.value] ? this.options[this.value].content : '';
+	            return this.multiple ? this.valueContentMultiple : this.valueContentSingle;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(SelectField.prototype, "valueContentSingle", {
+	        get: function get() {
+	            return this.options[this.valueSingle] ? this.options[this.valueSingle].content : '';
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(SelectField.prototype, "valueContentMultiple", {
+	        get: function get() {
+	            var _this = this;
+	            if (this.valueMultiple.length) {
+	                return this.valueMultiple.map(function (value) {
+	                    return _this.options[value] ? _this.options[value].content : '';
+	                }).join(', ');
+	            } else {
+	                return this.options[this.defaultSelect] ? this.options[this.defaultSelect].content : '';
+	            }
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -9935,7 +9974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    Object.defineProperty(SelectField.prototype, "readonly", {
 	        get: function get() {
-	            return this.options[this.value] ? this.options[this.value].disabled : false;
+	            return this.options[this.defaultSelect] ? this.options[this.defaultSelect].disabled : false;
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -9961,10 +10000,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    SelectField.prototype.setSelected = function (value) {
 	        var _this = this;
-	        this.value = value;
+	        (this.multiple ? this.setSelectedMultiple : this.setSelectedSingle)(value);
 	        this.$nextTick(function () {
 	            _this.fireEvent(_this.field, 'change');
 	        });
+	    };
+	    SelectField.prototype.setSelectedSingle = function (value) {
+	        this.valueSingle = value;
+	        this.close();
+	    };
+	    SelectField.prototype.setSelectedMultiple = function (value) {
+	        this.valueMultiple.push(value);
+	    };
+	    SelectField.prototype.unsetSelected = function (value) {
+	        var _this = this;
+	        (this.multiple ? this.unsetSelectedMultiple : this.unsetSelectedSingle)(value);
+	        this.$nextTick(function () {
+	            _this.fireEvent(_this.field, 'change');
+	        });
+	    };
+	    SelectField.prototype.unsetSelectedSingle = function () {
+	        this.valueSingle = null;
+	    };
+	    SelectField.prototype.unsetSelectedMultiple = function (value) {
+	        this.valueMultiple.$remove(value);
 	    };
 	    SelectField = __decorate([vue_class_component_1["default"]({
 	        props: {
@@ -9977,6 +10036,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        events: {
 	            'select::select': function selectSelect(value, option) {
 	                this.setSelected(value, option);
+	                this.$broadcast('select::select', value);
+	            },
+	            'select::unselect': function selectUnselect(value, option) {
+	                this.unsetSelected(value, option);
+	                this.$broadcast('select::unselect', value);
 	            }
 	        },
 	        components: {
@@ -9985,7 +10049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        directives: {
 	            slot: slot_1["default"],
 	            clickAway: click_away_1["default"],
-	            booleanAttribute: boolean_attrbute_1["default"]
+	            booleanAttribute: boolean_attribute_1["default"]
 	        },
 	        mixins: [input_1["default"]],
 	        template: template
@@ -10019,28 +10083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 164 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var VueModule = __webpack_require__(1);
-	var Vue = VueModule;
-	// v-boolean-attrbute.disabled="disabled"
-	var booleanAttribute = {
-	    update: function update(value) {
-	        var arg = this.arg;
-	        if (value) {
-	            this.el.setAttribute(arg, arg);
-	        } else {
-	            this.el.removeAttribute(arg);
-	        }
-	    }
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = booleanAttribute;
-	//# sourceMappingURL=index.js.map
-
-/***/ },
+/* 164 */,
 /* 165 */
 /***/ function(module, exports) {
 
@@ -10066,7 +10109,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var boolean_attrbute_1 = __webpack_require__(164);
+	var boolean_attribute_1 = __webpack_require__(293);
+	var input_1 = __webpack_require__(149);
 	var template = __webpack_require__(169);
 	var SelectOption = (function () {
 	    function SelectOption() {}
@@ -10085,15 +10129,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Object.defineProperty(SelectOption.prototype, "computedClasses", {
 	        get: function get() {
 	            return {
-	                disabled: this.disabled
+	                disabled: this.disabled,
+	                active: this.active,
+	                selected: this.active
 	            };
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
+	    SelectOption.prototype.toggle = function () {
+	        if (!this.active) {
+	            this.select();
+	        } else {
+	            this.unselect();
+	        }
+	    };
 	    SelectOption.prototype.select = function () {
-	        if (!this.disabled) {
+	        if (!this.active && !this.disabled) {
+	            this.active = true;
 	            this.$dispatch('select::select', this.value, this);
+	        }
+	    };
+	    SelectOption.prototype.setSelected = function (value) {
+	        if (!this.multiple) {
+	            this.active = this.value == value;
+	        }
+	    };
+	    SelectOption.prototype.unselect = function () {
+	        if (this.active && !this.disabled && this.multiple) {
+	            this.active = false;
+	            this.$dispatch('select::unselect', this.value, this);
+	        }
+	    };
+	    SelectOption.prototype.unsetSelected = function (value) {
+	        if (this.multiple && this.value == value) {
+	            this.active = false;
 	        }
 	    };
 	    SelectOption = __decorate([vue_class_component_1["default"]({
@@ -10112,9 +10182,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	                required: true
 	            }
 	        },
-	        directives: {
-	            booleanAttribute: boolean_attrbute_1["default"]
+	        events: {
+	            'select::select': function selectSelect(value) {
+	                this.setSelected(value);
+	            },
+	            'select::unselect': function selectUnselect(value) {
+	                this.unsetSelected(value);
+	            }
 	        },
+	        /*
+	        watch: {
+	            active: function (newVal, oldVal) {
+	                if (newVal != oldVal) {
+	                    this.fireEvent(this.$els.field, 'change');
+	                }
+	            }
+	        },
+	        */
+	        directives: {
+	            booleanAttribute: boolean_attribute_1["default"]
+	        },
+	        mixins: [input_1["default"]],
 	        template: template
 	    })], SelectOption);
 	    return SelectOption;
@@ -10127,13 +10215,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 169 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click.prevent=\"select\" :class=\"computedClasses\">\r\n    <span>\r\n        <input v-if=\"multiple\" v-boolean-attribute:disabled=\"disabled\" type=\"checkbox\">\r\n        <label v-if=\"multiple\"></label>\r\n        <slot></slot>\r\n    </span>\r\n</li>";
+	module.exports = "<li @click.prevent=\"toggle\" :class=\"computedClasses\">\r\n    <span>\r\n        <input v-el:field\r\n               v-show=\"multiple\" v-model=\"active\"\r\n               v-boolean-attribute:disabled=\"disabled\"\r\n               type=\"checkbox\">\r\n        <label v-if=\"multiple\"></label>\r\n        <slot></slot>\r\n    </span>\r\n</li>";
 
 /***/ },
 /* 170 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <md-select v-field=\"value\" class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Select: {{value}}\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <md-select v-field=\"multipleValue\" multiple class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Select: {{multipleValue}}\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>";
+	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{value}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field=\"value\" class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: {{multipleValue | json}}\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <md-select v-field:multiple=\"multipleValue\" multiple class=\"col s6\">\r\n                <md-option value=\"\" disabled selected>Choose your option</md-option>\r\n                <md-option value=\"1\">Option 1</md-option>\r\n                <md-option value=\"2\">Option 2</md-option>\r\n                <md-option value=\"3\">Option 3</md-option>\r\n\r\n                <span slot=\"label\">Materialize Select</span>\r\n            </md-select>\r\n        </div>\r\n    </form>\r\n</div>";
 
 /***/ },
 /* 171 */
@@ -10163,7 +10251,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 175 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"value\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"col s6\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">disabled</span> <span class=\"hljs-attribute\">selected</span>&gt;</span>Choose your option<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Materialize Select<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>\r\n\r\n";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"value\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">disabled</span> <span class=\"hljs-attribute\">selected</span>&gt;</span>Choose your option<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Materialize Select<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-select</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"multipleValue\"</span> <span class=\"hljs-attribute\">multiple</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">disabled</span> <span class=\"hljs-attribute\">selected</span>&gt;</span>Choose your option<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Option 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Option 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"3\"</span>&gt;</span>Option 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-option</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>Materialize Select<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-select</span>&gt;</span>";
 
 /***/ },
 /* 176 */
@@ -12771,6 +12859,29 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";
+
+/***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var VueModule = __webpack_require__(1);
+	var Vue = VueModule;
+	// v-boolean-attrbute.disabled="disabled"
+	var booleanAttribute = {
+	    priority: 850,
+	    update: function update(value) {
+	        var arg = this.arg;
+	        if (value) {
+	            this.el.setAttribute(arg, arg);
+	        } else {
+	            this.el.removeAttribute(arg);
+	        }
+	    }
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = booleanAttribute;
+	//# sourceMappingURL=index.js.map
 
 /***/ }
 /******/ ])

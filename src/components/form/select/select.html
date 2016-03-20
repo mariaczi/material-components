@@ -1,4 +1,4 @@
-<div class="md-select input-field">
+<div class="md-select input-field" v-click-away="close">
     <i v-if="slotIcon" class="material-icons prefix">
         <slot name="icon-name"></slot>
     </i>
@@ -6,7 +6,7 @@
     <div class="select-wrapper">
 
         <span class="caret">▼</span>
-        <input @click="open" v-click-away="close" readonly="readonly" :value="valueContent"
+        <input @click="open" readonly="readonly" :value="valueContent"
                type="text" class="select-dropdown">
 
         <md-dropdown-list :active="active" class="select-dropdown">
@@ -16,6 +16,7 @@
         <slot name="select">
             <select v-el:field
                     v-model="value"
+                    v-boolean-attribute:multiple="multiple"
                     :placeholder="placeholder" :id="id"
                     :type="type" class="field">
                 <option v-for="opt in options" :value="opt.value" v-boolean-attribute:disabled="disabled">{{opt.content}}</option>

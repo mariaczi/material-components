@@ -22,6 +22,7 @@ export default class Selects {
     data() {
         return {
             value: '',
+            multipleValue: []
         }
     }
 }

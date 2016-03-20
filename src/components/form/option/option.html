@@ -1,5 +1,10 @@
-<li @click.prevent="select" :class="computedClasses">
+<li @click.prevent="toggle" :class="computedClasses">
     <span>
+        <input v-el:field
+               v-show="multiple" v-model="active"
+               v-boolean-attribute:disabled="disabled"
+               type="checkbox">
+        <label v-if="multiple"></label>
         <slot></slot>
     </span>
 </li>

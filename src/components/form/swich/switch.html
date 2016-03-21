@@ -1,0 +1,10 @@
+<div class="switch">
+    <label>
+        <slot name="off">Off</slot>
+        <input v-el:field
+               v-bind-boolean:disabled="disabled"
+               type="checkbox" class="field">
+        <span class="lever"></span>
+        <slot name="on">On</slot>
+    </label>
+</div>

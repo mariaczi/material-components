@@ -9331,6 +9331,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var selects_1 = __webpack_require__(161);
 	var radios_1 = __webpack_require__(173);
 	var checkboxes_1 = __webpack_require__(182);
+	var switches_1 = __webpack_require__(314);
 	var snippet_1 = __webpack_require__(55);
 	var template = __webpack_require__(190);
 	var Forms = (function () {
@@ -9342,7 +9343,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            textareasSnippet: __webpack_require__(193),
 	            selectsSnippet: __webpack_require__(194),
 	            radiosSnippet: __webpack_require__(195),
-	            checkboxesSnippet: __webpack_require__(196)
+	            checkboxesSnippet: __webpack_require__(196),
+	            switchesSnippet: __webpack_require__(318)
 	        };
 	    };
 	    Forms = __decorate([vue_class_component_1["default"]({
@@ -9354,6 +9356,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            docSelects: selects_1["default"],
 	            docRadios: radios_1["default"],
 	            docCheckboxes: checkboxes_1["default"],
+	            docSwitches: switches_1["default"],
 	            docSnippet: snippet_1["default"]
 	        }
 	    })], Forms);
@@ -10700,7 +10703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 190 */
 /***/ function(module, exports) {
 
-	module.exports = "<h2 class=\"header\">Input fields</h2>\r\n<div class=\"doc-example\">\r\n    <doc-input-fields></doc-input-fields>\r\n\r\n    <doc-snippet>{{{inputFieldsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Icon Prefixes</h2>\r\n<div class=\"doc-example\">\r\n    <doc-input-icon-fields></doc-input-icon-fields>\r\n\r\n    <doc-snippet>{{{inputIconFieldsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Textarea</h2>\r\n<div class=\"doc-example\">\r\n    <doc-textareas></doc-textareas>\r\n\r\n    <doc-snippet>{{{textareasSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Select</h2>\r\n<div class=\"doc-example\">\r\n    <doc-selects></doc-selects>\r\n\r\n    <doc-snippet>{{{selectsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Radio</h2>\r\n<div class=\"doc-example\">\r\n    <doc-radios></doc-radios>\r\n\r\n    <doc-snippet>{{{radiosSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Checkbox</h2>\r\n<div class=\"doc-example\">\r\n    <doc-checkboxes></doc-checkboxes>\r\n\r\n    <doc-snippet>{{{checkboxesSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n";
+	module.exports = "<h2 class=\"header\">Input fields</h2>\r\n<div class=\"doc-example\">\r\n    <doc-input-fields></doc-input-fields>\r\n\r\n    <doc-snippet>{{{inputFieldsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Icon Prefixes</h2>\r\n<div class=\"doc-example\">\r\n    <doc-input-icon-fields></doc-input-icon-fields>\r\n\r\n    <doc-snippet>{{{inputIconFieldsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Textarea</h2>\r\n<div class=\"doc-example\">\r\n    <doc-textareas></doc-textareas>\r\n\r\n    <doc-snippet>{{{textareasSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Select</h2>\r\n<div class=\"doc-example\">\r\n    <doc-selects></doc-selects>\r\n\r\n    <doc-snippet>{{{selectsSnippet}}}</doc-snippet>\r\n</div>\r\n\r\n<h2 class=\"header\">Switches</h2>\r\n<div class=\"doc-example\">\r\n    <doc-switches></doc-switches>\r\n\r\n    <doc-snippet>{{{switchesSnippet}}}</doc-snippet>\r\n</div>\r\n";
 
 /***/ },
 /* 191 */
@@ -10736,7 +10739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 196 */
 /***/ function(module, exports) {
 
-	module.exports = "";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-checkbox-group</span> <span class=\"hljs-attribute\">group</span>=<span class=\"hljs-value\">\"checkbox\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-checkbox</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"checkbox.red\"</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"red\"</span>&gt;</span>\r\n        Red\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-checkbox</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-checkbox</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"checkbox.yellow\"</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"yellow\"</span>&gt;</span>\r\n        Yellow\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-checkbox</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-checkbox</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"checkbox.filled\"</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"filled\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"filled-in\"</span>&gt;</span>\r\n        Filled in\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-checkbox</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-checkbox</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"checkbox.green\"</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"green\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span>\r\n        Green\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-checkbox</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-checkbox</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"checkbox.brown\"</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"brown\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span>\r\n        Brown\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-checkbox</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-checkbox-group</span>&gt;</span>";
 
 /***/ },
 /* 197 */
@@ -13344,6 +13347,114 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";
+
+/***/ },
+/* 314 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var swich_1 = __webpack_require__(315);
+	var field_1 = __webpack_require__(151);
+	var template = __webpack_require__(317);
+	var Switches = (function () {
+	    function Switches() {}
+	    Switches.prototype.data = function () {
+	        return {
+	            switches: [true, false, true]
+	        };
+	    };
+	    Switches = __decorate([vue_class_component_1["default"]({
+	        components: {
+	            mdSwitch: swich_1["default"]
+	        },
+	        directives: {
+	            field: field_1["default"]
+	        },
+	        template: template
+	    })], Switches);
+	    return Switches;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Switches;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 315 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var input_1 = __webpack_require__(149);
+	var bind_boolean_1 = __webpack_require__(164);
+	var template = __webpack_require__(316);
+	var Switch = (function () {
+	    function Switch() {}
+	    Object.defineProperty(Switch.prototype, "slotOn", {
+	        get: function get() {
+	            return 'on' in this._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Switch.prototype, "slotOff", {
+	        get: function get() {
+	            return 'off' in this._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Switch = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            disabled: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        directives: {
+	            bindBoolean: bind_boolean_1["default"]
+	        },
+	        mixins: [input_1["default"]],
+	        template: template
+	    })], Switch);
+	    return Switch;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Switch;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 316 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"switch\">\r\n    <label>\r\n        <slot name=\"off\">Off</slot>\r\n        <input v-el:field\r\n               v-bind-boolean:disabled=\"disabled\"\r\n               type=\"checkbox\" class=\"field\">\r\n        <span class=\"lever\"></span>\r\n        <slot name=\"on\">On</slot>\r\n    </label>\r\n</div>";
+
+/***/ },
+/* 317 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\r\n    <form class=\"col s12\">\r\n        <div class=\"row\">\r\n            <div class=\"output col s6\">\r\n                Selected: <pre>{{switches | json}}</pre>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <form action=\"#\">\r\n                <p>\r\n                    <md-switch v-field=\"switches[0]\">\r\n                    </md-switch>\r\n                </p>\r\n                <p>\r\n                    <md-switch v-field=\"switches[1]\">\r\n                        <span slot=\"on\">True</span>\r\n                        <span slot=\"off\">False</span>\r\n                    </md-switch>\r\n                </p>\r\n                <p>\r\n                    <md-switch v-field=\"switches[2]\" disabled>\r\n                        <span slot=\"on\">On</span>\r\n                        <span slot=\"off\">Off</span>\r\n                    </md-switch>\r\n                </p>\r\n            </form>\r\n        </div>\r\n    </form>\r\n</div>\r\n";
+
+/***/ },
+/* 318 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-switch</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"switches[0]\"</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-switch</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-switch</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"switches[1]\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"on\"</span>&gt;</span>True<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"off\"</span>&gt;</span>False<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-switch</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-switch</span> <span class=\"hljs-attribute\">v-field</span>=<span class=\"hljs-value\">\"switches[2]\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"on\"</span>&gt;</span>On<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"off\"</span>&gt;</span>Off<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-switch</span>&gt;</span>";
 
 /***/ }
 /******/ ])

@@ -5,6 +5,7 @@ import docTextareas from './textareas';
 import docSelects from './selects';
 import docRadios from './radios';
 import docCheckboxes from './checkboxes';
+import docSwitches from './switches';
 import docSnippet from '../snippet';
 
 var template = require('./forms.html');
@@ -18,6 +19,7 @@ var template = require('./forms.html');
         docSelects,
         docRadios,
         docCheckboxes,
+        docSwitches,
         docSnippet
     }
 })
@@ -29,7 +31,8 @@ export default class Forms {
             textareasSnippet: require('./textareas/textarea.snippet.html'),
             selectsSnippet: require('./selects/selects.snippet.html'),
             radiosSnippet: require('./radios/radios.snippet.html'),
-            checkboxesSnippet: require('./checkboxes/checkboxes.snippet.html')
+            checkboxesSnippet: require('./checkboxes/checkboxes.snippet.html'),
+            switchesSnippet: require('./switches/switches.snippet.html')
         }
     }
 }

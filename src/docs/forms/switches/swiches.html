@@ -1,0 +1,29 @@
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="output col s6">
+                Selected: <pre>{{switches | json}}</pre>
+            </div>
+        </div>
+        <div class="row">
+            <form action="#">
+                <p>
+                    <md-switch v-field="switches[0]">
+                    </md-switch>
+                </p>
+                <p>
+                    <md-switch v-field="switches[1]">
+                        <span slot="on">True</span>
+                        <span slot="off">False</span>
+                    </md-switch>
+                </p>
+                <p>
+                    <md-switch v-field="switches[2]" disabled>
+                        <span slot="on">On</span>
+                        <span slot="off">Off</span>
+                    </md-switch>
+                </p>
+            </form>
+        </div>
+    </form>
+</div>

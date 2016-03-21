@@ -10,7 +10,12 @@ var bindRaw: DirectiveOption = {
 
     update: function (value) {
         var el = this.el;
-        el.setAttribute(this.attribute, value);
+        if (this.attribute == 'value') {
+            el.value = value;
+        }
+        else {
+            el.setAttribute(this.attribute, value);
+        }
     }
     
 };

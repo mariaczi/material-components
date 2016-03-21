@@ -1,0 +1,15 @@
+<div class="file-field input-field">
+    <div class="btn">
+        <slot name="label">
+            <span>File</span>
+        </slot>
+        <input @change="selectFile" :name="name"
+               v-bind-boolean:multiple="multiple" type="file">
+    </div>
+    <div class="file-path-wrapper">
+        <input v-el:field
+               v-bind-raw:value="fileName"
+               :placeholder="placeholder"
+               class="file-path field" type="text">
+    </div>
+</div>

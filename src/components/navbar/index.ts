@@ -56,6 +56,11 @@ const DEFAULT_CLASSES = ["hide-on-med-and-down"];
             type: Boolean,
             required: false,
             "default": false
+        },
+        onlySideNav: {
+            type: Boolean,
+            required: false,
+            "default": false
         }
     },
     components: {

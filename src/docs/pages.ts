@@ -17,6 +17,14 @@ import docsPreloaders from './preloaders';
 
 const docsPages: [Route] = [
     {
+        url: '/',
+        link: '/',
+        title: 'Home',
+        component: {
+            template: '<h1>Home</h1>'
+        }
+    },
+    {
         url: "/badges",
         link: "/badges",
         title: "Badges",
@@ -59,6 +67,12 @@ const docsPages: [Route] = [
         component: docsChips
     },
     {
+        url: "/dialogs",
+        link: "/dialogs",
+        title: "Dialogs",
+        component: docsDialogs
+    },
+    {
         url: "/dropdowns",
         link: "/dropdowns",
         title: "Dropdowns",
@@ -87,12 +101,6 @@ const docsPages: [Route] = [
         link: "/navbars",
         title: "Navbars",
         component: docsNavbars
-    },
-    {
-        url: "/dialogs",
-        link: "/dialogs",
-        title: "Dialogs",
-        component: docsDialogs
     },
     {
         url: "/tabs/:tab",

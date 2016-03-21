@@ -13,5 +13,13 @@ export = Vue.extend({
         return {
             navs: pages
         };
+    },
+    computed: {
+        title: function () {
+            return this.$route.title;
+        },
+        '$currentRoute': function () {
+            return this.$router._currentRoute;
+        }
     }
 })

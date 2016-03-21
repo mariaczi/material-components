@@ -1,0 +1,22 @@
+[v-cloak] {
+    display: none;
+}
+
+header, main, footer {
+    padding-left: 240px;
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer {
+        padding-left: 0 !important;
+    }
+
+    .side-nav.fixed {
+        left: -250px !important;
+    }
+}
+
+nav.top-nav a.page-title {
+    line-height: 64px;
+    font-size: 32px;
+}

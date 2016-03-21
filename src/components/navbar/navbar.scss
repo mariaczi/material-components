@@ -1,4 +1,10 @@
-.navbar-fixed {
-  position: absolute;
-  top: 0;
+.md-navbar {
+  .navbar-fixed {
+    position: absolute;
+    top: 0;
+  }
+
+  .nav-wrapper {
+    padding: 0 0.75rem;
+  }
 }

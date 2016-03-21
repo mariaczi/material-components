@@ -5,7 +5,7 @@ nav span.badge.new .new {
   margin-right: 8px; }
 .md-collection-item.collection-item.avatar {
   color: black !important; }
-.side-nav-transition {
+.md-sidenav .side-nav-transition {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-duration: 0.35s;
@@ -13,17 +13,23 @@ nav span.badge.new .new {
   -webkit-animation-name: slideInLeft;
   animation-name: slideInLeft; }
 
-.side-nav-enter, .side-nav-leave {
+.md-sidenav .side-nav-enter, .md-sidenav .side-nav-leave {
   left: -105%; }
 
-.side-nav-leave {
+.md-sidenav .side-nav-leave {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
   -webkit-animation-name: slideOutLeft;
   animation-name: slideOutLeft; }
-.navbar-fixed {
+
+.md-sidenav li.active, .md-sidenav li .active {
+  color: #2bbbad; }
+.md-navbar .navbar-fixed {
   position: absolute;
   top: 0; }
+
+.md-navbar .nav-wrapper {
+  padding: 0 0.75rem; }
 .md-card .activator, .md-card .close {
   cursor: pointer; }
 .chip-leave {

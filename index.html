@@ -7,21 +7,41 @@
 
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"/>
         <link rel="stylesheet" href="docs/vue-materialize-components.css"/>
+        <link rel="stylesheet" href="gh-pages-style.css"/>
         <link href="//fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- docs -->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow.min.css">
     </head>
 
-    <body>
-        <div id="content">
-            <md-navbar close-on-click left hamburger>
+    <body id="content" v-cloak>
+        <header>
+            <md-navbar :title="title" close-on-click only-side-nav center hamburger>
                 <md-nav-item v-for="nav in navs">
                     <a v-link="{ path: nav.link }" slot="content">{{nav.title}}</a>
+                    <!--<a v-link="{ path: nav.link, activeClass: 'active' }" slot="content">{{nav.title}}</a>-->
                 </md-nav-item>
             </md-navbar>
-            <router-view></router-view>
-        </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m9 l10">
+                        <md-sidenav fixed>
+                            <md-nav-item v-for="nav in navs">
+                                <a v-link="{ path: nav.link }" slot="content">{{nav.title}}</a>
+                                <!--<a v-link="{ path: nav.link, activeClass: 'active' }" slot="content">{{nav.title}}</a>-->
+                            </md-nav-item>
+                        </md-sidenav>
+                    </div>
+                    <div class="col hide-on-small-only m3 l2">
+
+                    </div>
+                </div>
+                <router-view transition="fade"></router-view>
+            </div>
+        </main>
+        <footer></footer>
 
         <script src="docs/vue-materialize-components.js"></script>
         <script>

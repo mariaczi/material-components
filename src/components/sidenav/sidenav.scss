@@ -21,4 +21,8 @@
     -webkit-animation-name: slideOutLeft;
     animation-name: slideOutLeft;
   }
+
+  li.active, li .active {
+    color: #2bbbad;
+  }
 }

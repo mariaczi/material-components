@@ -1,5 +1,7 @@
 <div :class="{'navbar-fixed': fixed}"
-     :style="fixed ? {position: 'absolute', top: 0}: {}">
+     :style="fixed ? {position: 'absolute', top: 0}: {}"
+     class="md-navbar">
+
     <nav>
         <div class="nav-wrapper" :class="bgColor">
             <slot name="content">
@@ -15,7 +17,7 @@
                 </slot>
 
                 <slot name="navs">
-                    <ul :class="listClasses">
+                    <ul v-if="!onlySideNav" :class="listClasses">
                         <slot></slot>
                     </ul>
                     <md-sidenav :close-on-click="closeOnClick"> <!-- only if is active -->

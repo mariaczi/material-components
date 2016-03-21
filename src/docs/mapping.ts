@@ -9,7 +9,8 @@ mapping['*'] = {
 
 docsPages.forEach(function (page: Route) {
     mapping[page.url] = {
-        component: page.component
+        component: page.component,
+        title: page.title
     };
 });
 

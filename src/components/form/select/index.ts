@@ -4,7 +4,7 @@ import mdDropdownList from '../../dropdown-list';
 import inputMixin from '../../../mixins/input';
 import slot from '../../../directives/slot';
 import clickAway from '../../../directives/click-away';
-import booleanAttribute from '../../../directives/boolean-attribute';
+import bindBoolean from '../../../directives/bind-boolean';
 
 require('./select.scss');
 var Vue: any = require('vue');
@@ -50,7 +50,7 @@ function getValue(el, multi, init?) {
     directives: {
         slot,
         clickAway,
-        booleanAttribute
+        bindBoolean
     },
     mixins: [
         inputMixin

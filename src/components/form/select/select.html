@@ -15,10 +15,10 @@
 
         <select v-el:field
                 @change="refreshValue"
-                v-boolean-attribute:multiple="multiple"
+                v-bind-boolean:multiple="multiple"
                 :placeholder="placeholder" :id="id"
                 :type="type" class="field">
-            <option v-for="opt in options" :value="opt.value" v-boolean-attribute:disabled="opt.disabled">{{opt.content}}</option>
+            <option v-for="opt in options" :value="opt.value" v-bind-boolean:disabled="opt.disabled">{{opt.content}}</option>
         </select>
     </div>
     <label v-if="labelSlot" :for="id" :class="labelClasses">

@@ -1,6 +1,6 @@
 import Component from 'vue-class-component';
 
-import booleanAttribute from '../../../directives/boolean-attribute';
+import bindBoolean from '../../../directives/bind-boolean';
 
 import input from '../../../mixins/input';
 
@@ -26,7 +26,7 @@ var template = require('./option.html');
         }
     },
     directives: {
-        booleanAttribute
+        bindBoolean
     },
     mixins: [
         input

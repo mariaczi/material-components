@@ -34,6 +34,7 @@ var template = require('./input.html');
 })
 export default class InputField {
     private $els: any;
+    private _slotContents: any;
 
     private value: string;
     private placeholder: string;
@@ -57,13 +58,11 @@ export default class InputField {
     }
 
     get slot() {
-        var self: any = this;
-        return 'default' in self._slotContents;
+        return 'default' in this._slotContents;
     }
 
     get slotIcon() {
-        var self: any = this;
-        return 'icon-name' in self._slotContents;
+        return 'icon-name' in this._slotContents;
     }
 
    get labelClasses() {

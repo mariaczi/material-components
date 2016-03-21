@@ -1,10 +1,7 @@
 import {DirectiveOption} from 'vue-class-component';
 
-import VueModule = require('vue');
-var Vue: any = VueModule;
-
-// v-boolean-attrbute.disabled="disabled"
-var booleanAttribute: DirectiveOption = {
+// v-bind-boolean.disabled="disabled"
+var bindBoolean: DirectiveOption = {
 
     priority: 850,
 
@@ -20,4 +17,4 @@ var booleanAttribute: DirectiveOption = {
     
 };
 
-export default booleanAttribute;
+export default bindBoolean;

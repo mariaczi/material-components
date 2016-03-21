@@ -1,31 +1,27 @@
 import Component from 'vue-class-component';
 
+import bindBoolean from '../../../directives/bind-boolean';
+import bindRaw from '../../../directives/bind-raw';
+
 import inputMixin from '../../../mixins/input';
 
+require('./radio.scss');
 var template = require('./radio.html');
 
 @Component({
     props: {
         value: {
-            type: String,
-            required: false,
-            'default': null
-        },
-        placeholder: {
-            type: String,
-            required: false,
-            'default': null
+            required: true
         },
         disabled: {
             type: Boolean,
             required: false,
-            'default': null
-        },
-        type: {
-            type: String,
-            required: false,
-            'default': 'text'
+            'default': false
         }
+    },
+    directives: {
+        bindBoolean,
+        bindRaw
     },
     mixins: [
         inputMixin
@@ -33,68 +29,29 @@ var template = require('./radio.html');
     template: template
 })
 export default class Radio {
+    private _slotContents: any;
+    private $parent: any;
+    private $els: any;
+
     private value: string;
-    private placeholder: string;
-    private disabled: boolean;
-    private active: boolean;
 
-    data() {
-        return {
-            active: false
-        }
+    get checked() {
+        return this.radiosValue == this.value;
     }
 
-    ready() {
-        this.setupDisabled();
+    get radiosValue() {
+        return this.field.__v_model._watcher.value;
     }
-
-    get field(): HTMLElement {
-        var self: any = this;
-        return self.$els.field;
+    
+    get field() {
+        return this.$els.field;
     }
 
     get slot() {
-        var self: any = this;
-        return 'default' in self._slotContents;
+        return 'default' in this._slotContents;
     }
 
-    get slotIcon() {
-        var self: any = this;
-        return 'icon-name' in self._slotContents;
+    get group() {
+        return this.$parent.$data.group;
     }
-
-   get labelClasses() {
-       return {
-           active: this.placeholder || this.active || this.value,
-           disabled: this.disabled
-       }
-   }
-
-    setActive(val) {
-        this.active = val;
-    }
-
-    activateField() {
-        this.active = true;
-    }
-    
-    deactivateField() {
-        this.active = false;
-    }
-
-    setupDisabled() {
-        if (!this.disabled) {
-            this.field.addEventListener('focus', this.activateField);
-            this.field.addEventListener('blur', this.deactivateField);
-
-            this.field.removeAttribute('disabled');
-        }
-        else {
-            this.field.removeEventListener('focus', this.activateField);
-            this.field.removeEventListener('blur', this.deactivateField);
-
-            this.field.setAttribute('disabled', 'disabled');
-        }
-    }
-
 }

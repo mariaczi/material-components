@@ -1,14 +1,10 @@
-<div class="input-field">
-    <i v-if="slotIcon" class="material-icons prefix">
-        <slot name="icon-name"></slot>
-    </i>
-    <slot name="input">
-        <input v-el:field
-               v-model="value"
-               :placeholder="placeholder" :id="id"
-               :type="type" class="field">
-    </slot>
-    <label v-if="slot" :for="id" :class="labelClasses">
+<span class="md-radio">
+    <input v-el:field
+           v-bind-boolean:disabled="disabled"
+           v-bind-boolean:checked="checked"
+           :id="id" :name="group" value="" v-bind-raw:value="value"
+           type="radio" class="field"/>
+    <label v-if="slot" :for="id">
         <slot></slot>
     </label>
-</div>
+</span>

@@ -2,7 +2,7 @@
     <span>
         <input v-el:field
                v-show="multiple" v-model="active"
-               v-boolean-attribute:disabled="disabled"
+               v-bind-boolean:disabled="disabled"
                type="checkbox">
         <label v-if="multiple"></label>
         <slot></slot>

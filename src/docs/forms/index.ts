@@ -4,6 +4,7 @@ import docInputIconFields from './input-icon-fields';
 import docTextareas from './textareas';
 import docSelects from './selects';
 import docRadios from './radios';
+import docCheckboxes from './checkboxes';
 import docSnippet from '../snippet';
 
 var template = require('./forms.html');
@@ -16,6 +17,7 @@ var template = require('./forms.html');
         docTextareas,
         docSelects,
         docRadios,
+        docCheckboxes,
         docSnippet
     }
 })
@@ -26,7 +28,8 @@ export default class Forms {
             inputIconFieldsSnippet: require('./input-icon-fields/input-icon.snippet.html'),
             textareasSnippet: require('./textareas/textarea.snippet.html'),
             selectsSnippet: require('./selects/selects.snippet.html'),
-            radiosSnippet: require('./radios/radios.snippet.html')
+            radiosSnippet: require('./radios/radios.snippet.html'),
+            checkboxesSnippet: require('./checkboxes/checkboxes.snippet.html')
         }
     }
 }

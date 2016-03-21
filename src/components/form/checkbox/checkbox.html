@@ -1,0 +1,13 @@
+<div class="md-checkbox input-field">
+    <i v-if="slotIcon" class="material-icons prefix">
+        <slot name="icon-name"></slot>
+    </i>
+    <input v-el:field
+           :id="id"
+           :name="resolvedName"
+           v-bind-boolean:disabled="disabled"
+           type="checkbox" class="field"/>
+    <label v-if="slot" :for="id">
+        <slot></slot>
+    </label>
+</div>

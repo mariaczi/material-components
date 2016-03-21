@@ -13,14 +13,26 @@ const ESC = 27;
             type: Boolean,
             required: false,
             'default': false
-        }  
+        },
+        active: {
+            type: Boolean,
+            required: false,
+            'default': false
+        },
+        fixed: {
+            type: Boolean,
+            required: false,
+            'default': false
+        }
     },
     events: {
         'sidenav::open': function () {
             this.open();
+            return true;
         },
         'sidenav::close': function () {
             this.close();
+            return true;
         }
     },
     components: {
@@ -30,20 +42,15 @@ const ESC = 27;
 })
 export default class SideNav {
     private active: boolean;
+    private fixed: boolean;
     private closeOnClick: boolean;
 
-    data() {
-        return {
-            active: false
-        }
-    }
-
     ready() {
-        var self = this;
-        window.document.addEventListener('keydown', function(evt: any) {
+        this.active = this.fixed || this.active;
+        window.document.addEventListener('keydown', (evt: any) => {
             evt = evt || window.event;
             if (evt.keyCode == ESC) {
-                self.close();
+                this.close();
             }
         });
     }

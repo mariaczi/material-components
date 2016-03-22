@@ -20,3 +20,39 @@ nav.top-nav a.page-title {
     line-height: 64px;
     font-size: 32px;
 }
+
+.promo {
+    width: 100%;
+}
+
+.promo i {
+    margin: 40px 0;
+    /*color: #ee6e73;*/
+    font-size: 7rem;
+    display: block;
+}
+
+.center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.promo-caption {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.collection .collection-item {
+    background-color: #fff;
+    line-height: 2.3rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.home-page .collapsible-header {
+    font-size: 200%;
+    padding: 1rem;
+}

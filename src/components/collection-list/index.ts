@@ -5,7 +5,7 @@ var template = require('./collection-list.html');
 @Component({
     template: template
 })
-export default class Collection {
+export default class CollectionList {
 
     get headerSlot() {
         var self: any = this;

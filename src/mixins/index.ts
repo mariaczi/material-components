@@ -3,9 +3,9 @@ import input from './input';
 import toast from './toast';
 import tooltip from './tooltip';
  
-export default {
+export default [
     events,
     input,
     toast,
     tooltip 
-}
+]

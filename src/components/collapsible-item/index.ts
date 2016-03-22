@@ -6,6 +6,13 @@ var template = require('./collapsible-item.html');
 var Velocity = require('velocity-animate');
 
 @Component({
+    props: {
+        expanded: {
+            type: Boolean,
+            required: false,
+            'default': false
+        }
+    },
     template: template,
     mixins: [
         events
@@ -22,6 +29,11 @@ var Velocity = require('velocity-animate');
 export default class CollapsibleItem {
     private _uid: number;
     private active: boolean;
+    private expanded: boolean;
+
+    ready() {
+        this.active = this.expanded;
+    }
 
     data() {
         return {

@@ -1,3 +1,10 @@
+import ComponentOption = vuejs.ComponentOption;
+import VueModule = require('vue');
+var Vue: any = VueModule;
+
+import directives from '../directives';
+import mixins from '../mixins';
+
 require('./transitions.scss');
 
 import mdBadge from './badge';
@@ -73,3 +80,11 @@ const VueMaterializeComponents = {
 };
 
 export default VueMaterializeComponents;
+
+var baseComponent: any = {
+    components: VueMaterializeComponents,
+    directives: directives,
+    mixins: mixins
+};
+
+export const BaseComponent = Vue.extend(baseComponent);

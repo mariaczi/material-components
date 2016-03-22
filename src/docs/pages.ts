@@ -1,4 +1,5 @@
-import docsHomePage from './home-page';
+import docsHomePage from './pages/home-page';
+import docsAboutPage from './pages/about-page';
 import docsBadges from './badges';
 import docsBreadcrumbs from './breadcrumbs';
 import docsButtons from './buttons';
@@ -22,6 +23,12 @@ const docsPages: [Route] = [
         link: '/',
         title: 'Home',
         component: docsHomePage
+    },
+    {
+        url: '/about',
+        link: '/about',
+        title: 'About',
+        component: docsAboutPage
     },
     {
         url: "/badges",

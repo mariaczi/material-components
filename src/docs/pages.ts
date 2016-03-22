@@ -1,3 +1,4 @@
+import docsHomePage from './home-page';
 import docsBadges from './badges';
 import docsBreadcrumbs from './breadcrumbs';
 import docsButtons from './buttons';
@@ -20,9 +21,7 @@ const docsPages: [Route] = [
         url: '/',
         link: '/',
         title: 'Home',
-        component: {
-            template: '<h1>Home</h1>'
-        }
+        component: docsHomePage
     },
     {
         url: "/badges",

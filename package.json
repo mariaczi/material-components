@@ -2,7 +2,7 @@
   "name": "vue-materialize-components",
   "version": "0.0.1",
   "description": "Web components of http://materializecss.com/",
-  "library": "vueMaterialize",
+  "library": "VueMaterialize",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/appcomponents/vue-js-materialize-components.git"

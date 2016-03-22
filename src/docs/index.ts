@@ -10,6 +10,10 @@ var VueRouter: any = VueRouterModule;
 import mapping = require('./mapping');
 import App = require('./doc-app');
 
+import components from '../components';
+import directives from '../directives';
+import mixins from '../mixins';
+
 export = {
     run: function (app) {
 
@@ -24,6 +28,9 @@ export = {
         router.map(mapping);
 
         router.start(App, app);
-    }
+    },
+    components,
+    directives,
+    mixins,
 }
 

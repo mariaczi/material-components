@@ -13503,7 +13503,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var collapsible_1 = __webpack_require__(114);
 	var collapsible_item_1 = __webpack_require__(115);
 	var collection_1 = __webpack_require__(15);
+	var collection_list_1 = __webpack_require__(324);
 	var collection_item_1 = __webpack_require__(17);
+	var collection_list_item_1 = __webpack_require__(326);
 	var dropdown_1 = __webpack_require__(22);
 	var dropdown_item_1 = __webpack_require__(35);
 	var dropdown_list_1 = __webpack_require__(34);
@@ -13536,7 +13538,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    mdCollapsible: collapsible_1['default'],
 	    mdCollapsibleItem: collapsible_item_1['default'],
 	    mdCollection: collection_1['default'],
+	    mdCollectionList: collection_list_1['default'],
 	    mdCollectionItem: collection_item_1['default'],
+	    mdCollectionListItem: collection_list_item_1['default'],
 	    mdDropdown: dropdown_1['default'],
 	    mdDropdownItem: dropdown_item_1['default'],
 	    mdDropdownList: dropdown_list_1['default'],
@@ -13618,6 +13622,91 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<slot></slot>";
+
+/***/ },
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(325);
+	var Collection = (function () {
+	    function Collection() {}
+	    Object.defineProperty(Collection.prototype, "headerSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'header' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Collection = __decorate([vue_class_component_1["default"]({
+	        template: template
+	    })], Collection);
+	    return Collection;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = Collection;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 325 */
+/***/ function(module, exports) {
+
+	module.exports = "<ul class=\"collection\" :class=\"{'with-header': headerSlot}\">\r\n    <div v-if=\"headerSlot\" class=\"collection-header\">\r\n        <slot name=\"header\"></slot>\r\n    </div>\r\n    <slot></slot>\r\n</ul>";
+
+/***/ },
+/* 326 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+	    var c = arguments.length,
+	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+	        d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var vue_class_component_1 = __webpack_require__(6);
+	var template = __webpack_require__(327);
+	var CollectionListItem = (function () {
+	    function CollectionListItem() {}
+	    Object.defineProperty(CollectionListItem.prototype, "secondaryContentSlot", {
+	        get: function get() {
+	            var self = this;
+	            return 'secondary-content' in self._slotContents;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    CollectionListItem = __decorate([vue_class_component_1["default"]({
+	        props: {
+	            active: {
+	                type: Boolean,
+	                required: false,
+	                'default': false
+	            }
+	        },
+	        template: template
+	    })], CollectionListItem);
+	    return CollectionListItem;
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports["default"] = CollectionListItem;
+	//# sourceMappingURL=index.js.map
+
+/***/ },
+/* 327 */
+/***/ function(module, exports) {
+
+	module.exports = "<li class=\"md-collection-item collection-item\" :class=\"{active: active}\">\r\n    <slot></slot>\r\n    <span v-if=\"secondaryContentSlot\" class=\"secondary-content\">\r\n        <slot name=\"secondary-content\"></slot>\r\n    </span>\r\n</li>";
 
 /***/ }
 /******/ ])

@@ -8,7 +8,9 @@ import mdCircuralPreloader from './circural-preloader';
 import mdCollapsible from './collapsible';
 import mdCollapsibleItem from './collapsible-item';
 import mdCollection from './collection';
+import mdCollectionList from './collection-list';
 import mdCollectionItem from './collection-item';
+import mdCollectionListItem from './collection-list-item';
 import mdDropdown from './dropdown';
 import mdDropdownItem from './dropdown-item';
 import mdDropdownList from './dropdown-list';
@@ -42,7 +44,9 @@ const VueMaterializeComponents = {
     mdCollapsible,
     mdCollapsibleItem,
     mdCollection,
+    mdCollectionList,
     mdCollectionItem,
+    mdCollectionListItem,
     mdDropdown,
     mdDropdownItem,
     mdDropdownList,

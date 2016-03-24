@@ -9,6 +9,7 @@ require('./transitions.scss');
 
 import mdBadge from './badge';
 import mdButton from './button';
+import mdBreadcrumbs from './breadcrumbs';
 import mdCard from './card';
 import mdChip from './chip';
 import mdCircuralPreloader from './circural-preloader';
@@ -45,6 +46,7 @@ import mdTabs from './tabs';
 const VueMaterializeComponents: any = {
     mdBadge,
     mdButton,
+    mdBreadcrumbs,
     mdCard,
     mdChip,
     mdCircuralPreloader,

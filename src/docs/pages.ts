@@ -37,8 +37,8 @@ const docsPages: [Route] = [
         component: docsBadges
     },
     {
-        url: "/breadcrumbs",
-        link: "/breadcrumbs",
+        url: "/breadcrumbs/:tab",
+        link: "/breadcrumbs/showcase",
         title: "Breadcrumbs",
         component: docsBreadcrumbs
     },

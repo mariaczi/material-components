@@ -16,7 +16,7 @@ var template = require('./tab.html');
         }
     },
     events: {
-        'tabs::select': function (id) {
+        'tab::select': function (id) {
             this.select(id);
         }
     },

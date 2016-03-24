@@ -4,15 +4,24 @@ var Velocity = require('velocity-animate');
 var template = require('./tabs.html');
 
 @Component({
+    props: {
+        active: {
+            required: false,
+            'default': null
+        }
+    },
     events: {
-        'tabs::on-select': function (e) {
-            this.select(e);
+        'tabs::on-select': function (tab) {
+            this.select(tab);
             return true;
         }
     },
     template: template
 })
 export default class Tabs {
+    private $broadcast: any;
+    
+    private active: any;
     private indicator: any;
 
     data() {
@@ -24,7 +33,14 @@ export default class Tabs {
         }
     }
 
+    ready() {
+        if (this.active) {
+            this.$broadcast('tab::select', this.active)
+        }
+    }
+
     select(tab) {
+        this.active = tab.id;
         var target = tab.$el;
         var parent = target.parentElement;
         this.moveIndicator(

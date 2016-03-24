@@ -42,7 +42,7 @@ import mdSlider from './slider';
 import mdTab from './tab';
 import mdTabs from './tabs';
 
-const VueMaterializeComponents = {
+const VueMaterializeComponents: any = {
     mdBadge,
     mdButton,
     mdCard,

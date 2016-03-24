@@ -1,0 +1,57 @@
+<table>
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Required
+            </th>
+            <th>
+                Two way
+            </th>
+            <th>
+                Default
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+    </thead>
+
+    <div v-if="api.properties && api.properties.length">
+        <h2>Properties</h2>
+        <tbody>
+            <tr v-for="property in api.properties">
+                <td>{{property.name}}</td>
+                <td>{{property.type}}</td>
+                <td>{{property.required}}</td>
+                <td>{{property.twoWay}}</td>
+                <td>{{property.default | json}}</td>
+                <td>{{property.description}}</td>
+            </tr>
+        </tbody>
+    </div>
+
+    <div v-if="api.slots && api.slots.length">
+        <h2>Slots</h2>
+        <tbody>
+        <tr v-for="slot in api.slots">
+
+        </tr>
+        </tbody>
+    </div>
+
+    <div v-if="api.events && api.events.length">
+        <h2>Events</h2>
+        <tbody>
+        <tr v-for="event in api.events">
+
+        </tr>
+        </tbody>
+    </div>
+
+</table>

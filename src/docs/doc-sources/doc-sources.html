@@ -1,0 +1,28 @@
+<div class="doc-sources">
+    <md-collapsible popout expendable>
+        <md-collapsible-item v-if="src.template" expanded>
+            <div slot="header">
+                <md-icon>code</md-icon>Template
+            </div>
+            <div slot="body">
+                <pre>{{{src.template}}}</pre>
+            </div>
+        </md-collapsible-item>
+        <md-collapsible-item v-if="src.script" expanded>
+            <div slot="header">
+                <md-icon>settings_ethernet</md-icon>Script
+            </div>
+            <div slot="body">
+                <pre>{{{src.script}}}</pre>
+            </div>
+        </md-collapsible-item>
+        <md-collapsible-item v-if="src.style" expanded>
+            <div slot="header">
+                <md-icon>style</md-icon>Style
+            </div>
+            <div slot="body">
+                <pre>{{{src.style}}}</pre>
+            </div>
+        </md-collapsible-item>
+    </md-collapsible>
+</div>

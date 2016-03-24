@@ -1,22 +1,35 @@
 <div v-cloak>
-    <h2 class="header">Collections</h2>
-    <div class="doc-example">
-        <doc-collections></doc-collections>
 
-        <doc-snippet>{{{collectionsSnippet}}}</doc-snippet>
-    </div>
+    <doc-tabs base-path="/badges">
+        <div slot="showcase">
+            <h2 class="header">Collections</h2>
+            <div class="doc-example">
+                <doc-collections></doc-collections>
 
-    <h2 class="header">Badges in Dropdown</h2>
-    <div class="doc-example">
-        <doc-dropdowns></doc-dropdowns>
+                <doc-snippet>{{{snippets.collections}}}</doc-snippet>
+            </div>
 
-        <doc-snippet>{{{dropdownsSnippet}}}</doc-snippet>
-    </div>
+            <h2 class="header">Badges in Dropdown</h2>
+            <div class="doc-example">
+                <doc-dropdowns></doc-dropdowns>
 
-    <h2 class="header">Badges in Navbar</h2>
-    <div class="doc-example">
-        <doc-navbars></doc-navbars>
+                <doc-snippet>{{{snippets.dropdowns}}}</doc-snippet>
+            </div>
 
-        <doc-snippet>{{{navbarsSnippet}}}</doc-snippet>
-    </div>
+            <h2 class="header">Badges in Navbar</h2>
+            <div class="doc-example">
+                <doc-navbars></doc-navbars>
+
+                <doc-snippet>{{{snippets.navbars}}}</doc-snippet>
+            </div>
+        </div>
+
+        <div slot="api">
+            <doc-api :api="api"></doc-api>
+        </div>
+
+        <div slot="sources">
+            <doc-sources :src="src"></doc-sources>
+        </div>
+    </doc-tabs>
 </div>

@@ -5,11 +5,13 @@ import field from './field';
 import slot from './slot';
 import waveEffect from './wave-effect';
 
-export default {
+var directives: any = {
     bindBoolean,
     bindRaw,
     bindClickAway,
     field,
     slot,
     waveEffect
-}
+};
+
+export default directives;

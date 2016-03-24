@@ -18,7 +18,7 @@
         <header>
             <md-navbar :title="title" close-on-click only-side-nav center hamburger>
                 <md-nav-item v-for="nav in navs">
-                    <a v-link="{ path: nav.link }" slot="content">{{nav.title}}</a>
+                    <a v-wave-effect v-link="{ path: nav.link }" slot="content">{{nav.title}}</a>
                     <!--<a v-link="{ path: nav.link, activeClass: 'active' }" slot="content">{{nav.title}}</a>-->
                 </md-nav-item>
             </md-navbar>

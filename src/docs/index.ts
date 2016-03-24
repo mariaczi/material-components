@@ -1,5 +1,6 @@
 /// <reference path="../typings/vue/vue.d.ts"/>
 /// <reference path="../typings/ts.d.ts"/>
+/// <reference path="../typings/doc.d.ts"/>
 
 import VueModule = require('vue');
 var Vue: any = VueModule;
@@ -17,6 +18,10 @@ import {BaseComponent} from '../components';
 
 import vueLogo from './logo/vue'
 import materializeLogo from './logo/materialize';
+import docApi from './doc-api';
+import docSources from './doc-sources';
+import docSnippet from './snippet';
+import docTabs from './doc-tabs';
 
 export = {
     run: function (app) {
@@ -25,6 +30,10 @@ export = {
         Vue.use(VueRouter);
         Vue.component('vue-logo', vueLogo);
         Vue.component('materialize-logo', materializeLogo);
+        Vue.component('doc-api', docApi);
+        Vue.component('doc-sources', docSources);
+        Vue.component('doc-snippet', docSnippet);
+        Vue.component('doc-tabs', docTabs);
 
         var router = new VueRouter({
             history: false,

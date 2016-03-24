@@ -56,3 +56,8 @@ nav.top-nav a.page-title {
     font-size: 200%;
     padding: 1rem;
 }
+
+.doc-sources pre {
+    margin: 0;
+    padding: 2rem;
+}

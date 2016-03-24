@@ -1,4 +1,4 @@
-<span class="badge" :class="alert ? 'new' : ''">
+<span class="badge" :class="{new: !!alert}">
     <slot></slot>
 
     <span v-if="alert" class="new">{{alert}}</span>

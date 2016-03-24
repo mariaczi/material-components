@@ -1,16 +1,20 @@
 import Component from 'vue-class-component';
-import mdButton from '../../../components/button';
-import mdIcon from '../../../components/icon';
-
-var template = require('./raised.html');
+import components from '../../../components';
+import directives from '../../../directives';
 
 @Component({
-    template: template,
-    components: {
-        mdButton,
-        mdIcon
-    }
+    components,
+    directives,
+    template: require('./raised.html')
 })
 export default class RaisedButtons {
+    data() {
+        return {
+            icon: '',
+            iconAlignRight: false,
+            large: false,
+            disabled: false
+        }
+    }
 }
 

@@ -1,8 +1,5 @@
-<md-breadcrumbs :list="breadcrumbs">
-</md-breadcrumbs>
-
-<h3>Demo:</h3>
-<div class="row">
+<div class="row demo">
+    <h4>Demo:</h4>
     <div class="col s3">
         <md-input v-field="label">
             Label
@@ -23,9 +20,13 @@
             POP
         </md-button>
     </div>
-</div>
-<div class="row">
-    <div class="col s12">
-        <pre>{{breadcrumbs | json}}</pre>
+
+    <div class="row">
+        <div class="col s12">
+            <pre>{{breadcrumbs | json}}</pre>
+        </div>
     </div>
 </div>
+
+<md-breadcrumbs :list="breadcrumbs">
+</md-breadcrumbs>

@@ -61,3 +61,7 @@ nav.top-nav a.page-title {
     margin: 0;
     padding: 2rem;
 }
+
+.select-wrapper i {
+    color: #26a69a; // todo var
+}

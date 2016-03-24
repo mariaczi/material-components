@@ -11,6 +11,8 @@ import mdBadge from './badge';
 import mdButton from './button';
 import mdBreadcrumbs from './breadcrumbs';
 import mdCard from './card';
+import mdCheckbox from './form/checkbox';
+import mdCheckboxGroup from './form/checkbox-group';
 import mdChip from './chip';
 import mdCircuralPreloader from './circural-preloader';
 import mdCollapsible from './collapsible';
@@ -24,8 +26,12 @@ import mdDropdownItem from './dropdown-item';
 import mdDropdownList from './dropdown-list';
 import mdEventWrapper from './event-wrapper';
 import mdFab from './fab';
+import mdFileInput from './form/file-input';
 import mdInput from './form/input';
+import mdOptgroup from './form/optgroup';
 import mdOption from './form/option';
+import mdRadio from './form/radio';
+import mdRadioGroup from './form/radio-group';
 import mdSelect from './form/select';
 import mdTextarea from './form/textarea';
 import mdIcon from './icon';
@@ -40,14 +46,18 @@ import mdSidenav from './sidenav';
 import mdSidenavOverlay from './sidenav-overlay';
 import mdSlide from './slide';
 import mdSlider from './slider';
+import mdSwitch from './form/swich';
 import mdTab from './tab';
 import mdTabs from './tabs';
+
 
 const VueMaterializeComponents: any = {
     mdBadge,
     mdButton,
     mdBreadcrumbs,
     mdCard,
+    mdCheckbox,
+    mdCheckboxGroup,
     mdChip,
     mdCircuralPreloader,
     mdCollapsible,
@@ -61,8 +71,12 @@ const VueMaterializeComponents: any = {
     mdDropdownList,
     mdEventWrapper,
     mdFab,
+    mdFileInput,
     mdInput,
+    mdOptgroup,
     mdOption,
+    mdRadio,
+    mdRadioGroup,
     mdSelect,
     mdTextarea,
     mdIcon,
@@ -77,6 +91,7 @@ const VueMaterializeComponents: any = {
     mdSidenavOverlay,
     mdSlide,
     mdSlider,
+    mdSwitch,
     mdTab,
     mdTabs
 };

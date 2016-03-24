@@ -1,5 +1,5 @@
 <a :class="computedClasses" v-wave-effect>
-    <md-icon v-if="icon" :right="iconAlignRight">
+    <md-icon v-if="icon" :right="iconAlignRight" :left="!iconAlignRight">
         {{icon}}
     </md-icon>
     <slot></slot>

@@ -18,7 +18,7 @@ export default class DefaultBreadcrumbs {
 
     data() {
         return {
-            label: 'Forth',
+            label: 'Fourth',
             url: '#!/breadcrumbs/showcase',
             breadcrumbs: {
                 First: '#!/breadcrumbs/showcase',

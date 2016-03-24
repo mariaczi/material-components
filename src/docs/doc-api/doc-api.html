@@ -1,29 +1,29 @@
-<table>
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Type
-            </th>
-            <th>
-                Required
-            </th>
-            <th>
-                Two way
-            </th>
-            <th>
-                Default
-            </th>
-            <th>
-                Description
-            </th>
-        </tr>
-    </thead>
 
-    <div v-if="api.properties && api.properties.length">
-        <h2>Properties</h2>
+<div v-if="api.properties && api.properties.length">
+    <h2>Properties</h2>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Required
+                </th>
+                <th>
+                    Two way
+                </th>
+                <th>
+                    Default
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+        </thead>
         <tbody>
             <tr v-for="property in api.properties">
                 <td>{{property.name}}</td>
@@ -34,24 +34,40 @@
                 <td>{{property.description}}</td>
             </tr>
         </tbody>
-    </div>
+    </table>
+</div>
 
-    <div v-if="api.slots && api.slots.length">
-        <h2>Slots</h2>
+<div v-if="api.slots && api.slots.length">
+    <h2>Slots</h2>
+    <table class="striped">
+        <thead>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+        </thead>
         <tbody>
-        <tr v-for="slot in api.slots">
-
-        </tr>
+            <tr v-for="slot in api.slots">
+                <td>
+                    {{slot.name ? slot.name : "\"\""}}
+                </td>
+                <td>
+                    {{slot.description}}
+                </td>
+            </tr>
         </tbody>
-    </div>
+    </table>
+</div>
 
-    <div v-if="api.events && api.events.length">
-        <h2>Events</h2>
+<div v-if="api.events && api.events.length">
+    <h2>Events</h2>
+    <table>
         <tbody>
         <tr v-for="event in api.events">
 
         </tr>
         </tbody>
-    </div>
-
-</table>
+    </table>
+</div>

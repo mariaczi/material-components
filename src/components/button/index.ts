@@ -1,52 +1,45 @@
 import Component from 'vue-class-component';
 import mdIcon from '../icon';
 
-import toast from '../../mixins/toast';
-import tooltip from '../../mixins/tooltip';
-
 import waveEffect from '../../directives/wave-effect';
 
-var template = require('./btn.html');
-
-// todo  classes array ws string
 @Component({
     props: {
         type: {
             type: String,
             required: false,
-            "default": ""
-        },
-        classes: {
-            type: Array,
-            required: false,
-            "default": function () {
-                return [];
-            }
+            "default": null,
+            twoWay: false
         },
         icon: {
             type: String,
             required: false,
-            "default": null
+            "default": null,
+            twoWay: false
         },
         iconAlignRight: {
             type: Boolean,
             required: false,
-            "default": false
+            "default": false,
+            twoWay: false
         },
         large: {
             type: Boolean,
             required: false,
-            "default": false
+            "default": false,
+            twoWay: false
         },
         disabled: {
             type: Boolean,
             required: false,
-            "default": false
+            "default": false,
+            twoWay: false
         },
         floating: {
             type: Boolean,
             required: false,
-            "default": false
+            "default": false,
+            twoWay: false
         }
     },
     components: {
@@ -55,42 +48,21 @@ var template = require('./btn.html');
     directives: {
         waveEffect
     },
-    mixins: [
-        toast,
-        tooltip
-    ],
-    template: template
+    template: require('./btn.html')
 })
 export default class Button {
     private type: string;
-    private classes: string[];
-    private icon: string;
-    private iconAlignRight: boolean;
     private large: boolean;
     private disabled: boolean;
     private floating: boolean;
 
     get computedClasses() {
-        var classes = [];
-        // type
-        classes.push(this.type ? "btn-" + this.type : "btn");
-        // classes
-        if (this.classes) {
-            classes.concat(this.classes);
-        }
-
-        // large
-        if (this.large) {
-            classes.push("btn-large");
-        }
-        // disabled
-        if (this.disabled) {
-            classes.push("disabled")
-        }
-
-        if (this.floating) {
-            classes.push("btn-floating")
-        }
+        var classes = {
+            'btn-large': this.large,
+            'disabled': this.disabled,
+            'btn-floating': this.floating
+        };
+        classes[this.type ? "btn-" + this.type : "btn"] = true;
         return classes;
     }
 }

@@ -43,8 +43,8 @@ const docsPages: [Route] = [
         component: docsBreadcrumbs
     },
     {
-        url: "/buttons",
-        link: "/buttons",
+        url: "/buttons/:tab",
+        link: "/buttons/showcase",
         title: "Buttons",
         component: docsButtons
     },

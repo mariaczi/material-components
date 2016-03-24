@@ -5486,8 +5486,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    title: "Breadcrumbs",
 	    component: breadcrumbs_1['default']
 	}, {
-	    url: "/buttons",
-	    link: "/buttons",
+	    url: "/buttons/:tab",
+	    link: "/buttons/showcase",
 	    title: "Buttons",
 	    component: buttons_1['default']
 	}, {
@@ -7032,33 +7032,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var icon_1 = __webpack_require__(33);
-	var toast_1 = __webpack_require__(19);
-	var tooltip_1 = __webpack_require__(22);
 	var wave_effect_1 = __webpack_require__(14);
-	var template = __webpack_require__(35);
-	// todo  classes array ws string
 	var Button = (function () {
 	    function Button() {}
 	    Object.defineProperty(Button.prototype, "computedClasses", {
 	        get: function get() {
-	            var classes = [];
-	            // type
-	            classes.push(this.type ? "btn-" + this.type : "btn");
-	            // classes
-	            if (this.classes) {
-	                classes.concat(this.classes);
-	            }
-	            // large
-	            if (this.large) {
-	                classes.push("btn-large");
-	            }
-	            // disabled
-	            if (this.disabled) {
-	                classes.push("disabled");
-	            }
-	            if (this.floating) {
-	                classes.push("btn-floating");
-	            }
+	            var classes = {
+	                'btn-large': this.large,
+	                'disabled': this.disabled,
+	                'btn-floating': this.floating
+	            };
+	            classes[this.type ? "btn-" + this.type : "btn"] = true;
 	            return classes;
 	        },
 	        enumerable: true,
@@ -7069,39 +7053,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	            type: {
 	                type: String,
 	                required: false,
-	                "default": ""
-	            },
-	            classes: {
-	                type: Array,
-	                required: false,
-	                "default": function _default() {
-	                    return [];
-	                }
+	                "default": null,
+	                twoWay: false
 	            },
 	            icon: {
 	                type: String,
 	                required: false,
-	                "default": null
+	                "default": null,
+	                twoWay: false
 	            },
 	            iconAlignRight: {
 	                type: Boolean,
 	                required: false,
-	                "default": false
+	                "default": false,
+	                twoWay: false
 	            },
 	            large: {
 	                type: Boolean,
 	                required: false,
-	                "default": false
+	                "default": false,
+	                twoWay: false
 	            },
 	            disabled: {
 	                type: Boolean,
 	                required: false,
-	                "default": false
+	                "default": false,
+	                twoWay: false
 	            },
 	            floating: {
 	                type: Boolean,
 	                required: false,
-	                "default": false
+	                "default": false,
+	                twoWay: false
 	            }
 	        },
 	        components: {
@@ -7110,8 +7093,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        directives: {
 	            waveEffect: wave_effect_1["default"]
 	        },
-	        mixins: [toast_1["default"], tooltip_1["default"]],
-	        template: template
+	        template: __webpack_require__(35)
 	    })], Button);
 	    return Button;
 	})();
@@ -7166,7 +7148,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "<a :class=\"computedClasses\" v-wave-effect>\r\n    <md-icon\r\n       v-if=\"icon\"\r\n       :right=\"iconAlignRight\">{{icon}}</md-icon>\r\n    <slot></slot>\r\n</a>";
+	module.exports = "<a :class=\"computedClasses\" v-wave-effect>\r\n    <md-icon v-if=\"icon\" :right=\"iconAlignRight\">\r\n        {{icon}}\r\n    </md-icon>\r\n    <slot></slot>\r\n</a>";
 
 /***/ },
 /* 36 */
@@ -8351,7 +8333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 77 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-on-click-away=\"close\">\r\n    <md-dropdown-list>\r\n        <slot></slot>\r\n    </md-dropdown-list>\r\n\r\n    <span @click=\"open\">\r\n        <slot name=\"button\">\r\n            <md-button href=\"javascript:void(0)\"\r\n                 :classes=\"['dropdown-button']\"\r\n                 :class=\"{active: active}\">\r\n                {{title}}\r\n                <i class=\"mdi-navigation-arrow-drop-down right\"></i>\r\n            </md-button>\r\n        </slot>\r\n    </span>\r\n</div>\r\n";
+	module.exports = "<div v-on-click-away=\"close\">\r\n    <md-dropdown-list>\r\n        <slot></slot>\r\n    </md-dropdown-list>\r\n\r\n    <span @click=\"open\">\r\n        <slot name=\"button\">\r\n            <md-button href=\"javascript:void(0)\"\r\n                 :class=\"{active: active}\"\r\n                 class=\"dropdown-button\">\r\n                {{title}}\r\n                <i class=\"mdi-navigation-arrow-drop-down right\"></i>\r\n            </md-button>\r\n        </slot>\r\n    </span>\r\n</div>\r\n";
 
 /***/ },
 /* 78 */
@@ -10611,8 +10593,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = {
-		"name": "md-badge",
-		"title": "Badge",
+		"name": "md-breadcrumbs",
+		"title": "Breadcrumbs",
 		"description": "",
 		"browserSupport": {
 			"browsers": []
@@ -10682,29 +10664,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fab_1 = __webpack_require__(159);
 	var fab_horizontal_1 = __webpack_require__(161);
 	var fab_click_1 = __webpack_require__(163);
-	var snippet_1 = __webpack_require__(133);
-	var template = __webpack_require__(165);
 	var Butons = (function () {
 	    function Butons() {}
 	    Butons.prototype.data = function () {
 	        return {
-	            raisedButtonsSnippet: __webpack_require__(166),
-	            floatingButtonsSnippet: __webpack_require__(167),
-	            fabButtonsSnippet: __webpack_require__(168),
-	            fabHorizontalButtonsSnippet: __webpack_require__(169),
-	            fabClickButtonsSnippet: __webpack_require__(170)
+	            api: __webpack_require__(363),
+	            snippets: {
+	                raisedButtons: __webpack_require__(166),
+	                floatingButtons: __webpack_require__(167),
+	                fabButtons: __webpack_require__(168),
+	                fabHorizontalButtons: __webpack_require__(169),
+	                fabClickButtons: __webpack_require__(170)
+	            },
+	            src: {
+	                script: __webpack_require__(357),
+	                template: __webpack_require__(359)
+	            }
 	        };
 	    };
 	    Butons = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            docRaisedButtons: raised_1["default"],
 	            docFloatingButtons: floating_1["default"],
 	            docFabButtons: fab_1["default"],
 	            docFabHorizontalButtons: fab_horizontal_1["default"],
-	            docFabClickButtons: fab_click_1["default"],
-	            docSnippet: snippet_1["default"]
-	        }
+	            docFabClickButtons: fab_click_1["default"]
+	        },
+	        template: __webpack_require__(165)
 	    })], Butons);
 	    return Butons;
 	})();
@@ -10907,7 +10893,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 165 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <h2 class=\"header\">Raised</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-raised-buttons></doc-raised-buttons>\r\n\r\n        <doc-snippet>{{{raisedButtonsSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Floating</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-floating-buttons></doc-floating-buttons>\r\n\r\n        <doc-snippet>{{{floatingButtonsSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">FAB</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-fab-buttons></doc-fab-buttons>\r\n\r\n        <doc-snippet>{{{fabButtonsSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">FAB horizontal</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-fab-horizontal-buttons></doc-fab-horizontal-buttons>\r\n\r\n        <doc-snippet>{{{fabHorizontalButtonsSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Only click</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-fab-click-buttons></doc-fab-click-buttons>\r\n\r\n        <doc-snippet>{{{fabClickButtonsSnippet}}}</doc-snippet>\r\n    </div>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/buttons\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Raised</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-raised-buttons></doc-raised-buttons>\r\n\r\n                <doc-snippet>{{{snippets.raisedButtons}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Floating</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-floating-buttons></doc-floating-buttons>\r\n\r\n                <doc-snippet>{{{snippets.floatingButtons}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">FAB</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-fab-buttons></doc-fab-buttons>\r\n\r\n                <doc-snippet>{{{snippets.fabButtons}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">FAB horizontal</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-fab-horizontal-buttons></doc-fab-horizontal-buttons>\r\n\r\n                <doc-snippet>{{{snippets.fabHorizontalButtons}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Only click</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-fab-click-buttons></doc-fab-click-buttons>\r\n\r\n                <doc-snippet>{{{snippets.fabClickButtons}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 166 */
@@ -14187,7 +14173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 351 */
 /***/ function(module, exports) {
 
-	module.exports = "<table>\r\n    <thead>\r\n        <tr>\r\n            <th>\r\n                Name\r\n            </th>\r\n            <th>\r\n                Type\r\n            </th>\r\n            <th>\r\n                Required\r\n            </th>\r\n            <th>\r\n                Two way\r\n            </th>\r\n            <th>\r\n                Default\r\n            </th>\r\n            <th>\r\n                Description\r\n            </th>\r\n        </tr>\r\n    </thead>\r\n\r\n    <div v-if=\"api.properties && api.properties.length\">\r\n        <h2>Properties</h2>\r\n        <tbody>\r\n            <tr v-for=\"property in api.properties\">\r\n                <td>{{property.name}}</td>\r\n                <td>{{property.type}}</td>\r\n                <td>{{property.required}}</td>\r\n                <td>{{property.twoWay}}</td>\r\n                <td>{{property.default | json}}</td>\r\n                <td>{{property.description}}</td>\r\n            </tr>\r\n        </tbody>\r\n    </div>\r\n\r\n    <div v-if=\"api.slots && api.slots.length\">\r\n        <h2>Slots</h2>\r\n        <tbody>\r\n        <tr v-for=\"slot in api.slots\">\r\n\r\n        </tr>\r\n        </tbody>\r\n    </div>\r\n\r\n    <div v-if=\"api.events && api.events.length\">\r\n        <h2>Events</h2>\r\n        <tbody>\r\n        <tr v-for=\"event in api.events\">\r\n\r\n        </tr>\r\n        </tbody>\r\n    </div>\r\n\r\n</table>";
+	module.exports = "\r\n<div v-if=\"api.properties && api.properties.length\">\r\n    <h2>Properties</h2>\r\n    <table class=\"striped\">\r\n        <thead>\r\n            <tr>\r\n                <th>\r\n                    Name\r\n                </th>\r\n                <th>\r\n                    Type\r\n                </th>\r\n                <th>\r\n                    Required\r\n                </th>\r\n                <th>\r\n                    Two way\r\n                </th>\r\n                <th>\r\n                    Default\r\n                </th>\r\n                <th>\r\n                    Description\r\n                </th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr v-for=\"property in api.properties\">\r\n                <td>{{property.name}}</td>\r\n                <td>{{property.type}}</td>\r\n                <td>{{property.required}}</td>\r\n                <td>{{property.twoWay}}</td>\r\n                <td>{{property.default | json}}</td>\r\n                <td>{{property.description}}</td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n\r\n<div v-if=\"api.slots && api.slots.length\">\r\n    <h2>Slots</h2>\r\n    <table class=\"striped\">\r\n        <thead>\r\n            <th>\r\n                Name\r\n            </th>\r\n            <th>\r\n                Description\r\n            </th>\r\n        </thead>\r\n        <tbody>\r\n            <tr v-for=\"slot in api.slots\">\r\n                <td>\r\n                    {{slot.name ? slot.name : \"\\\"\\\"\"}}\r\n                </td>\r\n                <td>\r\n                    {{slot.description}}\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n\r\n<div v-if=\"api.events && api.events.length\">\r\n    <h2>Events</h2>\r\n    <table>\r\n        <tbody>\r\n        <tr v-for=\"event in api.events\">\r\n\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n";
 
 /***/ },
 /* 352 */
@@ -14293,6 +14279,95 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<md-tabs :active.sync=\"active\">\r\n    <md-tab v-if=\"slotShowcase\" name=\"showcase\"><a v-link=\"{path: basePath + '/showcase'}\">Showcase</a></md-tab>\r\n    <md-tab v-if=\"slotApi\" name=\"api\"><a v-link=\"{path: basePath + '/api'}\">API</a></md-tab>\r\n    <md-tab v-if=\"slotSources\" name=\"sources\"><a v-link=\"{path: basePath + '/sources'}\">Sources</a></md-tab>\r\n\r\n    <div slot=\"contents\">\r\n        <div v-show=\"active == 'showcase'\" class=\"show-case\">\r\n            <slot name=\"showcase\"></slot>\r\n        </div>\r\n\r\n        <div v-show=\"active == 'api'\" class=\"api\">\r\n            <slot name=\"api\"></slot>\r\n        </div>\r\n\r\n        <div v-show=\"active == 'sources'\" class=\"sources\">\r\n            <slot name=\"sources\"></slot>\r\n        </div>\r\n    </div>\r\n</md-tabs>";
+
+/***/ },
+/* 356 */,
+/* 357 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdIcon from <span class=\"hljs-string\">'../icon'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> waveEffect from <span class=\"hljs-string\">'../../directives/wave-effect'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        <span class=\"hljs-keyword\">type</span>: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        icon: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        iconAlignRight: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        large: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        disabled: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        floating: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    components: {\r\n        mdIcon\r\n    },\r\n    directives: {\r\n        waveEffect\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./btn.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Button {\r\n    <span class=\"hljs-keyword\">private</span> <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> large: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> disabled: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> floating: <span class=\"hljs-built_in\">boolean</span>;\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">var</span> classes = {\r\n            <span class=\"hljs-string\">'btn-large'</span>: <span class=\"hljs-keyword\">this</span>.large,\r\n            <span class=\"hljs-string\">'disabled'</span>: <span class=\"hljs-keyword\">this</span>.disabled,\r\n            <span class=\"hljs-string\">'btn-floating'</span>: <span class=\"hljs-keyword\">this</span>.floating\r\n        };\r\n        classes[<span class=\"hljs-keyword\">this</span>.type ? <span class=\"hljs-string\">\"btn-\"</span> + <span class=\"hljs-keyword\">this</span>.type : <span class=\"hljs-string\">\"btn\"</span>] = <span class=\"hljs-literal\">true</span>;\r\n        <span class=\"hljs-keyword\">return</span> classes;\r\n    }\r\n}";
+
+/***/ },
+/* 358 */,
+/* 359 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span> <span class=\"hljs-attribute\">v-wave-effect</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"icon\"</span> <span class=\"hljs-attribute\">:right</span>=<span class=\"hljs-value\">\"iconAlignRight\"</span>&gt;</span>\r\n        {{icon}}\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>";
+
+/***/ },
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-button",
+		"title": "Button",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "type",
+				"type": "String",
+				"description": "Button type css class",
+				"twoWay": false,
+				"required": false,
+				"default": null
+			},
+			{
+				"name": "icon",
+				"type": "String",
+				"description": "Material icon name",
+				"twoWay": false,
+				"required": false,
+				"default": null
+			},
+			{
+				"name": "iconAlignRight",
+				"type": "Boolean",
+				"description": "It switches icon to right side",
+				"twoWay": false,
+				"required": false,
+				"default": false
+			},
+			{
+				"name": "large",
+				"type": "Boolean",
+				"description": "Adds large button class if true",
+				"twoWay": false,
+				"required": false,
+				"default": false
+			},
+			{
+				"name": "disabled",
+				"type": "Boolean",
+				"description": "Disables button (only css)",
+				"twoWay": false,
+				"required": false,
+				"default": false
+			},
+			{
+				"name": "floating",
+				"type": "Boolean",
+				"description": "Adds floating css class if true",
+				"required": false,
+				"default": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Button content (label)"
+			}
+		],
+		"events": [],
+		"uses": {
+			"Wave effect": "#!/directives"
+		}
+	};
 
 /***/ }
 /******/ ])

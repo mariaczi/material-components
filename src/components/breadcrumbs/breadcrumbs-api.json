@@ -1,6 +1,6 @@
 {
-  "name": "md-badge",
-  "title": "Badge",
+  "name": "md-breadcrumbs",
+  "title": "Breadcrumbs",
   "description": "",
   "browserSupport": {
     "browsers": []

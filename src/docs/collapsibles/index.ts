@@ -1,26 +1,47 @@
 import Component from 'vue-class-component';
+
 import docDefaultCollapsible from './defaultCollapsible';
 import docPopoutCollapsible from './popoutCollapsible';
 import docExpendableCollapsible from './expendableCollapsible';
-import docSnippet from '../snippet';
-
-var template = require('./collapsibles.html');
 
 @Component({
-    template: template,
     components: {
         docDefaultCollapsible,
         docPopoutCollapsible,
-        docExpendableCollapsible,
-        docSnippet
-    }
+        docExpendableCollapsible
+    },
+    template: require('./collapsibles.html')
 })
 export default class Collapsibles {
     data() {
         return {
-            defaultCollapsibleSnippet: require('./defaultCollapsible/defaultCollapsible.snippet.html'),
-            popoutCollapsibleSnippet: require('./popoutCollapsible/poppoutCollapsible.snippet.html'),
-            expendableCollapsibleSnippet: require('./expendableCollapsible/expendableCollapsible.snippet.html')
+            api: [
+                {
+                    name: "Collapsible",
+                    api: require('../../components/collapsible/collapsible-api.json')
+                },
+                {
+                    name: "Collapsible item",
+                    api: require('../../components/collapsible-item/collapsible-item-api.json')
+                }
+            ],
+            snippets: {
+                defaultCollapsible: require('./defaultCollapsible/defaultCollapsible.snippet.html'),
+                popoutCollapsible: require('./popoutCollapsible/poppoutCollapsible.snippet.html'),
+                expendableCollapsible: require('./expendableCollapsible/expendableCollapsible.snippet.html')
+            },
+            src: [
+                {
+                    name: 'Collapsible',
+                    script: require('!!html!highlightjs?lang=ts!../../components/collapsible/index.ts'),
+                    template: require('!!html!highlightjs?lang=html!../../components/collapsible/collapsible.html')
+                },
+                {
+                    name: 'Collapsible item',
+                    script: require('!!html!highlightjs?lang=ts!../../components/collapsible-item/index.ts'),
+                    template: require('!!html!highlightjs?lang=html!../../components/collapsible-item/collapsible-item.html')
+                }
+            ]
         }
     }
 }

@@ -46,12 +46,14 @@ export default class SideNav {
 
     ready() {
         this.active = this.fixed || this.active;
-        window.document.addEventListener('keydown', (evt: any) => {
-            evt = evt || window.event;
-            if (evt.keyCode == ESC) {
-                this.close();
-            }
-        });
+        if (!this.fixed) {
+            window.document.addEventListener('keydown', (evt:any) => {
+                evt = evt || window.event;
+                if (evt.keyCode == ESC) {
+                    this.close();
+                }
+            });
+        }
     }
 
     get computedStyle() {

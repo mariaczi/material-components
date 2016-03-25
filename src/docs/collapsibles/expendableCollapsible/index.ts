@@ -1,19 +1,19 @@
 import Component from 'vue-class-component';
 
-var template = require('./expendableCollapsible.html');
-
-import mdCollapsible from '../../../components/collapsible';
-import mdCollapsibleItem from '../../../components/collapsible-item';
-import mdIcon from '../../../components/icon';
+import components from '../../../components';
+import directives from '../../../directives';
 
 @Component({
-    template: template,
-    components: {
-        mdCollapsible,
-        mdCollapsibleItem,
-        mdIcon,
-    }
+    components,
+    directives,
+    template: require('./expendableCollapsible.html')
 })
 export default class ExpendableCollapsible {
+    data() {
+        return {
+            opened: ['one'],
+            popout: false
+        }
+    }
 }
 

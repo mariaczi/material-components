@@ -12,4 +12,13 @@ import components from '../../components';
     template: require('./doc-sources.html'),
 })
 export default class DocSources {
+    private src: any;
+    
+    get sources() {
+        if (Array.isArray(this.src)) {
+            return this.src;
+        }
+        
+        return [this.src];
+    }
 }

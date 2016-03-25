@@ -1,4 +1,7 @@
-<div class="doc-sources">
+<div v-for="src in sources" class="doc-sources">
+    <h4 v-if="src.name">
+        {{src.name}}
+    </h4>
     <md-collapsible popout expendable>
         <md-collapsible-item v-if="src.template" expanded>
             <div slot="header">

@@ -14,4 +14,14 @@ import components from '../../components';
     template: require('./doc-api.html')
 })
 export default class ApiDoc {
+    private api: any;
+
+    get apis() {
+        if (Array.isArray(this.api)) {
+            return this.api;
+        }
+        return [{
+            api: this.api
+        }]
+    }
 }

@@ -61,7 +61,7 @@ const docsPages: [Route] = [
         component: docsChips
     },
     {
-        urls: ['/collapsibles'],
+        urls: ['/collapsibles', '/collapsibles/:tab'],
         link: '/collapsibles',
         title: 'Collapsibles',
         component: docsCollapsibles

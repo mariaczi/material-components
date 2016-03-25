@@ -1,46 +1,108 @@
 import Component from 'vue-class-component';
 
-import mdCollapsibleItem from '../collapsible-item';
-
-var template = require('./collapsible.html');
-
 @Component({
     props: {
+        opened: {
+            required: false,
+            'default': null
+        },
         popout: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false,
+            twoWay: false
         },
         expendable: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false,
+            twoWay: false
         }
     },
-    template: template,
-    components: {
-        mdCollapsibleItem
+    watch: {
+        expendable: function () {
+            console.log('Error: can not change expandable')
+        },
+        opened: {
+            deep: true,
+            handler: function (newValue, oldValue) {
+                this.openedChanged(newValue, oldValue)
+            }
+        }
     },
     events: {
-        'collapsible::open': function (uid) {
-            // propagate event to children
-            this.$broadcast('collapsible::open', uid, this.expendable);
+        'collapsible::open': function (id) {
+            return this.open(id);
         },
-        'collapsible::close': function (uid) {
-           // propagate event to children
-            this.$broadcast('collapsible::close', uid);
+        'collapsible::close': function (id) {
+           return this.close(id);
         }
-    }
+    },
+    template: require('./collapsible.html')
 })
 export default class Collapsible {
-    private popout: boolean;
+    private $broadcast: any;
 
-    get computedClasses() {
-        if (this.popout) {
-            return ["popout"];
+    private expendable: boolean;
+    private opened: any;
+
+    compiled() {
+        if (this.opened != null) {
+            this.openedChanged(this.opened, this.expendable ? [] : '');
+        }
+    }
+
+    ready() {
+        if (!this.opened) {
+            if (this.expendable) {
+                this.opened = []
+            }
+            else {
+                this.opened = '';
+            }
+        }
+    }
+
+    open(id: string) {
+        if (this.expendable) {
+            this.opened.push(id);
         }
         else {
-            return [];
+            this.opened = id;
+        }
+        // propagate event to children
+        this.$broadcast('collapsible::open', id, this.expendable);
+        return true;
+    }
+
+    close(id: string) {
+        if (this.expendable) {
+            this.opened.$remove(id);
+        }
+        else {
+            this.opened = '';
+        }
+        // propagate event to children
+        this.$broadcast('collapsible::close', id);
+        return true;
+    }
+
+    openedChanged(newValue, oldValue) {
+        if (this.expendable) {
+            newValue = newValue != null ? newValue : [];
+            oldValue = oldValue != null ? oldValue : [];
+            // close
+            oldValue
+                .filter((val) => newValue && newValue.indexOf(val) < 0)
+                .forEach((id) => this.$broadcast('collapsible::close', id));
+            // open
+            newValue
+                .filter(function (val) { return oldValue && oldValue.indexOf(val) < 0; })
+                .forEach((id) => this.$broadcast('collapsible::open', id, this.expendable));
+        }
+        else {
+            this.$broadcast('collapsible::close', oldValue);
+            this.$broadcast('collapsible::open', newValue, this.expendable);
         }
     }
 }

@@ -9,24 +9,6 @@ import bindBoolean from '../../../directives/bind-boolean';
 var Vue: any = require('vue');
 var template = require('./select.html');
 
-function getValue(el, multi, init?) {
-    var res = multi ? [] : null;
-    var op, val, selected;
-    for (var i = 0, l = el.options.length; i < l; i++) {
-        op = el.options[i];
-        selected = init ? op.hasAttribute('selected') : op.selected;
-        if (selected) {
-            val = op.hasOwnProperty('_value') ? op._value : op.value;
-            if (multi) {
-                res.push(val);
-            } else {
-                return val;
-            }
-        }
-    }
-    return res;
-}
-
 @Component({
     props: {
         multiple: {
@@ -62,13 +44,14 @@ export default class SelectField {
     private $nextTick: any;
     private $broadcast: any;
     private fireEvent: any;
+    private watchField: any;
 
     private active: boolean;
     private defaultSelect: string;
     private valueSingle: string;
     private valueMultiple: string[];
-    private multiple: boolean;
     private options: any[];
+    private multiple: boolean;
 
     data() {
         return {
@@ -79,7 +62,7 @@ export default class SelectField {
         }
     }
 
-    ready() {
+    compiled() {
         var options = this.$getAllChildren().filter((c: any) => {return 'SelectOption' == c.$options.name});
         for (var i = 0; i < options.length; i++) {
             var option = options[i];
@@ -87,13 +70,12 @@ export default class SelectField {
             Vue.set(this.options, opt.value, opt);
         }
         this.$nextTick(() => {
-            this.refreshValue();
             this.refreshOptions();
         })
     }
 
     createOption(option: any) {
-        var content = option._slotContents.default;
+        var content = option._slotContents ? option._slotContents.default : '';
         var value = option.$data.value;
         var disabled = option.$data.disabled;
 
@@ -104,17 +86,19 @@ export default class SelectField {
         };
     }
 
-    get value() {
-        return this.multiple ? this.valueMultiple : this.valueSingle;
+    ready() {
+        this.watchField((value) => {
+            if (Array.isArray(value)) {
+                this.valueMultiple = value;
+            }
+            else {
+                this.valueSingle = value;
+            }
+        });
     }
 
-    set value(value: any) {
-        if (this.multiple) {
-            this.valueMultiple = value;
-        }
-        else {
-            this.valueSingle = value.length ? value[0] : value;
-        }
+    get value() {
+        return this.multiple ? this.valueMultiple : this.valueSingle;
     }
 
     get valueContent() {
@@ -218,11 +202,6 @@ export default class SelectField {
                     o.selected = false;
                 }
             });
-    }
-
-    refreshValue() {
-        this.value = Array.prototype.slice.call(this.$els.field.selectedOptions)
-            .map((o) => o.value);
     }
 
     refreshOptions() {

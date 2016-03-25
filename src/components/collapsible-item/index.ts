@@ -2,43 +2,61 @@ import Component from 'vue-class-component';
 
 import events from '../../mixins/events';
 
-var template = require('./collapsible-item.html');
 var Velocity = require('velocity-animate');
 
 @Component({
     props: {
+        name: {
+            type: String,
+            required: false,
+            'default': false,
+            twoWay: false
+        },
         expanded: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         }
     },
-    template: template,
+    template: require('./collapsible-item.html'),
     mixins: [
         events
     ],
     events: {
-        'collapsible::open': function (uid, expendable) {
-            this.open(uid, expendable);
+        'collapsible::open': function (id, expendable) {
+            this.open(id, expendable);
         },
-        'collapsible::close': function (uid) {
-            this.close(uid);
+        'collapsible::close': function (id) {
+            this.close(id);
         }
     }
 })
 export default class CollapsibleItem {
+    private $els: any;
+    private $dispatch: any;
+    private $nextTick: any;
+
     private _uid: number;
+    private name: string;
     private active: boolean;
     private expanded: boolean;
-
-    ready() {
-        this.active = this.expanded;
-    }
 
     data() {
         return {
             active: false
         }
+    }
+
+    compiled() {
+        this.active = this.expanded;
+    }
+
+    get id(): any {
+        if (this.name) {
+            return this.name;
+        }
+        return this._uid;
     }
 
     get computedStyle() {
@@ -49,39 +67,33 @@ export default class CollapsibleItem {
         }
         return null;
     }
-    
-    get _body() {
-        var self: any = this;
-        return self.$els.body;
-    }
 
     openThis() {
         if (!this.active) {
             this.active = true;
-            this.onNextTick(() => {
-                Velocity(this._body, 'slideDown', this._slideConfig);
+            this.$nextTick(() => {
+                Velocity(this.$els.body, 'slideDown', this._slideConfig);
             });
         }
     }
 
     get _slideConfig() {
-        var self = this;
         return {
             duration: 350,
             easing: "easeOutQuart",
             queue: false,
-            complete: function() {
-                self._body.style.height = '';
+            complete: () => {
+                this.$els.body.style.height = '';
             }
         }
     }
 
-    open(uid, expendable: boolean) {
-        if (uid === null) {
+    open(id, expendable: boolean) {
+        if (id === null) {
             this.openThis();
         }
         else {
-            if (uid == this._uid) {
+            if (id == this.id) {
                 this.openThis();
             }
             else {
@@ -95,36 +107,30 @@ export default class CollapsibleItem {
     closeThis() {
         if (this.active) {
             this.active = false;
-            this.onNextTick(() => {
-                this._body.style.display = 'block';
-                Velocity(this._body, 'slideUp', this._slideConfig);
+            this.$nextTick(() => {
+                this.$els.body.style.display = 'block';
+                Velocity(this.$els.body, 'slideUp', this._slideConfig);
             })
         }
     }
 
-    close(uid) {
-        if (uid === null) {
+    close(id) {
+        if (id === null) {
             this.closeThis();
         }
         else {
-            if (uid == this._uid) {
+            if (id == this.id) {
                 this.closeThis();
             }
         }
     }
 
     toggle() {
-        var self: any = this;
-        if (self.active) {
-            self.$dispatch('collapsible::close', this._uid);
+        if (this.active) {
+            this.$dispatch('collapsible::close', this.id);
         }
         else {
-            self.$dispatch('collapsible::open', this._uid);
+            this.$dispatch('collapsible::open', this.id);
         }
-    }
-
-    onNextTick(callback) {
-        var self: any = this;
-        self.$nextTick(callback);
     }
 }

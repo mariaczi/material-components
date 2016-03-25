@@ -1,4 +1,19 @@
 var Velocity = require('velocity-animate');
+
+function getOffset(element) {
+    var top = 0, left = 0;
+    do {
+        top += element.offsetTop  || 0;
+        left += element.offsetLeft || 0;
+        element = element.offsetParent;
+    } while(element);
+
+    return {
+        top: top,
+        left: left
+    };
+}
+
 // todo swap tooltip if oversize window
 export default function (element, message, position = 'top', delay = 50) {
     var timeout = null,
@@ -56,8 +71,9 @@ export default function (element, message, position = 'top', delay = 50) {
 
         if (tooltipPosition === "top") {
             // Top Position
-            targetTop = origin.offsetTop - tooltipHeight - margin;
-            targetLeft = origin.offsetLeft + originWidth/2 - tooltipWidth/2;
+            var pos = getOffset(element);
+            targetTop = pos.top - tooltipHeight - margin;
+            targetLeft = pos.left + originWidth/2 - tooltipWidth/2;
             newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
             tooltipVerticalMovement = '-10px';
@@ -68,8 +84,9 @@ export default function (element, message, position = 'top', delay = 50) {
         }
         // Left Position
         else if (tooltipPosition === "left") {
-            targetTop = origin.offsetTop + originHeight/2 - tooltipHeight/2;
-            targetLeft =  origin.offsetLeft - tooltipWidth - margin;
+            var pos = getOffset(element);
+            targetTop = pos.top + originHeight/2 - tooltipHeight/2;
+            targetLeft =  pos.left - tooltipWidth - margin;
             newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
             tooltipHorizontalMovement = '-10px';
@@ -83,8 +100,9 @@ export default function (element, message, position = 'top', delay = 50) {
         }
         // Right Position
         else if (tooltipPosition === "right") {
-            targetTop = origin.offsetTop + originHeight/2 - tooltipHeight/2;
-            targetLeft = origin.offsetLeft + originWidth + margin;
+            var pos = getOffset(element);
+            targetTop = pos.top + originHeight/2 - tooltipHeight/2;
+            targetLeft = pos.left + originWidth + margin;
                newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 
             tooltipHorizontalMovement = '+10px';
@@ -97,8 +115,9 @@ export default function (element, message, position = 'top', delay = 50) {
         }
         else {
             // Bottom Position
-            targetTop = origin.offsetTop + origin.offsetHeight + margin;
-            targetLeft = origin.offsetLeft + originWidth/2 - tooltipWidth/2;
+            var pos = getOffset(element);
+            targetTop = pos.top + origin.offsetHeight + margin;
+            targetLeft = pos.left + originWidth/2 - tooltipWidth/2;
             newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
             tooltipVerticalMovement = '+10px';
             backdrop.style.marginLeft = ((tooltipWidth/2) - (backdrop.offsetWidth/2)).toString() + 'px'

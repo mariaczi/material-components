@@ -28,8 +28,25 @@
             <tr v-for="property in api.properties">
                 <td>{{property.name}}</td>
                 <td>{{property.type}}</td>
-                <td>{{property.required}}</td>
-                <td>{{property.twoWay}}</td>
+                <td>
+                    <span v-if="property.required">
+                        <md-icon @mouseover="tooltip($event, 'True', 'bottom')">check_box</md-icon>
+                    </span>
+                    <span v-else>
+                        <md-icon @mouseover="tooltip($event, 'False', 'bottom')">check_box_outline_blank</md-icon>
+                    </span>
+                </td>
+                <td>
+                    <span v-if="property.twoWay === true">
+                        <md-icon @mouseover="tooltip($event, 'True', 'bottom')">check_box</md-icon>
+                    </span>
+                    <span v-if="property.twoWay === false">
+                        <md-icon @mouseover="tooltip($event, 'False', 'bottom')">check_box_outline_blank</md-icon>
+                    </span>
+                    <span v-if="property.twoWay === null">
+                        <md-icon @mouseover="tooltip($event, 'Not specified', 'bottom')">indeterminate_check_box</md-icon>
+                    </span>
+                </td>
                 <td>{{property.default | json}}</td>
                 <td>{{property.description}}</td>
             </tr>
@@ -51,7 +68,12 @@
         <tbody>
             <tr v-for="slot in api.slots">
                 <td>
-                    {{slot.name ? slot.name : "\"\""}}
+                    <span v-if="slot.name">
+                        {{slot.name}}
+                    </span>
+                    <span v-else>
+                        <md-badge alert="default" style="position: initial; margin: 1rem;"></md-badge>
+                    </span>
                 </td>
                 <td>
                     {{slot.description}}

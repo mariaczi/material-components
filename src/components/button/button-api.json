@@ -50,6 +50,7 @@
       "name": "floating",
       "type": "Boolean",
       "description": "Adds floating css class if true",
+      "twoWay": false,
       "required": false,
       "default": false
     }

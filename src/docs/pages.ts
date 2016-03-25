@@ -37,13 +37,13 @@ const docsPages: [Route] = [
         component: docsBadges
     },
     {
-        urls: ['/breadcrumbs/:tab'],
+        urls: ['/breadcrumbs', '/breadcrumbs/:tab'],
         link: '/breadcrumbs',
         title: 'Breadcrumbs',
         component: docsBreadcrumbs
     },
     {
-        urls: ['/buttons/:tab'],
+        urls: ['/buttons', '/buttons/:tab'],
         link: '/buttons/showcase',
         title: 'Buttons',
         component: docsButtons

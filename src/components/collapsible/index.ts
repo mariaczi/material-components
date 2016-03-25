@@ -4,7 +4,6 @@ import Component from 'vue-class-component';
     props: {
         opened: {
             required: false,
-            'default': ''
         },
         popout: {
             type: Boolean,
@@ -46,12 +45,16 @@ export default class Collapsible {
     private expendable: boolean;
     private opened: any;
 
-    // always array
-    get openedAsArray() {
-        if (this.opened != null) {
-            return Array.isArray(this.opened) ? this.opened : [this.opened];
+    ready() {
+        if (typeof this.opened != "undefined") {
+            if (this.expendable) {
+                this.opened
+                    .forEach((id) => this.$broadcast('collapsible::open', id, this.expendable));
+            }
+            else {
+                this.$broadcast('collapsible::open', this.opened, this.expendable);
+            }
         }
-        return [];
     }
 
     open(id: string) {
@@ -78,26 +81,22 @@ export default class Collapsible {
         return true;
     }
 
-    openedChanged(newValue, oldValue) {
+    openedChanged(value, oldValue) {
         if (this.expendable) {
-            console.log(newValue);
+            console.log(value);
             console.log(oldValue);
-            /*
-            newValue = newValue != null ? newValue : [];
-            oldValue = oldValue != null ? oldValue : [];
+
             // close
             oldValue
-                .filter((val) => newValue && newValue.indexOf(val) < 0)
+                .filter((val) => value.indexOf(val) < 0)
                 .forEach((id) => this.$broadcast('collapsible::close', id));
             // open
-            newValue
-                .filter(function (val) { return oldValue && oldValue.indexOf(val) < 0; })
+            this.opened = value;
+            this.opened
                 .forEach((id) => this.$broadcast('collapsible::open', id, this.expendable));
-            */
         }
         else {
-            this.$broadcast('collapsible::close', oldValue);
-            this.$broadcast('collapsible::open', newValue, this.expendable);
+            this.$broadcast('collapsible::open', value, this.expendable);
         }
     }
 }

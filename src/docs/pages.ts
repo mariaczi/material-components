@@ -19,111 +19,111 @@ import docsPreloaders from './preloaders';
 
 const docsPages: [Route] = [
     {
-        url: '/',
+        urls: ['/'],
         link: '/',
         title: 'Home',
         component: docsHomePage
     },
     {
-        url: '/about',
+        urls: ['/about'],
         link: '/about',
         title: 'About',
         component: docsAboutPage
     },
     {
-        url: "/badges/:tab",
-        link: "/badges/showcase",
-        title: "Badges",
+        urls: ['/badges', '/badges/:tab'],
+        link: '/badges',
+        title: 'Badges',
         component: docsBadges
     },
     {
-        url: "/breadcrumbs/:tab",
-        link: "/breadcrumbs/showcase",
-        title: "Breadcrumbs",
+        urls: ['/breadcrumbs/:tab'],
+        link: '/breadcrumbs',
+        title: 'Breadcrumbs',
         component: docsBreadcrumbs
     },
     {
-        url: "/buttons/:tab",
-        link: "/buttons/showcase",
-        title: "Buttons",
+        urls: ['/buttons/:tab'],
+        link: '/buttons/showcase',
+        title: 'Buttons',
         component: docsButtons
     },
     {
-        url: "/cards",
-        link: "/cards",
-        title: "Cards",
+        urls: ['/cards'],
+        link: '/cards',
+        title: 'Cards',
         component: docsCards
     },
     {
-        url: "/collapsibles",
-        link: "/collapsibles",
-        title: "Collapsibles",
+        urls: ['/collapsibles'],
+        link: '/collapsibles',
+        title: 'Collapsibles',
         component: docsCollapsibles
     },
     {
-        url: "/collections",
-        link: "/collections",
-        title: "Collections",
+        urls: ['/collections'],
+        link: '/collections',
+        title: 'Collections',
         component: docsCollections
     },
     {
-        url: "/chips",
-        link: "/chips",
-        title: "Chips",
+        urls: ['/chips'],
+        link: '/chips',
+        title: 'Chips',
         component: docsChips
     },
     {
-        url: "/dialogs",
-        link: "/dialogs",
-        title: "Dialogs",
+        urls: ['/dialogs'],
+        link: '/dialogs',
+        title: 'Dialogs',
         component: docsDialogs
     },
     {
-        url: "/dropdowns",
-        link: "/dropdowns",
-        title: "Dropdowns",
+        urls: ['/dropdowns'],
+        link: '/dropdowns',
+        title: 'Dropdowns',
         component: docsDropdowns
     },
     {
-        url: "/forms",
-        link: "/forms",
-        title: "Forms",
+        urls: ['/forms'],
+        link: '/forms',
+        title: 'Forms',
         component: docsForms
     },
     {
-        url: "/modals",
-        link: "/modals",
-        title: "Modals",
+        urls: ['/modals'],
+        link: '/modals',
+        title: 'Modals',
         component: docsModals
     },
     {
-        url: "/media",
-        link: "/media",
-        title: "Media",
+        urls: ['/media'],
+        link: '/media',
+        title: 'Media',
         component: docsMedia
     },
     {
-        url: "/navbars",
-        link: "/navbars",
-        title: "Navbars",
+        urls: ['/navbars'],
+        link: '/navbars',
+        title: 'Navbars',
         component: docsNavbars
     },
     {
-        url: "/tabs/:tab",
-        link: "/tabs/4",
-        title: "Tabs",
+        urls: ['/tabs/:tab'],
+        link: '/tabs/4',
+        title: 'Tabs',
         component: docsTabs
     },
     {
-        url: "/pagination",
-        link: "/pagination",
-        title: "Pagination",
+        urls: ['/pagination'],
+        link: '/pagination',
+        title: 'Pagination',
         component: docPagination
     },
     {
-        url: "/preloaders",
-        link: "/preloaders",
-        title: "Preloaders",
+        urls: ['/preloaders'],
+        link: '/preloaders',
+        title: 'Preloaders',
         component: docsPreloaders
     }
 ];

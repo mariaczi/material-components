@@ -1,6 +1,5 @@
 import Component from 'vue-class-component';
 
-require('./chip.scss');
 var template = require('./chip.html');
 
 @Component({

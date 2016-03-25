@@ -3,7 +3,6 @@ import Component from 'vue-class-component';
 
 import mdLeanOverlay from '../lean-overlay';
 
-require('./modal.scss');
 var template = require('./modal.html');
 
 const ESC = 27;

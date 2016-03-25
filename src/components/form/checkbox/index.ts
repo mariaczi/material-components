@@ -4,7 +4,6 @@ import inputMixin from '../../../mixins/input';
 
 import bindBoolean from '../../../directives/bind-boolean';
 
-require('./checkbox.scss');
 var template = require('./checkbox.html');
 
 @Component({

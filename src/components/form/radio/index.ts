@@ -5,7 +5,6 @@ import bindRaw from '../../../directives/bind-raw';
 
 import inputMixin from '../../../mixins/input';
 
-require('./radio.scss');
 var template = require('./radio.html');
 
 @Component({

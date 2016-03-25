@@ -2,7 +2,6 @@ import Component from 'vue-class-component';
 
 import mdSidenavOverlay from '../sidenav-overlay';
 
-require('./sidenav.scss');
 var template = require('./sidenav.html');
 
 const ESC = 27;

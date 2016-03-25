@@ -2,7 +2,6 @@ import Component from 'vue-class-component';
 import MaterialBox from '../../materialize/materialbox';
 import mdLeanOverlay from '../lean-overlay';
 
-require('./image.scss');
 var template = require('./image.html');
 
 const ESC = 27;

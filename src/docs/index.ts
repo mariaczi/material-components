@@ -2,11 +2,8 @@
 /// <reference path="../typings/ts.d.ts"/>
 /// <reference path="../typings/doc.d.ts"/>
 
-import VueModule = require('vue');
-var Vue: any = VueModule;
-
-import VueRouterModule = require('vue-router')
-var VueRouter: any = VueRouterModule;
+var Vue: any = require('vue');
+var VueRouter: any = require('vue-router')
 
 import mapping = require('./mapping');
 import App = require('./doc-app');
@@ -22,6 +19,8 @@ import docApi from './doc-api';
 import docSources from './doc-sources';
 import docSnippet from './snippet';
 import docTabs from './doc-tabs';
+
+require('./doc-main.scss');
 
 export = {
     run: function (app) {

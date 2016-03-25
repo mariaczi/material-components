@@ -2,7 +2,6 @@ import Component from 'vue-class-component';
 import mdButton from '../button';
 import mdIcon from '../icon';
 
-require('./fab.scss');
 var Velocity = require('velocity-animate');
 var template = require('./fab.html');
 

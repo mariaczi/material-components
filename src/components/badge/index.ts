@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-require('./badge.scss');
-
 @Component({
     props: {
         alert: {

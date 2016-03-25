@@ -1,6 +1,5 @@
 import Component from 'vue-class-component';
 
-require('./card.scss');
 var Velocity = require('velocity-animate');
 var template = require('./card.html');
 

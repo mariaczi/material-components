@@ -3,7 +3,6 @@ import Component from 'vue-class-component';
 import mdIcon from '../icon';
 import mdSidenav from '../sidenav';
 
-require('./navbar.scss');
 var template = require('./navbar.html');
 
 const DEFAULT_CLASSES = ["hide-on-med-and-down"];

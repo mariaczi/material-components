@@ -5,8 +5,6 @@ var Vue: any = VueModule;
 import directives from '../directives';
 import mixins from '../mixins';
 
-require('./transitions.scss');
-
 import mdBadge from './badge';
 import mdButton from './button';
 import mdBreadcrumbs from './breadcrumbs';
@@ -50,6 +48,7 @@ import mdSwitch from './form/swich';
 import mdTab from './tab';
 import mdTabs from './tabs';
 
+require('./main.scss');
 
 const VueMaterializeComponents: any = {
     mdBadge,

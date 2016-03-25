@@ -1,6 +1,5 @@
 import Component from 'vue-class-component';
 
-require('./slider.scss');
 var template = require('./slider.html');
 
 @Component({

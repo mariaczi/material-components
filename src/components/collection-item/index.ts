@@ -1,6 +1,5 @@
 import Component from 'vue-class-component';
 
-require('./collection-item.scss');
 var template = require('./collection-item.html');
 
 @Component({

@@ -7,11 +7,13 @@ mapping['*'] = {
     }
 };
 
-docsPages.forEach(function (page: Route) {
-    mapping[page.url] = {
-        component: page.component,
-        title: page.title
-    };
+docsPages.forEach((page: Route) => {
+    page.urls.forEach((url) => {
+        mapping[url] = {
+            component: page.component,
+            title: page.title
+        };
+    })
 });
 
 export = mapping;

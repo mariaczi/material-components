@@ -3,7 +3,6 @@ import Component from 'vue-class-component';
 import inputMixin from '../../../mixins/input';
 
 var Velocity = require('velocity-animate');
-require('./textarea.scss')
 var template = require('./textarea.html');
 
 @Component({

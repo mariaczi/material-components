@@ -6,7 +6,6 @@ import slot from '../../../directives/slot';
 import clickAway from '../../../directives/click-away';
 import bindBoolean from '../../../directives/bind-boolean';
 
-require('./select.scss');
 var Vue: any = require('vue');
 var template = require('./select.html');
 

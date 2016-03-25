@@ -1,22 +1,20 @@
 import Component from 'vue-class-component';
 
-var template = require('./chip.html');
-
 @Component({
     props: {
         closeable: {
             type: Boolean,
             required: false,
+            'default': false,
+            twoWay: false
+        },
+        closed: {
+            type: Boolean,
+            required: false,
             'default': false
         }
     },
-    template: template
+    template: require('./chip.html')
 })
 export default class Chip {
-    
-    data() {
-        return {
-            closed: false
-        }
-    }
 }

@@ -55,6 +55,12 @@ const docsPages: [Route] = [
         component: docsCards
     },
     {
+        urls: ['/chips', '/chips/:tab'],
+        link: '/chips',
+        title: 'Chips',
+        component: docsChips
+    },
+    {
         urls: ['/collapsibles'],
         link: '/collapsibles',
         title: 'Collapsibles',
@@ -65,12 +71,6 @@ const docsPages: [Route] = [
         link: '/collections',
         title: 'Collections',
         component: docsCollections
-    },
-    {
-        urls: ['/chips'],
-        link: '/chips',
-        title: 'Chips',
-        component: docsChips
     },
     {
         urls: ['/dialogs'],

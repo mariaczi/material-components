@@ -5497,6 +5497,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    title: 'Cards',
 	    component: cards_1['default']
 	}, {
+	    urls: ['/chips', '/chips/:tab'],
+	    link: '/chips',
+	    title: 'Chips',
+	    component: chips_1['default']
+	}, {
 	    urls: ['/collapsibles'],
 	    link: '/collapsibles',
 	    title: 'Collapsibles',
@@ -5506,11 +5511,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    link: '/collections',
 	    title: 'Collections',
 	    component: collections_1['default']
-	}, {
-	    urls: ['/chips'],
-	    link: '/chips',
-	    title: 'Chips',
-	    component: chips_1['default']
 	}, {
 	    urls: ['/dialogs'],
 	    link: '/dialogs',
@@ -7163,7 +7163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 29 */
 /***/ function(module, exports) {
 
-	module.exports = "<a :class=\"computedClasses\" v-wave-effect>\r\n    <md-icon v-if=\"icon\" :right=\"iconAlignRight\" :left=\"!iconAlignRight\">\r\n        {{icon}}\r\n    </md-icon>\r\n    <slot></slot>\r\n</a>";
+	module.exports = "<a :class=\"computedClasses\" v-wave-effect class=\"md-button\">\r\n    <md-icon v-if=\"icon\" :right=\"iconAlignRight\" :left=\"!iconAlignRight\">\r\n        {{icon}}\r\n    </md-icon>\r\n    <slot></slot>\r\n</a>";
 
 /***/ },
 /* 30 */
@@ -7477,7 +7477,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 37 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar>\r\n    <div slot=\"content\">\r\n        <a v-for=\"(label, url) in list\" :href=\"url\" class=\"breadcrumb\">\r\n            {{label}}\r\n        </a>\r\n    </div>\r\n</md-navbar>";
+	module.exports = "<md-navbar class=\"md-breadcrumbs\">\r\n    <div slot=\"content\">\r\n        <a v-for=\"(label, url) in list\" :href=\"url\" class=\"breadcrumb\">\r\n            {{label}}\r\n        </a>\r\n    </div>\r\n</md-navbar>";
 
 /***/ },
 /* 38 */
@@ -7733,23 +7733,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(45);
 	var Chip = (function () {
 	    function Chip() {}
-	    Chip.prototype.data = function () {
-	        return {
-	            closed: false
-	        };
-	    };
 	    Chip = __decorate([vue_class_component_1["default"]({
 	        props: {
 	            closeable: {
 	                type: Boolean,
 	                required: false,
+	                'default': false,
+	                twoWay: false
+	            },
+	            closed: {
+	                type: Boolean,
+	                required: false,
 	                'default': false
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(45)
 	    })], Chip);
 	    return Chip;
 	})();
@@ -7761,7 +7761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 45 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-if=\"!closed\" class=\"chip\" transition=\"chip\">\r\n    <slot></slot>\r\n    <i v-if=\"closeable\"\r\n       @click=\"closed = true\" class=\"material-icons\">close</i>\r\n</div>";
+	module.exports = "<div v-if=\"!closed\" class=\"chip md-chip\" transition=\"chip\">\r\n    <slot></slot>\r\n    <i v-if=\"closeable\"\r\n       @click=\"closed = true\" class=\"material-icons\">close</i>\r\n</div>";
 
 /***/ },
 /* 46 */
@@ -10788,7 +10788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 132 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n\r\n    <doc-tabs base-path=\"/badges\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Collections</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-collections></doc-collections>\r\n\r\n                <doc-snippet>{{{snippets.collections}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Badges in Dropdown</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-dropdowns></doc-dropdowns>\r\n\r\n                <doc-snippet>{{{snippets.dropdowns}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Badges in Navbar</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-navbars></doc-navbars>\r\n\r\n                <doc-snippet>{{{snippets.navbars}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/badges\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Collections</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-collections></doc-collections>\r\n\r\n                <doc-snippet>{{{snippets.collections}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Badges in Dropdown</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-dropdowns></doc-dropdowns>\r\n\r\n                <doc-snippet>{{{snippets.dropdowns}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Badges in Navbar</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-navbars></doc-navbars>\r\n\r\n                <doc-snippet>{{{snippets.navbars}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 133 */
@@ -10978,7 +10978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 142 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">v-for</span>=<span class=\"hljs-value\">\"(label, url) in list\"</span> <span class=\"hljs-attribute\">:href</span>=<span class=\"hljs-value\">\"url\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"breadcrumb\"</span>&gt;</span>\r\n            {{label}}\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-navbar</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-breadcrumbs\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">v-for</span>=<span class=\"hljs-value\">\"(label, url) in list\"</span> <span class=\"hljs-attribute\">:href</span>=<span class=\"hljs-value\">\"url\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"breadcrumb\"</span>&gt;</span>\r\n            {{label}}\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-navbar</span>&gt;</span>";
 
 /***/ },
 /* 143 */
@@ -11347,7 +11347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 162 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span> <span class=\"hljs-attribute\">v-wave-effect</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"icon\"</span> <span class=\"hljs-attribute\">:right</span>=<span class=\"hljs-value\">\"iconAlignRight\"</span> <span class=\"hljs-attribute\">:left</span>=<span class=\"hljs-value\">\"!iconAlignRight\"</span>&gt;</span>\r\n        {{icon}}\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span> <span class=\"hljs-attribute\">v-wave-effect</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-button\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"icon\"</span> <span class=\"hljs-attribute\">:right</span>=<span class=\"hljs-value\">\"iconAlignRight\"</span> <span class=\"hljs-attribute\">:left</span>=<span class=\"hljs-value\">\"!iconAlignRight\"</span>&gt;</span>\r\n        {{icon}}\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>";
 
 /***/ },
 /* 163 */
@@ -11475,7 +11475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 168 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row demo\">\r\n    <div class=\"col s8\">\r\n        <md-radio-group name=\"size\">\r\n            <md-radio v-field=\"size\" value=\"small\" class=\"with-gap\">\r\n                Small\r\n            </md-radio>\r\n            <md-radio v-field=\"size\" value=\"medium\" class=\"with-gap\">\r\n                Medium\r\n            </md-radio>\r\n            <md-radio v-field=\"size\" value=\"large\" class=\"with-gap\">\r\n                Large\r\n            </md-radio>\r\n        </md-radio-group>\r\n    </div>\r\n    <div class=\"col s4\">\r\n        <md-checkbox v-field=\"titleInImage\">\r\n            Title in image\r\n        </md-checkbox>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col\">\r\n        <md-card :small=\"size == 'small'\" :medium=\"size == 'medium'\" :large=\"size == 'large'\" :title-in-image=\"titleInImage\">\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n            <div slot=\"image\">\r\n                <img src=\"http://materializecss.com/images/sample-1.jpg\">\r\n            </div>\r\n            <div>\r\n                <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n            </div>\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
+	module.exports = "<div class=\"row demo\">\r\n    <div class=\"col s8\">\r\n        <md-radio-group group=\"size\">\r\n            <md-radio v-field=\"size\" value=\"small\" class=\"with-gap\">\r\n                Small\r\n            </md-radio>\r\n            <md-radio v-field=\"size\" value=\"medium\" class=\"with-gap\">\r\n                Medium\r\n            </md-radio>\r\n            <md-radio v-field=\"size\" value=\"large\" class=\"with-gap\">\r\n                Large\r\n            </md-radio>\r\n        </md-radio-group>\r\n    </div>\r\n    <div class=\"col s4\">\r\n        <md-checkbox v-field=\"titleInImage\">\r\n            Title in image\r\n        </md-checkbox>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col\">\r\n        <md-card :small=\"size == 'small'\" :medium=\"size == 'medium'\" :large=\"size == 'large'\" :title-in-image=\"titleInImage\">\r\n            <span slot=\"title\">\r\n                Card Title\r\n            </span>\r\n            <div slot=\"image\">\r\n                <img src=\"http://materializecss.com/images/sample-1.jpg\">\r\n            </div>\r\n            <div>\r\n                <p>I am a very simple card. I am good at containing small bits of information.\r\n                    I am convenient because I require little markup to use effectively.</p>\r\n            </div>\r\n            <div slot=\"actions\">\r\n                <a href=\"javascript:void(0)\">This is a link</a>\r\n            </div>\r\n        </md-card>\r\n    </div>\r\n</div>";
 
 /***/ },
 /* 169 */
@@ -11664,21 +11664,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var default_1 = __webpack_require__(180);
-	var snippet_1 = __webpack_require__(123);
-	var template = __webpack_require__(182);
 	var Chips = (function () {
 	    function Chips() {}
 	    Chips.prototype.data = function () {
 	        return {
-	            defaultChipSnippet: __webpack_require__(183)
+	            api: __webpack_require__(338),
+	            snippets: {
+	                chip: __webpack_require__(183)
+	            },
+	            src: {
+	                script: __webpack_require__(339),
+	                template: __webpack_require__(340),
+	                style: __webpack_require__(341)
+	            }
 	        };
 	    };
 	    Chips = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
-	            docDefaultChip: default_1["default"],
-	            docSnippet: snippet_1["default"]
-	        }
+	            docDefaultChip: default_1["default"]
+	        },
+	        template: __webpack_require__(182)
 	    })], Chips);
 	    return Chips;
 	})();
@@ -11699,15 +11704,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(181);
-	var chip_1 = __webpack_require__(44);
+	var components_1 = __webpack_require__(7);
 	var DefaultChip = (function () {
 	    function DefaultChip() {}
+	    DefaultChip.prototype.data = function () {
+	        return {
+	            closed: false
+	        };
+	    };
 	    DefaultChip = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        components: {
-	            mdChip: chip_1["default"]
-	        }
+	        components: components_1["default"],
+	        template: __webpack_require__(181)
 	    })], DefaultChip);
 	    return DefaultChip;
 	})();
@@ -11719,19 +11726,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 181 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-chip>\r\n    <img src=\"http://materializecss.com/images/yuna.jpg\" alt=\"Contact Person\">\r\n    Jane Doe\r\n</md-chip>\r\n\r\n<md-chip closeable>\r\n    Tag\r\n</md-chip>\r\n\r\n";
+	module.exports = "<div class=\"row demo valign-wrapper\">\r\n    <div class=\"col\">\r\n        <md-button @click=\"closed = false\">\r\n            Reopen\r\n        </md-button>\r\n    </div>\r\n    <div class=\"col\">\r\n        <span class=\"valigin\">\r\n            Closed: {{closed | json}}\r\n        </span>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <md-chip>\r\n        <img src=\"http://materializecss.com/images/yuna.jpg\" alt=\"Contact Person\">\r\n        Jane Doe\r\n    </md-chip>\r\n\r\n    <md-chip :closed.sync=\"closed\" closeable>\r\n        Tag\r\n    </md-chip>\r\n</div>\r\n\r\n";
 
 /***/ },
 /* 182 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <h2 class=\"header\">Chips</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-default-chip></doc-default-chip>\r\n\r\n        <doc-snippet>{{{defaultChipSnippet}}}</doc-snippet>\r\n    </div>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/chips\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Chips</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-chip></doc-default-chip>\r\n\r\n                <doc-snippet>{{{snippets.chip}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 183 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-chip</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/yuna.jpg\"</span> <span class=\"hljs-attribute\">alt</span>=<span class=\"hljs-value\">\"Contact Person\"</span>&gt;</span>\r\n    Jane Doe\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-chip</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-chip</span> <span class=\"hljs-attribute\">closeable</span>&gt;</span>\r\n    Tag\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-chip</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-chip</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"images/yuna.jpg\"</span> <span class=\"hljs-attribute\">alt</span>=<span class=\"hljs-value\">\"Contact Person\"</span>&gt;</span>\r\n    Jane Doe\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-chip</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-chip</span> <span class=\"hljs-attribute\">closeable</span>&gt;</span>\r\n    Tag\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-chip</span>&gt;</span>";
 
 /***/ },
 /* 184 */
@@ -14426,6 +14433,62 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-class\">.md-card</span> {\r\n  <span class=\"hljs-class\">.activator</span>, <span class=\"hljs-class\">.close</span> {\r\n    <span class=\"hljs-attribute\">cursor</span><span class=\"hljs-value\">: pointer;</span>\r\n  }\r\n}";
+
+/***/ },
+/* 338 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-chip",
+		"title": "Chip",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "closeable",
+				"type": "Boolean",
+				"required": false,
+				"description": "It can be closed if true",
+				"twoWay": false,
+				"default": false
+			},
+			{
+				"name": "closed",
+				"type": "Boolean",
+				"required": false,
+				"description": "State of closed",
+				"twoWay": null,
+				"default": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Content of chip"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 339 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        closeable: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        closed: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./chip.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Chip {\r\n}";
+
+/***/ },
+/* 340 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"!closed\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"chip md-chip\"</span> <span class=\"hljs-attribute\">transition</span>=<span class=\"hljs-value\">\"chip\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"closeable\"</span>\r\n       @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"closed = true\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>close<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
+
+/***/ },
+/* 341 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-class\">.chip-transition</span> {\r\n}\r\n\r\n<span class=\"hljs-class\">.chip-leave</span> {\r\n  <span class=\"hljs-attribute\">opacity</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.chip-leave</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.1s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.1s</span>;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeOut;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeOut;</span>\r\n}";
 
 /***/ }
 /******/ ])

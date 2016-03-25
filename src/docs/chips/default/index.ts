@@ -1,15 +1,16 @@
 import Component from 'vue-class-component';
 
-var template = require('./default.html');
-
-import mdChip from '../../../components/chip';
+import components from '../../../components';
 
 @Component({
-    template: template,
-    components: {
-        mdChip
-    }
+    components,
+    template: require('./default.html')
 })
 export default class DefaultChip {
+    data() {
+        return {
+            closed: false
+        }
+    }
 }
 

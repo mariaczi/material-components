@@ -18,9 +18,17 @@ var template = require('./cards.html');
 export default class Cards {
     data() {
         return {
-            defaultCardSnippet: require('./default/default.snippet.html'),
-            imageCardSnippet: require('./image/image.snippet.html'),
-            revealCardSnippet: require('./reveal/reveal.snippet.html')
+            api: require("../../components/card/card-api.json"),
+            snippets: {
+                defaultCard: require('./default/default.snippet.html'),
+                imageCard: require('./image/image.snippet.html'),
+                revealCard: require('./reveal/reveal.snippet.html')
+            },
+            src: {
+                script: require("!!html!highlightjs?lang=ts!../../components/card/index.ts"),
+                template: require('!!html!highlightjs?lang=html!../../components/card/card.html'),
+                style: require('!!html!highlightjs?lang=scss!../../components/card/card.scss')
+            }
         }
     }
 }

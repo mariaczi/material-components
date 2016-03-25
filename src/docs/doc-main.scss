@@ -1,5 +1,6 @@
 
 @import "../materialize/color";
+@import "../materialize/variables";
 
 [v-cloak] {
   display: none;
@@ -66,7 +67,7 @@ nav.top-nav a.page-title {
 }
 
 .select-wrapper i {
-  color: #26a69a; // todo var
+  color: $secondary-color;
 }
 
 .doc-example {
@@ -83,6 +84,10 @@ nav.top-nav a.page-title {
     margin-right: -20px;
     margin-top: -20px;
     padding: 20px;
+
+    .input-field {
+      margin-bottom: 1rem;
+    }
   }
 }
 

@@ -1,38 +1,46 @@
 import Component from 'vue-class-component';
 
 var Velocity = require('velocity-animate');
-var template = require('./card.html');
 
 @Component({
     props: {
         contentClass: {
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         titleInImage: {
             type: Boolean,
             required: false,
+            twoWay: false,
             'default': false
         },
         small: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         },
         medium: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         },
         large: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         }
     },
-    template: template
+    template: require('./card.html')
 })
 export default class Card {
+    private $el: any;
+    private $els: any;
+    private _slotContents: any;
+
     private active: boolean;
 
     data() {
@@ -41,14 +49,13 @@ export default class Card {
         }
     }
 
-    ready() {
-        var self: any = this;
-        var activators = self.$el.querySelectorAll('.activator');
+    compiled() {
+        var activators = this.$el.querySelectorAll('.activator');
         Array.prototype.slice.call(activators).forEach((activator) => {
             activator.addEventListener('click', this.open);
         });
 
-        var revealClose = self.$els.revealClose;
+        var revealClose = this.$els.revealClose;
         if (revealClose) {
             revealClose.addEventListener('click', this.close);
         }
@@ -57,8 +64,7 @@ export default class Card {
     open() {
         if (!this.active) {
             this.active = true;
-            var self: any = this;
-            var reveal: HTMLElement = self.$els.reveal;
+            var reveal: HTMLElement = this.$els.reveal;
             if (reveal) {
                 reveal.style.display = 'block';
                 Velocity(reveal, "stop", false);
@@ -70,8 +76,7 @@ export default class Card {
     close() {
         if (this.active) {
             this.active = false;
-            var self: any = this;
-            var reveal: HTMLElement = self.$els.reveal;
+            var reveal: HTMLElement = this.$els.reveal;
             if (reveal) {
                 Velocity(reveal,
                     {translateY: 0}, {
@@ -87,22 +92,18 @@ export default class Card {
     }
 
     get imageSlot() {
-        var self: any = this;
-        return 'image' in self._slotContents;
+        return 'image' in this._slotContents;
     }
 
     get titleSlot() {
-        var self: any = this;
-        return 'title' in self._slotContents;
+        return 'title' in this._slotContents;
     }
 
     get actionsSlot() {
-        var self: any = this;
-        return 'actions' in self._slotContents;
+        return 'actions' in this._slotContents;
     }
 
     get revealSlot() {
-        var self: any = this;
-        return 'reveal' in self._slotContents;
+        return 'reveal' in this._slotContents;
     }
 }

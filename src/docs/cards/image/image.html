@@ -1,6 +1,26 @@
+<div class="row demo">
+    <div class="col s8">
+        <md-radio-group name="size">
+            <md-radio v-field="size" value="small" class="with-gap">
+                Small
+            </md-radio>
+            <md-radio v-field="size" value="medium" class="with-gap">
+                Medium
+            </md-radio>
+            <md-radio v-field="size" value="large" class="with-gap">
+                Large
+            </md-radio>
+        </md-radio-group>
+    </div>
+    <div class="col s4">
+        <md-checkbox v-field="titleInImage">
+            Title in image
+        </md-checkbox>
+    </div>
+</div>
 <div class="row">
-    <div class="col s12 m7">
-        <md-card title-in-image>
+    <div class="col">
+        <md-card :small="size == 'small'" :medium="size == 'medium'" :large="size == 'large'" :title-in-image="titleInImage">
             <span slot="title">
                 Card Title
             </span>

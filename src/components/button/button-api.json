@@ -23,7 +23,7 @@
       "default": null
     },
     {
-      "name": "iconAlignRight",
+      "name": "icon-align-right",
       "type": "Boolean",
       "description": "It switches icon to right side",
       "twoWay": false,

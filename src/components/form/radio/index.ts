@@ -39,7 +39,13 @@ export default class Radio {
     }
 
     get radiosValue() {
-        return this.field.__v_model._watcher.value;
+        if (this.field.__v_model) {
+            return this.field.__v_model._watcher.value;
+        }
+        else {
+            console.log("Error. Missing field or model directive");
+            return null;
+        }
     }
     
     get field() {

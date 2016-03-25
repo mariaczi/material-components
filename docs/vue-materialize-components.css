@@ -4091,6 +4091,27 @@ nav span.badge.new .new {
 .transparent-text {
   color: transparent !important; }
 
+/*** Colors ***/
+/*** Badges ***/
+/*** Buttons ***/
+/*** Cards ***/
+/*** Collapsible ***/
+/*** Chips ***/
+/*** Date Picker ***/
+/*** Dropdown ***/
+/*** Fonts ***/
+/*** Forms ***/
+/*** Global ***/
+/*** Navbar ***/
+/*** SideNav ***/
+/*** Photo Slider ***/
+/*** Spinners | Loaders ***/
+/*** Tabs ***/
+/*** Tables ***/
+/*** Toasts ***/
+/*** Typography ***/
+/*** Collections ***/
+/* Progress Bar */
 [v-cloak] {
   display: none; }
 
@@ -4142,7 +4163,7 @@ nav.top-nav a.page-title {
   padding: 2rem; }
 
 .select-wrapper i {
-  color: #26a69a; }
+  color: #1B5E20; }
 
 .doc-example {
   -webkit-transition: box-shadow .25s;
@@ -4157,5 +4178,10 @@ nav.top-nav a.page-title {
     margin-right: -20px;
     margin-top: -20px;
     padding: 20px; }
+    .doc-example .demo .input-field {
+      margin-bottom: 1rem; }
+
+.md-tabs {
+  margin: 1.5rem 0; }
 
 /*# sourceMappingURL=vue-materialize-components.css.map*/

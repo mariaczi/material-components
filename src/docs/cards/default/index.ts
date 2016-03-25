@@ -1,14 +1,10 @@
 import Component from 'vue-class-component';
 
-var template = require('./default.html');
-
-import mdCard from '../../../components/card';
+import components from '../../../components';
 
 @Component({
-    template: template,
-    components: {
-        mdCard
-    }
+    components,
+    template: require('./default.html'),
 })
 export default class DefaultCard {
 }

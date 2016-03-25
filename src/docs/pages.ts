@@ -49,7 +49,7 @@ const docsPages: [Route] = [
         component: docsButtons
     },
     {
-        urls: ['/cards'],
+        urls: ['/cards', '/cards/:tab'],
         link: '/cards',
         title: 'Cards',
         component: docsCards

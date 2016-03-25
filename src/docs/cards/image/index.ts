@@ -1,15 +1,19 @@
 import Component from 'vue-class-component';
 
-var template = require('./image.html');
-
-import mdCard from '../../../components/card';
+import components from '../../../components';
+import directives from '../../../directives';
 
 @Component({
-    template: template,
-    components: {
-        mdCard
-    }
+    components,
+    directives,
+    template: require('./image.html')
 })
 export default class ImageCard {
+    data() {
+        return {
+            size: 'medium',
+            titleInImage: true
+        }
+    }
 }
 

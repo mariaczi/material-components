@@ -4,7 +4,7 @@ import Component from 'vue-class-component';
     props: {
         opened: {
             required: false,
-            'default': null
+            'default': ''
         },
         popout: {
             type: Boolean,
@@ -46,21 +46,12 @@ export default class Collapsible {
     private expendable: boolean;
     private opened: any;
 
-    compiled() {
+    // always array
+    get openedAsArray() {
         if (this.opened != null) {
-            this.openedChanged(this.opened, this.expendable ? [] : '');
+            return Array.isArray(this.opened) ? this.opened : [this.opened];
         }
-    }
-
-    ready() {
-        if (!this.opened) {
-            if (this.expendable) {
-                this.opened = []
-            }
-            else {
-                this.opened = '';
-            }
-        }
+        return [];
     }
 
     open(id: string) {
@@ -89,6 +80,9 @@ export default class Collapsible {
 
     openedChanged(newValue, oldValue) {
         if (this.expendable) {
+            console.log(newValue);
+            console.log(oldValue);
+            /*
             newValue = newValue != null ? newValue : [];
             oldValue = oldValue != null ? oldValue : [];
             // close
@@ -99,6 +93,7 @@ export default class Collapsible {
             newValue
                 .filter(function (val) { return oldValue && oldValue.indexOf(val) < 0; })
                 .forEach((id) => this.$broadcast('collapsible::open', id, this.expendable));
+            */
         }
         else {
             this.$broadcast('collapsible::close', oldValue);

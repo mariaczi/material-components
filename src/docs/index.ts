@@ -26,6 +26,8 @@ export = {
     run: function (app) {
 
         Vue.config.debug = true;
+        Vue.config.async = false;
+        
         Vue.use(VueRouter);
         Vue.component('vue-logo', vueLogo);
         Vue.component('materialize-logo', materializeLogo);

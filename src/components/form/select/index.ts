@@ -44,14 +44,13 @@ export default class SelectField {
     private $nextTick: any;
     private $broadcast: any;
     private fireEvent: any;
-    private watchField: any;
 
     private active: boolean;
     private defaultSelect: string;
     private valueSingle: string;
     private valueMultiple: string[];
-    private options: any[];
     private multiple: boolean;
+    private options: any[];
 
     data() {
         return {
@@ -62,7 +61,7 @@ export default class SelectField {
         }
     }
 
-    compiled() {
+    ready() {
         var options = this.$getAllChildren().filter((c: any) => {return 'SelectOption' == c.$options.name});
         for (var i = 0; i < options.length; i++) {
             var option = options[i];
@@ -70,6 +69,7 @@ export default class SelectField {
             Vue.set(this.options, opt.value, opt);
         }
         this.$nextTick(() => {
+            this.value = this.getSelectedValues();
             this.refreshOptions();
         })
     }
@@ -86,19 +86,17 @@ export default class SelectField {
         };
     }
 
-    ready() {
-        this.watchField((value) => {
-            if (Array.isArray(value)) {
-                this.valueMultiple = value;
-            }
-            else {
-                this.valueSingle = value;
-            }
-        });
-    }
-
     get value() {
         return this.multiple ? this.valueMultiple : this.valueSingle;
+    }
+
+    set value(value: any) {
+        if (this.multiple) {
+            this.valueMultiple = value;
+        }
+        else {
+            this.valueSingle = value.length ? value[0] : value;
+        }
     }
 
     get valueContent() {
@@ -143,6 +141,21 @@ export default class SelectField {
         }
     }
 
+    getSelectedValues() {
+        return Array.prototype.slice.call(this.$els.field.selectedOptions)
+            .map((o) => o.value);
+    }
+
+    change() {
+        var values = this.getSelectedValues();
+        if (this.multiple) {
+            this.valueMultiple = values;
+        }
+        else {
+            this.valueSingle = values.length ? values[0] : '';
+        }
+    }
+
     setSelected(value) {
         (this.multiple ? this.setSelectedMultiple : this.setSelectedSingle)(value);
         this.$broadcast('option::select', value);
@@ -172,9 +185,9 @@ export default class SelectField {
     selectOptionMultiple(value) {
         Array.prototype.slice.call(this.$els.field.options)
             .forEach((o) => {
-                 if (value == o.value) {
-                     o.selected = true;
-                 }
+                if (value == o.value) {
+                    o.selected = true;
+                }
             });
     }
 
@@ -207,7 +220,7 @@ export default class SelectField {
     refreshOptions() {
         Array.prototype.slice.call(this.$els.field.selectedOptions)
             .forEach((o) => {
-               this.$broadcast('option::select', o.value, this.value);
+                this.$broadcast('option::select', o.value, this.value);
             });
     }
 }

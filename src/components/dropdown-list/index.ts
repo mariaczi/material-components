@@ -3,27 +3,20 @@ import Component from 'vue-class-component';
 import mbButton from '../button';
 import mdDropdownItem from '../dropdown-item';
 
-import onClickAway from '../../directives/click-away';
-
-var template = require('./dropdown-list.html');
-
 @Component({
     components: {
         mbButton,
         mdDropdownItem
     },
-    directives: {
-        onClickAway
-    },
     events: {
-        "dropdown::close": function () {
+        "dropdown-list::close": function () {
             this.hide();
         },
-        "dropdown::open": function (e) {
+        "dropdown-list::open": function (e) {
             this.open(e);
         }
     },
-    template: template
+    template: require('./dropdown-list.html')
 })
 export default class DropdownList {
     private active: boolean;
@@ -65,23 +58,16 @@ export default class DropdownList {
         var left = offset.left  || 0;
 
         return {
-            width: width+'px',
+            width: width + 'px',
             position: 'absolute',
-            top: top+'px',
-            left: left+'px',
+            top: top + 'px',
+            left: left + 'px',
             opacity: 1,
             display: 'block'
         };
     }
 
     offset(element: any) {
-        var top = 0, left = 0;
-        // do {
-        //     top += element.offsetTop  || 0;
-        //     left += element.offsetLeft || 0;
-        //     element = element.offsetParent;
-        // } while(element);
-
         return {
             top: element.offsetTop,
             left: element.offsetLeft

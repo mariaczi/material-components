@@ -13,5 +13,10 @@ import mdDropdownItem from '../../../components/dropdown-item';
     }
 })
 export default class DefaultDropdown {
+    data() {
+        return {
+            value: ''
+        }
+    }
 }
 

@@ -18,6 +18,6 @@ export default class Dropdowns {
 
     closeDropdown() {
         var self: any = this;
-        self.$broadcast('dropdown::close');
+        self.$broadcast('dropdown-list::close');
     }
 }

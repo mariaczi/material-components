@@ -1,24 +1,23 @@
 import Component from 'vue-class-component';
+
 import mdButton from '../button';
 import mdDropdownList from '../dropdown-list';
 import mdDropdownItem from '../dropdown-item';
 
 import onClickAway from '../../directives/click-away';
 
-var template = require('./dropdown.html');
-
-/**
- * Todo: open to top on bootom of page
- */
 @Component({
     props: {
-        /**
-         * Label of button
-         */
         title: {
             type: String,
             required: false,
-            "default": ""
+            "default": "",
+            twoWay: false
+        },
+        value: {
+            type: String,
+            required: false,
+            "default": "",
         }
     },
     directives: {
@@ -30,21 +29,26 @@ var template = require('./dropdown.html');
         mdDropdownItem
     },
     events: {
-        "dropdown::close": function () {
-            // propagate event to children
-            this.$broadcast("dropdown::close");
+        "dropdown-list::close": function () {
+            // emitted by item -> propagated do list
+            this.$broadcast("dropdown-list::close");
+            return true;
+        },
+        "dropdown-item::selected": function (id) {
+            this.value = id;
+            return true;
         }
     },
-    template: template
+    template: require('./dropdown.html')
 })
 export default class Dropdown {
+    private $broadcast: any;
+
     open(e) {
-        var self: any = this;
-        self.$broadcast("dropdown::open", e);
+        this.$broadcast("dropdown-list::open", e);
     }
 
     close() {
-        var self: any = this;
-        self.$broadcast("dropdown::close");
+        this.$broadcast("dropdown-list::close");
     }
 }

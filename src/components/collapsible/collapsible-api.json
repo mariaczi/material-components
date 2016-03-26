@@ -36,6 +36,7 @@
     {
       "name": "collapsible::open",
       "description": "Events is fire when item is opened",
+      "type": "in",
       "args": [
         {
           "name": "id",

@@ -138,14 +138,14 @@ export default class SelectField {
     open(e) {
         if (!this.active) {
             this.active = true;
-            this.$broadcast('dropdown::open', e);
+            this.$broadcast('dropdown-list::open', e);
         }
     }
 
     close() {
         if (this.active) {
             this.active = false;
-            this.$broadcast('dropdown::close');
+            this.$broadcast('dropdown-list::close');
         }
     }
 

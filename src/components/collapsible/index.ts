@@ -70,11 +70,13 @@ export default class Collapsible {
     }
 
     close(id: string) {
-        if (this.expendable) {
-            this.opened.$remove(id);
-        }
-        else {
-            this.opened = '';
+        if (typeof this.opened != "undefined") {
+            if (this.expendable) {
+                this.opened.$remove(id);
+            }
+            else {
+                this.opened = '';
+            }
         }
         // propagate event to children
         this.$broadcast('collapsible::close', id);

@@ -11,13 +11,13 @@ var waveEffect: DirectiveOption = {
             Effect.show(e, this.el);
         };
 
-        this.el.addEventListener("mousedown", this.show);
-        this.el.addEventListener("mouseleave", this.hide);
-        this.el.addEventListener("mouseup", this.hide);
+        this.el.addEventListener("mousedown", this.show, false);
+        this.el.addEventListener("mouseleave", this.hide, false);
+        this.el.addEventListener("mouseup", this.hide, false);
     },
 
     unbind: function() {
-        this.el.removeEventListener("mousedown", this.show  );
+        this.el.removeEventListener("mousedown", this.show);
         this.el.removeEventListener("mouseleave", this.hide);
         this.el.removeEventListener("mouseup", this.hide);
     },

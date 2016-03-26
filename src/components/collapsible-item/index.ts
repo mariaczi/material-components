@@ -68,12 +68,17 @@ export default class CollapsibleItem {
         return null;
     }
 
-    openThis() {
+    openThis(immediately = false) {
         if (!this.active) {
             this.active = true;
-            this.$nextTick(() => {
-                Velocity(this.$els.body, 'slideDown', this._slideConfig);
-            });
+            if (immediately) {
+                this.$els.body.style.height = '';
+            }
+            else {
+                this.$nextTick(() => {
+                    Velocity(this.$els.body, 'slideDown', this._slideConfig);
+                });
+            }
         }
     }
 
@@ -89,8 +94,8 @@ export default class CollapsibleItem {
     }
 
     open(id, expendable: boolean) {
-        if (id === null) {
-            this.openThis();
+        if (id === null || typeof id == "undefined") {
+            this.openThis(true); // bulk open
         }
         else {
             if (id == this.id) {
@@ -104,19 +109,24 @@ export default class CollapsibleItem {
         }
     }
 
-    closeThis() {
+    closeThis(immediately = false) {
         if (this.active) {
             this.active = false;
-            this.$nextTick(() => {
-                this.$els.body.style.display = 'block';
-                Velocity(this.$els.body, 'slideUp', this._slideConfig);
-            })
+            if (immediately) {
+                this.$els.body.style.height = '';
+            }
+            else {
+                this.$nextTick(() => {
+                    this.$els.body.style.display = 'block';
+                    Velocity(this.$els.body, 'slideUp', this._slideConfig);
+                })
+            }
         }
     }
 
     close(id) {
-        if (id === null) {
-            this.closeThis();
+        if (id === null || typeof id == "undefined") {
+            this.closeThis(true); // bulk close
         }
         else {
             if (id == this.id) {

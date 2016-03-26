@@ -1,7 +1,19 @@
+<div v-if="sources && sources.length > 1" style="float: right; margin: 0.14rem 0 0.912rem 0;">
+    <md-button type="flat" class="waves-effect"
+               @click="broadcast('collapsible::close')">
+        Collapse
+    </md-button>
+    <md-button type="flat" class="waves-effect"
+               @click="broadcast('collapsible::open')">
+        Expand
+    </md-button>
+</div>
+
 <div v-for="src in sources" class="doc-sources">
     <h4 v-if="src.name">
         {{src.name}}
     </h4>
+    <div style="clear: both"></div>
     <md-collapsible popout expendable>
         <md-collapsible-item v-if="src.template" expanded>
             <div slot="header">

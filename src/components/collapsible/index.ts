@@ -58,11 +58,13 @@ export default class Collapsible {
     }
 
     open(id: string) {
-        if (this.expendable) {
-            this.opened.push(id);
-        }
-        else {
-            this.opened = id;
+        if (typeof this.opened != "undefined") {
+            if (this.expendable) {
+                this.opened.push(id);
+            }
+            else {
+                this.opened = id;
+            }
         }
         // propagate event to children
         this.$broadcast('collapsible::open', id, this.expendable);

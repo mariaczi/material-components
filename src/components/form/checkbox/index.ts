@@ -1,10 +1,7 @@
 import Component from 'vue-class-component';
 
 import inputMixin from '../../../mixins/input';
-
 import bindBoolean from '../../../directives/bind-boolean';
-
-var template = require('./checkbox.html');
 
 @Component({
     props: {
@@ -25,7 +22,7 @@ var template = require('./checkbox.html');
     mixins: [
         inputMixin
     ],
-    template: template
+    template: require('./checkbox.html')
 })
 export default class CheckboxField {
     private _slotContents: any;

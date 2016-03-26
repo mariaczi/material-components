@@ -1,11 +1,8 @@
 import Component from 'vue-class-component';
 
 import inputMixin from '../../../mixins/input';
-
 import bindBoolean from '../../../directives/bind-boolean';
 import bindRaw from '../../../directives/bind-raw';
-
-var template = require('./file-input.html');
 
 @Component({
     props: {
@@ -31,7 +28,7 @@ var template = require('./file-input.html');
     mixins: [
         inputMixin
     ],
-    template: template
+    template: require('./file-input.html')
 })
 export default class FileInputField {
     private $els: any;

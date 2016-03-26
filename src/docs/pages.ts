@@ -85,7 +85,7 @@ const docsPages: [Route] = [
         component: docsDropdowns
     },
     {
-        urls: ['/forms'],
+        urls: ['/forms', '/forms/:tab'],
         link: '/forms',
         title: 'Forms',
         component: docsForms

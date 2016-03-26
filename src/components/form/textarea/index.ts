@@ -3,24 +3,26 @@ import Component from 'vue-class-component';
 import inputMixin from '../../../mixins/input';
 
 var Velocity = require('velocity-animate');
-var template = require('./textarea.html');
 
 @Component({
     props: {
         value: {
             type: String,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         disabled: {
             type: Boolean,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         autoresize: {
             type: Boolean,
             required: false,
-            'default': true
+            'default': true,
+            twoWay: false
         }
     },
     watch: {
@@ -34,13 +36,15 @@ var template = require('./textarea.html');
     mixins: [
         inputMixin
     ],
-    template: template
+    template: require('./textarea.html')
 })
 export default class TextArea {
-    private value:string;
-    private disabled:boolean;
-    private active:boolean;
-    private autoresize:boolean;
+    private $el: any;
+    private _slotContents: any;
+
+    private value: string;
+    private disabled: boolean;
+    private active: boolean;
 
     data() {
         return {
@@ -53,13 +57,11 @@ export default class TextArea {
     }
 
     get slot() {
-        var self: any = this;
-        return 'default' in self._slotContents;
+        return 'default' in this._slotContents;
     }
 
     get slotIcon() {
-        var self: any = this;
-        return 'icon-name' in self._slotContents;
+        return 'icon-name' in this._slotContents;
     }
 
     get labelClasses() {
@@ -74,8 +76,7 @@ export default class TextArea {
     }
 
     get field() {
-        var self:any = this;
-        return self.$el.querySelector('.field');
+        return this.$el.querySelector('.field');
     }
 
     setActive(val) {

@@ -2,35 +2,37 @@ import Component from 'vue-class-component';
 
 import inputMixin from '../../../mixins/input';
 
-var template = require('./input.html');
-
 @Component({
     props: {
         value: {
             type: String,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         placeholder: {
             type: String,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         disabled: {
             type: Boolean,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         type: {
             type: String,
             required: false,
-            'default': 'text'
+            'default': 'text',
+            twoWay: false
         }
     },
     mixins: [
         inputMixin
     ],
-    template: template
+    template: require('./input.html')
 })
 export default class InputField {
     private $els: any;
@@ -52,9 +54,8 @@ export default class InputField {
         this.refreshValue()
     }
 
-    get field(): HTMLElement {
-        var self: any = this;
-        return self.$els.field;
+    get field(): HTMLInputElement {
+        return this.$els.field;
     }
 
     get slot() {
@@ -73,7 +74,7 @@ export default class InputField {
    }
 
     refreshValue() {
-        this.value = this.$els.field.value;
+        this.value = this.field.value;
     }
 
     setActive(val) {

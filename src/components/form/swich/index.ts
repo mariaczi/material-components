@@ -1,10 +1,7 @@
 import Component from 'vue-class-component';
 
 import inputMixin from '../../../mixins/input';
-
 import bindBoolean from '../../../directives/bind-boolean';
-
-var template = require('./switch.html');
 
 @Component({
     props: {
@@ -20,7 +17,7 @@ var template = require('./switch.html');
     mixins: [
         inputMixin
     ],
-    template: template
+    template: require('./switch.html')
 })
 export default class Switch {
     private _slotContents: any;

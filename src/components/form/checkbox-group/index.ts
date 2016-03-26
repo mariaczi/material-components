@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-var template = require('./checkbox-group.html');
-
 @Component({
     props: {
         group: {
@@ -10,7 +8,7 @@ var template = require('./checkbox-group.html');
             'default': 'text'
         }
     },
-    template: template
+    template: require('./checkbox-group.html')
 })
 export default class CheckboxGroup {
 }

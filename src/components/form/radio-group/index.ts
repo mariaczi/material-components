@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-var template = require('./radio-group.html');
-
 @Component({
     props: {
         group: {
@@ -10,7 +8,7 @@ var template = require('./radio-group.html');
             'default': 'text'
         }
     },
-    template: template
+    template: require('./radio-group.html')
 })
 export default class RadioGroup {
 }

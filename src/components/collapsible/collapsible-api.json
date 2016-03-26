@@ -47,6 +47,7 @@
     {
       "name": "collapsible::close",
       "description": "Events is fire when item is closed",
+      "type": "in",
       "args": [
         {
           "name": "id",

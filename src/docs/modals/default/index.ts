@@ -18,5 +18,10 @@ import events from '../../../mixins/events';
     ]
 })
 export default class DefaultModal {
+    data() {
+        return {
+            closeResult: ''
+        }
+    }
 }
 

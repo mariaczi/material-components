@@ -91,7 +91,7 @@ const docsPages: [Route] = [
         component: docsForms
     },
     {
-        urls: ['/modals'],
+        urls: ['/modals', '/modals/:tabs'],
         link: '/modals',
         title: 'Modals',
         component: docsModals

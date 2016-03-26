@@ -98,7 +98,7 @@
                     <p>{{event.description}}</p>
                     <p>Type: <md-badge :alert="event.type" style="position: initial"></md-badge></p>
                 </div>
-                <md-collection-list-item v-if="event.args && event.args.lenght">
+                <md-collection-list-item v-if="event.args && event.args.length > 0">
                     <table>
                         <thead>
                             <tr>

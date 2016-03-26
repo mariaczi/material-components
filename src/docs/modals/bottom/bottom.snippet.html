@@ -4,15 +4,15 @@
     <p>A bunch of text</p>
 
     <span slot="footer">
-        <md-button href="javascript:void(0)" class="waves-effect waves-green btn-flat"
-             @click="broadcast('modal::close')">
+        <md-button href="#" class="waves-effect waves-green btn-flat"
+                   @click.prevent="broadcast('modal::close')">
             Agree
         </md-button>
     </span>
 </md-modal>
 
-<md-button href="javascript:void(0)"
-     @click="broadcast('modal::open')">
+<md-button href="#"
+           @click.prevent="broadcast('modal::open')">
     Modal - bottom style
 </md-button>
 
@@ -20,33 +20,21 @@
 <md-modal bottom>
     <md-collection>
         <md-collection-item class="avatar">
-            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <img src="images/yuna.jpg" alt="" class="circle">
             <span class="title">Title</span>
             <p>First Line <br> Second Line </p>
-            <a href="javascript:void(0)" class="secondary-content"><i class="material-icons">grade</i></a>
+            <a href="#" class="secondary-content"><i class="material-icons">grade</i></a>
         </md-collection-item>
-        <md-collection-item class="avatar">
-            <md-icon class="circle">folder</md-icon>
-            <span class="title">Title</span>
-            <p>First Line <br> Second Line </p>
-            <a href="javascript:void(0)" class="secondary-content"><i class="material-icons">grade</i></a>
-        </md-collection-item>
-        <md-collection-item class="avatar">
-            <md-icon class="circle green">assessment</md-icon>
-            <span class="title">Title</span>
-            <p>First Line <br> Second Line </p>
-            <a href="javascript:void(0)" class="secondary-content"><i class="material-icons">grade</i></a>
-        </md-collection-item>
+        ...
         <md-collection-item class="avatar">
             <md-icon class="circle red">play_arrow</md-icon>
             <span class="title">Title</span>
             <p>First Line <br> Second Line </p>
-            <a href="javascript:void(0)" class="secondary-content"><i class="material-icons">grade</i></a>
+            <a href="#" class="secondary-content"><i class="material-icons">grade</i></a>
         </md-collection-item>
     </md-collection>
 </md-modal>
 
-<md-button href="javascript:void(0)"
-     @click="broadcast('modal::open')">
+<md-button href="#" @click.prevent="broadcast('modal::open')">
     Modal - bottom style
 </md-button>

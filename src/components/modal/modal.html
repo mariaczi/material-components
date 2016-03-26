@@ -1,4 +1,4 @@
-<div v-if="active" :transition="transition"
+<div v-if="active" :id="id" :transition="transition"
      :style="computedStyle" class="modal" :class="computedClasses">
     <slot name="content">
         <div class="modal-content">
@@ -11,5 +11,5 @@
 </div>
 
 <md-lean-overlay v-if="active" transition="modal-overlay"
-              @click="close">
+                 @click="close">
 </md-lean-overlay>

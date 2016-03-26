@@ -23,9 +23,17 @@ var template = require('./modals.html');
 export default class Modals {
     data() {
         return {
-            defaultModalSnippet: require('./default/default.snippet.html'),
-            fixedFooterModalSnippet: require('./fixed-footer/fixed-footer.snippet.html'),
-            bottomModalSnippet: require('./bottom/bottom.snippet.html')
+            api: require('../../components/modal/modal-api.json'),
+            snippets: {
+                defaultModal: require('./default/default.snippet.html'),
+                fixedFooterModal: require('./fixed-footer/fixed-footer.snippet.html'),
+                bottomModal: require('./bottom/bottom.snippet.html')
+            },
+            src: {
+                script: require("!!html!highlightjs?lang=ts!../../components/modal/index.ts"),
+                template: require('!!html!highlightjs?lang=html!../../components/modal/modal.html'),
+                style: require('!!html!highlightjs?lang=scss!../../components/modal/modal.scss')
+            }
         }
     }
 }

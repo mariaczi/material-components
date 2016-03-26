@@ -1,34 +1,53 @@
-// todo better animation    
 import Component from 'vue-class-component';
 
 import mdLeanOverlay from '../lean-overlay';
-
-var template = require('./modal.html');
 
 const ESC = 27;
 
 @Component({
     props: {
-        "class": {
+        id: {
             type: String,
             required: false,
-            "default": ""
+            'default': null
+        },
+        result: {
+            type: String,
+            required: false,
+            'default': null
+        },
+        'class': {
+            type: String,
+            required: false,
+            'default': '',
+            twoWay: false
         },
         bottom: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false,
+            twoWay: false
         }
     },
     components: {
         mdLeanOverlay
     },
     events: {
-        'modal::open': function () {
-            this.open();
+        'modal::open': function (id) {
+            if (this.id === null || typeof this.id === "undefined") {
+                this.open();
+            }
+            else if (this.id == id) {
+                this.open();
+            }
         },
-        'modal::close': function () {
-            this.close();
+        'modal::close': function (result, id) {
+            if ((this.id === null || typeof this.id === "undefined") 
+                || (this.id == id)) {
+                this.close();
+                this.result = result;
+                return true;
+            }
         }
     },
     watch: {
@@ -41,12 +60,13 @@ const ESC = 27;
             }
         }
     },
-    template: template
+    template: require('./modal.html')
 })
 export default class Modal {
     private active: boolean;
     private bottom: boolean;
     private class: string;
+    private result: string;
 
     data() {
         return {
@@ -55,11 +75,10 @@ export default class Modal {
     }
 
     ready() {
-        var self = this;
-        window.document.addEventListener('keydown', function(evt: any) {
+        window.document.addEventListener('keydown', (evt: any) => {
             evt = evt || window.event;
             if (evt.keyCode == ESC) {
-                self.close();
+                this.close();
             }
         });
     }
@@ -105,6 +124,7 @@ export default class Modal {
     close() {
         if (this.active) {
             this.active = false;
+            this.result = null;
         }
     }
 }

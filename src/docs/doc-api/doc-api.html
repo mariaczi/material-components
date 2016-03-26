@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="property in api.api.properties">
+                <tr v-for="property in api.api.properties" :style="property.type == 'Directive' ? {'color': '#1B5E20'} : {}">
                     <td>{{property.name}}</td>
                     <td>{{property.type}}</td>
                     <td>

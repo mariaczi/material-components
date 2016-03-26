@@ -24,6 +24,12 @@ import docFileInputs from './file-inputs';
 export default class Forms {
     data() {
         return {
+            api: [
+                {
+                    name: 'Input',
+                    api: require('../../components/form/input/input-api.json')
+                }
+            ],
             snippets: {
                 inputFields: require('./input-fields/input.snippet.html'),
                 inputIconFields: require('./input-icon-fields/input-icon.snippet.html'),

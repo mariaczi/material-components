@@ -1,0 +1,60 @@
+{
+  "name": "md-badge",
+  "title": "Badge",
+  "description": "",
+  "browserSupport": {
+    "browsers": []
+  },
+  "properties": [
+    {
+      "name": "v-field",
+      "type": "Directive",
+      "required": false,
+      "description": "Field directive",
+      "twoWay": true
+    },
+    {
+      "name": "value",
+      "type": "String",
+      "required": false,
+      "description": "Initial value of input field",
+      "twoWay": false,
+      "default": null
+    },
+    {
+      "name": "placeholder",
+      "type": "String",
+      "required": false,
+      "description": "Placeholder value",
+      "default": null,
+      "twoWay": false
+    },
+    {
+      "name": "disabled",
+      "type": "Boolean",
+      "required": false,
+      "description": "Field is disabled if true",
+      "default": null,
+      "twoWay": false
+    },
+    {
+      "name": "type",
+      "type": "String",
+      "required": false,
+      "description": "Input type attribute",
+      "default": "text",
+      "twoWay": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "",
+      "description": "Input label"
+    },
+    {
+      "name": "icon-name",
+      "description": "Input icon name"
+    }
+  ],
+  "events": []
+}

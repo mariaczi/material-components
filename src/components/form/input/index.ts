@@ -53,8 +53,8 @@ export default class InputField {
     }
 
     compiled() {
-        this.setupDisabled();
-        if (!this.value) { // setted as prop
+        this.setupDisabled;
+        if (!this.value) { // set as prop
             this.refreshInput();
         }
         else {
@@ -102,7 +102,7 @@ export default class InputField {
         this.active = false;
     }
 
-    setupDisabled() {
+    get setupDisabled() { // getter has dependency tracking
         if (!this.disabled) {
             this.field.addEventListener('focus', this.activateField);
             this.field.addEventListener('blur', this.deactivateField);
@@ -115,6 +115,7 @@ export default class InputField {
 
             this.field.setAttribute('disabled', 'disabled');
         }
+        return null;
     }
 
 }

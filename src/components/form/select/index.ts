@@ -2,7 +2,6 @@ import Component from 'vue-class-component';
 import mdDropdownList from '../../dropdown-list';
 
 import inputMixin from '../../../mixins/input';
-import slot from '../../../directives/slot';
 import clickAway from '../../../directives/click-away';
 import bindBoolean from '../../../directives/bind-boolean';
 
@@ -29,7 +28,6 @@ var template = require('./select.html');
         mdDropdownList
     },
     directives: {
-        slot,
         clickAway,
         bindBoolean
     },
@@ -126,13 +124,12 @@ export default class SelectField {
         }
     }
 
-    get labelSlot() {
-        var self: any = this;
-        return 'label' in self._slotContents;
-    }
-
     get field() {
         return this.$els.field;
+    }
+
+    hasSlot(name = 'default') {
+        return name in this._slotContents;
     }
 
     open(e) {

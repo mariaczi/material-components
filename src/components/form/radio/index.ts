@@ -52,11 +52,12 @@ export default class Radio {
         return this.$els.field;
     }
 
-    get slot() {
-        return 'default' in this._slotContents;
-    }
 
     get group() {
         return this.$parent.$data.group;
+    }
+
+    hasSlot(name = 'default') {
+        return name in this._slotContents;
     }
 }

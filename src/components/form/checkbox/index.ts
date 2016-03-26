@@ -30,8 +30,8 @@ export default class CheckboxField {
 
     private name: string;
 
-    get slot() {
-        return 'default' in this._slotContents;
+    hasSlot(name = 'default') {
+        return name in this._slotContents;
     }
 
     get group() {

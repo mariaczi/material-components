@@ -1,12 +1,12 @@
 <div class="input-field">
-    <i v-if="slotIcon" class="material-icons prefix">
+    <i v-if="hasSlot('icon')" class="material-icons prefix">
         <slot name="icon-name"></slot>
     </i>
     <input v-el:field
            @change="refreshInput"
            :placeholder="placeholder" :id="id"
            :type="type" class="field"/>
-    <label v-if="slot" :for="id" :class="labelClasses">
+    <label v-if="hasSlot()" :for="id" :class="labelClasses">
         <slot></slot>
     </label>
 </div>

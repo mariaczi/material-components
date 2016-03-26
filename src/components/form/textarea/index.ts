@@ -39,7 +39,7 @@ var Velocity = require('velocity-animate');
     template: require('./textarea.html')
 })
 export default class TextArea {
-    private $el: any;
+    private $els: any;
     private _slotContents: any;
 
     private value: string;
@@ -56,14 +56,6 @@ export default class TextArea {
         this.setupDisabled();
     }
 
-    get slot() {
-        return 'default' in this._slotContents;
-    }
-
-    get slotIcon() {
-        return 'icon-name' in this._slotContents;
-    }
-
     get labelClasses() {
         return {
             active: this.active || this.value,
@@ -76,7 +68,11 @@ export default class TextArea {
     }
 
     get field() {
-        return this.$el.querySelector('.field');
+        return this.$els.field;
+    }
+
+    hasSlot(name = 'default') {
+        return name in this._slotContents;
     }
 
     setActive(val) {

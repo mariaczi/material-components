@@ -20,13 +20,4 @@ import bindBoolean from '../../../directives/bind-boolean';
     template: require('./switch.html')
 })
 export default class Switch {
-    private _slotContents: any;
-
-    get slotOn() {
-        return 'on' in this._slotContents;
-    }
-
-    get slotOff() {
-        return 'off' in this._slotContents;
-    }
 }

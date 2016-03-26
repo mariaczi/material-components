@@ -75,20 +75,16 @@ export default class InputField {
         return this.$els.field;
     }
 
-    get slot() {
-        return 'default' in this._slotContents;
-    }
-
-    get slotIcon() {
-        return 'icon-name' in this._slotContents;
-    }
-
    get labelClasses() {
        return {
            active: this.placeholder || this.active || this.value,
            disabled: this.disabled
        }
    }
+
+    hasSlot(name = 'default') {
+        return name in this._slotContents;
+    }
 
     refreshInput() {
         this.value = this.field.value;

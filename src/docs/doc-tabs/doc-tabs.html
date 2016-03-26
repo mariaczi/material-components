@@ -1,7 +1,7 @@
 <md-tabs :active.sync="active">
-    <md-tab v-if="slotShowcase" name="showcase"><a v-link="{path: basePath + '/showcase'}">Showcase</a></md-tab>
-    <md-tab v-if="slotApi" name="api"><a v-link="{path: basePath + '/api'}">API</a></md-tab>
-    <md-tab v-if="slotSources" name="sources"><a v-link="{path: basePath + '/sources'}">Sources</a></md-tab>
+    <md-tab v-if="hasSlot('showcase')" name="showcase"><a v-link="{path: basePath + '/showcase'}">Showcase</a></md-tab>
+    <md-tab v-if="hasSlot('api')" name="api"><a v-link="{path: basePath + '/api'}">API</a></md-tab>
+    <md-tab v-if="hasSlot('sources')" name="sources"><a v-link="{path: basePath + '/sources'}">Sources</a></md-tab>
 
     <div slot="contents">
         <div v-show="active == 'showcase'" class="show-case">

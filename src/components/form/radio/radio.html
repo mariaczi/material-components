@@ -4,7 +4,7 @@
            v-bind-boolean:checked="checked"
            :id="id" :name="group" value="" v-bind-raw:value="value"
            type="radio" class="field"/>
-    <label v-if="slot" :for="id">
+    <label v-if="hasSlot()" :for="id">
         <slot></slot>
     </label>
 </span>

@@ -24,16 +24,7 @@ export default class DocTab {
             active: 'showcase'
         }
     }
-
-    get slotShowcase() {
-        return 'showcase' in this._slotContents;
-    }
-    
-    get slotApi() {
-        return 'api' in this._slotContents;
-    }
-    
-    get slotSources() {
-        return 'sources' in this._slotContents;
+    hasSlot(name = 'default') {
+        return name in this._slotContents;
     }
 }

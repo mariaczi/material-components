@@ -55,10 +55,10 @@ export default class InputField {
     compiled() {
         this.setupDisabled();
         if (!this.value) { // setted as prop
-            this.refreshValueFromInput();
+            this.refreshInput();
         }
         else {
-            this.refreshValueFromData();
+            this.refreshValue();
         }
     }
 
@@ -90,11 +90,11 @@ export default class InputField {
        }
    }
 
-    refreshValueFromInput() {
+    refreshInput() {
         this.value = this.field.value;
     }
 
-    refreshValueFromData() {
+    refreshValue() {
         this.field.value = this.value;
     }
     

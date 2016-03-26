@@ -73,7 +73,7 @@ const docsPages: [Route] = [
         component: docsCollections
     },
     {
-        urls: ['/dialogs'],
+        urls: ['/dialogs', '/dialogs/:tab'],
         link: '/dialogs',
         title: 'Dialogs',
         component: docsDialogs

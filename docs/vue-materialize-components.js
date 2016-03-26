@@ -5513,7 +5513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    title: 'Collections',
 	    component: collections_1['default']
 	}, {
-	    urls: ['/dialogs'],
+	    urls: ['/dialogs', '/dialogs/:tab'],
 	    link: '/dialogs',
 	    title: 'Dialogs',
 	    component: dialogs_1['default']
@@ -6819,11 +6819,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	/*!
-	 * Materialize v0.97.5 (http://materializecss.com)
-	 * Copyright 2014-2015 Materialize
-	 * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
-	 */
 	var tooltip_1 = __webpack_require__(23);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports["default"] = {
@@ -13764,25 +13759,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
+	var chip_1 = __webpack_require__(44);
 	var toasts_1 = __webpack_require__(292);
 	var tooltips_1 = __webpack_require__(294);
-	var snippet_1 = __webpack_require__(123);
-	var template = __webpack_require__(296);
 	var Dialogs = (function () {
 	    function Dialogs() {}
 	    Dialogs.prototype.data = function () {
 	        return {
-	            toastsSnippet: __webpack_require__(297),
-	            tooltipsSnippet: __webpack_require__(298)
+	            api: [{
+	                name: 'Toast',
+	                api: __webpack_require__(359)
+	            }, {
+	                name: 'Tooltip',
+	                api: __webpack_require__(360)
+	            }],
+	            snippets: {
+	                toasts: __webpack_require__(297),
+	                tooltips: __webpack_require__(298)
+	            },
+	            src: [{
+	                name: 'Toast',
+	                script: __webpack_require__(361)
+	            }, {
+	                name: 'Tooltip',
+	                script: __webpack_require__(362)
+	            }]
 	        };
 	    };
 	    Dialogs = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
+	            mdChip: chip_1["default"],
 	            docToasts: toasts_1["default"],
-	            docTooltips: tooltips_1["default"],
-	            docSnippet: snippet_1["default"]
-	        }
+	            docTooltips: tooltips_1["default"]
+	        },
+	        template: __webpack_require__(296)
 	    })], Dialogs);
 	    return Dialogs;
 	})();
@@ -13874,7 +13884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 296 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <h2 class=\"header\">Toasts</h2>\r\n    <p>\r\n        Toasts are provided by mixin\r\n    </p>\r\n    <div class=\"doc-example\">\r\n        <doc-toasts></doc-toasts>\r\n\r\n        <doc-snippet>{{{toastsSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Tooltips</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-tooltips></doc-tooltips>\r\n\r\n        <doc-snippet>{{{tooltipsSnippet}}}</doc-snippet>\r\n    </div>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <md-chip>Mixin</md-chip>\r\n    <doc-tabs base-path=\"/dialogs\">\r\n        <div slot=\"showcase\">\r\n\r\n            <h2 class=\"header\">Toasts</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-toasts></doc-toasts>\r\n\r\n                <doc-snippet>{{{toastsSnippet}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Tooltips</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-tooltips></doc-tooltips>\r\n\r\n                <doc-snippet>{{{tooltipsSnippet}}}</doc-snippet>\r\n            </div>\r\n\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n</doc-tabs>\r\n</div>";
 
 /***/ },
 /* 297 */
@@ -14610,7 +14620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 340 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-for=\"api in apis\">\r\n    <h2 v-if=\"api.name\">\r\n        {{api.name}}\r\n    </h2>\r\n    <div v-if=\"api.api.properties && api.api.properties.length\">\r\n        <h4>Properties</h4>\r\n        <table class=\"striped\">\r\n            <thead>\r\n                <tr>\r\n                    <th>\r\n                        Name\r\n                    </th>\r\n                    <th>\r\n                        Type\r\n                    </th>\r\n                    <th>\r\n                        Required\r\n                    </th>\r\n                    <th>\r\n                        Two way\r\n                    </th>\r\n                    <th>\r\n                        Default\r\n                    </th>\r\n                    <th>\r\n                        Description\r\n                    </th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr v-for=\"property in api.api.properties\">\r\n                    <td>{{property.name}}</td>\r\n                    <td>{{property.type}}</td>\r\n                    <td>\r\n                        <span v-if=\"property.required\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'True', 'bottom')\">check_box</md-icon>\r\n                        </span>\r\n                        <span v-else>\r\n                            <md-icon @mouseover=\"tooltip($event, 'False', 'bottom')\">check_box_outline_blank</md-icon>\r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        <span v-if=\"property.twoWay === true\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'True', 'bottom')\">check_box</md-icon>\r\n                        </span>\r\n                        <span v-if=\"property.twoWay === false\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'False', 'bottom')\">check_box_outline_blank</md-icon>\r\n                        </span>\r\n                        <span v-if=\"property.twoWay === null\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'Not specified', 'bottom')\">indeterminate_check_box</md-icon>\r\n                        </span>\r\n                    </td>\r\n                    <td>{{property.default | json}}</td>\r\n                    <td>{{property.description}}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div v-if=\"api.api.slots && api.api.slots.length\">\r\n        <h4>Slots</h4>\r\n        <table class=\"striped\">\r\n            <thead>\r\n                <th>\r\n                    Name\r\n                </th>\r\n                <th>\r\n                    Description\r\n                </th>\r\n            </thead>\r\n            <tbody>\r\n                <tr v-for=\"slot in api.api.slots\">\r\n                    <td>\r\n                        <span v-if=\"slot.name\">\r\n                            {{slot.name}}\r\n                        </span>\r\n                        <span v-else>\r\n                            <md-badge alert=\"default\" style=\"position: initial; margin: 1rem;\"></md-badge>\r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        {{slot.description}}\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div v-if=\"api.api.events && api.api.events.length\">\r\n        <h4>Public events</h4>\r\n        <div v-for=\"event in api.api.events\">\r\n            <md-collection-list>\r\n                <div slot=\"header\">\r\n                    <h4>{{event.name}}</h4>\r\n                    <p>{{event.description}}</p>\r\n                </div>\r\n                <md-collection-list-item>\r\n                    <table>\r\n                        <thead>\r\n                            <tr>\r\n                                <th></th>\r\n                                <th>\r\n                                    Name\r\n                                </th>\r\n                                <th>\r\n                                    Description\r\n                                </th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr v-for=\"arg in event.args\">\r\n                                <td>\r\n                                    #{{$index + 1}}\r\n                                </td>\r\n                                <td>\r\n                                    {{arg.name}}\r\n                                </td>\r\n                                <td>\r\n                                    {{arg.description}}\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </md-collection-list-item>\r\n            </md-collection-list>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div v-for=\"api in apis\">\r\n    <h2 v-if=\"api.name\">\r\n        {{api.name}}\r\n    </h2>\r\n    <div v-if=\"api.api.properties && api.api.properties.length\">\r\n        <h4>Properties</h4>\r\n        <table class=\"striped\">\r\n            <thead>\r\n                <tr>\r\n                    <th>\r\n                        Name\r\n                    </th>\r\n                    <th>\r\n                        Type\r\n                    </th>\r\n                    <th>\r\n                        Required\r\n                    </th>\r\n                    <th>\r\n                        Two way\r\n                    </th>\r\n                    <th>\r\n                        Default\r\n                    </th>\r\n                    <th>\r\n                        Description\r\n                    </th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr v-for=\"property in api.api.properties\">\r\n                    <td>{{property.name}}</td>\r\n                    <td>{{property.type}}</td>\r\n                    <td>\r\n                        <span v-if=\"property.required\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'True', 'bottom')\">check_box</md-icon>\r\n                        </span>\r\n                        <span v-else>\r\n                            <md-icon @mouseover=\"tooltip($event, 'False', 'bottom')\">check_box_outline_blank</md-icon>\r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        <span v-if=\"property.twoWay === true\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'True', 'bottom')\">check_box</md-icon>\r\n                        </span>\r\n                        <span v-if=\"property.twoWay === false\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'False', 'bottom')\">check_box_outline_blank</md-icon>\r\n                        </span>\r\n                        <span v-if=\"property.twoWay === null\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'Not specified', 'bottom')\">indeterminate_check_box</md-icon>\r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        <span v-if=\"!property.required\">{{property.default | json}}</span>\r\n                        <span v-else><md-badge alert=\"required\" style=\"position: initial; padding: 0;\"></md-badge></span>\r\n                    </td>\r\n                    <td>{{property.description}}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div v-if=\"api.api.slots && api.api.slots.length\">\r\n        <h4>Slots</h4>\r\n        <table class=\"striped\">\r\n            <thead>\r\n                <th>\r\n                    Name\r\n                </th>\r\n                <th>\r\n                    Description\r\n                </th>\r\n            </thead>\r\n            <tbody>\r\n                <tr v-for=\"slot in api.api.slots\">\r\n                    <td>\r\n                        <span v-if=\"slot.name\">\r\n                            {{slot.name}}\r\n                        </span>\r\n                        <span v-else>\r\n                            <md-badge alert=\"default\" style=\"position: initial; margin: 1rem;\"></md-badge>\r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        {{slot.description}}\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div v-if=\"api.api.events && api.api.events.length\">\r\n        <h4>Public events</h4>\r\n        <div v-for=\"event in api.api.events\">\r\n            <md-collection-list>\r\n                <div slot=\"header\">\r\n                    <h4>{{event.name}}</h4>\r\n                    <p>{{event.description}}</p>\r\n                </div>\r\n                <md-collection-list-item>\r\n                    <table>\r\n                        <thead>\r\n                            <tr>\r\n                                <th></th>\r\n                                <th>\r\n                                    Name\r\n                                </th>\r\n                                <th>\r\n                                    Description\r\n                                </th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr v-for=\"arg in event.args\">\r\n                                <td>\r\n                                    #{{$index + 1}}\r\n                                </td>\r\n                                <td>\r\n                                    {{arg.name}}\r\n                                </td>\r\n                                <td>\r\n                                    {{arg.description}}\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </md-collection-list-item>\r\n            </md-collection-list>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
 /* 341 */
@@ -14899,6 +14909,122 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-collection-item collection-item\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{active: active}\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"secondaryContentSlot\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>";
+
+/***/ },
+/* 359 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "toast",
+		"title": "Toast",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"tags": [
+			"Mixin"
+		],
+		"properties": [
+			{
+				"name": "message",
+				"type": "String",
+				"required": true,
+				"description": "Message of tooltip",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "displayLength",
+				"type": "Number",
+				"required": false,
+				"description": "Duration how long is toast displayed in ms",
+				"twoWay": false,
+				"default": 4000
+			},
+			{
+				"name": "className",
+				"type": "String",
+				"required": false,
+				"description": "Classes passed to rendered toast",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "completeCallback",
+				"type": "Function",
+				"required": false,
+				"description": "On complete call back",
+				"twoWay": false,
+				"default": null
+			}
+		],
+		"slots": [],
+		"events": []
+	};
+
+/***/ },
+/* 360 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "tooltip",
+		"title": "Tooltip",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"tags": [
+			"Mixin"
+		],
+		"properties": [
+			{
+				"name": "event",
+				"type": "Event",
+				"required": true,
+				"description": "Event passed to @mouseover",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "message",
+				"type": "String",
+				"required": true,
+				"description": "String of tooltip",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "position",
+				"type": "String",
+				"required": false,
+				"description": "Top, bottom, left or right value",
+				"twoWay": false,
+				"default": "bottom"
+			},
+			{
+				"name": "delay",
+				"type": "String",
+				"required": false,
+				"description": "Delay of tooltip popup in ms",
+				"twoWay": false,
+				"default": 50
+			}
+		],
+		"slots": [],
+		"events": []
+	};
+
+/***/ },
+/* 361 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> {toast as toastFn} from <span class=\"hljs-string\">'../../materialize/toast'</span>;\r\n\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> {\r\n    methods: {\r\n        toast: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">message, displayLength, className, completeCallback</span>) </span>{\r\n            <span class=\"hljs-keyword\">return</span> toastFn(message, displayLength, className, completeCallback);\r\n        }\r\n    }\r\n}";
+
+/***/ },
+/* 362 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> tooltip from <span class=\"hljs-string\">'../../materialize/tooltip'</span>;\r\n\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> {\r\n    methods: {\r\n        tooltip: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">event, message, position, delay</span>) </span>{\r\n            <span class=\"hljs-keyword\">var</span> element = event.currentTarget;\r\n            <span class=\"hljs-keyword\">return</span> tooltip(element, message, position, delay)\r\n        }\r\n    }\r\n}";
 
 /***/ }
 /******/ ])

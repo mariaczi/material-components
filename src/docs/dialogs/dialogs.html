@@ -1,18 +1,30 @@
 <div v-cloak>
-    <h2 class="header">Toasts</h2>
-    <p>
-        Toasts are provided by mixin
-    </p>
-    <div class="doc-example">
-        <doc-toasts></doc-toasts>
+    <md-chip>Mixin</md-chip>
+    <doc-tabs base-path="/dialogs">
+        <div slot="showcase">
 
-        <doc-snippet>{{{toastsSnippet}}}</doc-snippet>
-    </div>
+            <h2 class="header">Toasts</h2>
+            <div class="doc-example">
+                <doc-toasts></doc-toasts>
 
-    <h2 class="header">Tooltips</h2>
-    <div class="doc-example">
-        <doc-tooltips></doc-tooltips>
+                <doc-snippet>{{{toastsSnippet}}}</doc-snippet>
+            </div>
 
-        <doc-snippet>{{{tooltipsSnippet}}}</doc-snippet>
-    </div>
+            <h2 class="header">Tooltips</h2>
+            <div class="doc-example">
+                <doc-tooltips></doc-tooltips>
+
+                <doc-snippet>{{{tooltipsSnippet}}}</doc-snippet>
+            </div>
+
+        </div>
+
+        <div slot="api">
+            <doc-api :api="api"></doc-api>
+        </div>
+
+        <div slot="sources">
+            <doc-sources :src="src"></doc-sources>
+        </div>
+</doc-tabs>
 </div>

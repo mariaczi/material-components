@@ -28,6 +28,42 @@ export default class Forms {
                 {
                     name: 'Input',
                     api: require('../../components/form/input/input-api.json')
+                },
+                {
+                    name: 'Textarea',
+                    api: require('../../components/form/textarea/textarea-api.json')
+                },
+                {
+                    name: 'Select',
+                    api: require('../../components/form/select/select-api.json')
+                },
+                {
+                    name: 'Option',
+                    api: require('../../components/form/option/option-api.json')
+                },
+                {
+                    name: 'Radio group',
+                    api: require('../../components/form/radio-group/radio-group-api.json')
+                },
+                {
+                    name: 'Radio',
+                    api: require('../../components/form/radio/radio-api.json')
+                },
+                {
+                    name: 'Checkbox group',
+                    api: require('../../components/form/checkbox-group/checkbox-group-api.json')
+                },
+                {
+                    name: 'Checkbox',
+                    api: require('../../components/form/checkbox/checkbox-api.json')
+                },
+                {
+                    name: 'Switch',
+                    api: require('../../components/form/swich/switch-api.json')
+                },
+                {
+                    name: 'File input',
+                    api: require('../../components/form/file-input/file-input-api.json')
                 }
             ],
             snippets: {
@@ -57,6 +93,11 @@ export default class Forms {
                     script: require("!!html!highlightjs?lang=ts!../../components/form/select/index.ts"),
                     template: require('!!html!highlightjs?lang=html!../../components/form/select/select.html'),
                     style: require('!!html!highlightjs?lang=scss!../../components/form/select/select.scss')
+                },
+                {
+                    name: 'Option',
+                    script: require("!!html!highlightjs?lang=ts!../../components/form/option/index.ts"),
+                    template: require('!!html!highlightjs?lang=html!../../components/form/option/option.html')
                 },
                 {
                     name: 'Radio group',

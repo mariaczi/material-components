@@ -4,8 +4,7 @@ import Component from 'vue-class-component';
     props: {
         group: {
             type: String,
-            required: true,
-            'default': 'text'
+            required: true
         }
     },
     template: require('./radio-group.html')

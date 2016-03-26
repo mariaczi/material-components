@@ -7654,8 +7654,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        props: {
 	            group: {
 	                type: String,
-	                required: true,
-	                'default': 'text'
+	                required: true
 	            }
 	        },
 	        template: __webpack_require__(42)
@@ -8631,7 +8630,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 70 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"file-field input-field\">\r\n    <div class=\"btn\">\r\n        <slot name=\"label\">\r\n            <span>File</span>\r\n        </slot>\r\n        <input @change=\"selectFile\" :name=\"name\"\r\n               v-bind-boolean:multiple=\"multiple\" type=\"file\">\r\n    </div>\r\n    <div class=\"file-path-wrapper\">\r\n        <input v-model=\"value\"\r\n               :placeholder=\"placeholder\"\r\n               class=\"file-path field\" type=\"text\">\r\n    </div>\r\n</div>";
+	module.exports = "<div class=\"file-field input-field\">\r\n    <div class=\"btn\">\r\n        <slot>\r\n            <span>File</span>\r\n        </slot>\r\n        <input @change=\"selectFile\" :name=\"name\"\r\n               v-bind-boolean:multiple=\"multiple\" type=\"file\">\r\n    </div>\r\n    <div class=\"file-path-wrapper\">\r\n        <input v-model=\"value\"\r\n               :placeholder=\"placeholder\"\r\n               class=\"file-path field\" type=\"text\">\r\n    </div>\r\n</div>";
 
 /***/ },
 /* 71 */
@@ -8893,7 +8892,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click.prevent=\"toggle\" :class=\"computedClasses\">\r\n    <span>\r\n        <input v-el:field\r\n               v-show=\"multiple\" v-model=\"active\"\r\n               v-bind-boolean:disabled=\"disabled\"\r\n               type=\"checkbox\">\r\n        <label v-if=\"multiple\"></label>\r\n        <slot></slot>\r\n    </span>\r\n</li>";
+	module.exports = "<li @click.prevent=\"toggle\" :class=\"computedClasses\">\r\n    <span>\r\n        <input v-show=\"multiple\" v-model=\"active\"\r\n               v-bind-boolean:disabled=\"disabled\"\r\n               type=\"checkbox\">\r\n        <label v-if=\"multiple\"></label>\r\n        <slot></slot>\r\n    </span>\r\n</li>";
 
 /***/ },
 /* 77 */
@@ -8987,8 +8986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        props: {
 	            group: {
 	                type: String,
-	                required: true,
-	                'default': 'text'
+	                required: true
 	            }
 	        },
 	        template: __webpack_require__(80)
@@ -9133,7 +9131,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        },
 	        events: {
-	            'select::select': function selectSelect(value, option) {
+	            'select::select': function selectSelect(value) {
 	                if (Array.isArray(this.value)) {
 	                    this.value.push(value);
 	                } else {
@@ -9141,14 +9139,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    this.close();
 	                }
 	                this.$broadcast('option::select', value);
+	                return true;
 	            },
-	            'select::unselect': function selectUnselect(value, option) {
+	            'select::unselect': function selectUnselect(value) {
 	                if (Array.isArray(this.value)) {
 	                    this.value.$remove(value);
 	                } else {
 	                    this.value = value;
 	                }
 	                this.$broadcast('option::unselect', value);
+	                return true;
 	            }
 	        },
 	        watch: {
@@ -12760,6 +12760,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	            api: [{
 	                name: 'Input',
 	                api: __webpack_require__(261)
+	            }, {
+	                name: 'Textarea',
+	                api: __webpack_require__(394)
+	            }, {
+	                name: 'Select',
+	                api: __webpack_require__(395)
+	            }, {
+	                name: 'Option',
+	                api: __webpack_require__(400)
+	            }, {
+	                name: 'Radio group',
+	                api: __webpack_require__(399)
+	            }, {
+	                name: 'Radio',
+	                api: __webpack_require__(398)
+	            }, {
+	                name: 'Checkbox group',
+	                api: __webpack_require__(402)
+	            }, {
+	                name: 'Checkbox',
+	                api: __webpack_require__(403)
+	            }, {
+	                name: 'Switch',
+	                api: __webpack_require__(405)
+	            }, {
+	                name: 'File input',
+	                api: __webpack_require__(404)
 	            }],
 	            snippets: {
 	                inputFields: __webpack_require__(262),
@@ -12785,6 +12812,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                script: __webpack_require__(275),
 	                template: __webpack_require__(276),
 	                style: __webpack_require__(277)
+	            }, {
+	                name: 'Option',
+	                script: __webpack_require__(396),
+	                template: __webpack_require__(397)
 	            }, {
 	                name: 'Radio group',
 	                script: __webpack_require__(278),
@@ -13214,7 +13245,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				"required": false,
 				"description": "Lazy of v-model",
 				"default": false,
-				"twoWay": null
+				"twoWay": false
 			},
 			{
 				"name": "number",
@@ -13328,7 +13359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 275 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdDropdownList from <span class=\"hljs-string\">'../../dropdown-list'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> inputMixin from <span class=\"hljs-string\">'../../../mixins/input'</span>;\r\n<span class=\"hljs-keyword\">import</span> clickAway from <span class=\"hljs-string\">'../../../directives/click-away'</span>;\r\n<span class=\"hljs-keyword\">import</span> bindBoolean from <span class=\"hljs-string\">'../../../directives/bind-boolean'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        value: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'select::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value, option</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.push(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n                <span class=\"hljs-keyword\">this</span>.close();\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, value);\r\n\r\n        },\r\n        <span class=\"hljs-string\">'select::unselect'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value, option</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.$remove(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, value);\r\n        }\r\n    },\r\n    watch: {\r\n        value: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.refreshDropdownOptions()\r\n        }\r\n    },\r\n    components: {\r\n        mdDropdownList\r\n    },\r\n    directives: {\r\n        clickAway,\r\n        bindBoolean\r\n    },\r\n    mixins: [\r\n        inputMixin\r\n    ],\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./select.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SelectField {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $getAllChildren: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $broadcast: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> _slotContents: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> options: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> defaultSelect: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            options: {}\r\n        }\r\n    }\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-keyword\">this</span>.$getAllChildren().filter((c: <span class=\"hljs-built_in\">any</span>) =&gt; {<span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'SelectOption'</span> == c.$options.name});\r\n        <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">var</span> i = <span class=\"hljs-number\">0</span>; i &lt; options.length; i++) {\r\n            <span class=\"hljs-keyword\">var</span> option = options[i];\r\n            <span class=\"hljs-keyword\">var</span> opt: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>.createOption(option);\r\n            Vue.set(<span class=\"hljs-keyword\">this</span>.options, opt.value, opt);\r\n        }\r\n    }\r\n\r\n    ready() {\r\n       <span class=\"hljs-keyword\">this</span>.refreshDropdownOptions()\r\n    }\r\n\r\n    createOption(option: <span class=\"hljs-built_in\">any</span>) {\r\n        <span class=\"hljs-keyword\">var</span> content = option._slotContents ? option._slotContents.default : <span class=\"hljs-string\">''</span>;\r\n        <span class=\"hljs-keyword\">var</span> value = option.$data.value;\r\n        <span class=\"hljs-keyword\">var</span> disabled = option.$data.disabled;\r\n\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            content: content.textContent,\r\n            value: value,\r\n            disabled: disabled\r\n        };\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> multiple() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value);\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContent() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value) ? <span class=\"hljs-keyword\">this</span>.valueContentMultiple : <span class=\"hljs-keyword\">this</span>.valueContentSingle;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentSingle() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value].content : <span class=\"hljs-string\">''</span>;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentMultiple() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value.length) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.value.map((value) =&gt; {\r\n                <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[value] ? <span class=\"hljs-keyword\">this</span>.options[value].content : <span class=\"hljs-string\">''</span>;\r\n            }).join(<span class=\"hljs-string\">', '</span>);\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect].content : <span class=\"hljs-string\">''</span>\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> field() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$els.field;\r\n    }\r\n\r\n    hasSlot(name = <span class=\"hljs-string\">'default'</span>) {\r\n        <span class=\"hljs-keyword\">return</span> name <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n\r\n    refreshDropdownOptions() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-built_in\">Array</span>.prototype.slice.call(<span class=\"hljs-keyword\">this</span>.field.options);\r\n        options.forEach((o: HTMLOptionElement) =&gt; {\r\n            <span class=\"hljs-keyword\">if</span> (o.selected) {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, o.value)\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, o.value)\r\n            }\r\n        });\r\n    }\r\n\r\n    open(e) {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::open'</span>, e);\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::close'</span>);\r\n        }\r\n    }\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdDropdownList from <span class=\"hljs-string\">'../../dropdown-list'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> inputMixin from <span class=\"hljs-string\">'../../../mixins/input'</span>;\r\n<span class=\"hljs-keyword\">import</span> clickAway from <span class=\"hljs-string\">'../../../directives/click-away'</span>;\r\n<span class=\"hljs-keyword\">import</span> bindBoolean from <span class=\"hljs-string\">'../../../directives/bind-boolean'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        value: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'select::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.push(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n                <span class=\"hljs-keyword\">this</span>.close();\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, value);\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n\r\n        },\r\n        <span class=\"hljs-string\">'select::unselect'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.$remove(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, value);\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n        }\r\n    },\r\n    watch: {\r\n        value: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.refreshDropdownOptions()\r\n        }\r\n    },\r\n    components: {\r\n        mdDropdownList\r\n    },\r\n    directives: {\r\n        clickAway,\r\n        bindBoolean\r\n    },\r\n    mixins: [\r\n        inputMixin\r\n    ],\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./select.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SelectField {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $getAllChildren: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $broadcast: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> _slotContents: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> options: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> defaultSelect: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            options: {}\r\n        }\r\n    }\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-keyword\">this</span>.$getAllChildren().filter((c: <span class=\"hljs-built_in\">any</span>) =&gt; {<span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'SelectOption'</span> == c.$options.name});\r\n        <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">var</span> i = <span class=\"hljs-number\">0</span>; i &lt; options.length; i++) {\r\n            <span class=\"hljs-keyword\">var</span> option = options[i];\r\n            <span class=\"hljs-keyword\">var</span> opt: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>.createOption(option);\r\n            Vue.set(<span class=\"hljs-keyword\">this</span>.options, opt.value, opt);\r\n        }\r\n    }\r\n\r\n    ready() {\r\n       <span class=\"hljs-keyword\">this</span>.refreshDropdownOptions()\r\n    }\r\n\r\n    createOption(option: <span class=\"hljs-built_in\">any</span>) {\r\n        <span class=\"hljs-keyword\">var</span> content = option._slotContents ? option._slotContents.default : <span class=\"hljs-string\">''</span>;\r\n        <span class=\"hljs-keyword\">var</span> value = option.$data.value;\r\n        <span class=\"hljs-keyword\">var</span> disabled = option.$data.disabled;\r\n\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            content: content.textContent,\r\n            value: value,\r\n            disabled: disabled\r\n        };\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> multiple() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value);\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContent() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value) ? <span class=\"hljs-keyword\">this</span>.valueContentMultiple : <span class=\"hljs-keyword\">this</span>.valueContentSingle;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentSingle() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value].content : <span class=\"hljs-string\">''</span>;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentMultiple() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value.length) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.value.map((value) =&gt; {\r\n                <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[value] ? <span class=\"hljs-keyword\">this</span>.options[value].content : <span class=\"hljs-string\">''</span>;\r\n            }).join(<span class=\"hljs-string\">', '</span>);\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect].content : <span class=\"hljs-string\">''</span>\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> field() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$els.field;\r\n    }\r\n\r\n    hasSlot(name = <span class=\"hljs-string\">'default'</span>) {\r\n        <span class=\"hljs-keyword\">return</span> name <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n\r\n    refreshDropdownOptions() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-built_in\">Array</span>.prototype.slice.call(<span class=\"hljs-keyword\">this</span>.field.options);\r\n        options.forEach((o: HTMLOptionElement) =&gt; {\r\n            <span class=\"hljs-keyword\">if</span> (o.selected) {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, o.value)\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, o.value)\r\n            }\r\n        });\r\n    }\r\n\r\n    open(e) {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::open'</span>, e);\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::close'</span>);\r\n        }\r\n    }\r\n}";
 
 /***/ },
 /* 276 */
@@ -13346,7 +13377,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 278 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        group: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-string\">'text'</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./radio-group.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> RadioGroup {\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        group: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./radio-group.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> RadioGroup {\r\n}";
 
 /***/ },
 /* 279 */
@@ -13376,7 +13407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 283 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        group: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-string\">'text'</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./checkbox-group.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CheckboxGroup {\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        group: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./checkbox-group.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CheckboxGroup {\r\n}";
 
 /***/ },
 /* 284 */
@@ -13424,7 +13455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 291 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"file-field input-field\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"btn\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"label\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span>&gt;</span>File<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">input</span> @<span class=\"hljs-attribute\">change</span>=<span class=\"hljs-value\">\"selectFile\"</span> <span class=\"hljs-attribute\">:name</span>=<span class=\"hljs-value\">\"name\"</span>\r\n               <span class=\"hljs-attribute\">v-bind-boolean:multiple</span>=<span class=\"hljs-value\">\"multiple\"</span> <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">\"file\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"file-path-wrapper\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">input</span> <span class=\"hljs-attribute\">v-model</span>=<span class=\"hljs-value\">\"value\"</span>\r\n               <span class=\"hljs-attribute\">:placeholder</span>=<span class=\"hljs-value\">\"placeholder\"</span>\r\n               <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"file-path field\"</span> <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">\"text\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"file-field input-field\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"btn\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span>&gt;</span>File<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">input</span> @<span class=\"hljs-attribute\">change</span>=<span class=\"hljs-value\">\"selectFile\"</span> <span class=\"hljs-attribute\">:name</span>=<span class=\"hljs-value\">\"name\"</span>\r\n               <span class=\"hljs-attribute\">v-bind-boolean:multiple</span>=<span class=\"hljs-value\">\"multiple\"</span> <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">\"file\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"file-path-wrapper\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">input</span> <span class=\"hljs-attribute\">v-model</span>=<span class=\"hljs-value\">\"value\"</span>\r\n               <span class=\"hljs-attribute\">:placeholder</span>=<span class=\"hljs-value\">\"placeholder\"</span>\r\n               <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"file-path field\"</span> <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">\"text\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
 
 /***/ },
 /* 292 */
@@ -15265,6 +15296,536 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 393 */,
+/* 394 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-textarea",
+		"title": "Textarea",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "String",
+				"required": false,
+				"description": "Text of textarea",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "disabled",
+				"type": "Boolean",
+				"required": false,
+				"description": "Field is disabled if true",
+				"default": null,
+				"twoWay": false
+			},
+			{
+				"name": "autoresize",
+				"type": "Boolean",
+				"required": false,
+				"description": "Textarea is automatically adjust to text height",
+				"default": true,
+				"twoWay": false
+			},
+			{
+				"name": "lazy",
+				"type": "Boolean",
+				"required": false,
+				"description": "Lazy of v-model",
+				"default": false,
+				"twoWay": false
+			},
+			{
+				"name": "number",
+				"type": "Boolean",
+				"required": false,
+				"description": "Number of v-model",
+				"default": false,
+				"twoWay": false
+			},
+			{
+				"name": "debounce",
+				"type": "Number",
+				"required": false,
+				"description": "Debounce of v-model",
+				"default": 0,
+				"twoWay": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Input label"
+			},
+			{
+				"name": "icon-name",
+				"description": "Input icon name"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 395 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-select",
+		"title": "Badge",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "String",
+				"required": false,
+				"description": "Initial value of input field",
+				"twoWay": null,
+				"default": null
+			},
+			{
+				"name": "placeholder",
+				"type": "String",
+				"required": false,
+				"description": "Placeholder value",
+				"default": null,
+				"twoWay": false
+			},
+			{
+				"name": "disabled",
+				"type": "Boolean",
+				"required": false,
+				"description": "Field is disabled if true",
+				"default": null,
+				"twoWay": false
+			},
+			{
+				"name": "type",
+				"type": "String",
+				"required": false,
+				"description": "Input type attribute",
+				"default": "text",
+				"twoWay": false
+			},
+			{
+				"name": "lazy",
+				"type": "Boolean",
+				"required": false,
+				"description": "Lazy of v-model",
+				"default": false,
+				"twoWay": false
+			},
+			{
+				"name": "number",
+				"type": "Boolean",
+				"required": false,
+				"description": "Number of v-model",
+				"default": false,
+				"twoWay": false
+			},
+			{
+				"name": "debounce",
+				"type": "Number",
+				"required": false,
+				"description": "Debounce of v-model",
+				"default": 0,
+				"twoWay": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Select options"
+			},
+			{
+				"name": "icon-name",
+				"description": "Input icon name"
+			},
+			{
+				"name": "label",
+				"description": "Select label"
+			}
+		],
+		"events": [
+			{
+				"name": "select::select",
+				"descriptions": "When item is selected",
+				"type": "in-out",
+				"args": [
+					{
+						"name": "id",
+						"description": "Item id"
+					}
+				]
+			},
+			{
+				"name": "select::unselect",
+				"description": "When multiple item is unselected",
+				"type": "in-out",
+				"args": [
+					{
+						"name": "id",
+						"description": "Item id"
+					}
+				]
+			}
+		]
+	};
+
+/***/ },
+/* 396 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> bindBoolean from <span class=\"hljs-string\">'../../../directives/bind-boolean'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> input from <span class=\"hljs-string\">'../../../mixins/input'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> template = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./option.html'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        disabled: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        value: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'option::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.optionSelect(value);\r\n        },\r\n        <span class=\"hljs-string\">'option::unselect'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.optionUnselect(value);\r\n        }\r\n    },\r\n    directives: {\r\n        bindBoolean\r\n    },\r\n    mixins: [\r\n        input\r\n    ],\r\n    template: template\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SelectOption {\r\n    <span class=\"hljs-keyword\">private</span> $dispatch: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $parent: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> disabled: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> multiple() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$parent.multiple;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            disabled: <span class=\"hljs-keyword\">this</span>.disabled,\r\n            active: <span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled,\r\n            selected: <span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled\r\n        };\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.select();\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.unselect();\r\n        }\r\n    }\r\n\r\n    select() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'select::select'</span>, <span class=\"hljs-keyword\">this</span>.value);\r\n        }\r\n    }\r\n\r\n    unselect() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled &amp;&amp; <span class=\"hljs-keyword\">this</span>.multiple) { <span class=\"hljs-comment\">// only multiple could be unselected</span>\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'select::unselect'</span>, <span class=\"hljs-keyword\">this</span>.value, <span class=\"hljs-keyword\">this</span>);\r\n        }\r\n    }\r\n\r\n    optionSelect(value) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.multiple) {\r\n            <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active &amp;&amp; <span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n    }\r\n\r\n    optionUnselect(value) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.multiple) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active &amp;&amp; <span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n    }\r\n}";
+
+/***/ },
+/* 397 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"toggle\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">input</span> <span class=\"hljs-attribute\">v-show</span>=<span class=\"hljs-value\">\"multiple\"</span> <span class=\"hljs-attribute\">v-model</span>=<span class=\"hljs-value\">\"active\"</span>\r\n               <span class=\"hljs-attribute\">v-bind-boolean:disabled</span>=<span class=\"hljs-value\">\"disabled\"</span>\r\n               <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">\"checkbox\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">label</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"multiple\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">label</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>";
+
+/***/ },
+/* 398 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-radio",
+		"title": "Radio",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "String",
+				"required": true,
+				"description": "Radio biding value",
+				"twoWay": null,
+				"default": null
+			},
+			{
+				"name": "disabled",
+				"type": "Boolean",
+				"required": false,
+				"description": "Field is disabled if true",
+				"default": null,
+				"twoWay": false
+			},
+			{
+				"name": "radio-value",
+				"type": "String",
+				"required": false,
+				"description": "Radio field value (value attribute)",
+				"default": null,
+				"twoWay": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Radio label"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 399 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-radio-group",
+		"title": "Radio group",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "group",
+				"type": "String",
+				"required": true,
+				"description": "Radio group name"
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Content"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 400 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-select",
+		"title": "Badge",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "String",
+				"required": true,
+				"description": "Option value",
+				"twoWay": null,
+				"default": null
+			},
+			{
+				"name": "disabled",
+				"type": "Boolean",
+				"required": false,
+				"description": "Field is disabled if true",
+				"default": null,
+				"twoWay": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Option label"
+			}
+		],
+		"events": [
+			{
+				"name": "option::select",
+				"descriptions": "When item is selected",
+				"type": "out",
+				"args": [
+					{
+						"name": "id",
+						"description": "Item id"
+					}
+				]
+			},
+			{
+				"name": "option::unselect",
+				"description": "When multiple item is unselected",
+				"type": "out",
+				"args": [
+					{
+						"name": "id",
+						"description": "Item id"
+					}
+				]
+			}
+		]
+	};
+
+/***/ },
+/* 401 */,
+/* 402 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-checkbox-group",
+		"title": "Checkbox group",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "group",
+				"type": "String",
+				"required": true,
+				"description": "Radio group name"
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Content"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 403 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-checkbox",
+		"title": "Checkbox",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "String",
+				"required": false,
+				"description": "Bind value",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "disabled",
+				"type": "Boolean",
+				"required": false,
+				"description": "Field is disabled if true",
+				"default": null,
+				"twoWay": false
+			},
+			{
+				"name": "name",
+				"type": "String",
+				"required": false,
+				"description": "Name of check box (name attribute)",
+				"default": true,
+				"twoWay": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Checkbox label"
+			},
+			{
+				"name": "icon-name",
+				"description": "Checkbox icon name"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 404 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-badge",
+		"title": "Badge",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "String",
+				"required": false,
+				"description": "Value of selected file names",
+				"twoWay": null,
+				"default": null
+			},
+			{
+				"name": "placeholder",
+				"type": "String",
+				"required": false,
+				"description": "Placeholder value",
+				"default": null,
+				"twoWay": false
+			},
+			{
+				"name": "name",
+				"type": "String",
+				"required": false,
+				"description": "Name of file input",
+				"default": null,
+				"twoWay": false
+			},
+			{
+				"name": "multiple",
+				"type": "Boolean",
+				"required": false,
+				"description": "Multiple file input",
+				"default": false,
+				"twoWay": false
+			},
+			{
+				"name": "lazy",
+				"type": "Boolean",
+				"required": false,
+				"description": "Lazy of v-model",
+				"default": false,
+				"twoWay": false
+			},
+			{
+				"name": "number",
+				"type": "Boolean",
+				"required": false,
+				"description": "Number of v-model",
+				"default": false,
+				"twoWay": false
+			},
+			{
+				"name": "debounce",
+				"type": "Number",
+				"required": false,
+				"description": "Debounce of v-model",
+				"default": 0,
+				"twoWay": false
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "File input label"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 405 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-switch",
+		"title": "Switch",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "Boolean",
+				"required": false,
+				"description": "Bind value",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "disabled",
+				"type": "Boolean",
+				"required": false,
+				"description": "Field is disabled if true",
+				"default": null,
+				"twoWay": false
+			}
+		],
+		"slots": [
+			{
+				"name": "off",
+				"description": "Off label"
+			},
+			{
+				"name": "on",
+				"description": "On label"
+			}
+		],
+		"events": []
+	};
 
 /***/ }
 /******/ ])

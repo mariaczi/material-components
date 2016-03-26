@@ -1,7 +1,6 @@
 <li @click.prevent="toggle" :class="computedClasses">
     <span>
-        <input v-el:field
-               v-show="multiple" v-model="active"
+        <input v-show="multiple" v-model="active"
                v-bind-boolean:disabled="disabled"
                type="checkbox">
         <label v-if="multiple"></label>

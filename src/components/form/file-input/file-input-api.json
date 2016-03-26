@@ -10,7 +10,7 @@
       "name": "value",
       "type": "String",
       "required": false,
-      "description": "Initial value of input field",
+      "description": "Value of selected file names",
       "twoWay": null,
       "default": null
     },
@@ -23,19 +23,19 @@
       "twoWay": false
     },
     {
-      "name": "disabled",
-      "type": "Boolean",
+      "name": "name",
+      "type": "String",
       "required": false,
-      "description": "Field is disabled if true",
+      "description": "Name of file input",
       "default": null,
       "twoWay": false
     },
     {
-      "name": "type",
-      "type": "String",
+      "name": "multiple",
+      "type": "Boolean",
       "required": false,
-      "description": "Input type attribute",
-      "default": "text",
+      "description": "Multiple file input",
+      "default": false,
       "twoWay": false
     },
     {
@@ -66,11 +66,7 @@
   "slots": [
     {
       "name": "",
-      "description": "Input label"
-    },
-    {
-      "name": "icon-name",
-      "description": "Input icon name"
+      "description": "File input label"
     }
   ],
   "events": []

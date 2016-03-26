@@ -1,5 +1,5 @@
 {
-  "name": "md-badge",
+  "name": "md-select",
   "title": "Badge",
   "description": "",
   "browserSupport": {
@@ -66,12 +66,39 @@
   "slots": [
     {
       "name": "",
-      "description": "Input label"
+      "description": "Select options"
     },
     {
       "name": "icon-name",
       "description": "Input icon name"
+    },
+    {
+      "name": "label",
+      "description": "Select label"
     }
   ],
-  "events": []
+  "events": [
+    {
+      "name": "select::select",
+      "descriptions": "When item is selected",
+      "type": "in-out",
+      "args": [
+        {
+          "name": "id",
+          "description": "Item id"
+        }
+      ]
+    },
+    {
+      "name": "select::unselect",
+      "description": "When multiple item is unselected",
+      "type": "in-out",
+      "args": [
+        {
+          "name": "id",
+          "description": "Item id"
+        }
+      ]
+    }
+  ]
 }

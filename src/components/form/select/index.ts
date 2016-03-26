@@ -15,7 +15,7 @@ var Vue: any = require('vue');
         }
     },
     events: {
-        'select::select': function(value, option) {
+        'select::select': function(value) {
             if (Array.isArray(this.value)) {
                 this.value.push(value);
             }
@@ -24,9 +24,10 @@ var Vue: any = require('vue');
                 this.close();
             }
             this.$broadcast('option::select', value);
+            return true;
 
         },
-        'select::unselect': function(value, option) {
+        'select::unselect': function(value) {
             if (Array.isArray(this.value)) {
                 this.value.$remove(value);
             }
@@ -34,6 +35,7 @@ var Vue: any = require('vue');
                 this.value = value;
             }
             this.$broadcast('option::unselect', value);
+            return true;
         }
     },
     watch: {

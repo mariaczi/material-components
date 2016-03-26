@@ -2,10 +2,14 @@ import Component from 'vue-class-component';
 
 import inputMixin from '../../../mixins/input';
 import bindBoolean from '../../../directives/bind-boolean';
-import bindRaw from '../../../directives/bind-raw';
 
 @Component({
     props: {
+        value: {
+            type: String,
+            required: false,
+            'default': null
+        },
         name: {
             type: String,
             required: true
@@ -22,8 +26,7 @@ import bindRaw from '../../../directives/bind-raw';
         }
     },
     directives: {
-        bindBoolean,
-        bindRaw
+        bindBoolean
     },
     mixins: [
         inputMixin
@@ -31,28 +34,11 @@ import bindRaw from '../../../directives/bind-raw';
     template: require('./file-input.html')
 })
 export default class FileInputField {
-    private $els: any;
-    private $nextTick: any;
-    private fireEvent: any;
-
-    private fileName: string;
-
-    data() {
-        return {
-            fileName: ''
-        }
-    }
-
-    get field() {
-        return this.$els.field;
-    }
+    private value: any;
 
     selectFile(e) {
-        this.fileName = Array.prototype.slice.call(e.target.files)
+        this.value = Array.prototype.slice.call(e.target.files)
             .map((f) => f.name)
             .join(', ');
-        this.$nextTick(() => {
-            this.fireEvent(this.field, 'change');
-        });
     }
 }

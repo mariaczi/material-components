@@ -7,17 +7,10 @@
   },
   "properties": [
     {
-      "name": "v-field",
-      "type": "Directive",
-      "required": false,
-      "description": "Field directive",
-      "twoWay": true
-    },
-    {
       "name": "value",
       "type": "String",
       "required": false,
-      "description": "Initial value of textarea",
+      "description": "Text of textarea",
       "twoWay": false,
       "default": null
     },
@@ -36,6 +29,30 @@
       "required": false,
       "description": "Textarea is automatically adjust to text height",
       "default": true,
+      "twoWay": false
+    },
+    {
+      "name": "lazy",
+      "type": "Boolean",
+      "required": false,
+      "description": "Lazy of v-model",
+      "default": false,
+      "twoWay": false
+    },
+    {
+      "name": "number",
+      "type": "Boolean",
+      "required": false,
+      "description": "Number of v-model",
+      "default": false,
+      "twoWay": false
+    },
+    {
+      "name": "debounce",
+      "type": "Number",
+      "required": false,
+      "description": "Debounce of v-model",
+      "default": 0,
       "twoWay": false
     }
   ],

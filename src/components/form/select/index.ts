@@ -6,22 +6,39 @@ import clickAway from '../../../directives/click-away';
 import bindBoolean from '../../../directives/bind-boolean';
 
 var Vue: any = require('vue');
-var template = require('./select.html');
 
 @Component({
     props: {
-        multiple: {
-            type: Boolean,
+        value: {
             required: false,
-            'default': false
+            'default': null
         }
     },
     events: {
         'select::select': function(value, option) {
-            this.setSelected(value, option);
+            if (Array.isArray(this.value)) {
+                this.value.push(value);
+            }
+            else {
+                this.value = value;
+                this.close();
+            }
+            this.$broadcast('option::select', value);
+
         },
         'select::unselect': function(value, option) {
-            this.unsetSelected(value, option);
+            if (Array.isArray(this.value)) {
+                this.value.$remove(value);
+            }
+            else {
+                this.value = value;
+            }
+            this.$broadcast('option::unselect', value);
+        }
+    },
+    watch: {
+        value: function () {
+            this.refreshDropdownOptions()
         }
     },
     components: {
@@ -34,40 +51,27 @@ var template = require('./select.html');
     mixins: [
         inputMixin
     ],
-    template: template
+    template: require('./select.html')
 })
 export default class SelectField {
     private $els: any;
     private $getAllChildren: any;
-    private $nextTick: any;
     private $broadcast: any;
-    private fireEvent: any;
     private _slotContents: any;
-    private watchField: any;
 
     private active: boolean;
+    private options: any;
     private defaultSelect: string;
-    private valueSingle: string;
-    private valueMultiple: string[];
-    private multiple: boolean;
-    private options: any[];
+    private value: any;
 
     data() {
         return {
             active: false,
-            valueSingle: null,
-            valueMultiple: [],
             options: {}
         }
     }
 
     compiled() {
-        this.watchField((values) => {
-            this.$nextTick(() => {
-                this.value = this.getSelectedValues();
-                this.refreshOptions(values);
-            });
-        });
         var options = this.$getAllChildren().filter((c: any) => {return 'SelectOption' == c.$options.name});
         for (var i = 0; i < options.length; i++) {
             var option = options[i];
@@ -77,8 +81,7 @@ export default class SelectField {
     }
 
     ready() {
-        this.value = this.getSelectedValues();
-        this.refreshOptions(this.value);
+       this.refreshDropdownOptions()
     }
 
     createOption(option: any) {
@@ -93,30 +96,21 @@ export default class SelectField {
         };
     }
 
-    get value() {
-        return this.multiple ? this.valueMultiple : this.valueSingle;
-    }
-
-    set value(value: any) {
-        if (this.multiple) {
-            this.valueMultiple = value;
-        }
-        else {
-            this.valueSingle = value.length ? value[0] : value;
-        }
+    get multiple() {
+        return Array.isArray(this.value);
     }
 
     get valueContent() {
-        return this.multiple ? this.valueContentMultiple : this.valueContentSingle;
+        return Array.isArray(this.value) ? this.valueContentMultiple : this.valueContentSingle;
     }
 
     get valueContentSingle() {
-        return this.options[this.valueSingle] ? this.options[this.valueSingle].content : '';
+        return this.options[this.value] ? this.options[this.value].content : '';
     }
 
     get valueContentMultiple() {
-        if (this.valueMultiple.length) {
-            return this.valueMultiple.map((value) => {
+        if (this.value.length) {
+            return this.value.map((value) => {
                 return this.options[value] ? this.options[value].content : '';
             }).join(', ');
         }
@@ -133,6 +127,18 @@ export default class SelectField {
         return name in this._slotContents;
     }
 
+    refreshDropdownOptions() {
+        var options = Array.prototype.slice.call(this.field.options);
+        options.forEach((o: HTMLOptionElement) => {
+            if (o.selected) {
+                this.$broadcast('option::select', o.value)
+            }
+            else {
+                this.$broadcast('option::unselect', o.value)
+            }
+        });
+    }
+
     open(e) {
         if (!this.active) {
             this.active = true;
@@ -145,93 +151,5 @@ export default class SelectField {
             this.active = false;
             this.$broadcast('dropdown-list::close');
         }
-    }
-
-    getSelectedValues() {
-        return Array.prototype.slice.call(this.$els.field.selectedOptions)
-            .map((o) => o.value);
-    }
-
-    change() {
-        var values = this.getSelectedValues();
-        if (this.multiple) {
-            this.valueMultiple = values;
-        }
-        else {
-            this.valueSingle = values.length ? values[0] : '';
-        }
-    }
-
-    setSelected(value) {
-        (this.multiple ? this.setSelectedMultiple : this.setSelectedSingle)(value);
-        this.$broadcast('option::select', value);
-        this.$nextTick(() => {
-            this.fireEvent(this.field, 'change');
-        });
-    }
-
-    setSelectedSingle(value) {
-        this.valueSingle = value;
-        this.selectOptionSingle(value);
-        this.close();
-    }
-
-    selectOptionSingle(value) {
-        Array.prototype.slice.call(this.$els.field.options)
-            .forEach((o) => {
-                o.selected = (value == o.value);
-            });
-    }
-
-    setSelectedMultiple(value) {
-        this.valueMultiple.push(value);
-        this.selectOptionMultiple(value);
-    }
-
-    selectOptionMultiple(value) {
-        Array.prototype.slice.call(this.$els.field.options)
-            .forEach((o) => {
-                if (value == o.value) {
-                    o.selected = true;
-                }
-            });
-    }
-
-    unsetSelected(value) {
-        (this.multiple ? this.unsetSelectedMultiple : this.unsetSelectedSingle)(value);
-        this.$broadcast('option::unselect', value);
-        this.$nextTick(() => {
-            this.fireEvent(this.field, 'change');
-        });
-    }
-
-    unsetSelectedSingle() {
-        this.valueSingle = null;
-    }
-
-    unsetSelectedMultiple(value) {
-        this.valueMultiple.$remove(value);
-        this.unsetOptionMultiple(value);
-    }
-
-    unsetOptionMultiple(value) {
-        Array.prototype.slice.call(this.$els.field.options)
-            .forEach((o) => {
-                if (value == o.value) {
-                    o.selected = false;
-                }
-            });
-    }
-
-    refreshOptions(values) {
-        Array.prototype.slice.call(this.$els.field.options)
-            .forEach((o) => {
-                if (o.selected) {
-                    this.$broadcast('option::select', o.value, values)
-                }
-                else {
-                    this.$broadcast('option::unselect', o.value, values)
-                }
-            });
     }
 }

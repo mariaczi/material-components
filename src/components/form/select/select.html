@@ -2,9 +2,7 @@
     <i v-if="hasSlot('icon-name')" class="material-icons prefix">
         <slot name="icon-name"></slot>
     </i>
-
     <div class="select-wrapper">
-
         <span class="caret">▼</span>
         <input @click="open" readonly="readonly" :value="valueContent"
                type="text" class="select-dropdown">
@@ -14,14 +12,14 @@
         </md-dropdown-list>
 
         <select v-el:field
-                @change="change"
+                v-model="value"
                 v-bind-boolean:multiple="multiple"
                 :placeholder="placeholder" :id="id"
-                :type="type" class="field">
+                :type="type">
             <option v-for="opt in options" :value="opt.value" v-bind-boolean:disabled="opt.disabled">{{opt.content}}</option>
         </select>
     </div>
-    <label v-if="labelSlot" :for="id" :class="labelClasses">
+    <label v-if="hasSlot('label')" :for="id" :class="labelClasses">
         <slot name="label"></slot>
     </label>
 </div>

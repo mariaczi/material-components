@@ -87,9 +87,6 @@ export default class Collapsible {
 
     openedChanged(value, oldValue) {
         if (this.expendable) {
-            console.log(value);
-            console.log(oldValue);
-
             // close
             oldValue
                 .filter((val) => value.indexOf(val) < 0)

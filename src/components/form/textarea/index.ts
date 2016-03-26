@@ -7,8 +7,7 @@ import inputMixin from '../../../mixins/input';
         value: {
             type: String,
             required: false,
-            'default': null,
-            twoWay: false
+            'default': null
         },
         disabled: {
             type: Boolean,
@@ -21,14 +20,24 @@ import inputMixin from '../../../mixins/input';
             required: false,
             'default': true,
             twoWay: false
-        }
-    },
-    watch: {
-        disabled: function () {
-            this.setupDisabled();
         },
-        value: function (lines, oldLines) {
-            this.delayedResize(lines, oldLines);
+        lazy: {
+            type: Boolean,
+            required: false,
+            'default': false,
+            twoWay: false
+        },
+        number: {
+            type: Boolean,
+            required: false,
+            'default': false,
+            twoWay: false
+        },
+        debounce: {
+            "type": Number,
+            "required": false,
+            "default": 0,
+            "twoWay": false
         }
     },
     mixins: [
@@ -38,12 +47,9 @@ import inputMixin from '../../../mixins/input';
 })
 export default class TextArea {
     private $els: any;
-    private $watch: any;
-    private $nextTick: any;
-    private fireEvent: any;
-    private watchField: any;
     private _slotContents: any;
 
+    private chars: number;
     private value: string;
     private disabled: boolean;
     private active: boolean;
@@ -54,28 +60,10 @@ export default class TextArea {
         }
     }
 
-    compiled() {
-        this.setupDisabled;
-        if (!this.value) { // set as prop
-            this.refreshValue();
-        }
-        else {
-            this.refreshTextarea();
-        }
-    }
-
     ready() {
-        this.watchField((value) => {
-            this.value = value;
-        });
-        this.$watch('value', (value) => {
-            this.field.value = value;
-            this.$nextTick(() => {
-                this.fireEvent(this.field, 'change');
-            });
-        });
+        this.chars = this.value ? this.value.length : 0;
     }
-
+    
     get labelClasses() {
         return {
             active: this.active || this.value,
@@ -95,21 +83,23 @@ export default class TextArea {
         return name in this._slotContents;
     }
 
-    resize(lines, oldLines) {
+    resize(e) {
+        var chars = e.target.value ? e.target.value.length : 0;
         var styles = window.getComputedStyle(this.field);
         var paddingVertical = parseInt(styles.getPropertyValue('padding-bottom')) + parseInt(styles.getPropertyValue('padding-top'));
-        if (lines < oldLines) {
+        if (chars < this.chars) {
             this.field.style.height = 'auto';
         }
         this.field.style.height = (this.field.scrollHeight - paddingVertical) + 'px';
         // Velocity(this.field, {height: this.field.scrollHeight - paddingVertical}, {
         //     duration: 10
         // });
+        this.chars = chars;
     }
 
-    delayedResize(lines, oldLines) {
+    delayedResize(e) {
         window.setTimeout(() => {
-            this.resize(lines, oldLines)
+            this.resize(e)
         }, 0);
     }
 
@@ -119,29 +109,5 @@ export default class TextArea {
 
     deactivateField() {
         this.active = false;
-    }
-
-    get setupDisabled() { // get has dependency tracking
-        if (!this.disabled) {
-            this.field.addEventListener('focus', this.activateField);
-            this.field.addEventListener('blur', this.deactivateField);
-
-            this.field.removeAttribute('disabled');
-        }
-        else {
-            this.field.removeEventListener('focus', this.activateField);
-            this.field.removeEventListener('blur', this.deactivateField);
-
-            this.field.setAttribute('disabled', 'disabled');
-        }
-        return null;
-    }
-
-    refreshTextarea() {
-        this.field.value = this.value;
-    }
-
-    refreshValue() {
-        this.value = this.field.value;
     }
 }

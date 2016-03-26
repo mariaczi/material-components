@@ -2,18 +2,11 @@ import Component from 'vue-class-component';
 
 import mdSwitch from '../../../components/form/swich';
 
-import field from '../../../directives/field';
-
-var template = require('./swiches.html');
-
 @Component({
     components: {
         mdSwitch
     },
-    directives: {
-        field
-    },
-    template: template
+    template: require('./swiches.html')
 })
 export default class Switches {
 

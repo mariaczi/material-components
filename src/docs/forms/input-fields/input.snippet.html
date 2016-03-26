@@ -1,14 +1,14 @@
-<md-input v-field="firstName" placeholder="Placeholder">
+<md-input :value.sync="firstName" placeholder="Placeholder">
     First Name
 </md-input>
 
-<md-input v-field="lastName">
+<md-input :value.sync="lastName">
     Last name
 </md-input>
 
-<md-input v-field="password" type="password">
+<md-input :value.sync="password" type="password">
     Password
 </md-input>
-<md-input v-field="email" type="email">
+<md-input :value.sync="email" type="email">
     Email
 </md-input>

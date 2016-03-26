@@ -8,17 +8,17 @@
         <div class="row">
             <form action="#">
                 <p>
-                    <md-switch v-field="switches[0]">
+                    <md-switch :value.sync="switches[0]">
                     </md-switch>
                 </p>
                 <p>
-                    <md-switch v-field="switches[1]">
+                    <md-switch :value.sync="switches[1]">
                         <span slot="on">True</span>
                         <span slot="off">False</span>
                     </md-switch>
                 </p>
                 <p>
-                    <md-switch v-field="switches[2]" disabled>
+                    <md-switch :value.sync="switches[2]" disabled>
                         <span slot="on">On</span>
                         <span slot="off">Off</span>
                     </md-switch>

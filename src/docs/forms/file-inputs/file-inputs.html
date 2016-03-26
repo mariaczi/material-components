@@ -12,8 +12,8 @@
         </div>
         <div class="row">
             <form action="#">
-                <md-file-input v-field="fileName" name="file"></md-file-input>
-                <md-file-input v-field="fileNames" name="files" multiple
+                <md-file-input :value.sync="fileName" name="file"></md-file-input>
+                <md-file-input :value.sync="fileNames" name="files" multiple
                                placeholder="Upload one or more files"></md-file-input>
             </form>
         </div>

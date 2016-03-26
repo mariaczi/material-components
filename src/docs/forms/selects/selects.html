@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row">
-            <md-select v-field="value" class="col s6">
+            <md-select :value.sync="value" class="col s6">
                 <md-option value="" disabled>Choose your option</md-option>
                 <md-option value="1">Option 1</md-option>
                 <md-option value="2">Option 2</md-option>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="row">
-            <md-select v-field:multiple="multipleValue" multiple class="col s6">
+            <md-select :value.sync="multipleValue" class="col s6">
                 <md-option value="" disabled>Choose your option</md-option>
                 <md-option value="1">Option 1</md-option>
                 <md-option value="2">Option 2</md-option>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="row">
-            <md-select v-field="groupsValue" class="col s6">
+            <md-select :value.sync="groupsValue" class="col s6">
                 <md-optgroup label="team 1">
                     <md-option value="1">Option 1</md-option>
                     <md-option value="2">Option 2</md-option>

@@ -7,8 +7,7 @@ import inputMixin from '../../../mixins/input';
         value: {
             type: String,
             required: false,
-            'default': null,
-            twoWay: false
+            'default': null
         },
         placeholder: {
             type: String,
@@ -27,6 +26,24 @@ import inputMixin from '../../../mixins/input';
             required: false,
             'default': 'text',
             twoWay: false
+        },
+        lazy: {
+            type: Boolean,
+            required: false,
+            'default': false,
+            twoWay: false
+        },
+        number: {
+            type: Boolean,
+            required: false,
+            'default': false,
+            twoWay: false
+        },
+        debounce: {
+            "type": Number,
+            "required": false,
+            "default": 0,
+            "twoWay": false
         }
     },
     mixins: [
@@ -51,30 +68,7 @@ export default class InputField {
             active: false
         }
     }
-
-    compiled() {
-        this.setupDisabled;
-        if (!this.value) { // set as prop
-            this.refreshValue();
-        }
-        else {
-            this.refreshInput();
-        }
-    }
-
-    ready() {
-        this.$watch('value', (value) => {
-            this.field.value = value;
-            this.$nextTick(() => {
-                this.fireEvent(this.field, 'change');
-            });
-        })
-    }
-
-    get field(): HTMLInputElement {
-        return this.$els.field;
-    }
-
+    
    get labelClasses() {
        return {
            active: this.placeholder || this.active || this.value,
@@ -85,14 +79,6 @@ export default class InputField {
     hasSlot(name = 'default') {
         return name in this._slotContents;
     }
-
-    refreshValue() {
-        this.value = this.field.value;
-    }
-
-    refreshInput() {
-        this.field.value = this.value;
-    }
     
     activateField() {
         this.active = true;
@@ -101,21 +87,4 @@ export default class InputField {
     deactivateField() {
         this.active = false;
     }
-
-    get setupDisabled() { // getter has dependency tracking
-        if (!this.disabled) {
-            this.field.addEventListener('focus', this.activateField);
-            this.field.addEventListener('blur', this.deactivateField);
-
-            this.field.removeAttribute('disabled');
-        }
-        else {
-            this.field.removeEventListener('focus', this.activateField);
-            this.field.removeEventListener('blur', this.deactivateField);
-
-            this.field.setAttribute('disabled', 'disabled');
-        }
-        return null;
-    }
-
 }

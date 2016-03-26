@@ -5,11 +5,14 @@ import bindRaw from '../../../directives/bind-raw';
 
 import inputMixin from '../../../mixins/input';
 
-var template = require('./radio.html');
-
 @Component({
     props: {
         value: {
+            type: String,
+            required: false,
+            'default': null
+        },
+        radioValue: {
             required: true
         },
         disabled: {
@@ -25,36 +28,19 @@ var template = require('./radio.html');
     mixins: [
         inputMixin
     ],
-    template: template
+    template: require('./radio.html')
 })
 export default class Radio {
     private _slotContents: any;
     private $parent: any;
     private $els: any;
-
-    private value: string;
-
-    get checked() {
-        return this.radiosValue == this.value;
-    }
-
-    get radiosValue() {
-        if (this.field.__v_model) {
-            return this.field.__v_model._watcher.value;
-        }
-        else {
-            console.log("Error. Missing field or model directive");
-            return null;
-        }
-    }
     
     get field() {
         return this.$els.field;
     }
 
-
     get group() {
-        return this.$parent.$data.group;
+        return this.$parent.group;
     }
 
     hasSlot(name = 'default') {

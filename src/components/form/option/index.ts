@@ -14,15 +14,16 @@ var template = require('./option.html');
             'default': false
         },
         value: {
+            type: String,
             required: true
         }
     },
     events: {
-        'option::select': function (value, values) {
-            this.setSelected(value, values);
+        'option::select': function (value) {
+            this.optionSelect(value);
         },
         'option::unselect': function (value) {
-            this.unsetSelected(value);
+            this.optionUnselect(value);
         }
     },
     directives: {
@@ -48,7 +49,7 @@ export default class SelectOption {
     }
 
     get multiple() {
-        return this.$parent.$data.multiple;
+        return this.$parent.multiple;
     }
 
     get computedClasses() {
@@ -75,15 +76,6 @@ export default class SelectOption {
         }
     }
 
-    setSelected(value, values) {
-        if (!this.multiple) {
-            this.active = this.value == value;
-        }
-        else if (values) { // all selected values
-            this.active = values.indexOf(this.value) >= 0;
-        }
-    }
-
     unselect() {
         if (this.active && !this.disabled && this.multiple) { // only multiple could be unselected
             this.active = false;
@@ -91,9 +83,32 @@ export default class SelectOption {
         }
     }
 
-    unsetSelected(value) {
-        if (this.multiple && this.value == value) {
-            this.active = false;
+    optionSelect(value) {
+        if (this.multiple) {
+            if (!this.active && this.value == value) {
+                this.active = true;
+            }
+        }
+        else {
+            if (this.value == value) {
+                this.active = true;
+            }
+            else {
+                this.active = false;
+            }
+        }
+    }
+
+    optionUnselect(value) {
+        if (this.multiple) {
+            if (this.active && this.value == value) {
+                this.active = false;
+            }
+        }
+        else {
+            if (this.value == value) {
+                this.active = false;
+            }
         }
     }
 }

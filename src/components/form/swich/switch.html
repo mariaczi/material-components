@@ -1,9 +1,9 @@
 <div class="switch">
     <label>
         <slot name="off">Off</slot>
-        <input v-el:field
+        <input v-model="value"
                v-bind-boolean:disabled="disabled"
-               type="checkbox" class="field">
+               type="checkbox">
         <span class="lever"></span>
         <slot name="on">On</slot>
     </label>

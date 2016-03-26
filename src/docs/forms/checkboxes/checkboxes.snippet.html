@@ -1,17 +1,22 @@
 <md-checkbox-group group="checkbox">
-    <md-checkbox v-field="checkbox.red" value="red">
+    <md-checkbox :value.sync="checkbox.red"
+                 radio-value="red">
         Red
     </md-checkbox>
-    <md-checkbox v-field="checkbox.yellow" value="yellow">
+    <md-checkbox :value.sync="checkbox.yellow"
+                 radio-value="yellow">
         Yellow
     </md-checkbox>
-    <md-checkbox v-field="checkbox.filled" value="filled" class="filled-in">
+    <md-checkbox :value.sync="checkbox.filled"
+                 radio-value="filled" class="filled-in">
         Filled in
     </md-checkbox>
-    <md-checkbox v-field="checkbox.green" value="green" disabled>
+    <md-checkbox :value.sync="checkbox.green"
+                 radio-value="green" disabled>
         Green
     </md-checkbox>
-    <md-checkbox v-field="checkbox.brown" value="brown" disabled>
+    <md-checkbox :value.sync="checkbox.brown"
+                 radio-value="brown" disabled>
         Brown
     </md-checkbox>
 </md-checkbox-group>

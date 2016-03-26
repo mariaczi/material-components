@@ -5,6 +5,11 @@ import bindBoolean from '../../../directives/bind-boolean';
 
 @Component({
     props: {
+        value: {
+            type: Boolean,
+            required: false,
+            'default': null
+        },
         name: {
             type: String,
             required: false,

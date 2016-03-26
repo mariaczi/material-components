@@ -1,10 +1,10 @@
 <div class="row">
     <form class="col s12">
         <div class="row demo">
-            <md-input v-field="firstName" placeholder="Placeholder" class="col s6">
+            <md-input :value.sync="firstName" placeholder="Placeholder" class="col s6">
                 First Name
             </md-input>
-            <md-input v-field="lastName" class="col s6">
+            <md-input :value.sync="lastName" class="col s6">
                 Last name
             </md-input>
         </div>

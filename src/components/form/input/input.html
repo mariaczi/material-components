@@ -3,7 +3,7 @@
         <slot name="icon-name"></slot>
     </i>
     <input v-el:field
-           @change="refreshValue"
+           @change="refreshValueFromInput"
            :placeholder="placeholder" :id="id"
            :type="type" class="field"/>
     <label v-if="slot" :for="id" :class="labelClasses">

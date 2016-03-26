@@ -36,6 +36,9 @@ import inputMixin from '../../../mixins/input';
 })
 export default class InputField {
     private $els: any;
+    private $nextTick: any;
+    private $watch: any;
+    private fireEvent: any;
     private _slotContents: any;
 
     private value: string;
@@ -49,9 +52,23 @@ export default class InputField {
         }
     }
 
-    ready() {
+    compiled() {
         this.setupDisabled();
-        this.refreshValue()
+        if (!this.value) { // setted as prop
+            this.refreshValueFromInput();
+        }
+        else {
+            this.refreshValueFromData();
+        }
+    }
+
+    ready() {
+        this.$watch('value', (value) => {
+            this.field.value = value;
+            this.$nextTick(() => {
+                this.fireEvent(this.field, 'change');
+            });
+        })
     }
 
     get field(): HTMLInputElement {
@@ -73,14 +90,14 @@ export default class InputField {
        }
    }
 
-    refreshValue() {
+    refreshValueFromInput() {
         this.value = this.field.value;
     }
 
-    setActive(val) {
-        this.active = val;
+    refreshValueFromData() {
+        this.field.value = this.value;
     }
-
+    
     activateField() {
         this.active = true;
     }

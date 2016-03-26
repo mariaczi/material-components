@@ -34,12 +34,18 @@ export default {
 
         watchField(cb) {
             var self = this;
-            if (self.$els.field) {
-                var updateFn = self.$els.field.__v_model.update;
-                // create new update fn witch call passed callback
-                this.$els.field.__v_model.update = function() {
-                    cb.apply(self.$els.field.__v_model, arguments);
-                    updateFn.apply(self.$els.field.__v_model, arguments);
+            var field = self.$els.field;
+            if (field) {
+                var model = field.__v_model;
+                if (model) {
+                    var updateFn = model.update;    
+                    if (updateFn) {
+                        // create new update fn witch call passed callback
+                        model.update = function () {
+                            cb.apply(model, arguments);
+                            updateFn.apply(model, arguments);
+                        }
+                    }
                 }
             }
             else {

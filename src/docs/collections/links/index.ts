@@ -1,17 +1,16 @@
 import Component from 'vue-class-component';
 
-var template = require('./links.html');
-
-import mdCollection from '../../../components/collection';
-import mdCollectionItem from '../../../components/collection-item';
+import components from '../../../components';
 
 @Component({
-    template: template,
-    components: {
-        mdCollection,
-        mdCollectionItem
-    }
+    components,
+    template: require('./links.html')
 })
 export default class LinksCollection {
+    data() {
+        return {
+            active: 2
+        }
+    }
 }
 

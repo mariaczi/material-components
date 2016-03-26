@@ -1,18 +1,10 @@
 import Component from 'vue-class-component';
 
-var template = require('./avatar.html');
-
-import mdCollection from '../../../components/collection';
-import mdCollectionItem from '../../../components/collection-item';
-import mdIcon from '../../../components/icon';
+import components from '../../../components';
 
 @Component({
-    template: template,
-    components: {
-        mdCollection,
-        mdCollectionItem,
-        mdIcon
-    }
+    components,
+    template: require('./avatar.html')
 })
 export default class AvatarCollection {
 }

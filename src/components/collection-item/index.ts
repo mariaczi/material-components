@@ -1,16 +1,15 @@
 import Component from 'vue-class-component';
 
-var template = require('./collection-item.html');
-
 @Component({
     props: {
         active: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         }
     },
-    template: template
+    template: require('./collection-item.html')
 })
 export default class CollectionItem {
 

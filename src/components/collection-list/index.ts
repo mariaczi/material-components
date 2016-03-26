@@ -1,9 +1,7 @@
 import Component from 'vue-class-component';
 
-var template = require('./collection-list.html');
-
 @Component({
-    template: template
+    template: require('./collection-list.html')
 })
 export default class CollectionList {
 

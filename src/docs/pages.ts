@@ -67,7 +67,7 @@ const docsPages: [Route] = [
         component: docsCollapsibles
     },
     {
-        urls: ['/collections'],
+        urls: ['/collections', '/collections/:tab'],
         link: '/collections',
         title: 'Collections',
         component: docsCollections

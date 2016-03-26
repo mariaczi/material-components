@@ -5508,7 +5508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    title: 'Collapsibles',
 	    component: collapsibles_1['default']
 	}, {
-	    urls: ['/collections'],
+	    urls: ['/collections', '/collections/:tab'],
 	    link: '/collections',
 	    title: 'Collections',
 	    component: collections_1['default']
@@ -8106,8 +8106,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(53);
-	var mdCollectionItem = __webpack_require__(54);
 	var Collection = (function () {
 	    function Collection() {}
 	    Object.defineProperty(Collection.prototype, "headerSlot", {
@@ -8119,10 +8117,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Collection = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        components: {
-	            mdCollectionItem: mdCollectionItem
-	        }
+	        template: __webpack_require__(53)
 	    })], Collection);
 	    return Collection;
 	})();
@@ -8149,7 +8144,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(55);
 	var CollectionItem = (function () {
 	    function CollectionItem() {}
 	    Object.defineProperty(CollectionItem.prototype, "secondaryContentSlot", {
@@ -8165,10 +8159,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            active: {
 	                type: Boolean,
 	                required: false,
-	                'default': false
+	                'default': false,
+	                twoWay: false
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(55)
 	    })], CollectionItem);
 	    return CollectionItem;
 	})();
@@ -8195,7 +8190,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(57);
 	var CollectionList = (function () {
 	    function CollectionList() {}
 	    Object.defineProperty(CollectionList.prototype, "headerSlot", {
@@ -8207,7 +8201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    CollectionList = __decorate([vue_class_component_1["default"]({
-	        template: template
+	        template: __webpack_require__(57)
 	    })], CollectionList);
 	    return CollectionList;
 	})();
@@ -8234,7 +8228,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(59);
 	var CollectionListItem = (function () {
 	    function CollectionListItem() {}
 	    Object.defineProperty(CollectionListItem.prototype, "secondaryContentSlot", {
@@ -8250,10 +8243,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            active: {
 	                type: Boolean,
 	                required: false,
-	                'default': false
+	                'default': false,
+	                twoWay: false
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(59)
 	    })], CollectionListItem);
 	    return CollectionListItem;
 	})();
@@ -9135,8 +9129,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            options: {}
 	        };
 	    };
-	    SelectField.prototype.ready = function () {
+	    SelectField.prototype.compiled = function () {
 	        var _this = this;
+	        this.watchField(function (values) {
+	            _this.$nextTick(function () {
+	                _this.value = _this.getSelectedValues();
+	                _this.refreshOptions(values);
+	            });
+	        });
 	        var options = this.$getAllChildren().filter(function (c) {
 	            return 'SelectOption' == c.$options.name;
 	        });
@@ -9145,10 +9145,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var opt = this.createOption(option);
 	            Vue.set(this.options, opt.value, opt);
 	        }
-	        this.$nextTick(function () {
-	            _this.value = _this.getSelectedValues();
-	            _this.refreshOptions();
-	        });
+	    };
+	    SelectField.prototype.ready = function () {
+	        this.value = this.getSelectedValues();
+	        this.refreshOptions(this.value);
 	    };
 	    SelectField.prototype.createOption = function (option) {
 	        var content = option._slotContents ? option._slotContents["default"] : '';
@@ -9293,10 +9293,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        });
 	    };
-	    SelectField.prototype.refreshOptions = function () {
+	    SelectField.prototype.refreshOptions = function (values) {
 	        var _this = this;
-	        Array.prototype.slice.call(this.$els.field.selectedOptions).forEach(function (o) {
-	            _this.$broadcast('option::select', o.value, _this.value);
+	        Array.prototype.slice.call(this.$els.field.options).forEach(function (o) {
+	            if (o.selected) {
+	                _this.$broadcast('option::select', o.value, values);
+	            } else {
+	                _this.$broadcast('option::unselect', o.value, values);
+	            }
 	        });
 	    };
 	    SelectField = __decorate([vue_class_component_1["default"]({
@@ -11956,7 +11960,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 190 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"demo\">\r\n    <div class=\"row\">\r\n        <div class=\"col s\">\r\n            <md-select v-field=\"opened\" class=\"col\">\r\n                <span slot=\"label\">Opened</span>\r\n\r\n                <md-option value=\"\" disabled></md-option>\r\n                <md-option value=\"one\">First</md-option>\r\n                <md-option value=\"two\">Second</md-option>\r\n                <md-option value=\"three\">Third</md-option>\r\n            </md-select>\r\n        </div>\r\n\r\n        <div class=\"col s3\">\r\n            <md-checkbox v-field=\"popout\">\r\n                Popout\r\n            </md-checkbox>\r\n        </div>\r\n    </div>\r\n    <!--<div class=\"row\">\r\n        <pre>{{\r\n            {\r\n                opened: opened,\r\n                popout: popout,\r\n                expendable: expendable\r\n            } | json\r\n        }}</pre>\r\n    </div>-->\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <md-collapsible :opened.sync=\"opened\" :popout=\"popout\">\r\n        <md-collapsible-item name=\"one\">\r\n            <div slot=\"header\"><md-icon>filter_drama</md-icon>First</div>\r\n            <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item name=\"two\">\r\n            <div slot=\"header\"><md-icon>place</md-icon>Second</div>\r\n            <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item name=\"three\">\r\n            <div slot=\"header\"><md-icon>whatshot</md-icon>Third</div>\r\n            <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n        </md-collapsible-item>\r\n    </md-collapsible>\r\n</div>";
+	module.exports = "<div class=\"demo\">\r\n    <div class=\"row\">\r\n        <div class=\"col s\">\r\n            <md-select v-field=\"opened\" class=\"col\">\r\n                <span slot=\"label\">Opened</span>\r\n\r\n                <md-option value=\"\"></md-option>\r\n                <md-option value=\"one\">First</md-option>\r\n                <md-option value=\"two\">Second</md-option>\r\n                <md-option value=\"three\">Third</md-option>\r\n            </md-select>\r\n        </div>\r\n\r\n        <div class=\"col s3\">\r\n            <md-checkbox v-field=\"popout\">\r\n                Popout\r\n            </md-checkbox>\r\n        </div>\r\n    </div>\r\n    <!--<div class=\"row\">\r\n        <pre>{{\r\n            {\r\n                opened: opened,\r\n                popout: popout,\r\n                expendable: expendable\r\n            } | json\r\n        }}</pre>\r\n    </div>-->\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <md-collapsible :opened.sync=\"opened\" :popout=\"popout\">\r\n        <md-collapsible-item name=\"one\">\r\n            <div slot=\"header\"><md-icon>filter_drama</md-icon>First</div>\r\n            <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item name=\"two\">\r\n            <div slot=\"header\"><md-icon>place</md-icon>Second</div>\r\n            <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item name=\"three\">\r\n            <div slot=\"header\"><md-icon>whatshot</md-icon>Third</div>\r\n            <div slot=\"body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n        </md-collapsible-item>\r\n    </md-collapsible>\r\n</div>";
 
 /***/ },
 /* 191 */
@@ -12179,7 +12183,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 204 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/collapsibles\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Accordion</h2>\r\n            <div class=\"doc-example\">\r\n                <!--<doc-default-collapsible></doc-default-collapsible>-->\r\n\r\n                <doc-snippet>{{{snippets.defaultCollapsible}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Expandable</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-expendable-collapsible></doc-expendable-collapsible>\r\n\r\n                <doc-snippet>{{{snippets.expendableCollapsible}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Popout</h2>\r\n            <div class=\"doc-example\">\r\n                <!--<doc-popout-collapsible></doc-popout-collapsible>-->\r\n\r\n                <doc-snippet>{{{snippets.popoutCollapsible}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/collapsibles\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Accordion</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-collapsible></doc-default-collapsible>\r\n\r\n                <doc-snippet>{{{snippets.defaultCollapsible}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Expandable</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-expendable-collapsible></doc-expendable-collapsible>\r\n\r\n                <doc-snippet>{{{snippets.expendableCollapsible}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Popout</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-popout-collapsible></doc-popout-collapsible>\r\n\r\n                <doc-snippet>{{{snippets.popoutCollapsible}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 205 */
@@ -12198,27 +12202,56 @@ return /******/ (function(modules) { // webpackBootstrap
 	var header_1 = __webpack_require__(208);
 	var secondary_content_1 = __webpack_require__(210);
 	var avatar_1 = __webpack_require__(212);
-	var snippet_1 = __webpack_require__(123);
-	var template = __webpack_require__(214);
 	var Badges = (function () {
 	    function Badges() {}
 	    Badges.prototype.data = function () {
 	        return {
-	            collectionLinksSnippet: __webpack_require__(215),
-	            collectionHeaderSnippet: __webpack_require__(216),
-	            collectionSecondaryContentSnippet: __webpack_require__(217),
-	            collectionAvatarSnippet: __webpack_require__(218)
+	            api: [{
+	                'name': 'Collection',
+	                'api': __webpack_require__(347)
+	            }, {
+	                'name': 'Collection item',
+	                'api': __webpack_require__(348)
+	            }, {
+	                'name': 'Collection list',
+	                'api': __webpack_require__(349)
+	            }, {
+	                'name': 'Collection list item',
+	                'api': __webpack_require__(350)
+	            }],
+	            snippets: {
+	                collectionLinks: __webpack_require__(215),
+	                collectionHeader: __webpack_require__(216),
+	                collectionSecondaryContent: __webpack_require__(217),
+	                collectionAvatar: __webpack_require__(218)
+	            },
+	            src: [{
+	                name: 'Collection',
+	                script: __webpack_require__(351),
+	                template: __webpack_require__(352)
+	            }, {
+	                name: 'Collection item',
+	                script: __webpack_require__(353),
+	                template: __webpack_require__(354)
+	            }, {
+	                name: 'Collection list',
+	                script: __webpack_require__(355),
+	                template: __webpack_require__(356)
+	            }, {
+	                name: 'Collection list item',
+	                script: __webpack_require__(357),
+	                template: __webpack_require__(358)
+	            }]
 	        };
 	    };
 	    Badges = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            docCollectionLinks: links_1["default"],
 	            docCollectionHeader: header_1["default"],
 	            docCollectionSecondaryContent: secondary_content_1["default"],
-	            docAvatarContent: avatar_1["default"],
-	            docSnippet: snippet_1["default"]
-	        }
+	            docAvatarContent: avatar_1["default"]
+	        },
+	        template: __webpack_require__(214)
 	    })], Badges);
 	    return Badges;
 	})();
@@ -12239,17 +12272,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(207);
-	var collection_1 = __webpack_require__(52);
-	var collection_item_1 = __webpack_require__(54);
+	var components_1 = __webpack_require__(7);
 	var LinksCollection = (function () {
 	    function LinksCollection() {}
+	    LinksCollection.prototype.data = function () {
+	        return {
+	            active: 2
+	        };
+	    };
 	    LinksCollection = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        components: {
-	            mdCollection: collection_1["default"],
-	            mdCollectionItem: collection_item_1["default"]
-	        }
+	        components: components_1["default"],
+	        template: __webpack_require__(207)
 	    })], LinksCollection);
 	    return LinksCollection;
 	})();
@@ -12261,7 +12294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 207 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-collection>\r\n    <md-collection-item href=\"javascript:void(0)\">Alvin</md-collection-item>\r\n    <md-collection-item href=\"javascript:void(0)\" active>Alvin</md-collection-item>\r\n    <md-collection-item href=\"javascript:void(0)\">Alvin</md-collection-item>\r\n    <md-collection-item href=\"javascript:void(0)\">Alvin</md-collection-item>\r\n</md-collection>";
+	module.exports = "<div class=\"row demo\">\r\n    <div class=\"col\">\r\n        <md-button @click=\"active < 3 ? (active++) : active\">\r\n            +\r\n        </md-button>\r\n        <md-button @click=\"active > 0 ? (active--) : active\">\r\n            -\r\n        </md-button>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <md-collection>\r\n        <md-collection-item href=\"javascript:void(0)\" :active=\"active == 0\">Alvin</md-collection-item>\r\n        <md-collection-item href=\"javascript:void(0)\" :active=\"active == 1\">Alvin</md-collection-item>\r\n        <md-collection-item href=\"javascript:void(0)\" :active=\"active == 2\">Alvin</md-collection-item>\r\n        <md-collection-item href=\"javascript:void(0)\" :active=\"active == 3\">Alvin</md-collection-item>\r\n    </md-collection>\r\n</div>\r\n";
 
 /***/ },
 /* 208 */
@@ -12364,19 +12397,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(213);
-	var collection_1 = __webpack_require__(52);
-	var collection_item_1 = __webpack_require__(54);
-	var icon_1 = __webpack_require__(27);
+	var components_1 = __webpack_require__(7);
 	var AvatarCollection = (function () {
 	    function AvatarCollection() {}
 	    AvatarCollection = __decorate([vue_class_component_1["default"]({
-	        template: template,
-	        components: {
-	            mdCollection: collection_1["default"],
-	            mdCollectionItem: collection_item_1["default"],
-	            mdIcon: icon_1["default"]
-	        }
+	        components: components_1["default"],
+	        template: __webpack_require__(213)
 	    })], AvatarCollection);
 	    return AvatarCollection;
 	})();
@@ -12388,19 +12414,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 213 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-collection>\r\n    <md-collection-item class=\"avatar\">\r\n        <img src=\"http://materializecss.com/images/yuna.jpg\" alt=\"\" class=\"circle\">\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-item>\r\n    <md-collection-item class=\"avatar\">\r\n        <md-icon class=\"circle\">folder</md-icon>\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-item>\r\n    <md-collection-item class=\"avatar\">\r\n        <md-icon class=\"circle green\">assessment</md-icon>\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-item>\r\n    <md-collection-item class=\"avatar\">\r\n        <md-icon class=\"circle red\">play_arrow</md-icon>\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-item>\r\n</md-collection>";
+	module.exports = "<md-collection-list>\r\n    <md-collection-list-item class=\"avatar\">\r\n        <img src=\"http://materializecss.com/images/yuna.jpg\" alt=\"\" class=\"circle\">\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-list-item>\r\n    <md-collection-list-item class=\"avatar\">\r\n        <md-icon class=\"circle\">folder</md-icon>\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-list-item>\r\n    <md-collection-list-item class=\"avatar\">\r\n        <md-icon class=\"circle green\">assessment</md-icon>\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-list-item>\r\n    <md-collection-list-item class=\"avatar\">\r\n        <md-icon class=\"circle red\">play_arrow</md-icon>\r\n        <span class=\"title\">Title</span>\r\n        <p>First Line <br> Second Line </p>\r\n        <a slot=\"secondary-content\" href=\"javascript:void(0)\"><md-icon>grade</md-icon></a>\r\n    </md-collection-list-item>\r\n</md-collection-list>";
 
 /***/ },
 /* 214 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <h2 class=\"header\">Links</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-collection-links></doc-collection-links>\r\n\r\n        <doc-snippet>{{{collectionLinksSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Header</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-collection-header></doc-collection-header>\r\n\r\n        <doc-snippet>{{{collectionHeaderSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Secondary content</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-collection-secondary-content></doc-collection-secondary-content>\r\n\r\n        <doc-snippet>{{{collectionSecondaryContentSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Secondary content</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-avatar-content></doc-avatar-content>\r\n\r\n        <doc-snippet>{{{collectionAvatarSnippet}}}</doc-snippet>\r\n    </div>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/collections\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Links</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-collection-links></doc-collection-links>\r\n\r\n                <doc-snippet>{{{snippets.collectionLinks}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Header</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-collection-header></doc-collection-header>\r\n\r\n                <doc-snippet>{{{snippets.collectionHeader}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Secondary content</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-collection-secondary-content></doc-collection-secondary-content>\r\n\r\n                <doc-snippet>{{{snippets.collectionSecondaryContent}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Secondary content</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-avatar-content></doc-avatar-content>\r\n\r\n                <doc-snippet>{{{snippets.collectionAvatar}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n\r\n</div>";
 
 /***/ },
 /* 215 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>Alvin<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span> <span class=\"hljs-attribute\">active</span>&gt;</span>Alvin<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>Alvin<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>Alvin<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>\r\n        Alvin\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span> <span class=\"hljs-attribute\">active</span>&gt;</span>\r\n        Alvin\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>\r\n        Alvin\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>\r\n        Alvin\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection</span>&gt;</span>";
 
 /***/ },
 /* 216 */
@@ -12418,7 +12444,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 218 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://materializecss.com/images/yuna.jpg\"</span> <span class=\"hljs-attribute\">alt</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"secondary-content\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    ...\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle green\"</span>&gt;</span>assessment<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"secondary-content\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"javascript:void(0)\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    ...\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-list-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"images/yuna.jpg\"</span> <span class=\"hljs-attribute\">alt</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"secondary-content\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-list-item</span>&gt;</span>\r\n    ...\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-list-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle green\"</span>&gt;</span>assessment<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"secondary-content\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-list-item</span>&gt;</span>\r\n    ...\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection</span>&gt;</span>";
 
 /***/ },
 /* 219 */
@@ -14706,6 +14732,173 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 346 */,
+/* 347 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-collection",
+		"title": "Collection",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "",
+				"description": "Content of collection items"
+			},
+			{
+				"name": "header",
+				"description": "Header of collection"
+			}
+		],
+		"slots": [],
+		"events": []
+	};
+
+/***/ },
+/* 348 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-collection",
+		"title": "Collection",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "active",
+				"type": "Boolean",
+				"required": false,
+				"description": "Active class flag",
+				"twoWay": false,
+				"default": null
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Content of collection item"
+			},
+			{
+				"name": "secondary-content",
+				"description": "Secondary content of collection item"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 349 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-collection",
+		"title": "Collection",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [],
+		"slots": [
+			{
+				"name": "",
+				"description": "Content of collection items"
+			},
+			{
+				"name": "header",
+				"description": "Header of collection"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 350 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-collection",
+		"title": "Collection",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "active",
+				"type": "Boolean",
+				"required": false,
+				"description": "Active class flag",
+				"twoWay": false,
+				"default": null
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Content of collection item"
+			},
+			{
+				"name": "secondary-content",
+				"description": "Secondary content of collection item"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 351 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collection.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Collection {\r\n\r\n    <span class=\"hljs-keyword\">get</span> headerSlot() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'header'</span> <span class=\"hljs-keyword\">in</span> self._slotContents;\r\n    }\r\n}";
+
+/***/ },
+/* 352 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"collection\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{'with-header': headerSlot}\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"headerSlot\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"collection-header\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
+
+/***/ },
+/* 353 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        active: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collection-item.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CollectionItem {\r\n\r\n    <span class=\"hljs-keyword\">get</span> secondaryContentSlot() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'secondary-content'</span> <span class=\"hljs-keyword\">in</span> self._slotContents;\r\n    }\r\n}";
+
+/***/ },
+/* 354 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-collection-item collection-item\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{active: active}\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"secondaryContentSlot\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>";
+
+/***/ },
+/* 355 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collection-list.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CollectionList {\r\n\r\n    <span class=\"hljs-keyword\">get</span> headerSlot() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'header'</span> <span class=\"hljs-keyword\">in</span> self._slotContents;\r\n    }\r\n}";
+
+/***/ },
+/* 356 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ul</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"collection\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{'with-header': headerSlot}\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"headerSlot\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"collection-header\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"header\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ul</span>&gt;</span>";
+
+/***/ },
+/* 357 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        active: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collection-list-item.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CollectionListItem {\r\n\r\n    <span class=\"hljs-keyword\">get</span> secondaryContentSlot() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'secondary-content'</span> <span class=\"hljs-keyword\">in</span> self._slotContents;\r\n    }\r\n}";
+
+/***/ },
+/* 358 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-collection-item collection-item\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{active: active}\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"secondaryContentSlot\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>";
 
 /***/ }
 /******/ ])

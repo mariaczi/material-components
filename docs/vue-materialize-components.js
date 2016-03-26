@@ -5528,12 +5528,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    title: 'Forms',
 	    component: forms_1['default']
 	}, {
-	    urls: ['/modals', '/modals/:tabs'],
+	    urls: ['/modals', '/modals/:tab'],
 	    link: '/modals',
 	    title: 'Modals',
 	    component: modals_1['default']
 	}, {
-	    urls: ['/media'],
+	    urls: ['/media', '/media/:tab'],
 	    link: '/media',
 	    title: 'Media',
 	    component: media_1['default']
@@ -9339,7 +9339,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var materialbox_1 = __webpack_require__(86);
 	var lean_overlay_1 = __webpack_require__(87);
-	var template = __webpack_require__(89);
 	var ESC = 27;
 	var Image = (function () {
 	    function Image() {}
@@ -9399,28 +9398,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	        props: {
 	            src: {
 	                type: String,
-	                required: true
+	                required: true,
+	                twoWay: false
 	            },
 	            caption: {
 	                type: String,
 	                required: false,
-	                "default": null
+	                "default": null,
+	                twoWay: false
 	            },
 	            height: {
 	                type: String,
 	                required: false,
-	                "default": null
+	                "default": null,
+	                twoWay: false
 	            },
 	            width: {
 	                type: String,
 	                required: false,
-	                "default": null
+	                "default": null,
+	                twoWay: false
 	            }
 	        },
 	        components: {
 	            mdLeanOverlay: lean_overlay_1["default"]
 	        },
-	        template: template
+	        template: __webpack_require__(89)
 	    })], Image);
 	    return Image;
 	})();
@@ -10015,9 +10018,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var VueModule = __webpack_require__(1);
-	var vue = VueModule;
-	var template = __webpack_require__(99);
+	var Vue = __webpack_require__(1);
 	var Slide = (function () {
 	    function Slide() {}
 	    Slide.prototype.compiled = function () {
@@ -10048,18 +10049,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.active = this.position == index;
 	    };
 	    Slide.prototype._setClasses = function (val) {
-	        vue.set(this.classes, 'active', val);
-	        vue.set(this.classes, 'fadeIn', val);
-	        vue.set(this.classes, 'fadeOut', !val);
+	        Vue.set(this.classes, 'active', val);
+	        Vue.set(this.classes, 'fadeIn', val);
+	        Vue.set(this.classes, 'fadeOut', !val);
 	    };
 	    Slide = __decorate([vue_class_component_1["default"]({
 	        props: {
 	            img: {
 	                type: String,
-	                required: true
+	                required: false,
+	                'default': null
 	            },
 	            align: {
 	                type: String,
+	                required: false,
 	                "default": ''
 	            }
 	        },
@@ -10073,7 +10076,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this._setClasses(val);
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(99)
 	    })], Slide);
 	    return Slide;
 	})();
@@ -10100,7 +10103,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(101);
 	var Slider = (function () {
 	    function Slider() {}
 	    Slider.prototype.data = function () {
@@ -10110,17 +10112,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    Slider.prototype.ready = function () {
-	        var self = this;
-	        self.$broadcast('slider::activate', this.activeItem);
+	        this.$broadcast('slider::activate', this.activeItem);
 	        this.interval = this.interval ? this.interval : 4000;
-	        this.itemsCount = self.$children.length;
+	        this.itemsCount = this.$children.length;
 	        this.setupInterval();
 	    };
 	    Slider.prototype.handler = function () {
-	        var self = this;
-	        if (self.$children) {
+	        if (this.$children) {
 	            this.activeItem = (this.activeItem + 1) % this.itemsCount;
-	            self.$broadcast('slider::activate', this.activeItem);
+	            this.$broadcast('slider::activate', this.activeItem);
 	        }
 	    };
 	    Slider.prototype.setupInterval = function () {
@@ -10133,8 +10133,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    Slider.prototype.setActive = function (index) {
-	        var self = this;
-	        self.$broadcast('slider::activate', index);
+	        this.$broadcast('slider::activate', index);
 	        this.activeItem = index;
 	        this.clearInterval();
 	    };
@@ -10146,7 +10145,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                return value > 1000;
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(101)
 	    })], Slider);
 	    return Slider;
 	})();
@@ -15158,22 +15157,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	var snippet_1 = __webpack_require__(122);
 	var images_1 = __webpack_require__(362);
 	var sliders_1 = __webpack_require__(364);
-	var template = __webpack_require__(366);
 	var Media = (function () {
 	    function Media() {}
 	    Media.prototype.data = function () {
 	        return {
-	            imagesSnippet: __webpack_require__(367),
-	            slidesSnippet: __webpack_require__(368)
+	            api: [{
+	                'name': 'Image',
+	                'api': __webpack_require__(409)
+	            }, {
+	                'name': 'Slider',
+	                'api': __webpack_require__(418)
+	            }, {
+	                'name': 'Slide',
+	                'api': __webpack_require__(419)
+	            }],
+	            snippets: {
+	                images: __webpack_require__(366),
+	                slides: __webpack_require__(367)
+	            },
+	            src: [{
+	                name: "Image",
+	                script: __webpack_require__(410),
+	                template: __webpack_require__(411),
+	                style: __webpack_require__(412)
+	            }, {
+	                name: "Slider",
+	                script: __webpack_require__(413),
+	                template: __webpack_require__(414),
+	                style: __webpack_require__(415)
+	            }, {
+	                name: "Slide",
+	                script: __webpack_require__(416),
+	                template: __webpack_require__(417)
+	            }]
 	        };
 	    };
 	    Media = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            docSnippet: snippet_1["default"],
 	            docImages: images_1["default"],
 	            docSliders: sliders_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(368)
 	    })], Media);
 	    return Media;
 	})();
@@ -15257,19 +15282,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 366 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <h2 class=\"header\">Material box</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-images></doc-images>\r\n\r\n        <doc-snippet>{{{imagesSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Slides</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-sliders></doc-sliders>\r\n\r\n        <doc-snippet>{{{slidesSnippet}}}</doc-snippet>\r\n    </div>\r\n</div>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/512/\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"512\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/1024/\"</span>\r\n          <span class=\"hljs-attribute\">caption</span>=<span class=\"hljs-value\">\"A picture ...\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"256\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n";
 
 /***/ },
 /* 367 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/512/\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"512\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-image</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"http://lorempixel.com/512/1024/\"</span>\r\n          <span class=\"hljs-attribute\">caption</span>=<span class=\"hljs-value\">\"A picture ...\"</span>\r\n          <span class=\"hljs-attribute\">width</span>=<span class=\"hljs-value\">\"256\"</span> <span class=\"hljs-attribute\">height</span>=<span class=\"hljs-value\">\"512\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-image</span>&gt;</span>\r\n";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slider</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"/nature/1\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"left\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Lorem ipsum dolor sit ...<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"/nature/2\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"right\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Ut enim ad minim veniam ...<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"/nature/3\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"center\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Duis aute irure dolor in reprehenderit ...<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"/nature/4\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"left\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Excepteur sint occaecat cupidatat .<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slider</span>&gt;</span>";
 
 /***/ },
 /* 368 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slider</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/1\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"left\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/2\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"right\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/3\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"center\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-slide</span> <span class=\"hljs-attribute\">img</span>=<span class=\"hljs-value\">\"http://lorempixel.com/580/250/nature/4\"</span> <span class=\"hljs-attribute\">align</span>=<span class=\"hljs-value\">\"left\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h3</span>&gt;</span>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h3</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slide</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-slider</span>&gt;</span>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/media\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Material box</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-images></doc-images>\r\n\r\n                <doc-snippet>{{{snippets.images}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Slides</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-sliders></doc-sliders>\r\n\r\n                <doc-snippet>{{{snippets.slides}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 369 */
@@ -15884,6 +15909,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var directives_1 = __webpack_require__(8);
 	var DocSources = (function () {
 	    function DocSources() {}
+	    DocSources.prototype.data = function () {
+	        return {
+	            expanded: true
+	        };
+	    };
 	    Object.defineProperty(DocSources.prototype, "sources", {
 	        get: function get() {
 	            if (Array.isArray(this.src)) {
@@ -15894,6 +15924,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
+	    DocSources.prototype.toggle = function () {
+	        if (this.expanded) {
+	            this.close();
+	        } else {
+	            this.open();
+	        }
+	    };
+	    DocSources.prototype.close = function () {
+	        this.$broadcast('collapsible::close');
+	        this.expanded = false;
+	    };
+	    DocSources.prototype.open = function () {
+	        this.$broadcast('collapsible::open');
+	        this.expanded = true;
+	    };
 	    DocSources = __decorate([vue_class_component_1["default"]({
 	        props: {
 	            src: {
@@ -15915,7 +15960,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 404 */
 /***/ function(module, exports) {
 
-	module.exports = "<div :style=\"{float: 'right', margin: sources && sources.length > 1 ? '0.14rem 0 0.912rem 0' : '1.14rem 0 0.912rem 0'}\">\r\n    <md-button type=\"flat\" class=\"waves-effect\"\r\n               @click=\"broadcast('collapsible::close')\">\r\n        Collapse\r\n    </md-button>\r\n    <md-button type=\"flat\" class=\"waves-effect\"\r\n               @click=\"broadcast('collapsible::open')\">\r\n        Expand\r\n    </md-button>\r\n</div>\r\n\r\n<div v-for=\"src in sources\" class=\"doc-sources\">\r\n    <h4 v-if=\"src.name\">\r\n        {{src.name}}\r\n    </h4>\r\n    <div style=\"clear: both\"></div>\r\n    <md-collapsible popout expendable>\r\n        <md-collapsible-item v-if=\"src.template\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>code</md-icon>Template\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.template}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item v-if=\"src.script\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>settings_ethernet</md-icon>Script\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.script}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item v-if=\"src.style\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>style</md-icon>Style\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.style}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n    </md-collapsible>\r\n</div>";
+	module.exports = "<div :style=\"{float: 'right', margin: sources && sources.length > 1 ? '0.14rem 0 0.912rem 0' : '1.14rem 0 0.912rem 0'}\">\r\n    <md-button type=\"flat\" class=\"waves-effect\"\r\n               @click=\"toggle\">\r\n        {{expanded ? 'Collapse' : 'Expand'}}\r\n    </md-button>\r\n</div>\r\n\r\n<div v-for=\"src in sources\" class=\"doc-sources\">\r\n    <h4 v-if=\"src.name\">\r\n        {{src.name}}\r\n    </h4>\r\n    <div style=\"clear: both\"></div>\r\n    <md-collapsible popout expendable>\r\n        <md-collapsible-item v-if=\"src.template\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>code</md-icon>Template\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.template}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item v-if=\"src.script\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>settings_ethernet</md-icon>Script\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.script}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item v-if=\"src.style\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>style</md-icon>Style\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.style}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n    </md-collapsible>\r\n</div>";
 
 /***/ },
 /* 405 */
@@ -15975,6 +16020,172 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 408 */,
+/* 409 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-image",
+		"title": "Image",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "src",
+				"type": "String",
+				"required": true,
+				"description": "Image source",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "caption",
+				"type": "String",
+				"description": "Image caption",
+				"required": false,
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "height",
+				"type": "String",
+				"description": "Image height",
+				"required": false,
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "width",
+				"type": "String",
+				"description": "Image width",
+				"required": false,
+				"twoWay": false,
+				"default": null
+			}
+		],
+		"slots": [],
+		"events": []
+	};
+
+/***/ },
+/* 410 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> MaterialBox from <span class=\"hljs-string\">'../../materialize/materialbox'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdLeanOverlay from <span class=\"hljs-string\">'../lean-overlay'</span>;\r\n\r\n<span class=\"hljs-keyword\">const</span> ESC = <span class=\"hljs-number\">27</span>;\r\n\r\n@Component({\r\n    props: {\r\n        src: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        caption: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        height: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        width: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    components: {\r\n        mdLeanOverlay\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./image.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Image {\r\n    <span class=\"hljs-keyword\">private</span> src: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> materialBox: MaterialBox;\r\n    <span class=\"hljs-keyword\">private</span> originalSizes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> img = self.$els.img;\r\n        <span class=\"hljs-keyword\">var</span> placeholder = self.$els.placeholder;\r\n        <span class=\"hljs-keyword\">this</span>.materialBox = <span class=\"hljs-keyword\">new</span> MaterialBox(img, placeholder);\r\n        <span class=\"hljs-comment\">// Return on ESC</span>\r\n        <span class=\"hljs-built_in\">window</span>.addEventListener(<span class=\"hljs-string\">'keyup'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">e</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (e.keyCode === ESC) {\r\n                self.close();\r\n            }\r\n        });\r\n    }\r\n\r\n    compiled(){\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-comment\">// <span class=\"hljs-doctag\">todo:</span> remove hack webpack img src loading</span>\r\n        self.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.src);\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.close()\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.maximialize();\r\n        }\r\n    }\r\n\r\n    maximialize() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.originalSizes = <span class=\"hljs-keyword\">this</span>.getSizes();\r\n            <span class=\"hljs-keyword\">this</span>.materialBox.maximalize(<span class=\"hljs-keyword\">this</span>.originalSizes);\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.materialBox.close(<span class=\"hljs-keyword\">this</span>.originalSizes);\r\n        }\r\n    }\r\n\r\n     getSizes() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> el: HTMLElement = self.$els.img;\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            width: el.offsetWidth,\r\n            height: el.offsetHeight,\r\n            left: el.offsetLeft,\r\n            top: el.offsetTop\r\n        }\r\n    }\r\n}";
+
+/***/ },
+/* 411 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-image\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-el:placeholder</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-placeholder\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"toggle\"</span> <span class=\"hljs-attribute\">:height</span>=<span class=\"hljs-value\">\"height\"</span> <span class=\"hljs-attribute\">:width</span>=<span class=\"hljs-value\">\"width\"</span>\r\n             <span class=\"hljs-attribute\">v-el:img</span>\r\n             <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"materialboxed\"</span>\r\n             <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{active: active}\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-lean-overlay</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"active\"</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"toggle\"</span> <span class=\"hljs-attribute\">transition</span>=<span class=\"hljs-value\">\"modal-overlay\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-lean-overlay</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"active &amp;&amp; caption\"</span> <span class=\"hljs-attribute\">transition</span>=<span class=\"hljs-value\">\"fade\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"materialbox-caption\"</span> <span class=\"hljs-attribute\">style</span>=<span class=\"hljs-value\">\"display: block\"</span>&gt;</span>\r\n        {{caption}}\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n";
+
+/***/ },
+/* 412 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-class\">.md-image</span> <span class=\"hljs-class\">.materialbox-caption</span> {\r\n  <span class=\"hljs-attribute\">opacity</span><span class=\"hljs-value\">: <span class=\"hljs-number\">1</span>;</span>\r\n  <span class=\"hljs-attribute\">z-index</span><span class=\"hljs-value\">: <span class=\"hljs-number\">1003</span>;</span>\r\n}";
+
+/***/ },
+/* 413 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    interval: {\r\n        <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Number</span>,\r\n        <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-number\">4000</span>,\r\n        validator: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">return</span> value &gt; <span class=\"hljs-number\">1000</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./slider.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Slider {\r\n    <span class=\"hljs-keyword\">private</span> $broadcast: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $children: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> activeItem: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> itemsCount: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> interval: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> intervalHandler: <span class=\"hljs-built_in\">number</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            activeItem: <span class=\"hljs-number\">0</span>,\r\n            itemsCount: <span class=\"hljs-number\">0</span>,\r\n        }\r\n    }\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'slider::activate'</span>, <span class=\"hljs-keyword\">this</span>.activeItem);\r\n\r\n        <span class=\"hljs-keyword\">this</span>.interval = <span class=\"hljs-keyword\">this</span>.interval ? <span class=\"hljs-keyword\">this</span>.interval : <span class=\"hljs-number\">4000</span>;\r\n        <span class=\"hljs-keyword\">this</span>.itemsCount = <span class=\"hljs-keyword\">this</span>.$children.length;\r\n        <span class=\"hljs-keyword\">this</span>.setupInterval();\r\n    }\r\n\r\n    handler() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.$children) {\r\n            <span class=\"hljs-keyword\">this</span>.activeItem = (<span class=\"hljs-keyword\">this</span>.activeItem + <span class=\"hljs-number\">1</span>) % <span class=\"hljs-keyword\">this</span>.itemsCount;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'slider::activate'</span>, <span class=\"hljs-keyword\">this</span>.activeItem);\r\n        }\r\n    }\r\n\r\n    setupInterval() {\r\n        <span class=\"hljs-keyword\">this</span>.intervalHandler = setInterval(<span class=\"hljs-keyword\">this</span>.handler, <span class=\"hljs-keyword\">this</span>.interval);\r\n    }\r\n\r\n    clearInterval() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.intervalHandler) {\r\n            clearInterval(<span class=\"hljs-keyword\">this</span>.intervalHandler);\r\n            <span class=\"hljs-keyword\">this</span>.intervalHandler = <span class=\"hljs-literal\">null</span>;\r\n        }\r\n    }\r\n\r\n    setActive(index) {\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'slider::activate'</span>, index);\r\n        <span class=\"hljs-keyword\">this</span>.activeItem = index;\r\n        <span class=\"hljs-keyword\">this</span>.clearInterval();\r\n    }\r\n\r\n}";
+
+/***/ },
+/* 414 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"slider\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ul</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"slides\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ul</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ul</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"indicators\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">v-for</span>=<span class=\"hljs-value\">\"index in itemsCount\"</span>\r\n            @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"setActive(index)\"</span>\r\n            @<span class=\"hljs-attribute\">mouseover</span>=<span class=\"hljs-value\">\"activeItem == index &amp;&amp; clearInterval(index)\"</span>\r\n            @<span class=\"hljs-attribute\">mouseout</span>=<span class=\"hljs-value\">\"setupInterval(index)\"</span>\r\n            <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{active: activeItem == index}\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"indicator-item\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ul</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
+
+/***/ },
+/* 415 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-class\">.slider</span> {\r\n  <span class=\"hljs-attribute\">height</span><span class=\"hljs-value\">: <span class=\"hljs-number\">440px</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.fadeIn</span>, <span class=\"hljs-class\">.fadeOut</span>, <span class=\"hljs-class\">.caption</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">1s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">1s</span>;</span>\r\n  -webkit-<span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n  <span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.slider</span> <span class=\"hljs-class\">.slides</span> <span class=\"hljs-tag\">li</span><span class=\"hljs-class\">.active</span> <span class=\"hljs-class\">.caption</span> {\r\n  <span class=\"hljs-attribute\">opacity</span><span class=\"hljs-value\">: <span class=\"hljs-number\">1</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.slider</span> <span class=\"hljs-class\">.slides</span> <span class=\"hljs-tag\">li</span><span class=\"hljs-class\">.active</span> <span class=\"hljs-class\">.caption</span><span class=\"hljs-class\">.center-align</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInDown;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInDown;</span>\r\n}\r\n<span class=\"hljs-class\">.slider</span> <span class=\"hljs-class\">.slides</span> <span class=\"hljs-tag\">li</span><span class=\"hljs-class\">.active</span> <span class=\"hljs-class\">.caption</span><span class=\"hljs-class\">.left-align</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInLeft;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInLeft;</span>\r\n}\r\n<span class=\"hljs-class\">.slider</span> <span class=\"hljs-class\">.slides</span> <span class=\"hljs-tag\">li</span><span class=\"hljs-class\">.active</span> <span class=\"hljs-class\">.caption</span><span class=\"hljs-class\">.right-align</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInRight;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInRight;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.slider</span> <span class=\"hljs-class\">.slides</span> <span class=\"hljs-tag\">li</span> <span class=\"hljs-class\">.caption</span><span class=\"hljs-class\">.center-align</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutUp;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutUp;</span>\r\n}\r\n<span class=\"hljs-class\">.slider</span> <span class=\"hljs-class\">.slides</span> <span class=\"hljs-tag\">li</span> <span class=\"hljs-class\">.caption</span><span class=\"hljs-class\">.left-align</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutLeft;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutLeft;</span>\r\n}\r\n<span class=\"hljs-class\">.slider</span> <span class=\"hljs-class\">.slides</span> <span class=\"hljs-tag\">li</span> <span class=\"hljs-class\">.caption</span><span class=\"hljs-class\">.right-align</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutRight;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutRight;</span>\r\n}";
+
+/***/ },
+/* 416 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        img: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        },\r\n        align: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-string\">''</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'slider::activate'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">index</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.setActive(index);\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">val</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>._setClasses(val);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./slide.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Slide {\r\n    <span class=\"hljs-keyword\">private</span> img: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> position: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> classes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-comment\">// <span class=\"hljs-doctag\">todo:</span> remove hack webpack img src loading</span>\r\n        self.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.img);\r\n    }\r\n\r\n    ready () {\r\n        <span class=\"hljs-keyword\">this</span>._setClasses(<span class=\"hljs-keyword\">this</span>.active);\r\n    }\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> position = self.$parent.$children.indexOf(<span class=\"hljs-keyword\">this</span>);\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            position: position,\r\n            classes: {}\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.classes;\r\n    }\r\n\r\n    setActive(index) {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.position == index;\r\n    }\r\n\r\n    _setClasses (val) {\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'active'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeIn'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeOut'</span>, !val);\r\n    }\r\n\r\n}";
+
+/***/ },
+/* 417 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">v-el:img</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"caption\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"align + '-align'\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>";
+
+/***/ },
+/* 418 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-slider",
+		"title": "Slider",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "interval",
+				"type": "Number",
+				"required": false,
+				"description": "Interval between slides",
+				"twoWay": false,
+				"default": 4000
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Slides"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 419 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-slide",
+		"title": "Slide",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "img",
+				"type": "String",
+				"required": false,
+				"description": "Slide image",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "align",
+				"type": "String",
+				"required": false,
+				"description": "String of badge represents new event, string is used as label",
+				"twoWay": false,
+				"default": "\"\""
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Content of slide"
+			}
+		],
+		"events": []
+	};
 
 /***/ }
 /******/ ])

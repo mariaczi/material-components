@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-var template = require('./slider.html');
-
 @Component({
     interval: {
         type: Number,
@@ -10,9 +8,12 @@ var template = require('./slider.html');
             return value > 1000
         }
     },
-    template: template
+    template: require('./slider.html')
 })
 export default class Slider {
+    private $broadcast: any;
+    private $children: any;
+
     private activeItem: number;
     private itemsCount: number;
     private interval: number;
@@ -26,19 +27,17 @@ export default class Slider {
     }
 
     ready() {
-        var self: any = this;
-        self.$broadcast('slider::activate', this.activeItem);
+        this.$broadcast('slider::activate', this.activeItem);
 
         this.interval = this.interval ? this.interval : 4000;
-        this.itemsCount = self.$children.length;
+        this.itemsCount = this.$children.length;
         this.setupInterval();
     }
 
     handler() {
-        var self: any = this;
-        if (self.$children) {
+        if (this.$children) {
             this.activeItem = (this.activeItem + 1) % this.itemsCount;
-            self.$broadcast('slider::activate', this.activeItem);
+            this.$broadcast('slider::activate', this.activeItem);
         }
     }
 
@@ -54,8 +53,7 @@ export default class Slider {
     }
 
     setActive(index) {
-        var self: any = this;
-        self.$broadcast('slider::activate', index);
+        this.$broadcast('slider::activate', index);
         this.activeItem = index;
         this.clearInterval();
     }

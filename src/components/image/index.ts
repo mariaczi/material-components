@@ -2,36 +2,38 @@ import Component from 'vue-class-component';
 import MaterialBox from '../../materialize/materialbox';
 import mdLeanOverlay from '../lean-overlay';
 
-var template = require('./image.html');
-
 const ESC = 27;
 
 @Component({
     props: {
         src: {
             type: String,
-            required: true
+            required: true,
+            twoWay: false
         },
         caption: {
             type: String,
             required: false,
-            "default": null
+            "default": null,
+            twoWay: false
         },
         height: {
             type: String,
             required: false,
-            "default": null
+            "default": null,
+            twoWay: false
         },
         width: {
             type: String,
             required: false,
-            "default": null
+            "default": null,
+            twoWay: false
         }
     },
     components: {
         mdLeanOverlay
     },
-    template: template
+    template: require('./image.html')
 })
 export default class Image {
     private src: string;

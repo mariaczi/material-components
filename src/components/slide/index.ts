@@ -1,17 +1,17 @@
 import Component from 'vue-class-component';
 
-import VueModule = require('vue')
-var vue: any = VueModule;
-var template = require('./slide.html');
+var Vue: any = require('vue');
 
 @Component({
     props: {
         img: {
             type: String,
-            required: true
+            required: false,
+            'default': null
         },
         align: {
             type: String,
+            required: false,
             "default": ''
         }
     },
@@ -25,7 +25,7 @@ var template = require('./slide.html');
             this._setClasses(val);
         }
     },
-    template: template
+    template: require('./slide.html')
 })
 export default class Slide {
     private img: string;
@@ -62,9 +62,9 @@ export default class Slide {
     }
 
     _setClasses (val) {
-        vue.set(this.classes, 'active', val);
-        vue.set(this.classes, 'fadeIn', val);
-        vue.set(this.classes, 'fadeOut', !val);
+        Vue.set(this.classes, 'active', val);
+        Vue.set(this.classes, 'fadeIn', val);
+        Vue.set(this.classes, 'fadeOut', !val);
     }
 
 }

@@ -16,13 +16,41 @@ import directives from '../../directives';
     template: require('./doc-sources.html'),
 })
 export default class DocSources {
-    private src: any;
+    private $broadcast: any;
     
+    private expanded: boolean;
+    private src: any;
+
+    data() {
+        return {
+            expanded: true
+        }
+    }
+
     get sources() {
         if (Array.isArray(this.src)) {
             return this.src;
         }
         
         return [this.src];
+    }
+
+    toggle() {
+        if (this.expanded) {
+            this.close();
+        }
+        else {
+            this.open();
+        }
+    }
+
+    close() {
+        this.$broadcast('collapsible::close');
+        this.expanded = false;
+    }
+
+    open() {
+        this.$broadcast('collapsible::open');
+        this.expanded = true;
     }
 }

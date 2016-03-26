@@ -44,6 +44,7 @@ export default class SelectField {
     private $nextTick: any;
     private $broadcast: any;
     private fireEvent: any;
+    private watchField: any;
 
     private active: boolean;
     private defaultSelect: string;
@@ -61,17 +62,24 @@ export default class SelectField {
         }
     }
 
-    ready() {
+    compiled() {
+        this.watchField((values) => {
+            this.$nextTick(() => {
+                this.value = this.getSelectedValues();
+                this.refreshOptions(values);
+            });
+        });
         var options = this.$getAllChildren().filter((c: any) => {return 'SelectOption' == c.$options.name});
         for (var i = 0; i < options.length; i++) {
             var option = options[i];
             var opt: any = this.createOption(option);
             Vue.set(this.options, opt.value, opt);
         }
-        this.$nextTick(() => {
-            this.value = this.getSelectedValues();
-            this.refreshOptions();
-        })
+    }
+
+    ready() {
+        this.value = this.getSelectedValues();
+        this.refreshOptions(this.value);
     }
 
     createOption(option: any) {
@@ -217,10 +225,15 @@ export default class SelectField {
             });
     }
 
-    refreshOptions() {
-        Array.prototype.slice.call(this.$els.field.selectedOptions)
+    refreshOptions(values) {
+        Array.prototype.slice.call(this.$els.field.options)
             .forEach((o) => {
-                this.$broadcast('option::select', o.value, this.value);
+                if (o.selected) {
+                    this.$broadcast('option::select', o.value, values)
+                }
+                else {
+                    this.$broadcast('option::unselect', o.value, values)
+                }
             });
     }
 }

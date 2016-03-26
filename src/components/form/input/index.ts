@@ -55,10 +55,10 @@ export default class InputField {
     compiled() {
         this.setupDisabled;
         if (!this.value) { // set as prop
-            this.refreshInput();
+            this.refreshValue();
         }
         else {
-            this.refreshValue();
+            this.refreshInput();
         }
     }
 
@@ -86,11 +86,11 @@ export default class InputField {
         return name in this._slotContents;
     }
 
-    refreshInput() {
+    refreshValue() {
         this.value = this.field.value;
     }
 
-    refreshValue() {
+    refreshInput() {
         this.field.value = this.value;
     }
     

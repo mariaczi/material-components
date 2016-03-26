@@ -42,6 +42,7 @@ export default class SelectField {
     private $nextTick: any;
     private $broadcast: any;
     private fireEvent: any;
+    private _slotContents: any;
     private watchField: any;
 
     private active: boolean;

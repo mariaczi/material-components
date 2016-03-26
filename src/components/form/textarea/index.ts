@@ -2,8 +2,6 @@ import Component from 'vue-class-component';
 
 import inputMixin from '../../../mixins/input';
 
-var Velocity = require('velocity-animate');
-
 @Component({
     props: {
         value: {
@@ -40,6 +38,10 @@ var Velocity = require('velocity-animate');
 })
 export default class TextArea {
     private $els: any;
+    private $watch: any;
+    private $nextTick: any;
+    private fireEvent: any;
+    private watchField: any;
     private _slotContents: any;
 
     private value: string;
@@ -52,8 +54,26 @@ export default class TextArea {
         }
     }
 
+    compiled() {
+        this.setupDisabled;
+        if (!this.value) { // set as prop
+            this.refreshValue();
+        }
+        else {
+            this.refreshTextarea();
+        }
+    }
+
     ready() {
-        this.setupDisabled();
+        this.watchField((value) => {
+            this.value = value;
+        });
+        this.$watch('value', (value) => {
+            this.field.value = value;
+            this.$nextTick(() => {
+                this.fireEvent(this.field, 'change');
+            });
+        });
     }
 
     get labelClasses() {
@@ -67,16 +87,12 @@ export default class TextArea {
         return this.value ? this.value.split('\n').length : 0;
     }
 
-    get field() {
+    get field(): HTMLTextAreaElement {
         return this.$els.field;
     }
 
     hasSlot(name = 'default') {
         return name in this._slotContents;
-    }
-
-    setActive(val) {
-        this.active = val;
     }
 
     resize(lines, oldLines) {
@@ -85,9 +101,10 @@ export default class TextArea {
         if (lines < oldLines) {
             this.field.style.height = 'auto';
         }
-        Velocity(this.field, {height: this.field.scrollHeight - paddingVertical}, {
-            duration: 10
-        });
+        this.field.style.height = (this.field.scrollHeight - paddingVertical) + 'px';
+        // Velocity(this.field, {height: this.field.scrollHeight - paddingVertical}, {
+        //     duration: 10
+        // });
     }
 
     delayedResize(lines, oldLines) {
@@ -104,7 +121,7 @@ export default class TextArea {
         this.active = false;
     }
 
-    setupDisabled() {
+    get setupDisabled() { // get has dependency tracking
         if (!this.disabled) {
             this.field.addEventListener('focus', this.activateField);
             this.field.addEventListener('blur', this.deactivateField);
@@ -117,6 +134,14 @@ export default class TextArea {
 
             this.field.setAttribute('disabled', 'disabled');
         }
+        return null;
     }
 
+    refreshTextarea() {
+        this.field.value = this.value;
+    }
+
+    refreshValue() {
+        this.value = this.field.value;
+    }
 }

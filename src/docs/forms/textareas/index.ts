@@ -4,14 +4,11 @@ import mdTextarea from '../../../components/form/textarea';
 
 import field from '../../../directives/field';
 
-var template = require('./textarea.html');
-
 var eolToBr = function (input) {
     return input.replace(/\n/g, '<br>');
 };
 
 @Component({
-    template: template,
     directives: {
         field
     },
@@ -20,9 +17,10 @@ var eolToBr = function (input) {
     },
     filters: {
         eolToBr
-    }
+    },
+    template: require('./textarea.html')
 })
-export default class Textarea {
+export default class Textareas {
 
     data() {
         return {

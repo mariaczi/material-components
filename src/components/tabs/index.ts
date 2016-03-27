@@ -10,6 +10,11 @@ var template = require('./tabs.html');
             'default': null
         }
     },
+    watch: {
+        active: function (value) {
+            this.$broadcast('tab::select', value);
+        }
+    },
     events: {
         'tabs::on-select': function (tab) {
             this.select(tab);
@@ -30,12 +35,6 @@ export default class Tabs {
                 left: '0',
                 right: '0'
             }
-        }
-    }
-
-    ready() {
-        if (this.active) {
-            this.$broadcast('tab::select', this.active)
         }
     }
 

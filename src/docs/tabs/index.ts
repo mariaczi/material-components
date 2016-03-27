@@ -17,8 +17,10 @@ var template = require('./tabs.html');
 export default class Tabs {
     data() {
         return {
-            defaultTabsSnippet: require('./default/default.snippet.html'),
-            docScrollableTabsSnippet: require('./scrollable/scrollable.snippet.html')
+            snippets: {
+                defaultTabs: require('./default/default.snippet.html'),
+                docScrollableTabs: require('./scrollable/scrollable.snippet.html')
+            }
         }
     }
 }

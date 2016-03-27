@@ -2,4 +2,11 @@
   input.select-dropdown {
     color: black;
   }
+
+  .select-wrapper {
+    .select-dropdown {
+      top: 0 !important;
+      left: 0 !important;
+    }
+  }
 }

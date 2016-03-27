@@ -2347,6 +2347,10 @@ nav span.badge.new .new {
 .md-select input.select-dropdown {
   color: black; }
 
+.md-select .select-wrapper .select-dropdown {
+  top: 0 !important;
+  left: 0 !important; }
+
 .md-textarea textarea.materialize-textarea {
   overflow: hidden;
   margin-top: 1.6rem;

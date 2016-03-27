@@ -10318,7 +10318,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(106);
 	var Tab = (function () {
 	    function Tab() {}
 	    Object.defineProperty(Tab.prototype, "computedClasses", {
@@ -10330,8 +10329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    Object.defineProperty(Tab.prototype, "index", {
 	        get: function get() {
-	            var self = this;
-	            return self.$parent.$children.indexOf(this);
+	            return this.$parent.$children.indexOf(this);
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -10348,10 +10346,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Tab.prototype.ready = function () {
-	        var self = this;
 	        var hash = window.location.hash;
-	        var el = self.$el;
-	        var anchors = el.getElementsByTagName("a");
+	        var el = this.$el;
+	        var anchors = el.getElementsByTagName("A");
 	        for (var i = 0; i < anchors.length; i++) {
 	            var a = anchors[i];
 	            if (hash == a.getAttribute("href")) {
@@ -10361,8 +10358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    Tab.prototype.setAsSelected = function () {
 	        if (!this.disabled) {
-	            var self = this;
-	            self.$dispatch('tabs::on-select', this);
+	            this.$dispatch('tabs::on-select', this);
 	        }
 	    };
 	    Tab.prototype.select = function (id) {
@@ -10375,12 +10371,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            disabled: {
 	                type: Boolean,
 	                required: false,
-	                "default": false
+	                "default": false,
+	                twoWay: false
 	            },
 	            name: {
 	                type: String,
 	                required: false,
-	                "default": null
+	                "default": null,
+	                twoWay: false
 	            }
 	        },
 	        events: {
@@ -10388,7 +10386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.select(id);
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(106)
 	    })], Tab);
 	    return Tab;
 	})();
@@ -10416,7 +10414,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var Velocity = __webpack_require__(20);
-	var template = __webpack_require__(108);
 	var Tabs = (function () {
 	    function Tabs() {}
 	    Tabs.prototype.data = function () {
@@ -10439,11 +10436,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var indicator = self.$els.indicator;
 	        // Update indicator
 	        if (newLeft - left >= 0) {
-	            Velocity(indicator, { "right": newRight }, { duration: 300, queue: false, easing: 'easeOutQuad' });
-	            Velocity(indicator, { "left": newLeft }, { duration: 300, queue: false, easing: 'easeOutQuad', delay: 90 });
+	            Velocity(indicator, { right: newRight }, { duration: 300, queue: false, easing: 'easeOutQuad' });
+	            Velocity(indicator, { left: newLeft }, { duration: 300, queue: false, easing: 'easeOutQuad', delay: 90 });
 	        } else {
-	            Velocity(indicator, { "left": newLeft }, { duration: 300, queue: false, easing: 'easeOutQuad' });
-	            Velocity(indicator, { "right": newRight }, { duration: 300, queue: false, easing: 'easeOutQuad', delay: 90 });
+	            Velocity(indicator, { left: newLeft }, { duration: 300, queue: false, easing: 'easeOutQuad' });
+	            Velocity(indicator, { right: newRight }, { duration: 300, queue: false, easing: 'easeOutQuad', delay: 90 });
 	        }
 	    };
 	    Tabs = __decorate([vue_class_component_1["default"]({
@@ -10461,10 +10458,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        events: {
 	            'tabs::on-select': function tabsOnSelect(tab) {
 	                this.select(tab);
-	                return true;
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(108)
 	    })], Tabs);
 	    return Tabs;
 	})();
@@ -15897,10 +15893,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function Tabs() {}
 	    Tabs.prototype.data = function () {
 	        return {
+	            api: [{
+	                name: 'Tabs',
+	                api: __webpack_require__(437)
+	            }, {
+	                name: 'Tab',
+	                api: __webpack_require__(438)
+	            }],
 	            snippets: {
 	                defaultTabs: __webpack_require__(399),
 	                docScrollableTabs: __webpack_require__(400)
-	            }
+	            },
+	            src: [{
+	                name: 'Tabs',
+	                script: __webpack_require__(433),
+	                template: __webpack_require__(434)
+	            }, {
+	                name: 'Tab',
+	                script: __webpack_require__(435),
+	                template: __webpack_require__(436)
+	            }]
 	        };
 	    };
 	    Tabs = __decorate([vue_class_component_1["default"]({
@@ -15997,7 +16009,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 398 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/tabs\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Tabs</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-tabs></doc-default-tabs>\r\n\r\n                <doc-snippet>{{{snippets.defaultTabs}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Scrollable</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-scrollable-tabs></doc-scrollable-tabs>\r\n\r\n                <doc-snippet>{{{snippets.docScrollableTabs}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <!--<doc-api :api=\"api\"></doc-api>-->\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <!--<doc-sources :src=\"src\"></doc-sources>-->\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/tabs\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Tabs</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-tabs></doc-default-tabs>\r\n\r\n                <doc-snippet>{{{snippets.defaultTabs}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Scrollable</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-scrollable-tabs></doc-scrollable-tabs>\r\n\r\n                <doc-snippet>{{{snippets.docScrollableTabs}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 399 */
@@ -16587,6 +16599,103 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 432 */,
+/* 433 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Velocity = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'velocity-animate'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        active: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'tab::select'</span>, value);\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'tabs::on-select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">tab</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.select(tab);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./tabs.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Tabs {\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> indicator: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            indicator: {\r\n                left: <span class=\"hljs-string\">'0'</span>,\r\n                right: <span class=\"hljs-string\">'0'</span>\r\n            }\r\n        }\r\n    }\r\n\r\n    select(tab) {\r\n        <span class=\"hljs-keyword\">this</span>.active = tab.id;\r\n        <span class=\"hljs-keyword\">var</span> target = tab.$el;\r\n        <span class=\"hljs-keyword\">var</span> parent = target.parentElement;\r\n        <span class=\"hljs-keyword\">this</span>.moveIndicator(\r\n            <span class=\"hljs-keyword\">this</span>.indicator.left, target.offsetLeft,\r\n            <span class=\"hljs-keyword\">this</span>.indicator.right, parent.offsetWidth - target.offsetLeft - target.offsetWidth);\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n    }\r\n\r\n    moveIndicator(left, newLeft, right, newRight) {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> indicator = self.$els.indicator;\r\n        <span class=\"hljs-comment\">// Update indicator</span>\r\n        <span class=\"hljs-keyword\">if</span> ((newLeft - left) &gt;= <span class=\"hljs-number\">0</span>) {\r\n            Velocity(indicator, \r\n                {right: newRight}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>}\r\n            );\r\n            Velocity(indicator, \r\n                {left: newLeft}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>, delay: <span class=\"hljs-number\">90</span>}\r\n            );\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            Velocity(indicator, \r\n                {left: newLeft}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>});\r\n            Velocity(indicator, \r\n                {right: newRight}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>, delay: <span class=\"hljs-number\">90</span>});\r\n        }\r\n    }\r\n}";
+
+/***/ },
+/* 434 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-tabs\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ul</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"tabs\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-el:indicator</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"indicator\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ul</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"contents\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n";
+
+/***/ },
+/* 435 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        disabled: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        name: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'tab::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.select(id);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./tab.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Tab {\r\n    <span class=\"hljs-keyword\">private</span> $el: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $parent: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $dispatch: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> disabled: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> name: <span class=\"hljs-built_in\">string</span>;\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.disabled ? [<span class=\"hljs-string\">'disabled'</span>] : [];\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> index() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$parent.$children.indexOf(<span class=\"hljs-keyword\">this</span>);\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> id() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.name) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.name;\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.index;\r\n        }\r\n    }\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">var</span> hash = <span class=\"hljs-built_in\">window</span>.location.hash;\r\n        <span class=\"hljs-keyword\">var</span> el: HTMLElement = <span class=\"hljs-keyword\">this</span>.$el;\r\n        <span class=\"hljs-keyword\">var</span> anchors = el.getElementsByTagName(<span class=\"hljs-string\">\"A\"</span>);\r\n        <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">var</span> i = <span class=\"hljs-number\">0</span>; i &lt; anchors.length; i++) {\r\n            <span class=\"hljs-keyword\">var</span> a = anchors[i];\r\n            <span class=\"hljs-keyword\">if</span> (hash == a.getAttribute(<span class=\"hljs-string\">\"href\"</span>)) {\r\n                <span class=\"hljs-keyword\">this</span>.setAsSelected();\r\n            }\r\n        }\r\n    }\r\n\r\n    setAsSelected() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.disabled) {\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'tabs::on-select'</span>, <span class=\"hljs-keyword\">this</span>);\r\n        }\r\n    }\r\n\r\n    select(id) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.id == id) {\r\n            <span class=\"hljs-keyword\">this</span>.setAsSelected();\r\n        }\r\n    }\r\n}";
+
+/***/ },
+/* 436 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"setAsSelected\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"tab col\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>";
+
+/***/ },
+/* 437 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-tabs",
+		"title": "Tabs",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "alert",
+				"type": "String",
+				"required": false,
+				"description": "String of badge represents new event, string is used as label",
+				"twoWay": false,
+				"default": null
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Tabs"
+			},
+			{
+				"name": "contents",
+				"description": "Contents rendered in tabs wrapper"
+			}
+		],
+		"events": []
+	};
+
+/***/ },
+/* 438 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-tab",
+		"title": "Tab",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"active": "name",
+				"type": "String",
+				"required": false,
+				"description": "Name of tab used as id",
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"active": "disabled",
+				"type": "Boolean",
+				"required": false,
+				"description": "Disable tab",
+				"twoWay": false,
+				"default": null
+			}
+		],
+		"slots": [
+			{
+				"name": "",
+				"description": "Tab content"
+			}
+		],
+		"events": []
+	};
 
 /***/ }
 /******/ ])

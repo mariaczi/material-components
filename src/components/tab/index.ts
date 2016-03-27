@@ -1,18 +1,18 @@
 import Component from 'vue-class-component';
 
-var template = require('./tab.html');
-
 @Component({
     props: {
         disabled: {
             type: Boolean,
             required: false,
-            "default": false
+            "default": false,
+            twoWay: false
         },
         name: {
             type: String,
             required: false,
-            "default": null
+            "default": null,
+            twoWay: false
         }
     },
     events: {
@@ -20,9 +20,13 @@ var template = require('./tab.html');
             this.select(id);
         }
     },
-    template: template
+    template: require('./tab.html')
 })
 export default class Tab {
+    private $el: any;
+    private $parent: any;
+    private $dispatch: any;
+
     private disabled: boolean;
     private name: string;
 
@@ -31,8 +35,7 @@ export default class Tab {
     }
 
     get index() {
-        var self: any = this;
-        return self.$parent.$children.indexOf(this);
+        return this.$parent.$children.indexOf(this);
     }
 
     get id() {
@@ -45,10 +48,9 @@ export default class Tab {
     }
 
     ready() {
-        var self: any = this;
         var hash = window.location.hash;
-        var el: HTMLElement = self.$el;
-        var anchors = el.getElementsByTagName("a");
+        var el: HTMLElement = this.$el;
+        var anchors = el.getElementsByTagName("A");
         for (var i = 0; i < anchors.length; i++) {
             var a = anchors[i];
             if (hash == a.getAttribute("href")) {
@@ -59,8 +61,7 @@ export default class Tab {
 
     setAsSelected() {
         if (!this.disabled) {
-            var self: any = this;
-            self.$dispatch('tabs::on-select', this);
+            this.$dispatch('tabs::on-select', this);
         }
     }
 

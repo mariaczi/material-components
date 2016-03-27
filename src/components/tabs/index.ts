@@ -1,7 +1,6 @@
 import Component from 'vue-class-component';
 
 var Velocity = require('velocity-animate');
-var template = require('./tabs.html');
 
 @Component({
     props: {
@@ -18,14 +17,11 @@ var template = require('./tabs.html');
     events: {
         'tabs::on-select': function (tab) {
             this.select(tab);
-            return true;
         }
     },
-    template: template
+    template: require('./tabs.html')
 })
 export default class Tabs {
-    private $broadcast: any;
-    
     private active: any;
     private indicator: any;
 
@@ -53,12 +49,22 @@ export default class Tabs {
         var indicator = self.$els.indicator;
         // Update indicator
         if ((newLeft - left) >= 0) {
-            Velocity(indicator, {"right": newRight}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-            Velocity(indicator, {"left": newLeft}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+            Velocity(indicator, 
+                {right: newRight}, 
+                {duration: 300, queue: false, easing: 'easeOutQuad'}
+            );
+            Velocity(indicator, 
+                {left: newLeft}, 
+                {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90}
+            );
         }
         else {
-            Velocity(indicator, {"left": newLeft}, { duration: 300, queue: false, easing: 'easeOutQuad'});
-            Velocity(indicator, {"right": newRight}, {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
+            Velocity(indicator, 
+                {left: newLeft}, 
+                {duration: 300, queue: false, easing: 'easeOutQuad'});
+            Velocity(indicator, 
+                {right: newRight}, 
+                {duration: 300, queue: false, easing: 'easeOutQuad', delay: 90});
         }
     }
 }

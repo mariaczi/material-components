@@ -3,27 +3,47 @@ import docLinearDeterminate from './linear-determinate';
 import docLinearIndeterminate from './linear-indeterminate';
 import docCircular from './circular';
 import docFlashing from './flashing';
-import docSnippet from '../snippet';
-
-var template = require('./preloaders.html');
 
 @Component({
-    template: template,
     components: {
         docLinearDeterminate,
         docLinearIndeterminate,
         docCircular,
-        docFlashing,
-        docSnippet
-    }
+        docFlashing
+    },
+    template: require('./preloaders.html')
 })
 export default class Preloaders {
     data() {
         return {
-            linearDeterminateSnippet: require('./linear-determinate/linear-determinate.snippet.html'),
-            linearIndeterminateSnippet: require('./linear-indeterminate/linear-indeterminate.snippet.html'),
-            circularSnippet: require('./circular/circular.snippet.html'),
-            flashingSnippet: require('./flashing/flashing.snippet.html')
+            api: [
+                {
+                    name: "Linear preloader",
+                    api: require('../../components/linear-preloader/linear-preloader-api.json')
+                },
+                {
+                    name: "Circular preloader",
+                    api: require('../../components/circural-preloader/circular-preloader-api.json')
+                }
+            ],
+            snippets: {
+                linearDeterminate: require('./linear-determinate/linear-determinate.snippet.html'),
+                linearIndeterminate: require('./linear-indeterminate/linear-indeterminate.snippet.html'),
+                circular: require('./circular/circular.snippet.html'),
+                flashing: require('./flashing/flashing.snippet.html')
+            },
+            src: [
+                {
+                    name: "Linear preloader",
+                    script: require("!!html!highlightjs?lang=ts!../../components/linear-preloader/index.ts"),
+                    template: require('!!html!highlightjs?lang=html!../../components/linear-preloader/linear-preloader.html')
+                },
+                {
+                    name: "Circular preloader",
+                    script: require("!!html!highlightjs?lang=ts!../../components/circural-preloader/index.ts"),
+                    template: require('!!html!highlightjs?lang=html!../../components/circural-preloader/circular-preloader.html')
+                }
+            ]
         }
     }
 }

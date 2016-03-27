@@ -1,15 +1,15 @@
 import Component from 'vue-class-component';
 
-var template = require('./linear-preloader.html');
-
 @Component({
     props: {
         value: {
+            type: Number,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         }
     },
-    template: template
+    template: require('./linear-preloader.html')
 })
 export default class LinearPreloader {
     private value: number;

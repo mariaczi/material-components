@@ -5553,8 +5553,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    title: 'Pagination',
 	    component: paginations_1['default']
 	}, {
-	    urls: ['/preloaders'],
-	    link: '/preloaders',
+	    urls: ['/preloaders', '/preloaders/:tab'],
+	    link: '/preloaders/showcase',
 	    title: 'Preloaders',
 	    component: preloaders_1['default']
 	}];
@@ -7747,7 +7747,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(46);
 	var CircularPreloader = (function () {
 	    function CircularPreloader() {}
 	    CircularPreloader = __decorate([vue_class_component_1["default"]({
@@ -7755,20 +7754,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	            size: {
 	                type: String,
 	                required: false,
-	                'default': ''
+	                'default': null,
+	                twoWay: false
 	            },
 	            color: {
 	                type: String,
 	                required: false,
-	                'default': ''
+	                'default': null,
+	                twoWay: false
 	            },
 	            flashing: {
 	                type: Boolean,
 	                required: false,
-	                'default': false
+	                'default': false,
+	                twoWay: false
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(46)
 	    })], CircularPreloader);
 	    return CircularPreloader;
 	})();
@@ -9693,7 +9695,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(92);
 	var LinearPreloader = (function () {
 	    function LinearPreloader() {}
 	    Object.defineProperty(LinearPreloader.prototype, "computedStyle", {
@@ -9711,11 +9712,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    LinearPreloader = __decorate([vue_class_component_1["default"]({
 	        props: {
 	            value: {
+	                type: Number,
 	                required: false,
-	                'default': null
+	                'default': null,
+	                twoWay: false
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(92)
 	    })], LinearPreloader);
 	    return LinearPreloader;
 	})();
@@ -16306,27 +16309,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	var linear_indeterminate_1 = __webpack_require__(418);
 	var circular_1 = __webpack_require__(420);
 	var flashing_1 = __webpack_require__(422);
-	var snippet_1 = __webpack_require__(123);
-	var template = __webpack_require__(424);
 	var Preloaders = (function () {
 	    function Preloaders() {}
 	    Preloaders.prototype.data = function () {
 	        return {
-	            linearDeterminateSnippet: __webpack_require__(425),
-	            linearIndeterminateSnippet: __webpack_require__(426),
-	            circularSnippet: __webpack_require__(427),
-	            flashingSnippet: __webpack_require__(428)
+	            api: [{
+	                name: "Linear preloader",
+	                api: __webpack_require__(442)
+	            }, {
+	                name: "Circular preloader",
+	                api: __webpack_require__(443)
+	            }],
+	            snippets: {
+	                linearDeterminate: __webpack_require__(425),
+	                linearIndeterminate: __webpack_require__(426),
+	                circular: __webpack_require__(427),
+	                flashing: __webpack_require__(428)
+	            },
+	            src: [{
+	                name: "Linear preloader",
+	                script: __webpack_require__(444),
+	                template: __webpack_require__(445)
+	            }, {
+	                name: "Circular preloader",
+	                script: __webpack_require__(446),
+	                template: __webpack_require__(447)
+	            }]
 	        };
 	    };
 	    Preloaders = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            docLinearDeterminate: linear_determinate_1["default"],
 	            docLinearIndeterminate: linear_indeterminate_1["default"],
 	            docCircular: circular_1["default"],
-	            docFlashing: flashing_1["default"],
-	            docSnippet: snippet_1["default"]
-	        }
+	            docFlashing: flashing_1["default"]
+	        },
+	        template: __webpack_require__(424)
 	    })], Preloaders);
 	    return Preloaders;
 	})();
@@ -16351,6 +16369,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var linear_preloader_1 = __webpack_require__(91);
 	var LinearDeterminatePreloader = (function () {
 	    function LinearDeterminatePreloader() {}
+	    LinearDeterminatePreloader.prototype.data = function () {
+	        return {
+	            value: 70
+	        };
+	    };
 	    LinearDeterminatePreloader = __decorate([vue_class_component_1["default"]({
 	        template: template,
 	        components: {
@@ -16367,7 +16390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 417 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-linear-preloader value=\"70\"></md-linear-preloader>";
+	module.exports = "<div class=\"row demo\">\r\n    Value: {{value}}\r\n\r\n    <input v-model=\"value\" type=range min=0 max=100 step=1>\r\n</div>\r\n<div class=\"row\">\r\n\r\n    <md-linear-preloader :value=\"value\"></md-linear-preloader>\r\n</div>\r\n\r\n";
 
 /***/ },
 /* 418 */
@@ -16478,13 +16501,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 424 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-cloak>\r\n    <h1>Linear</h1>\r\n\r\n    <h2 class=\"header\">Determinate</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-linear-determinate></doc-linear-determinate>\r\n\r\n        <doc-snippet>{{{linearDeterminateSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Indeterminate</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-linear-indeterminate></doc-linear-indeterminate>\r\n\r\n        <doc-snippet>{{{linearIndeterminateSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Circular</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-circular></doc-circular>\r\n\r\n        <doc-snippet>{{{circularSnippet}}}</doc-snippet>\r\n    </div>\r\n\r\n    <h2 class=\"header\">Flashing</h2>\r\n    <div class=\"doc-example\">\r\n        <doc-flashing></doc-flashing>\r\n\r\n        <doc-snippet>{{{flashingSnippet}}}</doc-snippet>\r\n    </div>\r\n</div>";
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/preloaders\">\r\n        <div slot=\"showcase\">\r\n            <h1>Linear</h1>\r\n\r\n            <h2 class=\"header\">Determinate</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-linear-determinate></doc-linear-determinate>\r\n\r\n                <doc-snippet>{{{snippets.linearDeterminate}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Indeterminate</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-linear-indeterminate></doc-linear-indeterminate>\r\n\r\n                <doc-snippet>{{{snippets.linearIndeterminate}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Circular</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-circular></doc-circular>\r\n\r\n                <doc-snippet>{{{snippets.circular}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Flashing</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-flashing></doc-flashing>\r\n\r\n                <doc-snippet>{{{snippets.flashing}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 425 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-linear-preloader</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"70\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-linear-preloader</span>&gt;</span>";
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-linear-preloader</span> <span class=\"hljs-attribute\">:value</span>=<span class=\"hljs-value\">\"value\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-linear-preloader</span>&gt;</span>";
 
 /***/ },
 /* 426 */
@@ -16780,6 +16803,97 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 441 */,
+/* 442 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-linear-preloader",
+		"title": "Linear preloader",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "value",
+				"type": "Number",
+				"required": false,
+				"description": "Percents of progress. Default null is indeterminate",
+				"twoWay": false,
+				"default": null
+			}
+		],
+		"slots": [],
+		"events": []
+	};
+
+/***/ },
+/* 443 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "md-circular-preloader",
+		"title": "Circular preloader",
+		"description": "",
+		"browserSupport": {
+			"browsers": []
+		},
+		"properties": [
+			{
+				"name": "size",
+				"type": "String",
+				"description": "Value small, medium or large for size setting",
+				"required": false,
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "color",
+				"type": "String",
+				"description": "Value red, blue or green for color setting",
+				"required": false,
+				"twoWay": false,
+				"default": null
+			},
+			{
+				"name": "flashing",
+				"type": "Boolean",
+				"description": "True for flashing mode",
+				"required": false,
+				"default": false,
+				"twoWay": false
+			}
+		],
+		"slots": [],
+		"events": []
+	};
+
+/***/ },
+/* 444 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        value: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Number</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./linear-preloader.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> LinearPreloader {\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">number</span>;\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedStyle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value != <span class=\"hljs-literal\">null</span>) {\r\n            <span class=\"hljs-keyword\">return</span> {\r\n                width: <span class=\"hljs-keyword\">this</span>.value + <span class=\"hljs-string\">'%'</span>\r\n            }\r\n        }\r\n\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">null</span>;\r\n    }\r\n}";
+
+/***/ },
+/* 445 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"progress\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{determinate: value != null, indeterminate: value == null}\"</span> <span class=\"hljs-attribute\">:style</span>=<span class=\"hljs-value\">\"computedStyle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
+
+/***/ },
+/* 446 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        size: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        color: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        flashing: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./circular-preloader.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CircularPreloader {\r\n    \r\n}";
+
+/***/ },
+/* 447 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"preloader-wrapper active\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"size\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"!flashing\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"spinner-layer\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"'spinner-' + color + '-only'\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper left\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"gap-patch\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper right\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n\r\n    <span class=\"hljs-comment\">&lt;!-- flashing --&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"flashing\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"spinner-layer spinner-blue\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper left\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"gap-patch\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper right\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"flashing\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"spinner-layer spinner-red\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper left\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"gap-patch\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper right\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"flashing\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"spinner-layer spinner-yellow\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper left\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"gap-patch\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper right\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"flashing\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"spinner-layer spinner-green\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper left\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"gap-patch\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle-clipper right\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
 
 /***/ }
 /******/ ])

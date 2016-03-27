@@ -1,26 +1,27 @@
 import Component from 'vue-class-component';
 
-var template = require('./circular-preloader.html');
-
 @Component({
     props: {
         size: {
             type: String,
             required: false,
-            'default': ''
+            'default': null,
+            twoWay: false
         },
         color: {
             type: String,
             required: false,
-            'default': ''
+            'default': null,
+            twoWay: false
         },
         flashing: {
             type: Boolean,
             required: false,
-            'default': false
-        },
+            'default': false,
+            twoWay: false
+        }
     },
-    template: template
+    template: require('./circular-preloader.html')
 })
 export default class CircularPreloader {
     

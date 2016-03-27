@@ -11,5 +11,10 @@ import mdLinearPreloader from '../../../components/linear-preloader';
     }
 })
 export default class LinearDeterminatePreloader {
+    data() {
+        return {
+            value: 70
+        }
+    }
 }
 

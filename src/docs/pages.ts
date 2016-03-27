@@ -121,8 +121,8 @@ const docsPages: [Route] = [
         component: docPagination
     },
     {
-        urls: ['/preloaders'],
-        link: '/preloaders',
+        urls: ['/preloaders', '/preloaders/:tab'],
+        link: '/preloaders/showcase',
         title: 'Preloaders',
         component: docsPreloaders
     }

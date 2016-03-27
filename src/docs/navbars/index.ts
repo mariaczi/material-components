@@ -10,12 +10,8 @@ import docNavbarIconLinks from './icon-links';
 import docNavbarButtons from './buttons';
 import docNavbarSearch from './search';
 import docNavbarMobileCollapse from './mobile-collapse';
-import docSnippet from '../snippet';
-
-var template = require('./navbars.html');
 
 @Component({
-    template: template,
     components: {
         docNavbarLeft,
         docNavbarRight,
@@ -26,23 +22,39 @@ var template = require('./navbars.html');
         docNavbarIconLinks,
         docNavbarButtons,
         docNavbarSearch,
-        docNavbarMobileCollapse,
-        docSnippet
-    }
+        docNavbarMobileCollapse
+    },
+    template: require('./navbars.html')
 })
 export default class Navbars {
     data() {
         return {
-            navbarRightSnippet: require('./right-align/navbars.snippet.html'),
-            navbarLeftSnippet: require('./left-align/navbars.snippet.html'),
-            navbarCenterSnippet: require('./center-align/navbars.snippet.html'),
-            navbarActiveItemsSnippet: require('./active-items/navbars.snippet.html'),
-            navbarFixedSnippet: require('./fixed/navbars.snippet.html'),
-            navbarDropdownSnippet: require('./dropdown/navbars.snippet.html'),
-            navbarIconLinksSnippet: require('./icon-links/navbars.snippet.html'),
-            navbarButtonsSnippet: require('./icon-links/navbars.snippet.html'),
-            navbarSearchSnippet: require('./search/navbars.snippet.html'),
-            navbarMobileCollapseSnippet: require('./search/navbars.snippet.html')
+            api: [
+                {
+                    name: "Navbar",
+                    api: require('../../components/navbar/navbar-api.json')
+                }
+            ],
+            snippets: {
+                navbarRight: require('./right-align/navbars.snippet.html'),
+                navbarLeft: require('./left-align/navbars.snippet.html'),
+                navbarCenter: require('./center-align/navbars.snippet.html'),
+                navbarActiveItems: require('./active-items/navbars.snippet.html'),
+                navbarFixed: require('./fixed/navbars.snippet.html'),
+                navbarDropdown: require('./dropdown/navbars.snippet.html'),
+                navbarIconLinks: require('./icon-links/navbars.snippet.html'),
+                navbarButtons: require('./icon-links/navbars.snippet.html'),
+                navbarSearch: require('./search/navbars.snippet.html'),
+                navbarMobileCollapse: require('./search/navbars.snippet.html')
+            },
+            src: [
+                {
+                    name: "Navbar",
+                    script: require("!!html!highlightjs?lang=ts!../../components/navbar/index.ts"),
+                    template: require('!!html!highlightjs?lang=html!../../components/navbar/navbar.html'),
+                    style: require('!!html!highlightjs?lang=scss!../../components/navbar/navbar.scss')
+                }
+            ]
         }
     }
 }

@@ -3,63 +3,67 @@ import Component from 'vue-class-component';
 import mdIcon from '../icon';
 import mdSidenav from '../sidenav';
 
-var template = require('./navbar.html');
-
-const DEFAULT_CLASSES = ["hide-on-med-and-down"];
-
 @Component({
     props: {
+        active: {
+            type: String,
+            required: false,
+            'default': null
+        },
+        showActive: {
+            type: Boolean,
+            required: false,
+            'default': null
+        },
         title: {
             type: String,
             required: false,
-            "default": ""
+            'default': ''
         },
-        classes: {
-            type: Array,
+        titleHref: {
+            type: String,
             required: false,
-            "default": function () {
-                return [];
-            }
+            'default': 'javascript:void(0)'
         },
         right: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false
         },
         left: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false
         },
         center: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false
         },
         fixed: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false
         },
-        bgColor: {
+        colorClass: {
             type: String,
             required: false,
-            "default": ""
+            'default': null
         },
         hamburger: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false
         },
         closeOnClick: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': true
         },
         onlySideNav: {
             type: Boolean,
             required: false,
-            "default": false
+            'default': false
         }
     },
     components: {
@@ -67,62 +71,44 @@ const DEFAULT_CLASSES = ["hide-on-med-and-down"];
         mdSidenav
     },
     events: {
-        'nav-item::clicked': function () {
+        'nav-item::activated': function (id, content) {
             if (this.closeOnClick) {
                 this.$broadcast('sidenav::close');
             }
+            // propagate event to children
+            this.$broadcast('nav-item::activated', id);
+            this.active = id;
         }
     },
-    template: template
+    template: require('./navbar.html')
 })
 export default class Navbar {
-    private classes: string[];
+    private $broadcast: any;
+
     private right: boolean;
     private left: boolean;
     private center: boolean;
-    private fixed: boolean;
 
     get logoClasses() {
-        var classes: string[] = [];
-
-        if (this.center) {
-            classes.push("center")
-        }
-        else {
-            if (!this.right) {
-                classes.push("right");
-            }
-            if (!this.left) {
-                classes.push("left");
-            }            
-        }
-
-        return classes;
+        return {
+            center: this.center,
+            right: !this.center && !this.right,
+            left: !this.center && !this.left
+        };
     }
 
     get listClasses() {
-        var classes: string[] = [];
-        if (this.classes && this.classes.length == 0) {
-            classes = classes.concat(DEFAULT_CLASSES);
-        }
-        
-        if (this.right) {
-            classes.push("right");
-        }
-        if (this.left) {
-            classes.push("left");
-        }
-        
-        return classes;
+        return {
+            right: this.right,
+            left: this.left
+        };
     }
     
     openSideMenu() {
-        var self: any = this;
-        self.$broadcast('sidenav::open');
+        this.$broadcast('sidenav::open');
     }
 
     closeSideMenu() {
-        var self: any = this;
-        self.$broadcast('sidenav::close');
+        this.$broadcast('sidenav::close');
     }
 }

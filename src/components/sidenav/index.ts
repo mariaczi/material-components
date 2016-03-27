@@ -8,12 +8,22 @@ const ESC = 27;
 
 @Component({
     props: {
+        name: {
+            type: String,
+            required: false,
+            'default': null
+        },
         closeOnClick: {
             type: Boolean,
             required: false,
             'default': false
         },
         active: {
+            type: Boolean,
+            required: false,
+            'default': false
+        },
+        showActive: {
             type: Boolean,
             required: false,
             'default': false
@@ -32,6 +42,9 @@ const ESC = 27;
         'sidenav::close': function () {
             this.close();
             return true;
+        },
+        'nav-item::activated': function (id) {
+            this.$broadcast('nav-item::activated', id);
         }
     },
     components: {

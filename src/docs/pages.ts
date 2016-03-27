@@ -103,7 +103,7 @@ const docsPages: [Route] = [
         component: docsMedia
     },
     {
-        urls: ['/navbars'],
+        urls: ['/navbars', '/navbars/:tab'],
         link: '/navbars',
         title: 'Navbars',
         component: docsNavbars

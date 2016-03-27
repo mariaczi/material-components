@@ -3,11 +3,11 @@
      class="md-navbar">
 
     <nav>
-        <div class="nav-wrapper" :class="bgColor">
+        <div class="nav-wrapper" :class="colorClass">
             <slot name="content">
                 <slot name="logo">
                     <a v-if="title"
-                       href="javascript:void(0)" class="brand-logo" :class="logoClasses">
+                       :href="titleHref" class="brand-logo" :class="logoClasses">
                         {{title}}
                     </a>
                     <a v-if="hamburger" href="javascript:void(0)" class="button-collapse"

@@ -16,9 +16,9 @@
                     <th>
                         Required
                     </th>
-                    <th>
+                    <!--<th>
                         Two way
-                    </th>
+                    </th>-->
                     <th>
                         Default
                     </th>
@@ -39,7 +39,7 @@
                             <md-icon @mouseover="tooltip($event, 'False', 'bottom')">check_box_outline_blank</md-icon>
                         </span>
                     </td>
-                    <td>
+                    <!--<td>
                         <span v-if="property.twoWay === true">
                             <md-icon @mouseover="tooltip($event, 'True', 'bottom')">check_box</md-icon>
                         </span>
@@ -49,7 +49,7 @@
                         <span v-if="property.twoWay === null">
                             <md-icon @mouseover="tooltip($event, 'Not specified', 'bottom')">indeterminate_check_box</md-icon>
                         </span>
-                    </td>
+                    </td>-->
                     <td>
                         <span v-if="!property.required">{{property.default | json}}</span>
                         <span v-else><md-badge alert="required" style="position: initial; padding: 0;"></md-badge></span>

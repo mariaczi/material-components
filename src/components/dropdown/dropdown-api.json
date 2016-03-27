@@ -42,7 +42,7 @@
     {
       "name": "dropdown::close",
       "description": "Event closes dropdown",
-      "type": "in"
+      "type": "in-out"
     }
   ]
 }

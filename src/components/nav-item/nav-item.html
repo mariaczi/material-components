@@ -1,6 +1,6 @@
-<li @click="click" :class="{active: active}">
+<li @click="clicked" :class="{active: active}">
     <slot name="content">
-        <a v-if="href" :href="href">
+        <a :href="href">
             <slot></slot>
         </a>
     </slot>

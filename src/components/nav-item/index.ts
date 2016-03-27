@@ -1,13 +1,16 @@
 import Component from 'vue-class-component';
 
-var template = require('./nav-item.html');
-
 @Component({
     props: {
+        name: {
+            type: String,
+            required: false,
+            'default': null
+        },
         href: {
             type: String,
             required: false,
-            'default': ''
+            'default': 'javascript:void(0)'
         },
         active: {
             type: Boolean,
@@ -15,11 +18,46 @@ var template = require('./nav-item.html');
             'default': false
         }
     },
-    template: template
+    events: {
+        'nav-item::activated': function (id) {
+            if (this.showActive == true) {
+                this.active = this.id == id;
+            }
+        }
+    },
+    template: require('./nav-item.html')
 })
 export default class NavItem {
-    click() {
-        var self: any = this;
-        self.$dispatch('nav-item::clicked');
+    private $parent: any;
+    private $dispatch: any;
+    private _slotContents: any;
+    private _uid: any;
+
+    private name: string;
+    private active: boolean;
+
+    ready() {
+        if (this.active == true) {
+            this.$dispatch('nav-item::activated', this.id);
+        }
+    }
+
+    get id() {
+        if (this.name != null) {
+            return this.name;
+        }
+        return this._uid;
+    }
+
+    get content() {
+        return this._slotContents ? this._slotContents.default : '';
+    }
+
+    get showActive() {
+        return this.$parent.showActive;
+    }
+
+    clicked() {
+        this.$dispatch('nav-item::activated', this.id);
     }
 }

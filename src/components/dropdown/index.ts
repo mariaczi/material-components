@@ -11,13 +11,13 @@ import onClickAway from '../../directives/click-away';
         title: {
             type: String,
             required: false,
-            "default": "",
+            'default': '',
             twoWay: false
         },
         value: {
             type: String,
             required: false,
-            "default": "",
+            'default': '',
         }
     },
     directives: {
@@ -29,14 +29,17 @@ import onClickAway from '../../directives/click-away';
         mdDropdownItem
     },
     events: {
-        "dropdown-list::close": function () {
+        'dropdown-list::close': function () {
             // emitted by item -> propagated do list
-            this.$broadcast("dropdown-list::close");
-            return true;
+            this.$broadcast('dropdown-list::close');
+            this.$dispatch('dropdown::close')
         },
-        "dropdown-item::selected": function (id) {
+        'dropdown-item::selected': function (id) {
             this.value = id;
             return true;
+        },
+        'dropdown::open': function (e) {
+            this.$broadcast('dropdown-list::open', e);
         }
     },
     template: require('./dropdown.html')
@@ -45,10 +48,10 @@ export default class Dropdown {
     private $broadcast: any;
 
     open(e) {
-        this.$broadcast("dropdown-list::open", e);
+        this.$broadcast('dropdown-list::open', e);
     }
 
     close() {
-        this.$broadcast("dropdown-list::close");
+        this.$broadcast('dropdown-list::close');
     }
 }

@@ -15,4 +15,9 @@ var template = require('./navbars.html');
     }
 })
 export default class ActiveItemNavbar {
+    data() {
+        return {
+            active: null
+        }
+    }
 }

@@ -1,15 +1,18 @@
 import Component from 'vue-class-component';
 
-var template = require('./default.html');
-
 import mdPagination from '../../../components/pagination';
 
 @Component({
-    template: template,
     components: {
         mdPagination
-    }
+    },
+    template: require('./default.html')
 })
 export default class DefaultPagination {
+    data() {
+        return {
+            page: 0
+        }
+    }
 }
 

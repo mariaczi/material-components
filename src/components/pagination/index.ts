@@ -1,54 +1,43 @@
 import Component from 'vue-class-component';
+
 import mdIcon from '../icon';
 
 import waveEffect from '../../directives/wave-effect';
 
-var template = require('./pagination.html');
-
-class Utils {
-    static generatePagination = function(vm) {
-        var pager = [];
-
-        // generate window
-        var currentPage = vm.currentPage;
-        pager.push(currentPage);
-        var skip = 1;
-        while(pager.length < vm.displayPages && pager.length < vm.pages) {
-            var page = currentPage + skip;
-            if (page >= 0 && page < vm.pages) {
-                pager.push(page);
-            }
-            skip = skip > 0 ? skip * -1 : skip * -1 + 1;
-        }
-        pager = pager.sort(function(n1, n2) { return n1 - n2; });
-
-        return pager;
-    };
-}
+import Utils from  '../../components/utils';
 
 @Component({
     props: {
+        currentPage: {
+            type: Number,
+            'default': 0,
+        },
         pageSize: {
             type: Number,
-            required: true
+            required: true,
+            twoWay: false
         },
         totalRecords: {
             type: Number,
-            required: true
+            required: true,
+            twoWay: false
         },
         displayPages: {
             type: Number,
             required: false,
-            'default': 5
+            'default': 5,
+            twoWay: false
         },
         itemClass: {
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         firstLast: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         }
     },
     components: {
@@ -69,7 +58,7 @@ class Utils {
             }
         }
     },
-    template: template
+    template: require('./pagination.html')
 })
 export default class Pagination {
     private active: boolean;
@@ -77,12 +66,6 @@ export default class Pagination {
     private pageSize: number;
     private totalRecords: number;
     private itemClass: any;
-
-    data() {
-        return {
-            currentPage: 0 // starts with 0
-        }
-    }
 
     get pages() {
         return Math.max(Math.ceil(this.totalRecords / this.pageSize), 1);

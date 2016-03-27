@@ -27,4 +27,23 @@ export default class Utils {
             left: left
         };
     }
+
+    static generatePagination = function(vm) {
+        var pager = [];
+
+        // generate window
+        var currentPage = vm.currentPage;
+        pager.push(currentPage);
+        var skip = 1;
+        while(pager.length < vm.displayPages && pager.length < vm.pages) {
+            var page = currentPage + skip;
+            if (page >= 0 && page < vm.pages) {
+                pager.push(page);
+            }
+            skip = skip > 0 ? skip * -1 : skip * -1 + 1;
+        }
+        pager = pager.sort(function(n1, n2) { return n1 - n2; });
+
+        return pager;
+    };
 }

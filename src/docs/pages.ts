@@ -32,13 +32,13 @@ const docsPages: [Route] = [
     },
     {
         urls: ['/badges', '/badges/:tab'],
-        link: '/badges',
+        link: '/badges/showcase',
         title: 'Badges',
         component: docsBadges
     },
     {
         urls: ['/breadcrumbs', '/breadcrumbs/:tab'],
-        link: '/breadcrumbs',
+        link: '/breadcrumbs/showcase',
         title: 'Breadcrumbs',
         component: docsBreadcrumbs
     },
@@ -50,73 +50,73 @@ const docsPages: [Route] = [
     },
     {
         urls: ['/cards', '/cards/:tab'],
-        link: '/cards',
+        link: '/cards/showcase',
         title: 'Cards',
         component: docsCards
     },
     {
         urls: ['/chips', '/chips/:tab'],
-        link: '/chips',
+        link: '/chips/showcase',
         title: 'Chips',
         component: docsChips
     },
     {
         urls: ['/collapsibles', '/collapsibles/:tab'],
-        link: '/collapsibles',
+        link: '/collapsibles/showcase',
         title: 'Collapsibles',
         component: docsCollapsibles
     },
     {
         urls: ['/collections', '/collections/:tab'],
-        link: '/collections',
+        link: '/collections/showcase',
         title: 'Collections',
         component: docsCollections
     },
     {
         urls: ['/dialogs', '/dialogs/:tab'],
-        link: '/dialogs',
+        link: '/dialogs/showcase',
         title: 'Dialogs',
         component: docsDialogs
     },
     {
         urls: ['/dropdowns', '/dropdowns/:tab'],
-        link: '/dropdowns',
+        link: '/dropdowns/showcase',
         title: 'Dropdowns',
         component: docsDropdowns
     },
     {
         urls: ['/forms', '/forms/:tab'],
-        link: '/forms',
+        link: '/forms/showcase',
         title: 'Forms',
         component: docsForms
     },
     {
         urls: ['/modals', '/modals/:tab'],
-        link: '/modals',
+        link: '/modals/showcase',
         title: 'Modals',
         component: docsModals
     },
     {
         urls: ['/media', '/media/:tab'],
-        link: '/media',
+        link: '/media/showcase',
         title: 'Media',
         component: docsMedia
     },
     {
         urls: ['/navbars', '/navbars/:tab'],
-        link: '/navbars',
+        link: '/navbars/showcase',
         title: 'Navbars',
         component: docsNavbars
     },
     {
         urls: ['/tabs/:tab'],
-        link: '/tabs/4',
+        link: '/tabs/showcase',
         title: 'Tabs',
         component: docsTabs
     },
     {
-        urls: ['/pagination'],
-        link: '/pagination',
+        urls: ['/pagination', '/pagination/:tab'],
+        link: '/pagination/showcase',
         title: 'Pagination',
         component: docPagination
     },

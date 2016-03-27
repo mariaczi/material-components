@@ -34,7 +34,7 @@ const ESC = 27;
             this.open();
         },
         'sidenav::close': function () {
-            this.close();
+            this.$nextTick(this.close); // delay close due events
         },
         'nav-item::activated': function (id) {
             this.$broadcast('nav-item::activated', id);

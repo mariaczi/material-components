@@ -89,12 +89,12 @@ import mdSidenav from '../sidenav';
     },
     events: {
         'nav-item::activated': function (id, content) {
-            if (this.closeOnClick) {
-                this.$broadcast('sidenav::close');
-            }
             // propagate event to children
             this.$broadcast('nav-item::activated', id);
             this.active = id;
+            if (this.closeOnClick) {
+                this.$broadcast('sidenav::close');
+            }
         }
     },
     template: require('./navbar.html')

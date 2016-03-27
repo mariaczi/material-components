@@ -5,12 +5,14 @@ import Component from 'vue-class-component';
         name: {
             type: String,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         href: {
             type: String,
             required: false,
-            'default': 'javascript:void(0)'
+            'default': 'javascript:void(0)',
+            twoWay: false
         },
         active: {
             type: Boolean,

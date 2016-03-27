@@ -18,7 +18,7 @@
       "name": "align",
       "type": "String",
       "required": false,
-      "description": "String of badge represents new event, string is used as label",
+      "description": "Text align",
       "twoWay": false,
       "default": "\"\""
     }

@@ -1,5 +1,6 @@
 import Component from 'vue-class-component';
 
+import directives from '../../directives';
 import mixins from '../../mixins';
 import components from '../../components';
 
@@ -9,6 +10,7 @@ import components from '../../components';
             required: true
         }
     },
+    directives,
     components,
     mixins,
     template: require('./doc-api.html')

@@ -8,11 +8,6 @@ const ESC = 27;
 
 @Component({
     props: {
-        name: {
-            type: String,
-            required: false,
-            'default': null
-        },
         closeOnClick: {
             type: Boolean,
             required: false,
@@ -37,11 +32,9 @@ const ESC = 27;
     events: {
         'sidenav::open': function () {
             this.open();
-            return true;
         },
         'sidenav::close': function () {
             this.close();
-            return true;
         },
         'nav-item::activated': function (id) {
             this.$broadcast('nav-item::activated', id);
@@ -60,7 +53,7 @@ export default class SideNav {
     ready() {
         this.active = this.fixed || this.active;
         if (!this.fixed) {
-            window.document.addEventListener('keydown', (evt:any) => {
+            window.document.addEventListener('keydown', (evt: any) => {
                 evt = evt || window.event;
                 if (evt.keyCode == ESC) {
                     this.close();

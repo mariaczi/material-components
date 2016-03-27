@@ -33,6 +33,14 @@ export default class Navbars {
                 {
                     name: "Navbar",
                     api: require('../../components/navbar/navbar-api.json')
+                },
+                {
+                    name: "Nav item",
+                    api: require('../../components/nav-item/nav-item-api.json')
+                },
+                {
+                    name: "Side nav",
+                    api: require('../../components/sidenav/sidenav-api.json')
                 }
             ],
             snippets: {
@@ -45,7 +53,7 @@ export default class Navbars {
                 navbarIconLinks: require('./icon-links/navbars.snippet.html'),
                 navbarButtons: require('./icon-links/navbars.snippet.html'),
                 navbarSearch: require('./search/navbars.snippet.html'),
-                navbarMobileCollapse: require('./search/navbars.snippet.html')
+                navbarMobileCollapse: require('./mobile-collapse/navbars.snippet.html')
             },
             src: [
                 {
@@ -53,6 +61,17 @@ export default class Navbars {
                     script: require("!!html!highlightjs?lang=ts!../../components/navbar/index.ts"),
                     template: require('!!html!highlightjs?lang=html!../../components/navbar/navbar.html'),
                     style: require('!!html!highlightjs?lang=scss!../../components/navbar/navbar.scss')
+                },
+                {
+                    name: "Navbar item",
+                    script: require("!!html!highlightjs?lang=ts!../../components/nav-item/index.ts"),
+                    template: require('!!html!highlightjs?lang=html!../../components/nav-item/nav-item.html')
+                },
+                {
+                    name: "Side nav",
+                    script: require("!!html!highlightjs?lang=ts!../../components/sidenav/index.ts"),
+                    template: require('!!html!highlightjs?lang=html!../../components/sidenav/sidenav.html'),
+                    style: require('!!html!highlightjs?lang=scss!../../components/sidenav/sidenav.scss')
                 }
             ]
         }

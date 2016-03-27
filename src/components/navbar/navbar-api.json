@@ -1,6 +1,6 @@
 {
-  "name": "md-badge",
-  "title": "Badge",
+  "name": "md-navbar",
+  "title": "Navbar",
   "description": "",
   "browserSupport": {
     "browsers": []
@@ -12,14 +12,6 @@
       "required": false,
       "description": "Id of active nav item",
       "twoWay": null,
-      "default": null
-    },
-    {
-      "name": "alert",
-      "type": "String",
-      "required": false,
-      "description": "String of badge represents new event, string is used as label",
-      "twoWay": false,
       "default": null
     },
     {
@@ -83,6 +75,14 @@
       "name": "hamburger",
       "type": "Boolean",
       "description": "Activates 'hamburger' mode. Side menu is available with small width",
+      "required": false,
+      "twoWay": false,
+      "default": false
+    },
+    {
+      "name": "mode",
+      "type": "String",
+      "description": "Mode of nav bar for example 'hide-on-med-and-down'",
       "required": false,
       "twoWay": false,
       "default": false

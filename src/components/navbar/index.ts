@@ -13,57 +13,74 @@ import mdSidenav from '../sidenav';
         showActive: {
             type: Boolean,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         title: {
             type: String,
             required: false,
-            'default': ''
+            'default': '',
+            twoWay: false
         },
         titleHref: {
             type: String,
             required: false,
-            'default': 'javascript:void(0)'
+            'default': 'javascript:void(0)',
+            twoWay: false
         },
         right: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         },
         left: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         },
         center: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         },
         fixed: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         },
         colorClass: {
             type: String,
             required: false,
-            'default': null
+            'default': null,
+            twoWay: false
         },
         hamburger: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
+        },
+        mode: {
+            type: String,
+            required: false,
+            'default': null,
+            twoWay: false
         },
         closeOnClick: {
             type: Boolean,
             required: false,
-            'default': true
+            'default': true,
+            twoWay: false
         },
         onlySideNav: {
             type: Boolean,
             required: false,
-            'default': false
+            'default': false,
+            twoWay: false
         }
     },
     components: {
@@ -85,6 +102,7 @@ import mdSidenav from '../sidenav';
 export default class Navbar {
     private $broadcast: any;
 
+    private mode: string;
     private right: boolean;
     private left: boolean;
     private center: boolean;
@@ -98,10 +116,14 @@ export default class Navbar {
     }
 
     get listClasses() {
-        return {
+        var classes: any = {
             right: this.right,
-            left: this.left
+            left: this.left,
         };
+        if (this.mode) {
+            classes[this.mode] = true;
+        }
+        return classes;
     }
     
     openSideMenu() {

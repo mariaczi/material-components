@@ -1,6 +1,6 @@
 
-@import "../materialize/_color";
-@import "../materialize/_variables";
+//@import "../materialize/_color";
+//@import "../materialize/_variables";
 
 [v-cloak] {
   display: none;
@@ -95,7 +95,8 @@ nav.top-nav a.page-title {
 }
 
 .select-wrapper i {
-  color: $secondary-color;
+  //color: $secondary-color;
+  //color: #4CAF50
 }
 
 .doc-example {

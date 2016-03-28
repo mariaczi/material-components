@@ -15,4 +15,18 @@ export default class GetStartedPage {
             }
         }
     }
+
+    showInConsole() {
+        var w: any = window;
+        var vmc = window['VueMaterialComponentsDocs'];
+        w.console.log({
+            components: vmc.components,
+            directives: vmc.directives,
+            mixins: vmc.mixins,
+            registerComponents: vmc.registerComponents,
+            registerDirectives: vmc.registerDirectives,
+            registerAll: vmc.registerAll,
+            Vue: vmc.Vue
+        });
+    }
 }

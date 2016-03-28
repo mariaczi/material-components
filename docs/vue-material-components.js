@@ -114,6 +114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    components: components_1.default,
 	    directives: directives_1.default,
 	    mixins: mixins_1.default,
+	    Vue: Vue
 	};
 
 
@@ -10550,10 +10551,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    GetStartedPage.prototype.data = function () {
 	        return {
 	            snippets: {
-	                link: __webpack_require__(458),
-	                bundle: __webpack_require__(457)
+	                link: __webpack_require__(117),
+	                bundle: __webpack_require__(118)
 	            }
 	        };
+	    };
+	    GetStartedPage.prototype.showInConsole = function () {
+	        var w = window;
+	        var vmc = window['VueMaterialComponentsDocs'];
+	        w.console.log({
+	            components: vmc.components,
+	            directives: vmc.directives,
+	            mixins: vmc.mixins,
+	            registerComponents: vmc.registerComponents,
+	            registerDirectives: vmc.registerDirectives,
+	            registerAll: vmc.registerAll,
+	            Vue: vmc.Vue
+	        });
 	    };
 	    GetStartedPage = __decorate([vue_class_component_1["default"]({
 	        components: components_1["default"],
@@ -10566,12 +10580,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 117 */,
-/* 118 */,
+/* 117 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"dist/vue-material-components.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
+
+/***/ },
+/* 118 */
+/***/ function(module, exports) {
+
+	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span>&gt;</span><span class=\"actionscript\">\r\n    <span class=\"hljs-comment\">// is available as global after link</span>\r\n    <span class=\"hljs-keyword\">var</span> VueMaterialComponents;\r\n\r\n    <span class=\"hljs-comment\">// map of all components</span>\r\n    VueMaterialComponents.components;\r\n    <span class=\"hljs-comment\">// map of all directives</span>\r\n    VueMaterialComponents.directives;\r\n    <span class=\"hljs-comment\">// array of all mixins</span>\r\n    VueMaterialComponents.mixins;\r\n\r\n    <span class=\"hljs-comment\">// vue instance</span>\r\n    VueMaterialComponents.Vue;\r\n\r\n    <span class=\"hljs-comment\">// registration callbacks to Vue</span>\r\n    VueMaterialComponents.registerComponents();\r\n    VueMaterialComponents.registerDirectives();\r\n    VueMaterialComponents.registerAll();\r\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
+
+/***/ },
 /* 119 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"home-page\" v-cloak>\r\n    <h2>Download</h2>\r\n    <p>\r\n        <a href=\"https://github.com/appcomponents/material-components/tree/master/dist\">GitHub</a>\r\n    </p>\r\n\r\n    <h2>Link</h2>\r\n    <p>\r\n        <doc-snippet>{{{snippets.link}}}</doc-snippet>\r\n    </p>\r\n\r\n    <h2>Bundle</h2>\r\n    <p>\r\n        Use <strong>VueMaterialComponents</strong>\r\n        <doc-snippet>{{{snippets.bundle}}}</doc-snippet>\r\n    </p>\r\n</div>";
+	module.exports = "<div class=\"home-page\" v-cloak>\r\n    <div class=\"row\">\r\n        <h2>Download</h2>\r\n        <p class=\"col\">\r\n            <md-button href=\"https://github.com/appcomponents/material-components/tree/master/dist\" target=\"_blank\"\r\n                style=\"background-color: white; color: black\"\r\n                class=\"waves-effect\">\r\n                GitHub\r\n            </md-button>\r\n        </p>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <h2>Link</h2>\r\n        <p class=\"col\">\r\n            <doc-snippet>{{{snippets.link}}}</doc-snippet>\r\n        </p>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <h2>Use</h2>\r\n        <p class=\"col\">\r\n            Use global variable <strong>VueMaterialComponents</strong>\r\n            <br/>\r\n            <md-button @click.prevent=\"showInConsole\" target=\"_blank\"\r\n                       type=\"flat\"\r\n                       style=\"margin: 10px 0\"\r\n                       class=\"waves-effect\">\r\n                Show in console\r\n            </md-button>\r\n            <br/>\r\n            <doc-snippet>{{{snippets.bundle}}}</doc-snippet>\r\n        </p>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <h2>Style</h2>\r\n        <p>\r\n            <md-button href=\"http://materializecss.com/getting-started.html\" target=\"_blank\"\r\n                       style=\"background-color: #ee6e73; color: white\"\r\n                       class=\"waves-effect waves-light\">\r\n                materializecss\r\n            </md-button>\r\n        </p>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
 /* 120 */
@@ -15885,7 +15909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 394 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        img: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        },\r\n        align: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-string\">''</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'slider::activate'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">index</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.setActive(index);\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">val</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>._setClasses(val);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./slide.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Slide {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $parent: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> img: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> position: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> classes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    compiled() {\r\n        <span class=\"hljs-comment\">// todo: remove hack webpack img src loading</span>\r\n        <span class=\"hljs-keyword\">this</span>.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.img);\r\n    }\r\n\r\n    ready () {\r\n        <span class=\"hljs-keyword\">this</span>._setClasses(<span class=\"hljs-keyword\">this</span>.active);\r\n    }\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">var</span> position = <span class=\"hljs-keyword\">this</span>.$parent.$children.indexOf(<span class=\"hljs-keyword\">this</span>);\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            position: position,\r\n            classes: {}\r\n        }\r\n    }\r\n    \r\n    <span class=\"hljs-keyword\">get</span> src() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.img;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.classes;\r\n    }\r\n\r\n    setActive(index) {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.position == index;\r\n    }\r\n\r\n    _setClasses (val) {\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'active'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeIn'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeOut'</span>, !val);\r\n    }\r\n\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        img: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        },\r\n        align: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-string\">''</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'slider::activate'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">index</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.setActive(index);\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">val</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>._setClasses(val);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./slide.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Slide {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $parent: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> img: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> position: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> classes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    compiled() {\r\n        <span class=\"hljs-comment\">// <span class=\"hljs-doctag\">todo:</span> remove hack webpack img src loading</span>\r\n        <span class=\"hljs-keyword\">this</span>.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.img);\r\n    }\r\n\r\n    ready () {\r\n        <span class=\"hljs-keyword\">this</span>._setClasses(<span class=\"hljs-keyword\">this</span>.active);\r\n    }\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">var</span> position = <span class=\"hljs-keyword\">this</span>.$parent.$children.indexOf(<span class=\"hljs-keyword\">this</span>);\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            position: position,\r\n            classes: {}\r\n        }\r\n    }\r\n    \r\n    <span class=\"hljs-keyword\">get</span> src() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.img;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.classes;\r\n    }\r\n\r\n    setActive(index) {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.position == index;\r\n    }\r\n\r\n    _setClasses (val) {\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'active'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeIn'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeOut'</span>, !val);\r\n    }\r\n\r\n}";
 
 /***/ },
 /* 395 */
@@ -16990,19 +17014,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 456 */,
-/* 457 */
-/***/ function(module, exports) {
-
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span>&gt;</span><span class=\"actionscript\">\r\n    <span class=\"hljs-comment\">// is available after link</span>\r\n    <span class=\"hljs-keyword\">var</span> VueMaterialComponents;\r\n\r\n    <span class=\"hljs-comment\">// map of all components</span>\r\n    VueMaterialComponents.components;\r\n    <span class=\"hljs-comment\">// map of all directives</span>\r\n    VueMaterialComponents.directives;\r\n    <span class=\"hljs-comment\">// array of all mixins</span>\r\n    VueMaterialComponents.mixins;\r\n\r\n    <span class=\"hljs-comment\">// vue instance</span>\r\n    VueMaterialComponents.vue;\r\n    VueMaterialComponents.Vue;\r\n\r\n    <span class=\"hljs-comment\">// registration callbacks to Vue</span>\r\n    VueMaterialComponents.registerComponents();\r\n    VueMaterialComponents.registerDirectives();\r\n    VueMaterialComponents.registerAll();\r\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
-
-/***/ },
-/* 458 */
-/***/ function(module, exports) {
-
-	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"dist/vue-material-components.min.js\"</span>&gt;</span><span class=\"undefined\"></span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span>";
 
 /***/ }
 /******/ ])

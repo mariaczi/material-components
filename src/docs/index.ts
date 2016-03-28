@@ -68,5 +68,6 @@ export = {
     components,
     directives,
     mixins,
+    Vue: Vue
 }
 

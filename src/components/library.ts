@@ -22,6 +22,5 @@ export = {
     components,
     directives,
     mixins,
-    vue: Vue,
     Vue: Vue
 }

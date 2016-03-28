@@ -4149,6 +4149,12 @@ nav.top-nav a.page-title {
   line-height: 64px;
   font-size: 32px; }
 
+.gh-banner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 18px; }
+
 .promo {
   width: 100%; }
 

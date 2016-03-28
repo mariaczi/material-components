@@ -1,5 +1,6 @@
 import docsHomePage from './pages/home-page';
 import docsAboutPage from './pages/about-page';
+import docGetStarted from './pages/get-started-page';
 import docsBadges from './badges';
 import docsBreadcrumbs from './breadcrumbs';
 import docsButtons from './buttons';
@@ -30,6 +31,12 @@ const docsPages: [Route] = [
         link: '/about',
         title: 'About',
         component: docsAboutPage
+    },
+    {
+        urls: ['/get-started'],
+        link: '/get-started',
+        title: 'Get started',
+        component: docGetStarted
     },
     {
         urls: ['/badges', '/badges/:tab'],

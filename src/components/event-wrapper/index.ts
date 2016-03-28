@@ -18,7 +18,6 @@ export default class EventWrapper {
             self.$on(event, function () {
                 var args = [event].concat(Array.prototype.slice.call(arguments));
                 self.$broadcast.apply(self, args);
-                // self.$broadcast(event, arguments);
             });
         })
     }

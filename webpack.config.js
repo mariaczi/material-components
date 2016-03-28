@@ -21,12 +21,12 @@ module.exports = {
             {
                 //IMAGE LOADER
                 test: /(jpe?g|png|gif|svg|img)$/i,
-                loader:'file'
+                loader: 'file'
             },
             {
                 test: /\.html$/,
                 exclude: /\.snippet\.html$/,
-                loader: 'html'
+                loader: 'html?attrs=img:src img:data-src'
             },
             {
                 test: /\.snippet\.html$/,

@@ -14,9 +14,10 @@ import mdButton from '../../../components/button';
     template: require('./toasts.html')
 })
 export default class Toasts {
+    private toast: any;
+    
     makeAToast(msg) {
-        var self: any = this;
-        self.toast(msg, 4000, '', () => {
+        this.toast(msg, 4000, '', () => {
             alert('Your toast was dismissed');
         })
     }

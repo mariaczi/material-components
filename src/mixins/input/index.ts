@@ -1,9 +1,8 @@
 export default {
-
+    
     computed: {
         id: function () {
-            var self: any = this;
-            return self.$options.name.toLowerCase() + '_' + self._uid;
+            return this.$options.name.toLowerCase() + '_' + this._uid;
         }
     },
 

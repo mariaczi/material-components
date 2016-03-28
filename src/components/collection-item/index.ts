@@ -12,9 +12,9 @@ import Component from 'vue-class-component';
     template: require('./collection-item.html')
 })
 export default class CollectionItem {
-
+    private _slotContents: any;
+    
     get secondaryContentSlot() {
-        var self: any = this;
-        return 'secondary-content' in self._slotContents;
+        return 'secondary-content' in this._slotContents;
     }
 }

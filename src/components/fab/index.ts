@@ -24,6 +24,9 @@ var Velocity = require('velocity-animate');
     template: require('./fab.html')
 })
 export default class Fab {
+    private $el: any;
+    private $els: any;
+
     private active: boolean;
     private horizontal: boolean;
     private event: string;
@@ -35,13 +38,12 @@ export default class Fab {
     }
 
     ready() {
-        var self: any = this;
         if (this.event == 'hover') {
-            self.$els.fab.addEventListener('mouseenter', this.open);
-            self.$els.fab.addEventListener('mouseleave', this.close);
+            this.$els.fab.addEventListener('mouseenter', this.open);
+            this.$els.fab.addEventListener('mouseleave', this.close);
         }
         else {
-            self.$els.fab.addEventListener(this.event, this.toggle);
+            this.$els.fab.addEventListener(this.event, this.toggle);
         }
     }
 
@@ -58,7 +60,6 @@ export default class Fab {
         if (!this.active) {
             this.active = true;
 
-            var self:any = this;
             var offsetY, offsetX;
 
             if (this.horizontal) {
@@ -67,7 +68,7 @@ export default class Fab {
                 offsetY = 40;
             }
 
-            var items = Array.prototype.slice.call(self.$el.querySelectorAll('ul .btn-floating'));
+            var items = Array.prototype.slice.call(this.$el.querySelectorAll('ul .btn-floating'));
 
             Velocity(items,
                 {scaleY: ".4", scaleX: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
@@ -87,7 +88,6 @@ export default class Fab {
         if (this.active) {
             this.active = false;
 
-            var self: any = this;
             var offsetY, offsetX;
 
             if (this.horizontal) {
@@ -96,7 +96,7 @@ export default class Fab {
                 offsetY = 40;
             }
 
-            var items = Array.prototype.slice.call(self.$el.querySelectorAll('ul .btn-floating'));
+            var items = Array.prototype.slice.call(this.$el.querySelectorAll('ul .btn-floating'));
 
             Velocity(items, "stop", true);
             Velocity(items,

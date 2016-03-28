@@ -22,6 +22,8 @@ var Velocity = require('velocity-animate');
     template: require('./tabs.html')
 })
 export default class Tabs {
+    private $els: any;
+
     private active: any;
     private indicator: any;
 
@@ -45,8 +47,7 @@ export default class Tabs {
     }
 
     moveIndicator(left, newLeft, right, newRight) {
-        var self: any = this;
-        var indicator = self.$els.indicator;
+        var indicator = this.$els.indicator;
         // Update indicator
         if ((newLeft - left) >= 0) {
             Velocity(indicator, 

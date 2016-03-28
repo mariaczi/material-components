@@ -13,9 +13,9 @@ import mdBadge from '../../../components/badge';
     template: require('./dropdowns.html')
 })
 export default class Dropdowns {
+    private $broadcast: any;
 
     closeDropdown() {
-        var self: any = this;
-        self.$broadcast('dropdown-list::close');
+        this.$broadcast('dropdown-list::close');
     }
 }

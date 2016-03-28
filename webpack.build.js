@@ -44,14 +44,14 @@ config.plugins.push(new webpack.DefinePlugin({
 /**
  * Dist
  */
-if (ENV === 'dist') {
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false,
-        compress: {
-            warnings: false
-        }
-    }))
-}
+// if (ENV === 'dist') {
+//     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+//         sourceMap: false,
+//         compress: {
+//             warnings: false
+//         }
+//     }))
+// }
 /**
  * devtool
  */

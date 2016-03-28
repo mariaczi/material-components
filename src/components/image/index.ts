@@ -36,6 +36,8 @@ const ESC = 27;
     template: require('./image.html')
 })
 export default class Image {
+    private $els: any;
+
     private src: string;
     private active: boolean;
     private materialBox: MaterialBox;
@@ -47,23 +49,23 @@ export default class Image {
         }
     }
 
-    ready() {
-        var self: any = this;
-        var img = self.$els.img;
-        var placeholder = self.$els.placeholder;
-        this.materialBox = new MaterialBox(img, placeholder);
-        // Return on ESC
-        window.addEventListener('keyup', function(e) {
-            if (e.keyCode === ESC) {
-                self.close();
-            }
-        });
+    compiled(){
+        this.$els.img.setAttribute('src', this.src);
     }
 
-    compiled(){
-        var self: any = this;
-        // todo: remove hack webpack img src loading
-        self.$els.img.setAttribute('src', this.src);
+    ready() {
+        var img = this.$els.img;
+        var placeholder = this.$els.placeholder;
+        this.materialBox = new MaterialBox(img, placeholder);
+        // Return on ESC
+        window.addEventListener('keyup', (e) => {
+            if (e.keyCode === ESC) {
+                this.close();
+            }
+        });
+        window.addEventListener("scroll", () => {
+            this.close();
+        });
     }
 
     toggle() {
@@ -91,8 +93,7 @@ export default class Image {
     }
 
      getSizes() {
-        var self: any = this;
-        var el: HTMLElement = self.$els.img;
+        var el: HTMLElement = this.$els.img;
         return {
             width: el.offsetWidth,
             height: el.offsetHeight,

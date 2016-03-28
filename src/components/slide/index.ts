@@ -28,15 +28,17 @@ var Vue: any = require('vue');
     template: require('./slide.html')
 })
 export default class Slide {
+    private $els: any;
+    private $parent: any;
+
     private img: string;
     private position: number;
     private active: boolean;
     private classes: any;
 
     compiled() {
-        var self: any = this;
         // todo: remove hack webpack img src loading
-        self.$els.img.setAttribute('src', this.img);
+        this.$els.img.setAttribute('src', this.img);
     }
 
     ready () {
@@ -44,13 +46,16 @@ export default class Slide {
     }
 
     data() {
-        var self: any = this;
-        var position = self.$parent.$children.indexOf(this);
+        var position = this.$parent.$children.indexOf(this);
         return {
             active: false,
             position: position,
             classes: {}
         }
+    }
+    
+    get src() {
+        return this.img;
     }
 
     get computedClasses() {

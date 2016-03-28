@@ -4,9 +4,9 @@ import Component from 'vue-class-component';
     template: require('./collection-list.html')
 })
 export default class CollectionList {
+    private _slotContents: any;
 
     get headerSlot() {
-        var self: any = this;
-        return 'header' in self._slotContents;
+        return 'header' in this._slotContents;
     }
 }

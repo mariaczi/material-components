@@ -40,7 +40,7 @@ var Vue: any = require('vue');
     },
     watch: {
         value: function () {
-            this.refreshDropdownOptions()
+            this.$nextTick(this.refreshDropdownOptions)
         }
     },
     components: {
@@ -135,7 +135,7 @@ export default class SelectField {
             if (o.selected) {
                 this.$broadcast('option::select', o.value)
             }
-            else {
+            else if (this.multiple) {
                 this.$broadcast('option::unselect', o.value)
             }
         });

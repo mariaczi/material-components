@@ -77,7 +77,7 @@ export default class SelectOption {
     }
 
     unselect() {
-        if (this.active && !this.disabled && this.multiple) { // only multiple could be unselected
+        if (this.active && this.multiple) { // only multiple could be unselected
             this.active = false;
             this.$dispatch('select::unselect', this.value, this);
         }

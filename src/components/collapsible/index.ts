@@ -40,6 +40,7 @@ import Component from 'vue-class-component';
     template: require('./collapsible.html')
 })
 export default class Collapsible {
+    private $children: any;
     private $broadcast: any;
 
     private expendable: boolean;
@@ -85,10 +86,13 @@ export default class Collapsible {
         return true;
     }
 
-    openedChanged(value, oldValue) {
+    openedChanged(value) {
         if (this.expendable) {
+            var ids = this.$children
+                .filter((component) => component.$options.name == 'CollapsibleItem')
+                .map((item) => item.id);
             // close
-            oldValue
+            ids
                 .filter((val) => value.indexOf(val) < 0)
                 .forEach((id) => this.$broadcast('collapsible::close', id));
             // open

@@ -19,7 +19,6 @@ var Velocity = require('velocity-animate');
             twoWay: false
         }
     },
-    template: require('./collapsible-item.html'),
     mixins: [
         events
     ],
@@ -30,7 +29,8 @@ var Velocity = require('velocity-animate');
         'collapsible::close': function (id) {
             this.close(id);
         }
-    }
+    },
+    template: require('./collapsible-item.html')
 })
 export default class CollapsibleItem {
     private $els: any;

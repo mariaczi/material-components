@@ -46,7 +46,8 @@ export = {
         router.start(App, app);
     },
     registerAll: function () {
-        this.registerComponents()
+        this.registerComponents();
+        this.registerDirectives();
     },
     registerComponents: function () {
         for (var componentName in components) {

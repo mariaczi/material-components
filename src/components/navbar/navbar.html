@@ -2,8 +2,8 @@
      :style="fixed ? {position: 'absolute', top: 0}: {}"
      class="md-navbar">
 
-    <nav>
-        <div class="nav-wrapper" :class="colorClass">
+    <nav :class="navClass">
+        <div class="nav-wrapper" :class="wrapperClass">
             <slot name="content">
                 <slot name="logo">
                     <a v-if="title"

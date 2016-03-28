@@ -31,6 +31,22 @@
       "twoWay": false
     },
     {
+      "name": "wrapper-class",
+      "type": "Array | Object",
+      "description": "Class of wrapper",
+      "required": false,
+      "default": null,
+      "twoWay": false
+    },
+    {
+      "name": "nav-class",
+      "type": "Array | Object",
+      "description": "Class of nav",
+      "required": false,
+      "default": null,
+      "twoWay": false
+    },
+    {
       "name": "right",
       "type": "Boolean",
       "description": "Renders menu on right, title on left",
@@ -62,14 +78,6 @@
       "required": false,
       "twoWay": false,
       "default": false
-    },
-    {
-      "name": "color-class",
-      "type": "String",
-      "description": "Menu color",
-      "required": false,
-      "twoWay": false,
-      "default": null
     },
     {
       "name": "hamburger",

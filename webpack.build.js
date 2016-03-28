@@ -12,10 +12,10 @@ var ENV = optimist.argv.env || 'dev';
  * Entry + output
  */
 if (ENV === 'dist') {
-    config.entry = './src/components/index.ts';
+    config.entry = './src/components/library.ts';
 
     config.output = {
-        filename: `./dist/${pkg.name}.min.js`,
+        filename: `./dist/${pkg.name}.js`,
         library: `${pkg.library}`,
         libraryTarget: 'umd'
     };
@@ -44,18 +44,23 @@ config.plugins.push(new webpack.DefinePlugin({
 /**
  * Dist
  */
-// if (ENV === 'dist') {
-//     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-//         sourceMap: false,
-//         compress: {
-//             warnings: false
-//         }
-//     }))
-// }
+if (ENV == 'dist') {
+/*
+https://github.com/webpack/webpack/issues/537
+minify with npm
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        minimize: true,
+        sourceMap: false,
+        compress: {
+            warnings: false
+        }
+    }))
+*/
+}
 /**
  * devtool
  */
-if (ENV !== 'dist') {
+if (ENV != 'dist') {
     config.devtool = 'source-map'
 }
 

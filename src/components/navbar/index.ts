@@ -52,8 +52,7 @@ import mdSidenav from '../sidenav';
             'default': false,
             twoWay: false
         },
-        colorClass: {
-            type: String,
+        navClass: {
             required: false,
             'default': null,
             twoWay: false
@@ -80,6 +79,11 @@ import mdSidenav from '../sidenav';
             type: Boolean,
             required: false,
             'default': false,
+            twoWay: false
+        },
+        wrapperClass: {
+            required: false,
+            'default': null,
             twoWay: false
         }
     },
@@ -111,7 +115,7 @@ export default class Navbar {
         return {
             center: this.center,
             right: !this.center && !this.right,
-            left: !this.center && !this.left
+            // left: !this.center && !this.left - left is default
         };
     }
 

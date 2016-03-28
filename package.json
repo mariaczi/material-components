@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "webpack --watch --colors --progress --config webpack.build.js --env dev",
-    "dist": "webpack --colors --progress --config  webpack.build.js --env dist",
+    "dist": "webpack --colors --progress --config  webpack.build.js --env dist && minify --output dist/vue-materialize-components.min.js dist/vue-materialize-components.js",
     "docs": "webpack --colors --progress --config webpack.build.js --env dev"
   },
   "keywords": [
@@ -51,7 +51,8 @@
     "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.12.1"
+    "webpack-dev-server": "^1.12.1",
+    "minifier": "^0.7.1"
   },
   "homepage": "appcomponents.org"
 }

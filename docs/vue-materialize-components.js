@@ -15659,7 +15659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 376 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-image src=\"http://lorempixel.com/512/512/\" width=\"512\" height=\"512\"></md-image>\r\n\r\n<md-image src=\"http://lorempixel.com/512/1024/\"\r\n          caption=\"A picture ...\"\r\n          width=\"256\" height=\"512\"></md-image>\r\n";
+	module.exports = "<md-image src=\"assets/images/tiger.jpg\" width=\"512\" height=\"512\"></md-image>\r\n\r\n<md-image src=\"assets/images/tigers.jpg\"\r\n          caption=\"A picture ...\"\r\n          width=\"256\" height=\"512\"></md-image>\r\n";
 
 /***/ },
 /* 377 */
@@ -15696,7 +15696,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 378 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-slider>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/1\" align=\"left\">\r\n        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h3>\r\n    </md-slide>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/2\" align=\"right\">\r\n        <h3>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</h3>\r\n    </md-slide>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/3\" align=\"center\">\r\n        <h3>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</h3>\r\n    </md-slide>\r\n    <md-slide img=\"http://lorempixel.com/580/250/nature/4\" align=\"left\">\r\n        <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</h3>\r\n    </md-slide>\r\n</md-slider>";
+	module.exports = "<md-slider>\r\n    <md-slide img=\"assets/images/nature1.jpg\" align=\"left\">\r\n        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h3>\r\n    </md-slide>\r\n    <md-slide img=\"assets/images/nature2.jpg\" align=\"right\">\r\n        <h3>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</h3>\r\n    </md-slide>\r\n    <md-slide img=\"assets/images/nature3.jpg\" align=\"center\">\r\n        <h3>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</h3>\r\n    </md-slide>\r\n    <md-slide img=\"assets/images/nature4.jpg\" align=\"left\">\r\n        <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</h3>\r\n    </md-slide>\r\n</md-slider>";
 
 /***/ },
 /* 379 */

@@ -16,6 +16,7 @@ import docsMedia from './media';
 import docsTabs from './tabs';
 import docPagination from './paginations';
 import docsPreloaders from './preloaders';
+import docsWaves from './waves';
 
 const docsPages: [Route] = [
     {
@@ -125,6 +126,12 @@ const docsPages: [Route] = [
         link: '/preloaders/showcase',
         title: 'Preloaders',
         component: docsPreloaders
+    },
+    {
+        urls: ['/waves'],
+        link: '/waves',
+        title: 'Waves',
+        component: docsWaves
     }
 ];
 

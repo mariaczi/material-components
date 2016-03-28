@@ -6,17 +6,15 @@ import mdNavbar from '../../../components/navbar';
 import mdNavItem from '../../../components/nav-item';
 import mdSnippet from '../../snippet';
 
-var template = require('./navbars.html');
-
 @Component({
-    template: template,
     components: {
         mdBadge,
         mdButton,
         mdNavbar,
         mdNavItem,
         mdSnippet
-    }
+    },
+    template: require('./navbars.html')
 })
 export default class FixedNavbars {
     private showFixed: boolean;

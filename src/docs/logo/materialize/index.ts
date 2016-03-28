@@ -1,10 +1,8 @@
 import Component from 'vue-class-component';
 
-var template = require('./materialize-logo.html');
-
 @Component({
     props: ['href'],
-    template: template,
+    template: require('./materialize-logo.html'),
 })
 export default class MaerializeLogo {
 }

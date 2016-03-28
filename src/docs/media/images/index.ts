@@ -1,14 +1,12 @@
 import Component from 'vue-class-component';
 
-var template = require('./image.html');
-
 import mdImage from '../../../components/image';
 
 @Component({
-    template: template,
     components: {
         mdImage
-    }
+    },
+    template: require('./image.html')
 })
 export default class Image {
 }

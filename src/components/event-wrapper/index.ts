@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-var template = require('./event-wrapper.html');
-
 @Component({
     props: {
         events: {
@@ -9,7 +7,7 @@ var template = require('./event-wrapper.html');
             required: true
         }
     },
-    template: template
+    template: require('./event-wrapper.html')
 })
 export default class EventWrapper {
     private events: string[];

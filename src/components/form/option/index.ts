@@ -4,8 +4,6 @@ import bindBoolean from '../../../directives/bind-boolean';
 
 import input from '../../../mixins/input';
 
-var template = require('./option.html');
-
 @Component({
     props: {
         disabled: {
@@ -32,7 +30,7 @@ var template = require('./option.html');
     mixins: [
         input
     ],
-    template: template
+    template: require('./option.html')
 })
 export default class SelectOption {
     private $dispatch: any;

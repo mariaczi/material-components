@@ -4,15 +4,13 @@ import docSnippet from '../snippet';
 import docDefaultTabs from './default';
 import docScrollableTabs from './scrollable';
 
-var template = require('./tabs.html');
-
 @Component({
-    template: template,
     components: {
         docSnippet,
         docDefaultTabs,
         docScrollableTabs
-    }
+    },
+    template: require('./tabs.html')
 })
 export default class Tabs {
     data() {

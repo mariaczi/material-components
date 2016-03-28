@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-var template = require('./optgroup.html');
-
 @Component({
     props: {
         label: {
@@ -10,7 +8,7 @@ var template = require('./optgroup.html');
             'default': false
         }
     },
-    template: template
+    template: require('./optgroup.html')
 })
 export default class Optgroup {
 }

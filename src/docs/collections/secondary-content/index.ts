@@ -1,18 +1,16 @@
 import Component from 'vue-class-component';
 
-var template = require('./secondary-content.html');
-
 import mdIcon from '../../../components/icon';
 import mdCollection from '../../../components/collection';
 import mdCollectionItem from '../../../components/collection-item';
 
 @Component({
-    template: template,
     components: {
         mdIcon,
         mdCollection,
         mdCollectionItem
-    }
+    },
+    template: require('./secondary-content.html')
 })
 export default class SecondaryContentCollection {
     get items() {

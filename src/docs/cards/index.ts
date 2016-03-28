@@ -4,16 +4,14 @@ import docImageCard from './image';
 import docRevealCard from './reveal';
 import docSnippet from '../snippet';
 
-var template = require('./cards.html');
-
 @Component({
-    template: template,
     components: {
         docDefaultCard,
         docImageCard,
         docRevealCard,
         docSnippet
-    }
+    },
+    template: require('./cards.html')
 })
 export default class Cards {
     data() {

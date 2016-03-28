@@ -4,15 +4,13 @@ import mdBadge from '../../../components/badge';
 import mdNavbar from '../../../components/navbar';
 import mdNavItem from '../../../components/nav-item';
 
-var template = require('./navbars.html');
-
 @Component({
-    template: template,
     components: {
         mdBadge,
         mdNavbar,
         mdNavItem
-    }
+    },
+    template: require('./navbars.html')
 })
 export default class Navbars {
     data() {

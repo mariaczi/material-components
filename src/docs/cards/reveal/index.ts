@@ -5,17 +5,15 @@ import mdIcon from '../../../components/icon';
 
 import waveEffect from '../../../directives/wave-effect';
 
-var template = require('./reveal.html');
-
 @Component({
-    template: template,
     directives: {
         waveEffect
     },
     components: {
         mdCard,
         mdIcon
-    }
+    },
+    template: require('./reveal.html')
 })
 export default class RevealCard {
 }

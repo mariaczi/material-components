@@ -6,10 +6,7 @@ import docBottomModal from './bottom';
 
 import events from '../../mixins/events';
 
-var template = require('./modals.html');
-
 @Component({
-    template: template,
     components: {
         docSnippet,
         docDefaultModal,
@@ -18,7 +15,8 @@ var template = require('./modals.html');
     },
     mixins: [
         events
-    ]
+    ],
+    template: require('./modals.html')
 })
 export default class Modals {
     data() {

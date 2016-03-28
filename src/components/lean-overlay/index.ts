@@ -1,9 +1,7 @@
 import Component from 'vue-class-component';
 
-var template = require('./lean-overlay.html');
-
 @Component({
-    template: template
+    template: require('./lean-overlay.html')
 })
 export default class LeanOverlay {
 }

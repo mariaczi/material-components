@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-var template = require('./icon.html');
-
 @Component({
     props: {
         right: {
@@ -15,7 +13,7 @@ var template = require('./icon.html');
             "default": false
         }
     },
-    template: template
+    template: require('./icon.html')
 })
 export default class Icon {
 }

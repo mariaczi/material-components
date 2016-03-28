@@ -1,7 +1,5 @@
 import Component from 'vue-class-component';
 
-var template = require('./bottom.html');
-
 import mdCollection from '../../../components/collection';
 import mdCollectionItem from '../../../components/collection-item';
 import mdButton from '../../../components/button';
@@ -11,7 +9,6 @@ import mdIcon from '../../../components/icon';
 import events from '../../../mixins/events';
 
 @Component({
-    template: template,
     components: {
         mdCollection,
         mdCollectionItem,
@@ -21,7 +18,8 @@ import events from '../../../mixins/events';
     },
     mixins: [
         events
-    ]
+    ],
+    template: require('./bottom.html')
 })
 export default class BottomModal {
 }

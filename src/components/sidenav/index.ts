@@ -2,8 +2,6 @@ import Component from 'vue-class-component';
 
 import mdSidenavOverlay from '../sidenav-overlay';
 
-var template = require('./sidenav.html');
-
 const ESC = 27;
 
 @Component({
@@ -43,7 +41,7 @@ const ESC = 27;
     components: {
         mdSidenavOverlay
     },
-    template: template
+    template: require('./sidenav.html')
 })
 export default class SideNav {
     private active: boolean;

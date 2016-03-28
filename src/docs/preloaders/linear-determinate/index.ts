@@ -1,14 +1,12 @@
 import Component from 'vue-class-component';
 
-var template = require('./linear-determinate.html');
-
 import mdLinearPreloader from '../../../components/linear-preloader';
 
 @Component({
-    template: template,
     components: {
         mdLinearPreloader
-    }
+    },
+    template: require('./linear-determinate.html')
 })
 export default class LinearDeterminatePreloader {
     data() {

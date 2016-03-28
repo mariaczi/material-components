@@ -3,7 +3,6 @@ import mdButton from '../button';
 import mdIcon from '../icon';
 
 var Velocity = require('velocity-animate');
-var template = require('./fab.html');
 
 @Component({
     props: {
@@ -22,7 +21,7 @@ var template = require('./fab.html');
         mdButton,
         mdIcon
     },
-    template: template
+    template: require('./fab.html')
 })
 export default class Fab {
     private active: boolean;

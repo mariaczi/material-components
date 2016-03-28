@@ -10,10 +10,7 @@ import mdIcon from '../../../components/icon';
 
 import events from '../../../mixins/events';
 
-var template = require('./navbars.html');
-
 @Component({
-    template: template,
     components: {
         mdBadge,
         mdNavbar,
@@ -25,7 +22,8 @@ var template = require('./navbars.html');
     },
     mixins: [
         events
-    ]
+    ],
+    template: require('./navbars.html')
 })
 export default class DropdownNavbar {
 }

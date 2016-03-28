@@ -67,12 +67,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var mixins_1 = __webpack_require__(15);
 	var components_2 = __webpack_require__(7);
 	var vue_1 = __webpack_require__(441);
-	var materialize_1 = __webpack_require__(443);
-	var doc_api_1 = __webpack_require__(445);
-	var doc_sources_1 = __webpack_require__(447);
+	var materialize_1 = __webpack_require__(442);
+	var doc_api_1 = __webpack_require__(444);
+	var doc_sources_1 = __webpack_require__(446);
 	var snippet_1 = __webpack_require__(123);
-	var doc_tabs_1 = __webpack_require__(449);
-	__webpack_require__(451);
+	var doc_tabs_1 = __webpack_require__(448);
+	__webpack_require__(450);
 	module.exports = {
 	    run: function (app) {
 	        Vue.config.debug = true;
@@ -5581,12 +5581,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var components_1 = __webpack_require__(7);
-	var template = __webpack_require__(113);
 	var HomePage = (function () {
 	    function HomePage() {}
 	    HomePage = __decorate([vue_class_component_1["default"]({
 	        components: components_1["default"],
-	        template: template
+	        template: __webpack_require__(113)
 	    })], HomePage);
 	    return HomePage;
 	})();
@@ -7083,7 +7082,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(27);
 	var Icon = (function () {
 	    function Icon() {}
 	    Icon = __decorate([vue_class_component_1["default"]({
@@ -7099,7 +7097,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                "default": false
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(27)
 	    })], Icon);
 	    return Icon;
 	})();
@@ -7318,7 +7316,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var sidenav_overlay_1 = __webpack_require__(32);
-	var template = __webpack_require__(34);
 	var ESC = 27;
 	var SideNav = (function () {
 	    function SideNav() {}
@@ -7398,7 +7395,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        components: {
 	            mdSidenavOverlay: sidenav_overlay_1["default"]
 	        },
-	        template: template
+	        template: __webpack_require__(34)
 	    })], SideNav);
 	    return SideNav;
 	})();
@@ -7419,11 +7416,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(33);
 	var SidenavOverlay = (function () {
 	    function SidenavOverlay() {}
 	    SidenavOverlay = __decorate([vue_class_component_1["default"]({
-	        template: template
+	        template: __webpack_require__(33)
 	    })], SidenavOverlay);
 	    return SidenavOverlay;
 	})();
@@ -7841,11 +7837,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.$broadcast('collapsible::close', id);
 	        return true;
 	    };
-	    Collapsible.prototype.openedChanged = function (value, oldValue) {
+	    Collapsible.prototype.openedChanged = function (value) {
 	        var _this = this;
 	        if (this.expendable) {
+	            var ids = this.$children.filter(function (component) {
+	                return component.$options.name == 'CollapsibleItem';
+	            }).map(function (item) {
+	                return item.id;
+	            });
 	            // close
-	            oldValue.filter(function (val) {
+	            ids.filter(function (val) {
 	                return value.indexOf(val) < 0;
 	            }).forEach(function (id) {
 	                return _this.$broadcast('collapsible::close', id);
@@ -8049,7 +8050,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                twoWay: false
 	            }
 	        },
-	        template: __webpack_require__(50),
 	        mixins: [events_1["default"]],
 	        events: {
 	            'collapsible::open': function collapsibleOpen(id, expendable) {
@@ -8058,7 +8058,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            'collapsible::close': function collapsibleClose(id) {
 	                this.close(id);
 	            }
-	        }
+	        },
+	        template: __webpack_require__(50)
 	    })], CollapsibleItem);
 	    return CollapsibleItem;
 	})();
@@ -8528,7 +8529,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(67);
 	var EventWrapper = (function () {
 	    function EventWrapper() {}
 	    EventWrapper.prototype.ready = function () {
@@ -8548,7 +8548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                required: true
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(67)
 	    })], EventWrapper);
 	    return EventWrapper;
 	})();
@@ -8578,7 +8578,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var button_1 = __webpack_require__(25);
 	var icon_1 = __webpack_require__(26);
 	var Velocity = __webpack_require__(20);
-	var template = __webpack_require__(69);
 	var Fab = (function () {
 	    function Fab() {}
 	    Fab.prototype.data = function () {
@@ -8653,7 +8652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            mdButton: button_1["default"],
 	            mdIcon: icon_1["default"]
 	        },
-	        template: template
+	        template: __webpack_require__(69)
 	    })], Fab);
 	    return Fab;
 	})();
@@ -8844,7 +8843,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(75);
 	var Optgroup = (function () {
 	    function Optgroup() {}
 	    Optgroup = __decorate([vue_class_component_1["default"]({
@@ -8855,7 +8853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                'default': false
 	            }
 	        },
-	        template: template
+	        template: __webpack_require__(75)
 	    })], Optgroup);
 	    return Optgroup;
 	})();
@@ -8884,7 +8882,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var bind_boolean_1 = __webpack_require__(9);
 	var input_1 = __webpack_require__(17);
-	var template = __webpack_require__(77);
 	var SelectOption = (function () {
 	    function SelectOption() {}
 	    SelectOption.prototype.data = function () {
@@ -8924,7 +8921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    SelectOption.prototype.unselect = function () {
-	        if (this.active && !this.disabled && this.multiple) {
+	        if (this.active && this.multiple) {
 	            this.active = false;
 	            this.$dispatch('select::unselect', this.value, this);
 	        }
@@ -8977,7 +8974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            bindBoolean: bind_boolean_1["default"]
 	        },
 	        mixins: [input_1["default"]],
-	        template: template
+	        template: __webpack_require__(77)
 	    })], SelectOption);
 	    return SelectOption;
 	})();
@@ -9203,7 +9200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        options.forEach(function (o) {
 	            if (o.selected) {
 	                _this.$broadcast('option::select', o.value);
-	            } else {
+	            } else if (_this.multiple) {
 	                _this.$broadcast('option::unselect', o.value);
 	            }
 	        });
@@ -9250,7 +9247,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        watch: {
 	            value: function value() {
-	                this.refreshDropdownOptions();
+	                this.$nextTick(this.refreshDropdownOptions);
 	            }
 	        },
 	        components: {
@@ -9664,11 +9661,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(89);
 	var LeanOverlay = (function () {
 	    function LeanOverlay() {}
 	    LeanOverlay = __decorate([vue_class_component_1["default"]({
-	        template: template
+	        template: __webpack_require__(89)
 	    })], LeanOverlay);
 	    return LeanOverlay;
 	})();
@@ -10512,12 +10508,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var vue_class_component_1 = __webpack_require__(6);
 	var components_1 = __webpack_require__(7);
-	var template = __webpack_require__(115);
 	var AboutPage = (function () {
 	    function AboutPage() {}
 	    AboutPage = __decorate([vue_class_component_1["default"]({
 	        components: components_1["default"],
-	        template: template
+	        template: __webpack_require__(115)
 	    })], AboutPage);
 	    return AboutPage;
 	})();
@@ -10636,7 +10631,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dropdown_1 = __webpack_require__(59);
 	var dropdown_item_1 = __webpack_require__(61);
 	var badge_1 = __webpack_require__(23);
-	var template = __webpack_require__(120);
 	var Dropdowns = (function () {
 	    function Dropdowns() {}
 	    Dropdowns.prototype.closeDropdown = function () {
@@ -10644,12 +10638,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        self.$broadcast('dropdown-list::close');
 	    };
 	    Dropdowns = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdDropdown: dropdown_1["default"],
 	            mdDropdownItem: dropdown_item_1["default"],
 	            mdBadge: badge_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(120)
 	    })], Dropdowns);
 	    return Dropdowns;
 	})();
@@ -10679,19 +10673,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badge_1 = __webpack_require__(23);
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
-	var template = __webpack_require__(122);
 	var Navbars = (function () {
 	    function Navbars() {}
 	    Navbars.prototype.data = function () {
 	        return {};
 	    };
 	    Navbars = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(122)
 	    })], Navbars);
 	    return Navbars;
 	})();
@@ -10718,11 +10711,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(124);
 	var Snippet = (function () {
 	    function Snippet() {}
 	    Snippet = __decorate([vue_class_component_1["default"]({
-	        template: template
+	        template: __webpack_require__(124)
 	    })], Snippet);
 	    return Snippet;
 	})();
@@ -11108,15 +11100,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var button_1 = __webpack_require__(25);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(148);
 	var FloatingButtons = (function () {
 	    function FloatingButtons() {}
 	    FloatingButtons = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdButton: button_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(148)
 	    })], FloatingButtons);
 	    return FloatingButtons;
 	})();
@@ -11146,16 +11137,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fab_1 = __webpack_require__(68);
 	var button_1 = __webpack_require__(25);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(150);
 	var FabButtons = (function () {
 	    function FabButtons() {}
 	    FabButtons = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdFab: fab_1["default"],
 	            mdButton: button_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(150)
 	    })], FabButtons);
 	    return FabButtons;
 	})();
@@ -11185,16 +11175,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fab_1 = __webpack_require__(68);
 	var button_1 = __webpack_require__(25);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(152);
 	var FabButtons = (function () {
 	    function FabButtons() {}
 	    FabButtons = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdFab: fab_1["default"],
 	            mdButton: button_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(152)
 	    })], FabButtons);
 	    return FabButtons;
 	})();
@@ -11224,16 +11213,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fab_1 = __webpack_require__(68);
 	var button_1 = __webpack_require__(25);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(154);
 	var ClickFabButtons = (function () {
 	    function ClickFabButtons() {}
 	    ClickFabButtons = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdFab: fab_1["default"],
 	            mdButton: button_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(154)
 	    })], ClickFabButtons);
 	    return ClickFabButtons;
 	})();
@@ -11385,32 +11373,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	var image_1 = __webpack_require__(167);
 	var reveal_1 = __webpack_require__(169);
 	var snippet_1 = __webpack_require__(123);
-	var template = __webpack_require__(171);
 	var Cards = (function () {
 	    function Cards() {}
 	    Cards.prototype.data = function () {
 	        return {
-	            api: __webpack_require__(172),
+	            api: __webpack_require__(171),
 	            snippets: {
-	                defaultCard: __webpack_require__(173),
-	                imageCard: __webpack_require__(174),
-	                revealCard: __webpack_require__(175)
+	                defaultCard: __webpack_require__(172),
+	                imageCard: __webpack_require__(173),
+	                revealCard: __webpack_require__(174)
 	            },
 	            src: {
-	                script: __webpack_require__(176),
-	                template: __webpack_require__(177),
-	                style: __webpack_require__(178)
+	                script: __webpack_require__(175),
+	                template: __webpack_require__(176),
+	                style: __webpack_require__(177)
 	            }
 	        };
 	    };
 	    Cards = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            docDefaultCard: default_1["default"],
 	            docImageCard: image_1["default"],
 	            docRevealCard: reveal_1["default"],
 	            docSnippet: snippet_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(178)
 	    })], Cards);
 	    return Cards;
 	})();
@@ -11506,18 +11493,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	var card_1 = __webpack_require__(37);
 	var icon_1 = __webpack_require__(26);
 	var wave_effect_1 = __webpack_require__(13);
-	var template = __webpack_require__(170);
 	var RevealCard = (function () {
 	    function RevealCard() {}
 	    RevealCard = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        directives: {
 	            waveEffect: wave_effect_1["default"]
 	        },
 	        components: {
 	            mdCard: card_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(170)
 	    })], RevealCard);
 	    return RevealCard;
 	})();
@@ -11533,12 +11519,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 171 */
-/***/ function(module, exports) {
-
-	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/cards\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Card with image</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-image-card></doc-image-card>\r\n\r\n                <doc-snippet>{{{snippets.imageCard}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Default card</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-card></doc-default-card>\r\n\r\n                <doc-snippet>{{{snippets.defaultCard}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Reveal card</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-reveal-card></doc-reveal-card>\r\n\r\n                <doc-snippet>{{{snippets.revealCard}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
-
-/***/ },
-/* 172 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -11633,40 +11613,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 173 */
+/* 172 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"blue-grey darken-1\"</span> <span class=\"hljs-attribute\">content-class</span>=<span class=\"hljs-value\">\"white-text\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n        Card Title\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>\r\n        Content\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>\r\n        Card Title\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"images/sample-1.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>\r\n            Content\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
 
 /***/ },
-/* 175 */
+/* 174 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-card</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"title\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span>&gt;</span>\r\n        Card Title<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">right</span>&gt;</span>more_vert<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n    <span class=\"hljs-comment\">&lt;!-- wave effect directive --&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"image\"</span> <span class=\"hljs-attribute\">v-wave-effect</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-block waves-light\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"activator\"</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"images/office.jpg\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!\"</span>&gt;</span>This is a link<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"reveal\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-title grey-text text-darken-4\"</span>&gt;</span>\r\n            Card Title\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>\r\n            Here is some more information\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-card</span>&gt;</span>";
 
 /***/ },
-/* 176 */
+/* 175 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Velocity = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'velocity-animate'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        contentClass: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        titleInImage: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        small: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        medium: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        large: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./card.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Card {\r\n    <span class=\"hljs-keyword\">private</span> $el: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> _slotContents: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> activators = <span class=\"hljs-keyword\">this</span>.$el.querySelectorAll(<span class=\"hljs-string\">'.activator'</span>);\r\n        <span class=\"hljs-built_in\">Array</span>.prototype.slice.call(activators).forEach((activator) =&gt; {\r\n            activator.addEventListener(<span class=\"hljs-string\">'click'</span>, <span class=\"hljs-keyword\">this</span>.open);\r\n        });\r\n\r\n        <span class=\"hljs-keyword\">var</span> revealClose = <span class=\"hljs-keyword\">this</span>.$els.revealClose;\r\n        <span class=\"hljs-keyword\">if</span> (revealClose) {\r\n            revealClose.addEventListener(<span class=\"hljs-string\">'click'</span>, <span class=\"hljs-keyword\">this</span>.close);\r\n        }\r\n    }\r\n\r\n    open() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">var</span> reveal: HTMLElement = <span class=\"hljs-keyword\">this</span>.$els.reveal;\r\n            <span class=\"hljs-keyword\">if</span> (reveal) {\r\n                reveal.style.display = <span class=\"hljs-string\">'block'</span>;\r\n                Velocity(reveal, <span class=\"hljs-string\">\"stop\"</span>, <span class=\"hljs-literal\">false</span>);\r\n                Velocity(reveal, {translateY: <span class=\"hljs-string\">'-100%'</span>}, {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeInOutQuad'</span>});\r\n            }\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">var</span> reveal: HTMLElement = <span class=\"hljs-keyword\">this</span>.$els.reveal;\r\n            <span class=\"hljs-keyword\">if</span> (reveal) {\r\n                Velocity(reveal,\r\n                    {translateY: <span class=\"hljs-number\">0</span>}, {\r\n                        duration: <span class=\"hljs-number\">225</span>,\r\n                        queue: <span class=\"hljs-literal\">false</span>,\r\n                        easing: <span class=\"hljs-string\">'easeInOutQuad'</span>,\r\n                        complete: () =&gt; {\r\n                            reveal.style.display = <span class=\"hljs-string\">'none'</span>;\r\n                        }\r\n                    });\r\n            }\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> imageSlot() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'image'</span> <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> titleSlot() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'title'</span> <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> actionsSlot() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'actions'</span> <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> revealSlot() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'reveal'</span> <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n}";
 
 /***/ },
-/* 177 */
+/* 176 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">:style</span>=<span class=\"hljs-value\">\"{overflow: revealSlot ? 'hidden' : 'initial'}\"</span>\r\n     <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"{small: small, medium: medium, large: large}\"</span>\r\n     <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-card card\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"card-content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"card-image\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"imageSlot\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-image\"</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"image\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"titleSlot &amp;&amp; titleInImage\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-title\"</span>&gt;</span>\r\n                    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-content\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"contentClass\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"titleSlot &amp;&amp; !titleInImage\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-title\"</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"card-action\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"actionsSlot\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-action\"</span>&gt;</span>\r\n                <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"actions\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"revealSlot\"</span> <span class=\"hljs-attribute\">v-el:reveal</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"card-reveal\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">v-el:reveal-close</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons right close\"</span>&gt;</span>close<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"reveal\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>";
 
 /***/ },
-/* 178 */
+/* 177 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-class\">.md-card</span> {\r\n  <span class=\"hljs-class\">.activator</span>, <span class=\"hljs-class\">.close</span> {\r\n    <span class=\"hljs-attribute\">cursor</span><span class=\"hljs-value\">: pointer;</span>\r\n  }\r\n}";
+
+/***/ },
+/* 178 */
+/***/ function(module, exports) {
+
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/cards\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Card with image</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-image-card></doc-image-card>\r\n\r\n                <doc-snippet>{{{snippets.imageCard}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Default card</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-card></doc-default-card>\r\n\r\n                <doc-snippet>{{{snippets.defaultCard}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Reveal card</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-reveal-card></doc-reveal-card>\r\n\r\n                <doc-snippet>{{{snippets.revealCard}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 179 */
@@ -12110,7 +12096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 200 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        opened: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n        },\r\n        popout: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        expendable: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    watch: {\r\n        expendable: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'Error: can not change expandable'</span>)\r\n        },\r\n        opened: {\r\n            deep: <span class=\"hljs-literal\">true</span>,\r\n            handler: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">newValue, oldValue</span>) </span>{\r\n                <span class=\"hljs-keyword\">this</span>.openedChanged(newValue, oldValue)\r\n            }\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'collapsible::open'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.open(id);\r\n        },\r\n        <span class=\"hljs-string\">'collapsible::close'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n           <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.close(id);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collapsible.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Collapsible {\r\n    <span class=\"hljs-keyword\">private</span> $broadcast: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> expendable: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> opened: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.opened != <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n                <span class=\"hljs-keyword\">this</span>.opened\r\n                    .forEach((id) =&gt; <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, id, <span class=\"hljs-keyword\">this</span>.expendable));\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, <span class=\"hljs-keyword\">this</span>.opened, <span class=\"hljs-keyword\">this</span>.expendable);\r\n            }\r\n        }\r\n    }\r\n\r\n    open(id: <span class=\"hljs-built_in\">string</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.opened != <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n                <span class=\"hljs-keyword\">this</span>.opened.push(id);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.opened = id;\r\n            }\r\n        }\r\n        <span class=\"hljs-comment\">// propagate event to children</span>\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, id, <span class=\"hljs-keyword\">this</span>.expendable);\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n    }\r\n\r\n    close(id: <span class=\"hljs-built_in\">string</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.opened != <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n                <span class=\"hljs-keyword\">this</span>.opened.$remove(id);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.opened = <span class=\"hljs-string\">''</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-comment\">// propagate event to children</span>\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::close'</span>, id);\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n    }\r\n\r\n    openedChanged(value, oldValue) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n            <span class=\"hljs-comment\">// close</span>\r\n            oldValue\r\n                .filter((val) =&gt; value.indexOf(val) &lt; <span class=\"hljs-number\">0</span>)\r\n                .forEach((id) =&gt; <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::close'</span>, id));\r\n            <span class=\"hljs-comment\">// open</span>\r\n            <span class=\"hljs-keyword\">this</span>.opened = value;\r\n            <span class=\"hljs-keyword\">this</span>.opened\r\n                .forEach((id) =&gt; <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, id, <span class=\"hljs-keyword\">this</span>.expendable));\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, value, <span class=\"hljs-keyword\">this</span>.expendable);\r\n        }\r\n    }\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        opened: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n        },\r\n        popout: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        expendable: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    watch: {\r\n        expendable: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'Error: can not change expandable'</span>)\r\n        },\r\n        opened: {\r\n            deep: <span class=\"hljs-literal\">true</span>,\r\n            handler: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">newValue, oldValue</span>) </span>{\r\n                <span class=\"hljs-keyword\">this</span>.openedChanged(newValue, oldValue)\r\n            }\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'collapsible::open'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.open(id);\r\n        },\r\n        <span class=\"hljs-string\">'collapsible::close'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n           <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.close(id);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collapsible.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Collapsible {\r\n    <span class=\"hljs-keyword\">private</span> $children: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $broadcast: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> expendable: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> opened: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.opened != <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n                <span class=\"hljs-keyword\">this</span>.opened\r\n                    .forEach((id) =&gt; <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, id, <span class=\"hljs-keyword\">this</span>.expendable));\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, <span class=\"hljs-keyword\">this</span>.opened, <span class=\"hljs-keyword\">this</span>.expendable);\r\n            }\r\n        }\r\n    }\r\n\r\n    open(id: <span class=\"hljs-built_in\">string</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.opened != <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n                <span class=\"hljs-keyword\">this</span>.opened.push(id);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.opened = id;\r\n            }\r\n        }\r\n        <span class=\"hljs-comment\">// propagate event to children</span>\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, id, <span class=\"hljs-keyword\">this</span>.expendable);\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n    }\r\n\r\n    close(id: <span class=\"hljs-built_in\">string</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.opened != <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n                <span class=\"hljs-keyword\">this</span>.opened.$remove(id);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.opened = <span class=\"hljs-string\">''</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-comment\">// propagate event to children</span>\r\n        <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::close'</span>, id);\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n    }\r\n\r\n    openedChanged(value) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.expendable) {\r\n            <span class=\"hljs-keyword\">var</span> ids = <span class=\"hljs-keyword\">this</span>.$children\r\n                .filter((component) =&gt; component.$options.name == <span class=\"hljs-string\">'CollapsibleItem'</span>)\r\n                .map((item) =&gt; item.id);\r\n            <span class=\"hljs-comment\">// close</span>\r\n            ids\r\n                .filter((val) =&gt; value.indexOf(val) &lt; <span class=\"hljs-number\">0</span>)\r\n                .forEach((id) =&gt; <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::close'</span>, id));\r\n            <span class=\"hljs-comment\">// open</span>\r\n            <span class=\"hljs-keyword\">this</span>.opened = value;\r\n            <span class=\"hljs-keyword\">this</span>.opened\r\n                .forEach((id) =&gt; <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, id, <span class=\"hljs-keyword\">this</span>.expendable));\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'collapsible::open'</span>, value, <span class=\"hljs-keyword\">this</span>.expendable);\r\n        }\r\n    }\r\n}";
 
 /***/ },
 /* 201 */
@@ -12122,7 +12108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 202 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> events from <span class=\"hljs-string\">'../../mixins/events'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Velocity = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'velocity-animate'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        name: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        expanded: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collapsible-item.html'</span>),\r\n    mixins: [\r\n        events\r\n    ],\r\n    events: {\r\n        <span class=\"hljs-string\">'collapsible::open'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id, expendable</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.open(id, expendable);\r\n        },\r\n        <span class=\"hljs-string\">'collapsible::close'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.close(id);\r\n        }\r\n    }\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CollapsibleItem {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $dispatch: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $nextTick: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> _uid: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> name: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> expanded: <span class=\"hljs-built_in\">boolean</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.expanded;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> id(): <span class=\"hljs-built_in\">any</span> {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.name) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.name;\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>._uid;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedStyle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">return</span> {\r\n                display: <span class=\"hljs-string\">'block'</span>\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">null</span>;\r\n    }\r\n\r\n    openThis(immediately = <span class=\"hljs-literal\">false</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">if</span> (immediately) {\r\n                <span class=\"hljs-keyword\">this</span>.$els.body.style.height = <span class=\"hljs-string\">''</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$nextTick(() =&gt; {\r\n                    Velocity(<span class=\"hljs-keyword\">this</span>.$els.body, <span class=\"hljs-string\">'slideDown'</span>, <span class=\"hljs-keyword\">this</span>._slideConfig);\r\n                });\r\n            }\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> _slideConfig() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            duration: <span class=\"hljs-number\">350</span>,\r\n            easing: <span class=\"hljs-string\">\"easeOutQuart\"</span>,\r\n            queue: <span class=\"hljs-literal\">false</span>,\r\n            complete: () =&gt; {\r\n                <span class=\"hljs-keyword\">this</span>.$els.body.style.height = <span class=\"hljs-string\">''</span>;\r\n            }\r\n        }\r\n    }\r\n\r\n    open(id, expendable: <span class=\"hljs-built_in\">boolean</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (id === <span class=\"hljs-literal\">null</span> || <span class=\"hljs-keyword\">typeof</span> id == <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">this</span>.openThis(<span class=\"hljs-literal\">true</span>); <span class=\"hljs-comment\">// bulk open</span>\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (id == <span class=\"hljs-keyword\">this</span>.id) {\r\n                <span class=\"hljs-keyword\">this</span>.openThis();\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">if</span> (!expendable) {\r\n                    <span class=\"hljs-keyword\">this</span>.closeThis();\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    closeThis(immediately = <span class=\"hljs-literal\">false</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">if</span> (immediately) {\r\n                <span class=\"hljs-keyword\">this</span>.$els.body.style.height = <span class=\"hljs-string\">''</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$nextTick(() =&gt; {\r\n                    <span class=\"hljs-keyword\">this</span>.$els.body.style.display = <span class=\"hljs-string\">'block'</span>;\r\n                    Velocity(<span class=\"hljs-keyword\">this</span>.$els.body, <span class=\"hljs-string\">'slideUp'</span>, <span class=\"hljs-keyword\">this</span>._slideConfig);\r\n                })\r\n            }\r\n        }\r\n    }\r\n\r\n    close(id) {\r\n        <span class=\"hljs-keyword\">if</span> (id === <span class=\"hljs-literal\">null</span> || <span class=\"hljs-keyword\">typeof</span> id == <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">this</span>.closeThis(<span class=\"hljs-literal\">true</span>); <span class=\"hljs-comment\">// bulk close</span>\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (id == <span class=\"hljs-keyword\">this</span>.id) {\r\n                <span class=\"hljs-keyword\">this</span>.closeThis();\r\n            }\r\n        }\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'collapsible::close'</span>, <span class=\"hljs-keyword\">this</span>.id);\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'collapsible::open'</span>, <span class=\"hljs-keyword\">this</span>.id);\r\n        }\r\n    }\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> events from <span class=\"hljs-string\">'../../mixins/events'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Velocity = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'velocity-animate'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        name: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        expanded: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    mixins: [\r\n        events\r\n    ],\r\n    events: {\r\n        <span class=\"hljs-string\">'collapsible::open'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id, expendable</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.open(id, expendable);\r\n        },\r\n        <span class=\"hljs-string\">'collapsible::close'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.close(id);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./collapsible-item.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> CollapsibleItem {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $dispatch: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $nextTick: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> _uid: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> name: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> expanded: <span class=\"hljs-built_in\">boolean</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.expanded;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> id(): <span class=\"hljs-built_in\">any</span> {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.name) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.name;\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>._uid;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedStyle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">return</span> {\r\n                display: <span class=\"hljs-string\">'block'</span>\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">null</span>;\r\n    }\r\n\r\n    openThis(immediately = <span class=\"hljs-literal\">false</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">if</span> (immediately) {\r\n                <span class=\"hljs-keyword\">this</span>.$els.body.style.height = <span class=\"hljs-string\">''</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$nextTick(() =&gt; {\r\n                    Velocity(<span class=\"hljs-keyword\">this</span>.$els.body, <span class=\"hljs-string\">'slideDown'</span>, <span class=\"hljs-keyword\">this</span>._slideConfig);\r\n                });\r\n            }\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> _slideConfig() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            duration: <span class=\"hljs-number\">350</span>,\r\n            easing: <span class=\"hljs-string\">\"easeOutQuart\"</span>,\r\n            queue: <span class=\"hljs-literal\">false</span>,\r\n            complete: () =&gt; {\r\n                <span class=\"hljs-keyword\">this</span>.$els.body.style.height = <span class=\"hljs-string\">''</span>;\r\n            }\r\n        }\r\n    }\r\n\r\n    open(id, expendable: <span class=\"hljs-built_in\">boolean</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (id === <span class=\"hljs-literal\">null</span> || <span class=\"hljs-keyword\">typeof</span> id == <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">this</span>.openThis(<span class=\"hljs-literal\">true</span>); <span class=\"hljs-comment\">// bulk open</span>\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (id == <span class=\"hljs-keyword\">this</span>.id) {\r\n                <span class=\"hljs-keyword\">this</span>.openThis();\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">if</span> (!expendable) {\r\n                    <span class=\"hljs-keyword\">this</span>.closeThis();\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    closeThis(immediately = <span class=\"hljs-literal\">false</span>) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">if</span> (immediately) {\r\n                <span class=\"hljs-keyword\">this</span>.$els.body.style.height = <span class=\"hljs-string\">''</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$nextTick(() =&gt; {\r\n                    <span class=\"hljs-keyword\">this</span>.$els.body.style.display = <span class=\"hljs-string\">'block'</span>;\r\n                    Velocity(<span class=\"hljs-keyword\">this</span>.$els.body, <span class=\"hljs-string\">'slideUp'</span>, <span class=\"hljs-keyword\">this</span>._slideConfig);\r\n                })\r\n            }\r\n        }\r\n    }\r\n\r\n    close(id) {\r\n        <span class=\"hljs-keyword\">if</span> (id === <span class=\"hljs-literal\">null</span> || <span class=\"hljs-keyword\">typeof</span> id == <span class=\"hljs-string\">\"undefined\"</span>) {\r\n            <span class=\"hljs-keyword\">this</span>.closeThis(<span class=\"hljs-literal\">true</span>); <span class=\"hljs-comment\">// bulk close</span>\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (id == <span class=\"hljs-keyword\">this</span>.id) {\r\n                <span class=\"hljs-keyword\">this</span>.closeThis();\r\n            }\r\n        }\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'collapsible::close'</span>, <span class=\"hljs-keyword\">this</span>.id);\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'collapsible::open'</span>, <span class=\"hljs-keyword\">this</span>.id);\r\n        }\r\n    }\r\n}";
 
 /***/ },
 /* 203 */
@@ -12260,17 +12246,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(209);
 	var collection_1 = __webpack_require__(51);
 	var collection_item_1 = __webpack_require__(55);
 	var HeaderCollection = (function () {
 	    function HeaderCollection() {}
 	    HeaderCollection = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdCollection: collection_1["default"],
 	            mdCollectionItem: collection_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(209)
 	    })], HeaderCollection);
 	    return HeaderCollection;
 	})();
@@ -12297,7 +12282,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(211);
 	var icon_1 = __webpack_require__(26);
 	var collection_1 = __webpack_require__(51);
 	var collection_item_1 = __webpack_require__(55);
@@ -12316,12 +12300,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    SecondaryContentCollection = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdIcon: icon_1["default"],
 	            mdCollection: collection_1["default"],
 	            mdCollectionItem: collection_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(211)
 	    })], SecondaryContentCollection);
 	    return SecondaryContentCollection;
 	})();
@@ -12638,7 +12622,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(233);
 	var dropdown_1 = __webpack_require__(59);
 	var dropdown_item_1 = __webpack_require__(61);
 	var DefaultDropdown = (function () {
@@ -12649,11 +12632,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    DefaultDropdown = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdDropdown: dropdown_1["default"],
 	            mdDropdownItem: dropdown_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(233)
 	    })], DefaultDropdown);
 	    return DefaultDropdown;
 	})();
@@ -14010,7 +13993,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 285 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdDropdownList from <span class=\"hljs-string\">'../../dropdown-list'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> inputMixin from <span class=\"hljs-string\">'../../../mixins/input'</span>;\r\n<span class=\"hljs-keyword\">import</span> clickAway from <span class=\"hljs-string\">'../../../directives/click-away'</span>;\r\n<span class=\"hljs-keyword\">import</span> bindBoolean from <span class=\"hljs-string\">'../../../directives/bind-boolean'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        value: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'select::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.push(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n                <span class=\"hljs-keyword\">this</span>.close();\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, value);\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n\r\n        },\r\n        <span class=\"hljs-string\">'select::unselect'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.$remove(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, value);\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n        }\r\n    },\r\n    watch: {\r\n        value: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.refreshDropdownOptions()\r\n        }\r\n    },\r\n    components: {\r\n        mdDropdownList\r\n    },\r\n    directives: {\r\n        clickAway,\r\n        bindBoolean\r\n    },\r\n    mixins: [\r\n        inputMixin\r\n    ],\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./select.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SelectField {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $getAllChildren: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $broadcast: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> _slotContents: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> options: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> defaultSelect: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            options: {}\r\n        }\r\n    }\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-keyword\">this</span>.$getAllChildren().filter((c: <span class=\"hljs-built_in\">any</span>) =&gt; {<span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'SelectOption'</span> == c.$options.name});\r\n        <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">var</span> i = <span class=\"hljs-number\">0</span>; i &lt; options.length; i++) {\r\n            <span class=\"hljs-keyword\">var</span> option = options[i];\r\n            <span class=\"hljs-keyword\">var</span> opt: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>.createOption(option);\r\n            Vue.set(<span class=\"hljs-keyword\">this</span>.options, opt.value, opt);\r\n        }\r\n    }\r\n\r\n    ready() {\r\n       <span class=\"hljs-keyword\">this</span>.refreshDropdownOptions()\r\n    }\r\n\r\n    createOption(option: <span class=\"hljs-built_in\">any</span>) {\r\n        <span class=\"hljs-keyword\">var</span> content = option._slotContents ? option._slotContents.default : <span class=\"hljs-string\">''</span>;\r\n        <span class=\"hljs-keyword\">var</span> value = option.$data.value;\r\n        <span class=\"hljs-keyword\">var</span> disabled = option.$data.disabled;\r\n\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            content: content.textContent,\r\n            value: value,\r\n            disabled: disabled\r\n        };\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> multiple() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value);\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContent() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value) ? <span class=\"hljs-keyword\">this</span>.valueContentMultiple : <span class=\"hljs-keyword\">this</span>.valueContentSingle;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentSingle() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value].content : <span class=\"hljs-string\">''</span>;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentMultiple() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value.length) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.value.map((value) =&gt; {\r\n                <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[value] ? <span class=\"hljs-keyword\">this</span>.options[value].content : <span class=\"hljs-string\">''</span>;\r\n            }).join(<span class=\"hljs-string\">', '</span>);\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect].content : <span class=\"hljs-string\">''</span>\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> field() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$els.field;\r\n    }\r\n\r\n    hasSlot(name = <span class=\"hljs-string\">'default'</span>) {\r\n        <span class=\"hljs-keyword\">return</span> name <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n\r\n    refreshDropdownOptions() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-built_in\">Array</span>.prototype.slice.call(<span class=\"hljs-keyword\">this</span>.field.options);\r\n        options.forEach((o: HTMLOptionElement) =&gt; {\r\n            <span class=\"hljs-keyword\">if</span> (o.selected) {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, o.value)\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, o.value)\r\n            }\r\n        });\r\n    }\r\n\r\n    open(e) {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::open'</span>, e);\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::close'</span>);\r\n        }\r\n    }\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdDropdownList from <span class=\"hljs-string\">'../../dropdown-list'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> inputMixin from <span class=\"hljs-string\">'../../../mixins/input'</span>;\r\n<span class=\"hljs-keyword\">import</span> clickAway from <span class=\"hljs-string\">'../../../directives/click-away'</span>;\r\n<span class=\"hljs-keyword\">import</span> bindBoolean from <span class=\"hljs-string\">'../../../directives/bind-boolean'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        value: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'select::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.push(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n                <span class=\"hljs-keyword\">this</span>.close();\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, value);\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n\r\n        },\r\n        <span class=\"hljs-string\">'select::unselect'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value)) {\r\n                <span class=\"hljs-keyword\">this</span>.value.$remove(value);\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.value = value;\r\n            }\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, value);\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n        }\r\n    },\r\n    watch: {\r\n        value: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.$nextTick(<span class=\"hljs-keyword\">this</span>.refreshDropdownOptions)\r\n        }\r\n    },\r\n    components: {\r\n        mdDropdownList\r\n    },\r\n    directives: {\r\n        clickAway,\r\n        bindBoolean\r\n    },\r\n    mixins: [\r\n        inputMixin\r\n    ],\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./select.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SelectField {\r\n    <span class=\"hljs-keyword\">private</span> $els: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $getAllChildren: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $broadcast: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> _slotContents: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> options: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> defaultSelect: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            options: {}\r\n        }\r\n    }\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-keyword\">this</span>.$getAllChildren().filter((c: <span class=\"hljs-built_in\">any</span>) =&gt; {<span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'SelectOption'</span> == c.$options.name});\r\n        <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">var</span> i = <span class=\"hljs-number\">0</span>; i &lt; options.length; i++) {\r\n            <span class=\"hljs-keyword\">var</span> option = options[i];\r\n            <span class=\"hljs-keyword\">var</span> opt: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>.createOption(option);\r\n            Vue.set(<span class=\"hljs-keyword\">this</span>.options, opt.value, opt);\r\n        }\r\n    }\r\n\r\n    ready() {\r\n       <span class=\"hljs-keyword\">this</span>.refreshDropdownOptions()\r\n    }\r\n\r\n    createOption(option: <span class=\"hljs-built_in\">any</span>) {\r\n        <span class=\"hljs-keyword\">var</span> content = option._slotContents ? option._slotContents.default : <span class=\"hljs-string\">''</span>;\r\n        <span class=\"hljs-keyword\">var</span> value = option.$data.value;\r\n        <span class=\"hljs-keyword\">var</span> disabled = option.$data.disabled;\r\n\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            content: content.textContent,\r\n            value: value,\r\n            disabled: disabled\r\n        };\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> multiple() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value);\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContent() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-built_in\">Array</span>.isArray(<span class=\"hljs-keyword\">this</span>.value) ? <span class=\"hljs-keyword\">this</span>.valueContentMultiple : <span class=\"hljs-keyword\">this</span>.valueContentSingle;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentSingle() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.value].content : <span class=\"hljs-string\">''</span>;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> valueContentMultiple() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value.length) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.value.map((value) =&gt; {\r\n                <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[value] ? <span class=\"hljs-keyword\">this</span>.options[value].content : <span class=\"hljs-string\">''</span>;\r\n            }).join(<span class=\"hljs-string\">', '</span>);\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect] ? <span class=\"hljs-keyword\">this</span>.options[<span class=\"hljs-keyword\">this</span>.defaultSelect].content : <span class=\"hljs-string\">''</span>\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> field() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$els.field;\r\n    }\r\n\r\n    hasSlot(name = <span class=\"hljs-string\">'default'</span>) {\r\n        <span class=\"hljs-keyword\">return</span> name <span class=\"hljs-keyword\">in</span> <span class=\"hljs-keyword\">this</span>._slotContents;\r\n    }\r\n\r\n    refreshDropdownOptions() {\r\n        <span class=\"hljs-keyword\">var</span> options = <span class=\"hljs-built_in\">Array</span>.prototype.slice.call(<span class=\"hljs-keyword\">this</span>.field.options);\r\n        options.forEach((o: HTMLOptionElement) =&gt; {\r\n            <span class=\"hljs-keyword\">if</span> (o.selected) {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::select'</span>, o.value)\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.multiple) {\r\n                <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'option::unselect'</span>, o.value)\r\n            }\r\n        });\r\n    }\r\n\r\n    open(e) {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::open'</span>, e);\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'dropdown-list::close'</span>);\r\n        }\r\n    }\r\n}";
 
 /***/ },
 /* 286 */
@@ -14028,7 +14011,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 288 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> bindBoolean from <span class=\"hljs-string\">'../../../directives/bind-boolean'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> input from <span class=\"hljs-string\">'../../../mixins/input'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> template = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./option.html'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        disabled: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        value: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'option::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.optionSelect(value);\r\n        },\r\n        <span class=\"hljs-string\">'option::unselect'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.optionUnselect(value);\r\n        }\r\n    },\r\n    directives: {\r\n        bindBoolean\r\n    },\r\n    mixins: [\r\n        input\r\n    ],\r\n    template: template\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SelectOption {\r\n    <span class=\"hljs-keyword\">private</span> $dispatch: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $parent: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> disabled: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> multiple() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$parent.multiple;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            disabled: <span class=\"hljs-keyword\">this</span>.disabled,\r\n            active: <span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled,\r\n            selected: <span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled\r\n        };\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.select();\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.unselect();\r\n        }\r\n    }\r\n\r\n    select() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'select::select'</span>, <span class=\"hljs-keyword\">this</span>.value);\r\n        }\r\n    }\r\n\r\n    unselect() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled &amp;&amp; <span class=\"hljs-keyword\">this</span>.multiple) { <span class=\"hljs-comment\">// only multiple could be unselected</span>\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'select::unselect'</span>, <span class=\"hljs-keyword\">this</span>.value, <span class=\"hljs-keyword\">this</span>);\r\n        }\r\n    }\r\n\r\n    optionSelect(value) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.multiple) {\r\n            <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active &amp;&amp; <span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n    }\r\n\r\n    optionUnselect(value) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.multiple) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active &amp;&amp; <span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n    }\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> bindBoolean from <span class=\"hljs-string\">'../../../directives/bind-boolean'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> input from <span class=\"hljs-string\">'../../../mixins/input'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        disabled: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        value: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'option::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.optionSelect(value);\r\n        },\r\n        <span class=\"hljs-string\">'option::unselect'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.optionUnselect(value);\r\n        }\r\n    },\r\n    directives: {\r\n        bindBoolean\r\n    },\r\n    mixins: [\r\n        input\r\n    ],\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./option.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SelectOption {\r\n    <span class=\"hljs-keyword\">private</span> $dispatch: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $parent: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> disabled: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> value: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> multiple() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$parent.multiple;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            disabled: <span class=\"hljs-keyword\">this</span>.disabled,\r\n            active: <span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled,\r\n            selected: <span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled\r\n        };\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.select();\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.unselect();\r\n        }\r\n    }\r\n\r\n    select() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active &amp;&amp; !<span class=\"hljs-keyword\">this</span>.disabled) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'select::select'</span>, <span class=\"hljs-keyword\">this</span>.value);\r\n        }\r\n    }\r\n\r\n    unselect() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active &amp;&amp; <span class=\"hljs-keyword\">this</span>.multiple) { <span class=\"hljs-comment\">// only multiple could be unselected</span>\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'select::unselect'</span>, <span class=\"hljs-keyword\">this</span>.value, <span class=\"hljs-keyword\">this</span>);\r\n        }\r\n    }\r\n\r\n    optionSelect(value) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.multiple) {\r\n            <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active &amp;&amp; <span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n    }\r\n\r\n    optionUnselect(value) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.multiple) {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active &amp;&amp; <span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.value == value) {\r\n                <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            }\r\n        }\r\n    }\r\n}";
 
 /***/ },
 /* 289 */
@@ -14229,19 +14212,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badge_1 = __webpack_require__(23);
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
-	var template = __webpack_require__(307);
 	var LeftAlignNavbars = (function () {
 	    function LeftAlignNavbars() {}
 	    LeftAlignNavbars.prototype.data = function () {
 	        return {};
 	    };
 	    LeftAlignNavbars = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(307)
 	    })], LeftAlignNavbars);
 	    return LeftAlignNavbars;
 	})();
@@ -14271,16 +14253,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badge_1 = __webpack_require__(23);
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
-	var template = __webpack_require__(309);
 	var RightAlignNavbar = (function () {
 	    function RightAlignNavbar() {}
 	    RightAlignNavbar = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(309)
 	    })], RightAlignNavbar);
 	    return RightAlignNavbar;
 	})();
@@ -14310,16 +14291,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badge_1 = __webpack_require__(23);
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
-	var template = __webpack_require__(311);
 	var CenterAlignNavbar = (function () {
 	    function CenterAlignNavbar() {}
 	    CenterAlignNavbar = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(311)
 	    })], CenterAlignNavbar);
 	    return CenterAlignNavbar;
 	})();
@@ -14349,7 +14329,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var badge_1 = __webpack_require__(23);
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
-	var template = __webpack_require__(313);
 	var ActiveItemNavbar = (function () {
 	    function ActiveItemNavbar() {}
 	    ActiveItemNavbar.prototype.data = function () {
@@ -14358,12 +14337,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    ActiveItemNavbar = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(313)
 	    })], ActiveItemNavbar);
 	    return ActiveItemNavbar;
 	})();
@@ -14395,7 +14374,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
 	var snippet_1 = __webpack_require__(123);
-	var template = __webpack_require__(315);
 	var FixedNavbars = (function () {
 	    function FixedNavbars() {}
 	    FixedNavbars.prototype.data = function () {
@@ -14407,14 +14385,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.showFixed = !this.showFixed;
 	    };
 	    FixedNavbars = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdButton: button_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"],
 	            mdSnippet: snippet_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(315)
 	    })], FixedNavbars);
 	    return FixedNavbars;
 	})();
@@ -14449,11 +14427,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dropdown_list_1 = __webpack_require__(60);
 	var icon_1 = __webpack_require__(26);
 	var events_1 = __webpack_require__(16);
-	var template = __webpack_require__(317);
 	var DropdownNavbar = (function () {
 	    function DropdownNavbar() {}
 	    DropdownNavbar = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
@@ -14463,7 +14439,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            mdDropdownList: dropdown_list_1["default"],
 	            mdIcon: icon_1["default"]
 	        },
-	        mixins: [events_1["default"]]
+	        mixins: [events_1["default"]],
+	        template: __webpack_require__(317)
 	    })], DropdownNavbar);
 	    return DropdownNavbar;
 	})();
@@ -14494,20 +14471,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(319);
 	var IconLinksNavbar = (function () {
 	    function IconLinksNavbar() {}
 	    IconLinksNavbar.prototype.data = function () {
 	        return {};
 	    };
 	    IconLinksNavbar = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(319)
 	    })], IconLinksNavbar);
 	    return IconLinksNavbar;
 	})();
@@ -14539,18 +14515,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(321);
 	var ButtonsNavbar = (function () {
 	    function ButtonsNavbar() {}
 	    ButtonsNavbar = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdBadge: badge_1["default"],
 	            mdButton: button_1["default"],
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(321)
 	    })], ButtonsNavbar);
 	    return ButtonsNavbar;
 	})();
@@ -14579,18 +14554,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue_class_component_1 = __webpack_require__(6);
 	var navbar_1 = __webpack_require__(30);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(323);
 	var SearchNavbar = (function () {
 	    function SearchNavbar() {}
 	    SearchNavbar.prototype.data = function () {
 	        return {};
 	    };
 	    SearchNavbar = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdNavbar: navbar_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(323)
 	    })], SearchNavbar);
 	    return SearchNavbar;
 	})();
@@ -14620,19 +14594,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var navbar_1 = __webpack_require__(30);
 	var nav_item_1 = __webpack_require__(95);
 	var icon_1 = __webpack_require__(26);
-	var template = __webpack_require__(325);
 	var MobileCollase = (function () {
 	    function MobileCollase() {}
 	    MobileCollase.prototype.data = function () {
 	        return {};
 	    };
 	    MobileCollase = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdNavbar: navbar_1["default"],
 	            mdNavItem: nav_item_1["default"],
 	            mdIcon: icon_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(325)
 	    })], MobileCollase);
 	    return MobileCollase;
 	})();
@@ -14968,7 +14941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 343 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> mdSidenavOverlay from <span class=\"hljs-string\">'../sidenav-overlay'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> template = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./sidenav.html'</span>);\r\n\r\n<span class=\"hljs-keyword\">const</span> ESC = <span class=\"hljs-number\">27</span>;\r\n\r\n@Component({\r\n    props: {\r\n        closeOnClick: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        active: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        showActive: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        fixed: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'sidenav::open'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.open();\r\n        },\r\n        <span class=\"hljs-string\">'sidenav::close'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.$nextTick(<span class=\"hljs-keyword\">this</span>.close); <span class=\"hljs-comment\">// delay close due events</span>\r\n        },\r\n        <span class=\"hljs-string\">'nav-item::activated'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'nav-item::activated'</span>, id);\r\n        }\r\n    },\r\n    components: {\r\n        mdSidenavOverlay\r\n    },\r\n    template: template\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SideNav {\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> fixed: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> closeOnClick: <span class=\"hljs-built_in\">boolean</span>;\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.fixed || <span class=\"hljs-keyword\">this</span>.active;\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.fixed) {\r\n            <span class=\"hljs-built_in\">window</span>.document.addEventListener(<span class=\"hljs-string\">'keydown'</span>, (evt: <span class=\"hljs-built_in\">any</span>) =&gt; {\r\n                evt = evt || <span class=\"hljs-built_in\">window</span>.event;\r\n                <span class=\"hljs-keyword\">if</span> (evt.keyCode == ESC) {\r\n                    <span class=\"hljs-keyword\">this</span>.close();\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedStyle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">return</span> {\r\n                left: <span class=\"hljs-number\">0</span>\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">null</span>;\r\n    }\r\n\r\n    open() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n        }\r\n    }\r\n\r\n    closeIfNecessary() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.closeOnClick) {\r\n            <span class=\"hljs-keyword\">this</span>.close();\r\n        }\r\n    }\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> mdSidenavOverlay from <span class=\"hljs-string\">'../sidenav-overlay'</span>;\r\n\r\n<span class=\"hljs-keyword\">const</span> ESC = <span class=\"hljs-number\">27</span>;\r\n\r\n@Component({\r\n    props: {\r\n        closeOnClick: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        active: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        showActive: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        fixed: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'sidenav::open'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.open();\r\n        },\r\n        <span class=\"hljs-string\">'sidenav::close'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\"></span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.$nextTick(<span class=\"hljs-keyword\">this</span>.close); <span class=\"hljs-comment\">// delay close due events</span>\r\n        },\r\n        <span class=\"hljs-string\">'nav-item::activated'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'nav-item::activated'</span>, id);\r\n        }\r\n    },\r\n    components: {\r\n        mdSidenavOverlay\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./sidenav.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> SideNav {\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> fixed: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> closeOnClick: <span class=\"hljs-built_in\">boolean</span>;\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.fixed || <span class=\"hljs-keyword\">this</span>.active;\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.fixed) {\r\n            <span class=\"hljs-built_in\">window</span>.document.addEventListener(<span class=\"hljs-string\">'keydown'</span>, (evt: <span class=\"hljs-built_in\">any</span>) =&gt; {\r\n                evt = evt || <span class=\"hljs-built_in\">window</span>.event;\r\n                <span class=\"hljs-keyword\">if</span> (evt.keyCode == ESC) {\r\n                    <span class=\"hljs-keyword\">this</span>.close();\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedStyle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">return</span> {\r\n                left: <span class=\"hljs-number\">0</span>\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">null</span>;\r\n    }\r\n\r\n    open() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n        }\r\n    }\r\n\r\n    closeIfNecessary() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.closeOnClick) {\r\n            <span class=\"hljs-keyword\">this</span>.close();\r\n        }\r\n    }\r\n}";
 
 /***/ },
 /* 344 */
@@ -15006,33 +14979,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fixed_footer_1 = __webpack_require__(350);
 	var bottom_1 = __webpack_require__(352);
 	var events_1 = __webpack_require__(16);
-	var template = __webpack_require__(354);
 	var Modals = (function () {
 	    function Modals() {}
 	    Modals.prototype.data = function () {
 	        return {
-	            api: __webpack_require__(355),
+	            api: __webpack_require__(354),
 	            snippets: {
-	                defaultModal: __webpack_require__(356),
-	                fixedFooterModal: __webpack_require__(357),
-	                bottomModal: __webpack_require__(358)
+	                defaultModal: __webpack_require__(355),
+	                fixedFooterModal: __webpack_require__(356),
+	                bottomModal: __webpack_require__(357)
 	            },
 	            src: {
-	                script: __webpack_require__(359),
-	                template: __webpack_require__(360),
-	                style: __webpack_require__(361)
+	                script: __webpack_require__(358),
+	                template: __webpack_require__(359),
+	                style: __webpack_require__(360)
 	            }
 	        };
 	    };
 	    Modals = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            docSnippet: snippet_1["default"],
 	            docDefaultModal: default_1["default"],
 	            docFixedFooterModal: fixed_footer_1["default"],
 	            docBottomModal: bottom_1["default"]
 	        },
-	        mixins: [events_1["default"]]
+	        mixins: [events_1["default"]],
+	        template: __webpack_require__(361)
 	    })], Modals);
 	    return Modals;
 	})();
@@ -15053,7 +15025,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(349);
 	var button_1 = __webpack_require__(25);
 	var modal_1 = __webpack_require__(93);
 	var events_1 = __webpack_require__(16);
@@ -15065,12 +15036,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    DefaultModal = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdButton: button_1["default"],
 	            mdModal: modal_1["default"]
 	        },
-	        mixins: [events_1["default"]]
+	        mixins: [events_1["default"]],
+	        template: __webpack_require__(349)
 	    })], DefaultModal);
 	    return DefaultModal;
 	})();
@@ -15097,19 +15068,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(351);
 	var button_1 = __webpack_require__(25);
 	var modal_1 = __webpack_require__(93);
 	var events_1 = __webpack_require__(16);
 	var FifexFooterModal = (function () {
 	    function FifexFooterModal() {}
 	    FifexFooterModal = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdButton: button_1["default"],
 	            mdModal: modal_1["default"]
 	        },
-	        mixins: [events_1["default"]]
+	        mixins: [events_1["default"]],
+	        template: __webpack_require__(351)
 	    })], FifexFooterModal);
 	    return FifexFooterModal;
 	})();
@@ -15136,7 +15106,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(353);
 	var collection_1 = __webpack_require__(51);
 	var collection_item_1 = __webpack_require__(55);
 	var button_1 = __webpack_require__(25);
@@ -15146,7 +15115,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var BottomModal = (function () {
 	    function BottomModal() {}
 	    BottomModal = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdCollection: collection_1["default"],
 	            mdCollectionItem: collection_item_1["default"],
@@ -15154,7 +15122,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            mdModal: modal_1["default"],
 	            mdIcon: icon_1["default"]
 	        },
-	        mixins: [events_1["default"]]
+	        mixins: [events_1["default"]],
+	        template: __webpack_require__(353)
 	    })], BottomModal);
 	    return BottomModal;
 	})();
@@ -15170,12 +15139,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 354 */
-/***/ function(module, exports) {
-
-	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/modals\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Modal</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-modal></doc-default-modal>\r\n\r\n                <doc-snippet>{{{snippets.defaultModal}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Modal - fixed footer</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-fixed-footer-modal></doc-fixed-footer-modal>\r\n\r\n                <doc-snippet>{{{snippets.fixedFooterModal}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Modal - bottom</h2>\r\n            <p>\r\n                <!--TODO: warn keep modals in different component due events-->\r\n            </p>\r\n            <div class=\"doc-example\">\r\n                <doc-bottom-modal></doc-bottom-modal>\r\n\r\n                <doc-snippet>{{{snippets.bottomModal}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
-
-/***/ },
-/* 355 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -15258,40 +15221,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 356 */
+/* 355 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span> <span class=\"hljs-attribute\">:result.sync</span>=<span class=\"hljs-value\">\"result\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h4</span>&gt;</span>Modal Header<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h4</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>A bunch of text<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"footer\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-green btn-flat\"</span>\r\n                   @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"broadcast('modal::close', 'agree')\"</span>&gt;</span>\r\n            Agree\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>";
 
 /***/ },
-/* 357 */
+/* 356 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"modal-fixed-footer\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h4</span>&gt;</span>Modal Header<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h4</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>A bunch of text<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"footer\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-green btn-flat\"</span>\r\n                   @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"broadcast('modal::close')\"</span>&gt;</span>\r\n            Agree\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal - fixed footer\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n";
 
 /***/ },
-/* 358 */
+/* 357 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-comment\">&lt;!-- Simple --&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span> <span class=\"hljs-attribute\">bottom</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h4</span>&gt;</span>Modal Header<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h4</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>A bunch of text<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">slot</span>=<span class=\"hljs-value\">\"footer\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"waves-effect waves-green btn-flat\"</span>\r\n                   @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"broadcast('modal::close')\"</span>&gt;</span>\r\n            Agree\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>\r\n           @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal - bottom style\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>\r\n\r\n<span class=\"hljs-comment\">&lt;!-- Complex --&gt;</span>\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-modal</span> <span class=\"hljs-attribute\">bottom</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> <span class=\"hljs-attribute\">src</span>=<span class=\"hljs-value\">\"images/yuna.jpg\"</span> <span class=\"hljs-attribute\">alt</span>=<span class=\"hljs-value\">\"\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n        ...\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-collection-item</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"avatar\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-icon</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"circle red\"</span>&gt;</span>play_arrow<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-icon</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">span</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"title\"</span>&gt;</span>Title<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">span</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>First Line <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">br</span>&gt;</span> Second Line <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"secondary-content\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">i</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"material-icons\"</span>&gt;</span>grade<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">i</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection-item</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-collection</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-modal</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-button</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span> @<span class=\"hljs-attribute\">click.prevent</span>=<span class=\"hljs-value\">\"broadcast('modal::open')\"</span>&gt;</span>\r\n    Modal - bottom style\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-button</span>&gt;</span>";
 
 /***/ },
-/* 359 */
+/* 358 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">import</span> mdLeanOverlay from <span class=\"hljs-string\">'../lean-overlay'</span>;\r\n\r\n<span class=\"hljs-keyword\">const</span> ESC = <span class=\"hljs-number\">27</span>;\r\n\r\n@Component({\r\n    props: {\r\n        id: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        },\r\n        result: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        },\r\n        <span class=\"hljs-string\">'class'</span>: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-string\">''</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        bottom: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    components: {\r\n        mdLeanOverlay\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'modal::open'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.id === <span class=\"hljs-literal\">null</span> || <span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.id === <span class=\"hljs-string\">\"undefined\"</span>) {\r\n                <span class=\"hljs-keyword\">this</span>.open();\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.id == id) {\r\n                <span class=\"hljs-keyword\">this</span>.open();\r\n            }\r\n        },\r\n        <span class=\"hljs-string\">'modal::close'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">result, id</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> ((<span class=\"hljs-keyword\">this</span>.id === <span class=\"hljs-literal\">null</span> || <span class=\"hljs-keyword\">typeof</span> <span class=\"hljs-keyword\">this</span>.id === <span class=\"hljs-string\">\"undefined\"</span>) \r\n                || (<span class=\"hljs-keyword\">this</span>.id == id)) {\r\n                <span class=\"hljs-keyword\">this</span>.close();\r\n                <span class=\"hljs-keyword\">this</span>.result = result;\r\n                <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n            }\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">active</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (active) {\r\n                <span class=\"hljs-built_in\">window</span>.document.body.style.overflow = <span class=\"hljs-string\">'hidden'</span>;\r\n            }\r\n            <span class=\"hljs-keyword\">else</span> {\r\n                <span class=\"hljs-built_in\">window</span>.document.body.style.overflow = <span class=\"hljs-string\">'visible'</span>;\r\n            }\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./modal.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Modal {\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> bottom: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> <span class=\"hljs-keyword\">class</span>: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> result: <span class=\"hljs-built_in\">string</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    ready() {\r\n        <span class=\"hljs-built_in\">window</span>.document.addEventListener(<span class=\"hljs-string\">'keydown'</span>, (evt: <span class=\"hljs-built_in\">any</span>) =&gt; {\r\n            evt = evt || <span class=\"hljs-built_in\">window</span>.event;\r\n            <span class=\"hljs-keyword\">if</span> (evt.keyCode == ESC) {\r\n                <span class=\"hljs-keyword\">this</span>.close();\r\n            }\r\n        });\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedStyle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.bottom ? {\r\n                <span class=\"hljs-string\">'z-index'</span>: <span class=\"hljs-number\">1003</span>,\r\n                <span class=\"hljs-string\">'display'</span>: <span class=\"hljs-string\">'block'</span>,\r\n                <span class=\"hljs-string\">'opacity'</span>: <span class=\"hljs-number\">1</span>,\r\n                <span class=\"hljs-string\">'bottom'</span>: <span class=\"hljs-string\">'0px'</span>\r\n            } : {\r\n                <span class=\"hljs-string\">'z-index'</span>: <span class=\"hljs-number\">1003</span>,\r\n                <span class=\"hljs-string\">'display'</span>: <span class=\"hljs-string\">'block'</span>,\r\n                <span class=\"hljs-string\">'top'</span>: <span class=\"hljs-string\">'10%'</span>\r\n            }\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">null</span>;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">var</span> classes = <span class=\"hljs-string\">''</span>;\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.class) {\r\n            classes += <span class=\"hljs-keyword\">this</span>.class;\r\n        }\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.bottom) {\r\n            classes += <span class=\"hljs-string\">' '</span>;\r\n            classes += <span class=\"hljs-string\">'bottom-sheet'</span>;\r\n        }\r\n        <span class=\"hljs-keyword\">return</span> classes;\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> transition() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.bottom ? <span class=\"hljs-string\">'modal-bottom'</span> : <span class=\"hljs-string\">'modal'</span>;\r\n    }\r\n\r\n    open() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.result = <span class=\"hljs-literal\">null</span>;\r\n        }\r\n    }\r\n}";
 
 /***/ },
-/* 360 */
+/* 359 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">:id</span>=<span class=\"hljs-value\">\"id\"</span> <span class=\"hljs-attribute\">:transition</span>=<span class=\"hljs-value\">\"transition\"</span>\r\n     <span class=\"hljs-attribute\">:style</span>=<span class=\"hljs-value\">\"computedStyle\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"modal\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"content\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"modal-content\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"modal-footer\"</span>&gt;</span>\r\n            <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"footer\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n\r\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-lean-overlay</span> <span class=\"hljs-attribute\">v-if</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">transition</span>=<span class=\"hljs-value\">\"modal-overlay\"</span>\r\n                 @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"close\"</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-lean-overlay</span>&gt;</span>";
 
 /***/ },
-/* 361 */
+/* 360 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-class\">.modal-overlay-transition</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n  <span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.3s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.3s</span>;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeIn-<span class=\"hljs-number\">0</span>-<span class=\"hljs-number\">5</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeIn-<span class=\"hljs-number\">0</span>-<span class=\"hljs-number\">5</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-overlay-enter</span>, <span class=\"hljs-class\">.modal-overlay-leave</span> {\r\n  <span class=\"hljs-attribute\">opacity</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-overlay-leave</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.2s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.2s</span>;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeOut-<span class=\"hljs-number\">0</span>-<span class=\"hljs-number\">5</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeOut-<span class=\"hljs-number\">0</span>-<span class=\"hljs-number\">5</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-transition</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n  <span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.3s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.3s</span>;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: zoomIn;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: zoomIn;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-leave</span> {\r\n  <span class=\"hljs-attribute\">opacity</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-leave</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.2s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.2s</span>;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeOut;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: fadeOut;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-bottom-transition</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n  <span class=\"hljs-attribute\">animation-fill-mode</span><span class=\"hljs-value\">: both;</span>\r\n\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.3s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.3s</span>;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInUp;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideInUp;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-bottom-leave</span> {\r\n  <span class=\"hljs-attribute\">opacity</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0</span>;</span>\r\n}\r\n\r\n<span class=\"hljs-class\">.modal-bottom-leave</span> {\r\n  -webkit-<span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.2s</span>;</span>\r\n  <span class=\"hljs-attribute\">animation-duration</span><span class=\"hljs-value\">: <span class=\"hljs-number\">0.2s</span>;</span>\r\n\r\n  -webkit-<span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutDown;</span>\r\n  <span class=\"hljs-attribute\">animation-name</span><span class=\"hljs-value\">: slideOutDown;</span>\r\n}\r\n";
+
+/***/ },
+/* 361 */
+/***/ function(module, exports) {
+
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/modals\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Modal</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-modal></doc-default-modal>\r\n\r\n                <doc-snippet>{{{snippets.defaultModal}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Modal - fixed footer</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-fixed-footer-modal></doc-fixed-footer-modal>\r\n\r\n                <doc-snippet>{{{snippets.fixedFooterModal}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Modal - bottom</h2>\r\n            <p>\r\n                <!--TODO: warn keep modals in different component due events-->\r\n            </p>\r\n            <div class=\"doc-example\">\r\n                <doc-bottom-modal></doc-bottom-modal>\r\n\r\n                <doc-snippet>{{{snippets.bottomModal}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 362 */
@@ -15360,7 +15329,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(364);
 	var toast_1 = __webpack_require__(18);
 	var button_1 = __webpack_require__(25);
 	var Toasts = (function () {
@@ -15372,11 +15340,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 	    Toasts = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdButton: button_1["default"]
 	        },
-	        mixins: [toast_1["default"]]
+	        mixins: [toast_1["default"]],
+	        template: __webpack_require__(364)
 	    })], Toasts);
 	    return Toasts;
 	})();
@@ -15403,17 +15371,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(366);
 	var tooltip_1 = __webpack_require__(21);
 	var button_1 = __webpack_require__(25);
 	var Tooltips = (function () {
 	    function Tooltips() {}
 	    Tooltips = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdButton: button_1["default"]
 	        },
-	        mixins: [tooltip_1["default"]]
+	        mixins: [tooltip_1["default"]],
+	        template: __webpack_require__(366)
 	    })], Tooltips);
 	    return Tooltips;
 	})();
@@ -15639,15 +15606,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(376);
 	var image_1 = __webpack_require__(86);
 	var Image = (function () {
 	    function Image() {}
 	    Image = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdImage: image_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(376)
 	    })], Image);
 	    return Image;
 	})();
@@ -15674,17 +15640,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(378);
 	var slider_1 = __webpack_require__(101);
 	var slide_1 = __webpack_require__(99);
 	var Slides = (function () {
 	    function Slides() {}
 	    Slides = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdSlider: slider_1["default"],
 	            mdSlide: slide_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(378)
 	    })], Slides);
 	    return Slides;
 	})();
@@ -15831,7 +15796,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 384 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> MaterialBox from <span class=\"hljs-string\">'../../materialize/materialbox'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdLeanOverlay from <span class=\"hljs-string\">'../lean-overlay'</span>;\r\n\r\n<span class=\"hljs-keyword\">const</span> ESC = <span class=\"hljs-number\">27</span>;\r\n\r\n@Component({\r\n    props: {\r\n        src: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        caption: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        height: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        width: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    components: {\r\n        mdLeanOverlay\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./image.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Image {\r\n    <span class=\"hljs-keyword\">private</span> src: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> materialBox: MaterialBox;\r\n    <span class=\"hljs-keyword\">private</span> originalSizes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> img = self.$els.img;\r\n        <span class=\"hljs-keyword\">var</span> placeholder = self.$els.placeholder;\r\n        <span class=\"hljs-keyword\">this</span>.materialBox = <span class=\"hljs-keyword\">new</span> MaterialBox(img, placeholder);\r\n        <span class=\"hljs-comment\">// Return on ESC</span>\r\n        <span class=\"hljs-built_in\">window</span>.addEventListener(<span class=\"hljs-string\">'keyup'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">e</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (e.keyCode === ESC) {\r\n                self.close();\r\n            }\r\n        });\r\n    }\r\n\r\n    compiled(){\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-comment\">// todo: remove hack webpack img src loading</span>\r\n        self.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.src);\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.close()\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.maximialize();\r\n        }\r\n    }\r\n\r\n    maximialize() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.originalSizes = <span class=\"hljs-keyword\">this</span>.getSizes();\r\n            <span class=\"hljs-keyword\">this</span>.materialBox.maximalize(<span class=\"hljs-keyword\">this</span>.originalSizes);\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.materialBox.close(<span class=\"hljs-keyword\">this</span>.originalSizes);\r\n        }\r\n    }\r\n\r\n     getSizes() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> el: HTMLElement = self.$els.img;\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            width: el.offsetWidth,\r\n            height: el.offsetHeight,\r\n            left: el.offsetLeft,\r\n            top: el.offsetTop\r\n        }\r\n    }\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n<span class=\"hljs-keyword\">import</span> MaterialBox from <span class=\"hljs-string\">'../../materialize/materialbox'</span>;\r\n<span class=\"hljs-keyword\">import</span> mdLeanOverlay from <span class=\"hljs-string\">'../lean-overlay'</span>;\r\n\r\n<span class=\"hljs-keyword\">const</span> ESC = <span class=\"hljs-number\">27</span>;\r\n\r\n@Component({\r\n    props: {\r\n        src: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">true</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        caption: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        height: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        width: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    components: {\r\n        mdLeanOverlay\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./image.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Image {\r\n    <span class=\"hljs-keyword\">private</span> src: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> materialBox: MaterialBox;\r\n    <span class=\"hljs-keyword\">private</span> originalSizes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    }\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> img = self.$els.img;\r\n        <span class=\"hljs-keyword\">var</span> placeholder = self.$els.placeholder;\r\n        <span class=\"hljs-keyword\">this</span>.materialBox = <span class=\"hljs-keyword\">new</span> MaterialBox(img, placeholder);\r\n        <span class=\"hljs-comment\">// Return on ESC</span>\r\n        <span class=\"hljs-built_in\">window</span>.addEventListener(<span class=\"hljs-string\">'keyup'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">e</span>) </span>{\r\n            <span class=\"hljs-keyword\">if</span> (e.keyCode === ESC) {\r\n                self.close();\r\n            }\r\n        });\r\n    }\r\n\r\n    compiled(){\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-comment\">// <span class=\"hljs-doctag\">todo:</span> remove hack webpack img src loading</span>\r\n        self.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.src);\r\n    }\r\n\r\n    toggle() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.close()\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">this</span>.maximialize();\r\n        }\r\n    }\r\n\r\n    maximialize() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">true</span>;\r\n            <span class=\"hljs-keyword\">this</span>.originalSizes = <span class=\"hljs-keyword\">this</span>.getSizes();\r\n            <span class=\"hljs-keyword\">this</span>.materialBox.maximalize(<span class=\"hljs-keyword\">this</span>.originalSizes);\r\n        }\r\n    }\r\n\r\n    close() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.active) {\r\n            <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-literal\">false</span>;\r\n            <span class=\"hljs-keyword\">this</span>.materialBox.close(<span class=\"hljs-keyword\">this</span>.originalSizes);\r\n        }\r\n    }\r\n\r\n     getSizes() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> el: HTMLElement = self.$els.img;\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            width: el.offsetWidth,\r\n            height: el.offsetHeight,\r\n            left: el.offsetLeft,\r\n            top: el.offsetTop\r\n        }\r\n    }\r\n}";
 
 /***/ },
 /* 385 */
@@ -15867,7 +15832,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 390 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        img: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        },\r\n        align: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-string\">''</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'slider::activate'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">index</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.setActive(index);\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">val</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>._setClasses(val);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./slide.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Slide {\r\n    <span class=\"hljs-keyword\">private</span> img: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> position: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> classes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-comment\">// todo: remove hack webpack img src loading</span>\r\n        self.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.img);\r\n    }\r\n\r\n    ready () {\r\n        <span class=\"hljs-keyword\">this</span>._setClasses(<span class=\"hljs-keyword\">this</span>.active);\r\n    }\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> position = self.$parent.$children.indexOf(<span class=\"hljs-keyword\">this</span>);\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            position: position,\r\n            classes: {}\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.classes;\r\n    }\r\n\r\n    setActive(index) {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.position == index;\r\n    }\r\n\r\n    _setClasses (val) {\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'active'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeIn'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeOut'</span>, !val);\r\n    }\r\n\r\n}";
+	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Vue: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'vue'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        img: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        },\r\n        align: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-string\">''</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'slider::activate'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">index</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.setActive(index);\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">val</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>._setClasses(val);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./slide.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Slide {\r\n    <span class=\"hljs-keyword\">private</span> img: <span class=\"hljs-built_in\">string</span>;\r\n    <span class=\"hljs-keyword\">private</span> position: <span class=\"hljs-built_in\">number</span>;\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> classes: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    compiled() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-comment\">// <span class=\"hljs-doctag\">todo:</span> remove hack webpack img src loading</span>\r\n        self.$els.img.setAttribute(<span class=\"hljs-string\">'src'</span>, <span class=\"hljs-keyword\">this</span>.img);\r\n    }\r\n\r\n    ready () {\r\n        <span class=\"hljs-keyword\">this</span>._setClasses(<span class=\"hljs-keyword\">this</span>.active);\r\n    }\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> position = self.$parent.$children.indexOf(<span class=\"hljs-keyword\">this</span>);\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            active: <span class=\"hljs-literal\">false</span>,\r\n            position: position,\r\n            classes: {}\r\n        }\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.classes;\r\n    }\r\n\r\n    setActive(index) {\r\n        <span class=\"hljs-keyword\">this</span>.active = <span class=\"hljs-keyword\">this</span>.position == index;\r\n    }\r\n\r\n    _setClasses (val) {\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'active'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeIn'</span>, val);\r\n        Vue.set(<span class=\"hljs-keyword\">this</span>.classes, <span class=\"hljs-string\">'fadeOut'</span>, !val);\r\n    }\r\n\r\n}";
 
 /***/ },
 /* 391 */
@@ -15897,40 +15862,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	var snippet_1 = __webpack_require__(123);
 	var default_1 = __webpack_require__(394);
 	var scrollable_1 = __webpack_require__(396);
-	var template = __webpack_require__(398);
 	var Tabs = (function () {
 	    function Tabs() {}
 	    Tabs.prototype.data = function () {
 	        return {
 	            api: [{
 	                name: 'Tabs',
-	                api: __webpack_require__(399)
+	                api: __webpack_require__(398)
 	            }, {
 	                name: 'Tab',
-	                api: __webpack_require__(400)
+	                api: __webpack_require__(399)
 	            }],
 	            snippets: {
-	                defaultTabs: __webpack_require__(401),
-	                docScrollableTabs: __webpack_require__(402)
+	                defaultTabs: __webpack_require__(400),
+	                docScrollableTabs: __webpack_require__(401)
 	            },
 	            src: [{
 	                name: 'Tabs',
-	                script: __webpack_require__(403),
-	                template: __webpack_require__(404)
+	                script: __webpack_require__(402),
+	                template: __webpack_require__(403)
 	            }, {
 	                name: 'Tab',
-	                script: __webpack_require__(405),
-	                template: __webpack_require__(406)
+	                script: __webpack_require__(404),
+	                template: __webpack_require__(405)
 	            }]
 	        };
 	    };
 	    Tabs = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            docSnippet: snippet_1["default"],
 	            docDefaultTabs: default_1["default"],
 	            docScrollableTabs: scrollable_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(406)
 	    })], Tabs);
 	    return Tabs;
 	})();
@@ -15990,17 +15954,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(397);
 	var tabs_1 = __webpack_require__(107);
 	var tab_1 = __webpack_require__(105);
 	var ScrollableTabs = (function () {
 	    function ScrollableTabs() {}
 	    ScrollableTabs = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdTabs: tabs_1["default"],
 	            mdTab: tab_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(397)
 	    })], ScrollableTabs);
 	    return ScrollableTabs;
 	})();
@@ -16016,12 +15979,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 398 */
-/***/ function(module, exports) {
-
-	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/tabs\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Tabs</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-tabs></doc-default-tabs>\r\n\r\n                <doc-snippet>{{{snippets.defaultTabs}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Scrollable</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-scrollable-tabs></doc-scrollable-tabs>\r\n\r\n                <doc-snippet>{{{snippets.docScrollableTabs}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
-
-/***/ },
-/* 399 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -16055,7 +16012,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 400 */
+/* 399 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -16093,40 +16050,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 401 */
+/* 400 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tabs</span> <span class=\"hljs-attribute\">:active.sync</span>=<span class=\"hljs-value\">\"tab\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"z-depth-1\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/1\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"second\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/2\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/3\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"forth\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/4\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"fifth\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#!/tabs/5\"</span>&gt;</span>Test 5<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tabs</span>&gt;</span>";
 
 /***/ },
-/* 402 */
+/* 401 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tabs</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"z-depth-1\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"active\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span> <span class=\"hljs-attribute\">disabled</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Disabled Tab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">md-tab</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"s3\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"#\"</span>&gt;</span>Test 4<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tab</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">md-tabs</span>&gt;</span>\r\n";
 
 /***/ },
-/* 403 */
+/* 402 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n<span class=\"hljs-keyword\">var</span> Velocity = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'velocity-animate'</span>);\r\n\r\n@Component({\r\n    props: {\r\n        active: {\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">'default'</span>: <span class=\"hljs-literal\">null</span>\r\n        }\r\n    },\r\n    watch: {\r\n        active: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">value</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.$broadcast(<span class=\"hljs-string\">'tab::select'</span>, value);\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'tabs::on-select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">tab</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.select(tab);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./tabs.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Tabs {\r\n    <span class=\"hljs-keyword\">private</span> active: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> indicator: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    data() {\r\n        <span class=\"hljs-keyword\">return</span> {\r\n            indicator: {\r\n                left: <span class=\"hljs-string\">'0'</span>,\r\n                right: <span class=\"hljs-string\">'0'</span>\r\n            }\r\n        }\r\n    }\r\n\r\n    select(tab) {\r\n        <span class=\"hljs-keyword\">this</span>.active = tab.id;\r\n        <span class=\"hljs-keyword\">var</span> target = tab.$el;\r\n        <span class=\"hljs-keyword\">var</span> parent = target.parentElement;\r\n        <span class=\"hljs-keyword\">this</span>.moveIndicator(\r\n            <span class=\"hljs-keyword\">this</span>.indicator.left, target.offsetLeft,\r\n            <span class=\"hljs-keyword\">this</span>.indicator.right, parent.offsetWidth - target.offsetLeft - target.offsetWidth);\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\r\n    }\r\n\r\n    moveIndicator(left, newLeft, right, newRight) {\r\n        <span class=\"hljs-keyword\">var</span> self: <span class=\"hljs-built_in\">any</span> = <span class=\"hljs-keyword\">this</span>;\r\n        <span class=\"hljs-keyword\">var</span> indicator = self.$els.indicator;\r\n        <span class=\"hljs-comment\">// Update indicator</span>\r\n        <span class=\"hljs-keyword\">if</span> ((newLeft - left) &gt;= <span class=\"hljs-number\">0</span>) {\r\n            Velocity(indicator, \r\n                {right: newRight}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>}\r\n            );\r\n            Velocity(indicator, \r\n                {left: newLeft}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>, delay: <span class=\"hljs-number\">90</span>}\r\n            );\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            Velocity(indicator, \r\n                {left: newLeft}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>});\r\n            Velocity(indicator, \r\n                {right: newRight}, \r\n                {duration: <span class=\"hljs-number\">300</span>, queue: <span class=\"hljs-literal\">false</span>, easing: <span class=\"hljs-string\">'easeOutQuad'</span>, delay: <span class=\"hljs-number\">90</span>});\r\n        }\r\n    }\r\n}";
 
 /***/ },
-/* 404 */
+/* 403 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"md-tabs\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ul</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"tabs\"</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">v-el:indicator</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"indicator\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ul</span>&gt;</span>\r\n\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span> <span class=\"hljs-attribute\">name</span>=<span class=\"hljs-value\">\"contents\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\r\n";
 
 /***/ },
-/* 405 */
+/* 404 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-keyword\">import</span> Component from <span class=\"hljs-string\">'vue-class-component'</span>;\r\n\r\n@Component({\r\n    props: {\r\n        disabled: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">Boolean</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">false</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        },\r\n        name: {\r\n            <span class=\"hljs-keyword\">type</span>: <span class=\"hljs-built_in\">String</span>,\r\n            required: <span class=\"hljs-literal\">false</span>,\r\n            <span class=\"hljs-string\">\"default\"</span>: <span class=\"hljs-literal\">null</span>,\r\n            twoWay: <span class=\"hljs-literal\">false</span>\r\n        }\r\n    },\r\n    events: {\r\n        <span class=\"hljs-string\">'tab::select'</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> (<span class=\"hljs-params\">id</span>) </span>{\r\n            <span class=\"hljs-keyword\">this</span>.select(id);\r\n        }\r\n    },\r\n    template: <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'./tab.html'</span>)\r\n})\r\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-keyword\">class</span> Tab {\r\n    <span class=\"hljs-keyword\">private</span> $el: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $parent: <span class=\"hljs-built_in\">any</span>;\r\n    <span class=\"hljs-keyword\">private</span> $dispatch: <span class=\"hljs-built_in\">any</span>;\r\n\r\n    <span class=\"hljs-keyword\">private</span> disabled: <span class=\"hljs-built_in\">boolean</span>;\r\n    <span class=\"hljs-keyword\">private</span> name: <span class=\"hljs-built_in\">string</span>;\r\n\r\n    <span class=\"hljs-keyword\">get</span> computedClasses() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.disabled ? [<span class=\"hljs-string\">'disabled'</span>] : [];\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> index() {\r\n        <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.$parent.$children.indexOf(<span class=\"hljs-keyword\">this</span>);\r\n    }\r\n\r\n    <span class=\"hljs-keyword\">get</span> id() {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.name) {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.name;\r\n        }\r\n        <span class=\"hljs-keyword\">else</span> {\r\n            <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.index;\r\n        }\r\n    }\r\n\r\n    ready() {\r\n        <span class=\"hljs-keyword\">var</span> hash = <span class=\"hljs-built_in\">window</span>.location.hash;\r\n        <span class=\"hljs-keyword\">var</span> el: HTMLElement = <span class=\"hljs-keyword\">this</span>.$el;\r\n        <span class=\"hljs-keyword\">var</span> anchors = el.getElementsByTagName(<span class=\"hljs-string\">\"A\"</span>);\r\n        <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">var</span> i = <span class=\"hljs-number\">0</span>; i &lt; anchors.length; i++) {\r\n            <span class=\"hljs-keyword\">var</span> a = anchors[i];\r\n            <span class=\"hljs-keyword\">if</span> (hash == a.getAttribute(<span class=\"hljs-string\">\"href\"</span>)) {\r\n                <span class=\"hljs-keyword\">this</span>.setAsSelected();\r\n            }\r\n        }\r\n    }\r\n\r\n    setAsSelected() {\r\n        <span class=\"hljs-keyword\">if</span> (!<span class=\"hljs-keyword\">this</span>.disabled) {\r\n            <span class=\"hljs-keyword\">this</span>.$dispatch(<span class=\"hljs-string\">'tabs::on-select'</span>, <span class=\"hljs-keyword\">this</span>);\r\n        }\r\n    }\r\n\r\n    select(id) {\r\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.id == id) {\r\n            <span class=\"hljs-keyword\">this</span>.setAsSelected();\r\n        }\r\n    }\r\n}";
 
 /***/ },
-/* 406 */
+/* 405 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> @<span class=\"hljs-attribute\">click</span>=<span class=\"hljs-value\">\"setAsSelected\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"tab col\"</span> <span class=\"hljs-attribute\">:class</span>=<span class=\"hljs-value\">\"computedClasses\"</span>&gt;</span>\r\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">slot</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">slot</span>&gt;</span>\r\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>";
+
+/***/ },
+/* 406 */
+/***/ function(module, exports) {
+
+	module.exports = "<div v-cloak>\r\n    <doc-tabs base-path=\"/tabs\">\r\n        <div slot=\"showcase\">\r\n            <h2 class=\"header\">Tabs</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-default-tabs></doc-default-tabs>\r\n\r\n                <doc-snippet>{{{snippets.defaultTabs}}}</doc-snippet>\r\n            </div>\r\n\r\n            <h2 class=\"header\">Scrollable</h2>\r\n            <div class=\"doc-example\">\r\n                <doc-scrollable-tabs></doc-scrollable-tabs>\r\n\r\n                <doc-snippet>{{{snippets.docScrollableTabs}}}</doc-snippet>\r\n            </div>\r\n        </div>\r\n\r\n        <div slot=\"api\">\r\n            <doc-api :api=\"api\"></doc-api>\r\n        </div>\r\n\r\n        <div slot=\"sources\">\r\n            <doc-sources :src=\"src\"></doc-sources>\r\n        </div>\r\n    </doc-tabs>\r\n</div>";
 
 /***/ },
 /* 407 */
@@ -16371,7 +16334,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(417);
 	var linear_preloader_1 = __webpack_require__(91);
 	var LinearDeterminatePreloader = (function () {
 	    function LinearDeterminatePreloader() {}
@@ -16381,10 +16343,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    LinearDeterminatePreloader = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdLinearPreloader: linear_preloader_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(417)
 	    })], LinearDeterminatePreloader);
 	    return LinearDeterminatePreloader;
 	})();
@@ -16411,15 +16373,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(419);
 	var linear_preloader_1 = __webpack_require__(91);
 	var LinearIndeterminatePreloader = (function () {
 	    function LinearIndeterminatePreloader() {}
 	    LinearIndeterminatePreloader = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdLinearPreloader: linear_preloader_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(419)
 	    })], LinearIndeterminatePreloader);
 	    return LinearIndeterminatePreloader;
 	})();
@@ -16446,15 +16407,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(421);
 	var circural_preloader_1 = __webpack_require__(45);
 	var CircularPreloader = (function () {
 	    function CircularPreloader() {}
 	    CircularPreloader = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdCircularPreloader: circural_preloader_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(421)
 	    })], CircularPreloader);
 	    return CircularPreloader;
 	})();
@@ -16481,15 +16441,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(423);
 	var circural_preloader_1 = __webpack_require__(45);
 	var FlashingPreloader = (function () {
 	    function FlashingPreloader() {}
 	    FlashingPreloader = __decorate([vue_class_component_1["default"]({
-	        template: template,
 	        components: {
 	            mdCircularPreloader: circural_preloader_1["default"]
-	        }
+	        },
+	        template: __webpack_require__(423)
 	    })], FlashingPreloader);
 	    return FlashingPreloader;
 	})();
@@ -16747,12 +16706,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(442);
 	var Forms = (function () {
 	    function Forms() {}
 	    Forms = __decorate([vue_class_component_1["default"]({
 	        props: ['href'],
-	        template: template
+	        template: __webpack_require__(452)
 	    })], Forms);
 	    return Forms;
 	})();
@@ -16762,12 +16720,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 442 */
-/***/ function(module, exports) {
-
-	module.exports = "<a>\r\n    <img src=\"http://vuejs.org/images/logo.png\" height=\"28\" alt=\"vue\">\r\n</a>";
-
-/***/ },
-/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16779,12 +16731,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(6);
-	var template = __webpack_require__(444);
 	var MaerializeLogo = (function () {
 	    function MaerializeLogo() {}
 	    MaerializeLogo = __decorate([vue_class_component_1["default"]({
 	        props: ['href'],
-	        template: template
+	        template: __webpack_require__(443)
 	    })], MaerializeLogo);
 	    return MaerializeLogo;
 	})();
@@ -16793,13 +16744,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 444 */
+/* 443 */
 /***/ function(module, exports) {
 
 	module.exports = "<a :href=\"href\" target=\"_blank\">\r\n    <img src=\"http://materializecss.com/images/favicon/favicon-32x32.png\" height=\"32\" alt=\"materialize\"/>\r\n</a>";
 
 /***/ },
-/* 445 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16837,7 +16788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        directives: directives_1["default"],
 	        components: components_1["default"],
 	        mixins: mixins_1["default"],
-	        template: __webpack_require__(446)
+	        template: __webpack_require__(445)
 	    })], ApiDoc);
 	    return ApiDoc;
 	})();
@@ -16846,13 +16797,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 446 */
+/* 445 */
 /***/ function(module, exports) {
 
 	module.exports = "<div v-for=\"api in apis\">\r\n    <h2 v-if=\"api.name\">\r\n        {{api.name}}\r\n    </h2>\r\n    <div v-if=\"api.api.properties && api.api.properties.length\">\r\n        <h4>Properties</h4>\r\n        <table class=\"striped\">\r\n            <thead>\r\n                <tr>\r\n                    <th>\r\n                        Name\r\n                    </th>\r\n                    <th>\r\n                        Type\r\n                    </th>\r\n                    <th>\r\n                        Required\r\n                    </th>\r\n                    <!--<th>\r\n                        Two way\r\n                    </th>-->\r\n                    <th>\r\n                        Default\r\n                    </th>\r\n                    <th>\r\n                        Description\r\n                    </th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr v-for=\"property in api.api.properties\" :style=\"property.type == 'Directive' ? {'color': '#1B5E20'} : {}\">\r\n                    <td>{{property.name}}</td>\r\n                    <td>{{property.type}}</td>\r\n                    <td>\r\n                        <span v-if=\"property.required\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'True', 'bottom')\">check_box</md-icon>\r\n                        </span>\r\n                        <!--<span v-else>-->\r\n                            <!--<md-icon @mouseover=\"tooltip($event, 'False', 'bottom')\">check_box_outline_blank</md-icon>-->\r\n                        <!--</span>-->\r\n                    </td>\r\n                    <!--<td>\r\n                        <span v-if=\"property.twoWay === true\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'True', 'bottom')\">check_box</md-icon>\r\n                        </span>\r\n                        <span v-if=\"property.twoWay === false\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'False', 'bottom')\">check_box_outline_blank</md-icon>\r\n                        </span>\r\n                        <span v-if=\"property.twoWay === null\">\r\n                            <md-icon @mouseover=\"tooltip($event, 'Not specified', 'bottom')\">indeterminate_check_box</md-icon>\r\n                        </span>\r\n                    </td>-->\r\n                    <td>\r\n                        <span v-if=\"!property.required\">{{property.default | json}}</span>\r\n                        <span v-else><md-badge alert=\"required\" style=\"position: initial; padding: 0;\"></md-badge></span>\r\n                    </td>\r\n                    <td>{{property.description}}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div v-if=\"api.api.slots && api.api.slots.length\">\r\n        <h4>Slots</h4>\r\n        <table class=\"striped\">\r\n            <thead>\r\n                <th>\r\n                    Name\r\n                </th>\r\n                <th>\r\n                    Description\r\n                </th>\r\n            </thead>\r\n            <tbody>\r\n                <tr v-for=\"slot in api.api.slots\">\r\n                    <td>\r\n                        <span v-if=\"slot.name\">\r\n                            {{slot.name}}\r\n                        </span>\r\n                        <span v-else>\r\n                            <md-badge alert=\"default\" style=\"position: initial; margin: 1rem;\"></md-badge>\r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        {{slot.description}}\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div v-if=\"api.api.events && api.api.events.length\">\r\n        <h4>Public events</h4>\r\n        <div v-for=\"event in api.api.events\">\r\n            <md-collection-list>\r\n                <div slot=\"header\">\r\n                    <h4>{{event.name}}</h4>\r\n                    <p>{{event.description}}</p>\r\n                    <p>Type: <md-badge :alert=\"event.type\" style=\"position: initial\"></md-badge></p>\r\n                </div>\r\n                <md-collection-list-item v-if=\"event.args && event.args.length > 0\">\r\n                    <table>\r\n                        <thead>\r\n                            <tr>\r\n                                <th></th>\r\n                                <th>\r\n                                    Name\r\n                                </th>\r\n                                <th>\r\n                                    Description\r\n                                </th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr v-for=\"arg in event.args\">\r\n                                <td>\r\n                                    #{{$index + 1}}\r\n                                </td>\r\n                                <td>\r\n                                    {{arg.name}}\r\n                                </td>\r\n                                <td>\r\n                                    {{arg.description}}\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </md-collection-list-item>\r\n            </md-collection-list>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
-/* 447 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16908,7 +16859,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        directives: directives_1["default"],
 	        components: components_1["default"],
 	        mixins: mixins_1["default"],
-	        template: __webpack_require__(448)
+	        template: __webpack_require__(447)
 	    })], DocSources);
 	    return DocSources;
 	})();
@@ -16917,13 +16868,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 448 */
+/* 447 */
 /***/ function(module, exports) {
 
 	module.exports = "<div :style=\"{float: 'right', margin: sources && sources.length > 1 ? '0.14rem 0 0.912rem 0' : '1.14rem 0 0.912rem 0'}\">\r\n    <md-button type=\"flat\" class=\"waves-effect\"\r\n               @click=\"toggle\">\r\n        {{expanded ? 'Collapse' : 'Expand'}}\r\n    </md-button>\r\n</div>\r\n\r\n<div v-for=\"src in sources\" class=\"doc-sources\">\r\n    <h4 v-if=\"src.name\">\r\n        {{src.name}}\r\n    </h4>\r\n    <div style=\"clear: both\"></div>\r\n    <md-collapsible popout expendable>\r\n        <md-collapsible-item v-if=\"src.template\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>code</md-icon>Template\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.template}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item v-if=\"src.script\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>settings_ethernet</md-icon>Script\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.script}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n        <md-collapsible-item v-if=\"src.style\" expanded>\r\n            <div slot=\"header\">\r\n                <md-icon>style</md-icon>Style\r\n            </div>\r\n            <div slot=\"body\">\r\n                <pre>{{{src.style}}}</pre>\r\n            </div>\r\n        </md-collapsible-item>\r\n    </md-collapsible>\r\n</div>";
 
 /***/ },
-/* 449 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16961,7 +16912,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            mdTabs: tabs_1["default"],
 	            mdTab: tab_1["default"]
 	        },
-	        template: __webpack_require__(450)
+	        template: __webpack_require__(449)
 	    })], DocTab);
 	    return DocTab;
 	})();
@@ -16970,16 +16921,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 450 */
+/* 449 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-tabs :active.sync=\"active\">\r\n    <md-tab v-if=\"hasSlot('showcase')\" name=\"showcase\"><a v-link=\"{path: basePath + '/showcase'}\">Showcase</a></md-tab>\r\n    <md-tab v-if=\"hasSlot('api')\" name=\"api\"><a v-link=\"{path: basePath + '/api'}\">API</a></md-tab>\r\n    <md-tab v-if=\"hasSlot('sources')\" name=\"sources\"><a v-link=\"{path: basePath + '/sources'}\">Sources</a></md-tab>\r\n\r\n    <div slot=\"contents\">\r\n        <div v-show=\"active == 'showcase'\" class=\"show-case\">\r\n            <slot name=\"showcase\"></slot>\r\n        </div>\r\n\r\n        <div v-show=\"active == 'api'\" class=\"api\">\r\n            <slot name=\"api\"></slot>\r\n        </div>\r\n\r\n        <div v-show=\"active == 'sources'\" class=\"sources\">\r\n            <slot name=\"sources\"></slot>\r\n        </div>\r\n    </div>\r\n</md-tabs>";
 
 /***/ },
-/* 451 */
+/* 450 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 451 */,
+/* 452 */
+/***/ function(module, exports) {
+
+	module.exports = "<a>\r\n    <img src=\"http://vuejs.org/images/logo.png\" height=\"28\" alt=\"vue\">\r\n</a>";
 
 /***/ }
 /******/ ])

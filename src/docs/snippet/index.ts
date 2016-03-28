@@ -1,9 +1,8 @@
 import Component from 'vue-class-component';
 
-var template = require('./snippet.html');
 
 @Component({
-    template: template
+    template: require('./snippet.html')
 })
 export default class Snippet {
 

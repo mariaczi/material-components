@@ -7,7 +7,9 @@
     </div>
 
     <md-lean-overlay v-if="active" @click="toggle" transition="modal-overlay"></md-lean-overlay>
-    <div v-if="active && caption" transition="fade" class="materialbox-caption" style="display: block">
-        {{caption}}
+    <div v-if="active && caption" transition="fade" class="caption-wrapper">
+        <div class="materialbox-caption" style="display: block">
+            {{caption}}
+        </div>
     </div>
 </div>

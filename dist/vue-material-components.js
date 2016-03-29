@@ -77,7 +77,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    components: components_1.default,
 	    directives: directives_1.default,
 	    mixins: mixins_1.default,
-	    vue: Vue,
 	    Vue: Vue
 	};
 

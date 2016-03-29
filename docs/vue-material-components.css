@@ -847,6 +847,9 @@ body {
   padding: 0;
   height: 100%; }
 
+main {
+  padding-bottom: 199px; }
+
 footer {
   width: 100%;
   height: 199px;
@@ -854,8 +857,11 @@ footer {
   bottom: 0;
   left: 0; }
 
-main {
-  padding-bottom: 199px; }
+@media only screen and (max-width: 992px) {
+  footer {
+    height: 366px; }
+  main {
+    padding-bottom: 366px; } }
 
 .wrapper {
   min-height: 100%;
@@ -919,7 +925,7 @@ nav.top-nav a.page-title {
   border-radius: 2px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
   .doc-example .demo {
-    background-color: color("blue-grey", "lighten-5");
+    background-color: #eceff1;
     margin-left: -20px;
     margin-right: -20px;
     margin-top: -20px;

@@ -5893,6 +5893,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
+	    Object.defineProperty(InputField.prototype, "validationClass", {
+	        get: function get() {
+	            return {
+	                invalid: this.errorMsg && this.valid == false,
+	                valid: this.successMsg && this.valid == true
+	            };
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    InputField.prototype.hasSlot = function (name) {
 	        if (name === void 0) {
 	            name = 'default';
@@ -5943,10 +5953,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	                twoWay: false
 	            },
 	            debounce: {
-	                "type": Number,
-	                "required": false,
-	                "default": 0,
-	                "twoWay": false
+	                type: Number,
+	                required: false,
+	                'default': 0,
+	                twoWay: false
+	            },
+	            errorMsg: {
+	                type: String,
+	                required: false,
+	                'default': null,
+	                twoWay: false
+	            },
+	            successMsg: {
+	                type: String,
+	                required: false,
+	                'default': null,
+	                twoWay: false
+	            },
+	            valid: {
+	                type: Boolean,
+	                required: false,
+	                'default': null,
+	                twoWay: false
 	            }
 	        },
 	        mixins: [input_1["default"]],
@@ -5962,7 +5990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 69 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"input-field\">\r\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <input v-if=\"disabled\"\r\n           v-model=\"value\"\r\n           :placeholder=\"placeholder\" :id=\"id\"\r\n           :type=\"type\"\r\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n           disabled=\"disabled\"/>\r\n    <input v-else\r\n           v-model=\"value\"\r\n           :placeholder=\"placeholder\" :id=\"id\"\r\n           :type=\"type\"\r\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n           @focus=\"activateField\"\r\n           @blur=\"deactivateField\"/>\r\n    <label v-if=\"hasSlot()\" :for=\"id\" :class=\"labelClasses\">\r\n        <slot></slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"input-field\">\r\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <input v-if=\"disabled\"\r\n           v-model=\"value\"\r\n           :placeholder=\"placeholder\" :id=\"id\"\r\n           :type=\"type\"\r\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n           disabled=\"disabled\"/>\r\n    <input v-else\r\n           v-model=\"value\"\r\n           :placeholder=\"placeholder\" :id=\"id\"\r\n           :type=\"type\"\r\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n           @focus=\"activateField\"\r\n           @blur=\"deactivateField\"\r\n           class=\"validate\"\r\n           :class=\"validationClass\"/>\r\n    <label v-if=\"hasSlot()\" :for=\"id\" :class=\"labelClasses\"\r\n           :data-error=\"errorMsg\" :data-success=\"successMsg\">\r\n        <slot></slot>\r\n    </label>\r\n</div>";
 
 /***/ },
 /* 70 */

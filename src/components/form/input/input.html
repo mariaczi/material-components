@@ -14,8 +14,11 @@
            :type="type"
            :lazy="lazy" :number="number" :debounce="debounce"
            @focus="activateField"
-           @blur="deactivateField"/>
-    <label v-if="hasSlot()" :for="id" :class="labelClasses">
+           @blur="deactivateField"
+           class="validate"
+           :class="validationClass"/>
+    <label v-if="hasSlot()" :for="id" :class="labelClasses"
+           :data-error="errorMsg" :data-success="successMsg">
         <slot></slot>
     </label>
 </div>

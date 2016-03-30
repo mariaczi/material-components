@@ -40,10 +40,28 @@ import inputMixin from '../../../mixins/input';
             twoWay: false
         },
         debounce: {
-            "type": Number,
-            "required": false,
-            "default": 0,
-            "twoWay": false
+            type: Number,
+            required: false,
+            'default': 0,
+            twoWay: false
+        },
+        errorMsg: {
+            type: String,
+            required: false,
+            'default': null,
+            twoWay: false
+        },
+        successMsg: {
+            type: String,
+            required: false,
+            'default': null,
+            twoWay: false
+        },
+        valid: {
+            type: Boolean,
+            required: false,
+            'default': null,
+            twoWay: false
         }
     },
     mixins: [
@@ -62,6 +80,9 @@ export default class InputField {
     private placeholder: string;
     private disabled: boolean;
     private active: boolean;
+    private errorMsg: string;
+    private successMsg: string;
+    private valid: boolean;
 
     data() {
         return {
@@ -71,10 +92,17 @@ export default class InputField {
     
    get labelClasses() {
        return {
-           active: this.placeholder || this.active || this.value,
+           active: this.placeholder || this.active || this.value, // || this.valid != null,
            disabled: this.disabled
        }
    }
+
+    get validationClass(){
+        return {
+            invalid: this.errorMsg && this.valid == false,
+            valid: this.successMsg && this.valid == true
+        }
+    }
 
     hasSlot(name = 'default') {
         return name in this._slotContents;

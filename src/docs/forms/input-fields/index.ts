@@ -1,11 +1,9 @@
 import Component from 'vue-class-component';
 
-import mdInput from '../../../components/form/input';
+import components from '../../../components';
 
 @Component({
-    components: {
-        mdInput
-    },
+    components,
     template: require('./input.html')
 })
 export default class InputFileds {
@@ -13,8 +11,23 @@ export default class InputFileds {
     data() {
         return {
             firstName: 'Martin',
-            lastName: ''
+            lastName: '',
+            successMsg: 'Success',
+            errorMsg: 'Error',
+            firstNameValid: "null",
+            lastNameValid: "null"
         }
+    }
+
+    bool(val) {
+        if (val == 'true') {
+            return true;
+        }
+        else if (val == 'false') {
+            return false;
+        }
+
+        return null;
     }
 }
 

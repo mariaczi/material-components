@@ -61,6 +61,30 @@
       "description": "Debounce of v-model",
       "default": 0,
       "twoWay": false
+    },
+    {
+      "name": "error-msg",
+      "type": "String",
+      "required": false,
+      "description": "Error message",
+      "default": null,
+      "twoWay`": false
+    },
+    {
+      "name": "success-msg",
+      "type": "String",
+      "required": false,
+      "description": "Success message",
+      "default": null,
+      "twoWay": false
+    },
+    {
+      "name": "valid",
+      "type": "Boolean",
+      "required": false,
+      "description": "Valid flag",
+      "default": null,
+      "twoWay": false
     }
   ],
   "slots": [

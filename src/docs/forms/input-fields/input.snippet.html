@@ -1,8 +1,10 @@
-<md-input :value.sync="firstName" placeholder="Placeholder">
+<md-input :value.sync="firstName" placeholder="Placeholder" success-msg="Success" error-msg="Error"
+          :valid="bool(firstNameValid)">
     First Name
 </md-input>
 
-<md-input :value.sync="lastName">
+<md-input :value.sync="lastName" success-msg="Success" error-msg="Error"
+          :valid="bool(lastNameValid)">
     Last name
 </md-input>
 

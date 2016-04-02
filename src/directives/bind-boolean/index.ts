@@ -1,7 +1,5 @@
-import {DirectiveOption} from 'vue-class-component';
-
-// v-bind-boolean.disabled="disabled"
-var bindBoolean: DirectiveOption = {
+// removed DirectiveOption because priority is not boolean
+var bindBoolean: any = {
 
     priority: 850,
 

@@ -3146,7 +3146,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
-	// v-bind-boolean.disabled="disabled"
+	// removed DirectiveOption because priority is not boolean
 	var bindBoolean = {
 	    priority: 850,
 	    update: function update(value) {
@@ -3167,6 +3167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	// removed DirectiveOption because priority is not boolean
 	var bindRaw = {
 	    priority: 750,
 	    bind: function bind() {

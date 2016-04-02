@@ -936,4 +936,7 @@ nav.top-nav a.page-title {
 .md-tabs {
   margin: 1.5rem 0; }
 
+ul.changelog li:before {
+  content: '#'; }
+
 /*# sourceMappingURL=vue-material-components.css.map*/

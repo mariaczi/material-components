@@ -45,5 +45,10 @@ module.exports = {
                 loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
             }*/
         ]
+    },
+    externals: {
+        // require("vue") is external and available
+        //  on the global var jQuery
+        "vue": "Vue"
     }
 };

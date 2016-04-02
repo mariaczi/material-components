@@ -22,5 +22,5 @@ export = {
     components,
     directives,
     mixins,
-    Vue: Vue
+    Vue: Vue // only backward compatibility
 }

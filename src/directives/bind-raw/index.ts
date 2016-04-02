@@ -1,6 +1,5 @@
-import {DirectiveOption} from 'vue-class-component';
-
-var bindRaw: DirectiveOption = {
+// removed DirectiveOption because priority is not boolean
+var bindRaw: any = {
 
     priority: 750,
 

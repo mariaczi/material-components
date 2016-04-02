@@ -33,7 +33,7 @@
     "vue": "^1.0.0",
     "vue-router": "^0.7.11",
     "vue-class-component": "^3.2.0",
-    "zepto-component": "^1.0.0"
+    "velocity-animate": "^1.2.3"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
@@ -52,7 +52,8 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.12.1",
-    "minifier": "^0.7.1"
+    "minifier": "^0.7.1",
+    "typescript": "^1.8.9"
   },
   "homepage": "appcomponents.org"
 }

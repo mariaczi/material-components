@@ -48,7 +48,10 @@ module.exports = {
     },
     externals: {
         // require("vue") is external and available
-        //  on the global var jQuery
-        "vue": "Vue"
+        //  on the global var Vue
+        'vue': 'Vue',
+        // require("vue-router") is external and available
+        //  on the global var VueRouter
+        'vue-router': 'VueRouter'
     }
 };

@@ -1,8 +1,9 @@
 {
   "name": "vue-material-components",
-  "version": "0.0.1",
-  "description": "Web components of http://materializecss.com/",
+  "version": "0.1.0",
+  "description": "Web components of Vue.js and materializecss",
   "library": "VueMaterialComponents",
+  "main": "dist/vue-material-components.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/appcomponents/vue-js-materialize-components.git"
@@ -16,7 +17,8 @@
     "material",
     "materialize",
     "vue-components",
-    "web-components"
+    "web-components",
+    "vue"
   ],
   "author": {
     "name": "Martin Janys",
@@ -53,5 +55,5 @@
     "minifier": "^0.7.1",
     "typescript": "^1.8.9"
   },
-  "homepage": "appcomponents.org"
+  "homepage": "http://appcomponents.org/material-components"
 }

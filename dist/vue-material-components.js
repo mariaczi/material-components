@@ -134,58 +134,58 @@ return /******/ (function(modules) { // webpackBootstrap
 	var tabs_1 = __webpack_require__(103);
 	__webpack_require__(105);
 	var VueMaterializeComponents = {
-	    mdBadge: badge_1['default'],
-	    mdButton: button_1['default'],
-	    mdBreadcrumbs: breadcrumbs_1['default'],
-	    mdCard: card_1['default'],
-	    mdCheckbox: checkbox_1['default'],
-	    mdCheckboxGroup: checkbox_group_1['default'],
-	    mdChip: chip_1['default'],
-	    mdCircuralPreloader: circural_preloader_1['default'],
-	    mdCollapsible: collapsible_1['default'],
-	    mdCollapsibleItem: collapsible_item_1['default'],
-	    mdCollection: collection_1['default'],
-	    mdCollectionList: collection_list_1['default'],
-	    mdCollectionItem: collection_item_1['default'],
-	    mdCollectionListItem: collection_list_item_1['default'],
-	    mdDropdown: dropdown_1['default'],
-	    mdDropdownItem: dropdown_item_1['default'],
-	    mdDropdownList: dropdown_list_1['default'],
-	    mdEventWrapper: event_wrapper_1['default'],
-	    mdFab: fab_1['default'],
-	    mdFileInput: file_input_1['default'],
-	    mdInput: input_1['default'],
-	    mdOptgroup: optgroup_1['default'],
-	    mdOption: option_1['default'],
-	    mdRadio: radio_1['default'],
-	    mdRadioGroup: radio_group_1['default'],
-	    mdSelect: select_1['default'],
-	    mdTextarea: textarea_1['default'],
-	    mdIcon: icon_1['default'],
-	    mdImage: image_1['default'],
-	    mdLeanOverlay: lean_overlay_1['default'],
-	    mdLinearPreloader: linear_preloader_1['default'],
-	    mdModal: modal_1['default'],
-	    mdNavItem: nav_item_1['default'],
-	    mdNavbar: navbar_1['default'],
-	    mdPagination: pagination_1['default'],
-	    mdSidenav: sidenav_1['default'],
-	    mdSidenavOverlay: sidenav_overlay_1['default'],
-	    mdSlide: slide_1['default'],
-	    mdSlider: slider_1['default'],
-	    mdSwitch: swich_1['default'],
-	    mdTab: tab_1['default'],
-	    mdTabs: tabs_1['default']
+	    mdBadge: badge_1.default,
+	    mdButton: button_1.default,
+	    mdBreadcrumbs: breadcrumbs_1.default,
+	    mdCard: card_1.default,
+	    mdCheckbox: checkbox_1.default,
+	    mdCheckboxGroup: checkbox_group_1.default,
+	    mdChip: chip_1.default,
+	    mdCircuralPreloader: circural_preloader_1.default,
+	    mdCollapsible: collapsible_1.default,
+	    mdCollapsibleItem: collapsible_item_1.default,
+	    mdCollection: collection_1.default,
+	    mdCollectionList: collection_list_1.default,
+	    mdCollectionItem: collection_item_1.default,
+	    mdCollectionListItem: collection_list_item_1.default,
+	    mdDropdown: dropdown_1.default,
+	    mdDropdownItem: dropdown_item_1.default,
+	    mdDropdownList: dropdown_list_1.default,
+	    mdEventWrapper: event_wrapper_1.default,
+	    mdFab: fab_1.default,
+	    mdFileInput: file_input_1.default,
+	    mdInput: input_1.default,
+	    mdOptgroup: optgroup_1.default,
+	    mdOption: option_1.default,
+	    mdRadio: radio_1.default,
+	    mdRadioGroup: radio_group_1.default,
+	    mdSelect: select_1.default,
+	    mdTextarea: textarea_1.default,
+	    mdIcon: icon_1.default,
+	    mdImage: image_1.default,
+	    mdLeanOverlay: lean_overlay_1.default,
+	    mdLinearPreloader: linear_preloader_1.default,
+	    mdModal: modal_1.default,
+	    mdNavItem: nav_item_1.default,
+	    mdNavbar: navbar_1.default,
+	    mdPagination: pagination_1.default,
+	    mdSidenav: sidenav_1.default,
+	    mdSidenavOverlay: sidenav_overlay_1.default,
+	    mdSlide: slide_1.default,
+	    mdSlider: slider_1.default,
+	    mdSwitch: swich_1.default,
+	    mdTab: tab_1.default,
+	    mdTabs: tabs_1.default
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = VueMaterializeComponents;
+	exports.default = VueMaterializeComponents;
 	var baseComponent = {
 	    components: VueMaterializeComponents,
-	    directives: directives_1['default'],
-	    mixins: mixins_1['default']
+	    directives: directives_1.default,
+	    mixins: mixins_1.default
 	};
 	exports.BaseComponent = Vue.extend(baseComponent);
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 2 */
@@ -204,15 +204,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var slot_1 = __webpack_require__(7);
 	var wave_effect_1 = __webpack_require__(8);
 	var directives = {
-	    bindBoolean: bind_boolean_1['default'],
-	    bindRaw: bind_raw_1['default'],
-	    bindClickAway: click_away_1['default'],
-	    slot: slot_1['default'],
-	    waveEffect: wave_effect_1['default']
+	    bindBoolean: bind_boolean_1.default,
+	    bindRaw: bind_raw_1.default,
+	    bindClickAway: click_away_1.default,
+	    slot: slot_1.default,
+	    waveEffect: wave_effect_1.default
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = directives;
-	//# sourceMappingURL=index.js.map
+	exports.default = directives;
+
 
 /***/ },
 /* 4 */
@@ -222,18 +222,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	// removed DirectiveOption because priority is not boolean
 	var bindBoolean = {
 	    priority: 850,
-	    update: function update(value) {
+	    update: function (value) {
 	        var arg = this.arg;
 	        if (value) {
 	            this.el.setAttribute(arg, arg);
-	        } else {
+	        }
+	        else {
 	            this.el.removeAttribute(arg);
 	        }
 	    }
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = bindBoolean;
-	//# sourceMappingURL=index.js.map
+	exports.default = bindBoolean;
+
 
 /***/ },
 /* 5 */
@@ -243,21 +244,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	// removed DirectiveOption because priority is not boolean
 	var bindRaw = {
 	    priority: 750,
-	    bind: function bind() {
+	    bind: function () {
 	        this.attribute = this.arg;
 	    },
-	    update: function update(value) {
+	    update: function (value) {
 	        var el = this.el;
 	        if (this.attribute == 'value') {
 	            el.value = value;
-	        } else {
+	        }
+	        else {
 	            el.setAttribute(this.attribute, value);
 	        }
 	    }
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = bindRaw;
-	//# sourceMappingURL=index.js.map
+	exports.default = bindRaw;
+
 
 /***/ },
 /* 6 */
@@ -268,7 +270,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var vue = VueModule;
 	var onClickAway = {
 	    acceptStatement: true,
-	    update: function update(handler) {
+	    update: function (handler) {
 	        this.reset();
 	        var self = this;
 	        var scope = this._scope || this.vm;
@@ -282,16 +284,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	        vue.util.on(document.documentElement, 'click', this.handler);
 	    },
-	    reset: function reset() {
+	    reset: function () {
 	        vue.util.off(document.documentElement, 'click', this.handler);
 	    },
-	    unbind: function unbind() {
+	    unbind: function () {
 	        this.reset();
-	    }
+	    },
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = onClickAway;
-	//# sourceMappingURL=index.js.map
+	exports.default = onClickAway;
+
 
 /***/ },
 /* 7 */
@@ -299,7 +301,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	var slot = {
-	    bind: function bind() {
+	    bind: function () {
 	        var host = this.vm;
 	        var root = host.$root;
 	        var raw = host.$options._content;
@@ -312,8 +314,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = slot;
-	//# sourceMappingURL=index.js.map
+	exports.default = slot;
+
 
 /***/ },
 /* 8 */
@@ -322,27 +324,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var effect_1 = __webpack_require__(9);
 	var waveEffect = {
-	    bind: function bind() {
+	    bind: function () {
 	        var _this = this;
 	        this.hide = function (e) {
-	            effect_1["default"].hide(e, _this.el);
+	            effect_1.default.hide(e, _this.el);
 	        };
 	        this.show = function (e) {
-	            effect_1["default"].show(e, _this.el);
+	            effect_1.default.show(e, _this.el);
 	        };
 	        this.el.addEventListener("mousedown", this.show, false);
 	        this.el.addEventListener("mouseleave", this.hide, false);
 	        this.el.addEventListener("mouseup", this.hide, false);
 	    },
-	    unbind: function unbind() {
+	    unbind: function () {
 	        this.el.removeEventListener("mousedown", this.show);
 	        this.el.removeEventListener("mouseleave", this.hide);
 	        this.el.removeEventListener("mouseup", this.hide);
-	    }
+	    },
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = waveEffect;
-	//# sourceMappingURL=index.js.map
+	exports.default = waveEffect;
+
 
 /***/ },
 /* 9 */
@@ -363,22 +365,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * within the 500ms. Cannot mouseup between touchstart and
 	     * touchend, nor in the 500ms after touchend. */
 	    touches: 0,
-	    allowEvent: function allowEvent(e) {
+	    allowEvent: function (e) {
 	        var allow = true;
 	        if (e.type === 'touchstart') {
 	            TouchHandler.touches += 1; //push
-	        } else if (e.type === 'touchend' || e.type === 'touchcancel') {
-	                setTimeout(function () {
-	                    if (TouchHandler.touches > 0) {
-	                        TouchHandler.touches -= 1; //pop after 500ms
-	                    }
-	                }, 500);
-	            } else if (e.type === 'mousedown' && TouchHandler.touches > 0) {
-	                allow = false;
-	            }
+	        }
+	        else if (e.type === 'touchend' || e.type === 'touchcancel') {
+	            setTimeout(function () {
+	                if (TouchHandler.touches > 0) {
+	                    TouchHandler.touches -= 1; //pop after 500ms
+	                }
+	            }, 500);
+	        }
+	        else if (e.type === 'mousedown' && TouchHandler.touches > 0) {
+	            allow = false;
+	        }
 	        return allow;
 	    },
-	    touchup: function touchup(e) {
+	    touchup: function (e) {
 	        TouchHandler.allowEvent(e);
 	    }
 	};
@@ -390,10 +394,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
 	}
 	function offset(elem) {
-	    var docElem,
-	        win,
-	        box = { top: 0, left: 0 },
-	        doc = elem && elem.ownerDocument;
+	    var docElem, win, box = { top: 0, left: 0 }, doc = elem && elem.ownerDocument;
 	    docElem = doc.documentElement;
 	    if (typeof elem.getBoundingClientRect !== typeof undefined) {
 	        box = elem.getBoundingClientRect();
@@ -408,16 +409,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var style = '';
 	    for (var a in obj) {
 	        if (obj.hasOwnProperty(a)) {
-	            style += a + ':' + obj[a] + ';';
+	            style += (a + ':' + obj[a] + ';');
 	        }
 	    }
 	    return style;
 	}
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = {
+	exports.default = {
 	    // Effect delay
 	    duration: 750,
-	    show: function show(e, element) {
+	    show: function (e, element) {
 	        // Disable right click
 	        if (e.button === 2) {
 	            return false;
@@ -429,13 +430,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        el.appendChild(ripple);
 	        // Get click coordinate and element witdh
 	        var pos = offset(el);
-	        var relativeY = e.pageY - pos.top;
-	        var relativeX = e.pageX - pos.left;
-	        var scale = 'scale(' + el.clientWidth / 100 * 10 + ')';
+	        var relativeY = (e.pageY - pos.top);
+	        var relativeX = (e.pageX - pos.left);
+	        var scale = 'scale(' + ((el.clientWidth / 100) * 10) + ')';
 	        // Support for touch devices
 	        if ('touches' in e) {
-	            relativeY = e.touches[0].pageY - pos.top;
-	            relativeX = e.touches[0].pageX - pos.left;
+	            relativeY = (e.touches[0].pageY - pos.top);
+	            relativeX = (e.touches[0].pageX - pos.left);
 	        }
 	        // Attach data to element
 	        ripple.setAttribute('data-hold', Date.now().toString());
@@ -467,7 +468,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        rippleStyle['transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
 	        ripple.setAttribute('style', convertStyle(rippleStyle));
 	    },
-	    hide: function hide(e, el) {
+	    hide: function (e, el) {
 	        var _this = this;
 	        TouchHandler.touchup(e);
 	        var width = el.clientWidth * 1.4;
@@ -476,7 +477,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ripples = el.getElementsByClassName('waves-ripple');
 	        if (ripples.length > 0) {
 	            ripple = ripples[ripples.length - 1];
-	        } else {
+	        }
+	        else {
 	            return false;
 	        }
 	        var relativeX = ripple.getAttribute('data-x');
@@ -503,20 +505,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	                '-moz-transform': scale,
 	                '-ms-transform': scale,
 	                '-o-transform': scale,
-	                'transform': scale
+	                'transform': scale,
 	            };
 	            ripple.setAttribute('style', convertStyle(style));
 	            setTimeout(function () {
 	                try {
 	                    el.removeChild(ripple);
-	                } catch (e) {
+	                }
+	                catch (e) {
 	                    return false;
 	                }
 	            }, _this.duration);
 	        }, delay);
-	    }
+	    },
 	};
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 10 */
@@ -528,8 +531,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toast_1 = __webpack_require__(13);
 	var tooltip_1 = __webpack_require__(16);
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = [events_1['default'], input_1['default'], toast_1['default'], tooltip_1['default']];
-	//# sourceMappingURL=index.js.map
+	exports.default = [
+	    events_1.default,
+	    input_1.default,
+	    toast_1.default,
+	    tooltip_1.default
+	];
+
 
 /***/ },
 /* 11 */
@@ -537,19 +545,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = {
+	exports.default = {
 	    methods: {
-	        broadcast: function broadcast() {
+	        broadcast: function () {
 	            var args = Array.prototype.slice.call(arguments);
 	            this.$broadcast.apply(this, args);
 	        },
-	        dispatch: function dispatch() {
+	        dispatch: function () {
 	            var args = Array.prototype.slice.call(arguments);
 	            this.$dispatch.apply(this, args);
 	        }
 	    }
 	};
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 12 */
@@ -557,17 +565,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = {
+	exports.default = {
 	    computed: {
-	        id: function id() {
+	        id: function () {
 	            return this.$options.name.toLowerCase() + '_' + this._uid;
 	        }
 	    },
 	    methods: {
-	        $getAllChildren: function $getAllChildren() {
+	        $getAllChildren: function () {
 	            return this._getChildren(this);
 	        },
-	        _getChildren: function _getChildren(component) {
+	        _getChildren: function (component) {
 	            var children = [];
 	            children = children.concat(component.$children);
 	            for (var i = 0; i < component.$children.length; i++) {
@@ -577,7 +585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 	};
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 13 */
@@ -586,14 +594,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var toast_1 = __webpack_require__(14);
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = {
+	exports.default = {
 	    methods: {
-	        toast: function toast(message, displayLength, className, completeCallback) {
+	        toast: function (message, displayLength, className, completeCallback) {
 	            return toast_1.toast(message, displayLength, className, completeCallback);
 	        }
 	    }
 	};
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 14 */
@@ -631,7 +639,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Allows timer to be pause while being panned
 	    var timeLeft = displayLength;
 	    var counterInterval = setInterval(function () {
-	        if (newToast.parentNode === null) window.clearInterval(counterInterval);
+	        if (newToast.parentNode === null)
+	            window.clearInterval(counterInterval);
 	        // If toast is not being dragged, decrease its time remaining
 	        if (!newToast.classList.contains('panning')) {
 	            timeLeft -= 20;
@@ -641,9 +650,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            Vel(newToast, { "opacity": 0, marginTop: '-40px' }, { duration: 375,
 	                easing: 'easeOutExpo',
 	                queue: false,
-	                complete: function complete() {
+	                complete: function () {
 	                    // Call the optional callback
-	                    if (typeof completeCallback === "function") completeCallback();
+	                    if (typeof (completeCallback) === "function")
+	                        completeCallback();
 	                    // Remove toast after it times out
 	                    this[0].parentNode.removeChild(this[0]);
 	                }
@@ -664,7 +674,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // If type of parameter is HTML Element
 	        if (typeof HTMLElement === "object" ? html instanceof HTMLElement : html && typeof html === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName === "string") {
 	            toast.appendChild(html);
-	        } else {
+	        }
+	        else {
 	            // Insert as text;
 	            toast.innerHTML = html;
 	        }
@@ -674,19 +685,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	         hammerHandler.on('pan', function(e) {
 	         var deltaX = e.deltaX;
 	         var activationDistance = 80;
-	           // Change toast state
+
+	         // Change toast state
 	         if (!toast.classList.contains('panning')){
 	         toast.classList.add('panning');
 	         }
-	           var opacityPercent = 1-Math.abs(deltaX / activationDistance);
+
+	         var opacityPercent = 1-Math.abs(deltaX / activationDistance);
 	         if (opacityPercent < 0)
 	         opacityPercent = 0;
-	           Vel(toast, {left: deltaX, opacity: opacityPercent }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-	           });
-	           hammerHandler.on('panend', function(e) {
+
+	         Vel(toast, {left: deltaX, opacity: opacityPercent }, {duration: 50, queue: false, easing: 'easeOutQuad'});
+
+	         });
+
+	         hammerHandler.on('panend', function(e) {
 	         var deltaX = e.deltaX;
 	         var activationDistance = 80;
-	           // If toast dragged past activation point
+
+	         // If toast dragged past activation point
 	         if (Math.abs(deltaX) > activationDistance) {
 	         Vel(toast, {marginTop: '-40px'}, { duration: 375,
 	         easing: 'easeOutExpo',
@@ -698,20 +715,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	         toast.parentNode.removeChild(toast);
 	         }
 	         });
-	           } else {
+
+	         } else {
 	         toast.classList.remove('panning');
 	         // Put toast back into original position
 	         Vel(toast, { left: 0, opacity: 1 }, { duration: 300,
 	         easing: 'easeOutExpo',
 	         queue: false
 	         });
-	           }
+
+	         }
 	         });
 	         */
 	        return toast;
 	    }
 	};
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 15 */
@@ -1200,15 +1219,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var tooltip_1 = __webpack_require__(17);
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = {
+	exports.default = {
 	    methods: {
-	        tooltip: function tooltip(event, message, position, delay) {
+	        tooltip: function (event, message, position, delay) {
 	            var element = event.currentTarget;
-	            return tooltip_1["default"](element, message, position, delay);
+	            return tooltip_1.default(element, message, position, delay);
 	        }
 	    }
 	};
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 17 */
@@ -1217,8 +1236,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var Velocity = __webpack_require__(15);
 	function getOffset(element) {
-	    var top = 0,
-	        left = 0;
+	    var top = 0, left = 0;
 	    do {
 	        top += element.offsetTop || 0;
 	        left += element.offsetLeft || 0;
@@ -1231,14 +1249,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	// todo swap tooltip if oversize window
 	function default_1(element, message, position, delay) {
-	    if (position === void 0) {
-	        position = 'top';
-	    }
-	    if (delay === void 0) {
-	        delay = 50;
-	    }
-	    var timeout = null,
-	        margin = 10;
+	    if (position === void 0) { position = 'top'; }
+	    if (delay === void 0) { delay = 50; }
+	    var timeout = null, margin = 10;
 	    var origin = element;
 	    if (!element._tooltip) {
 	        // Create Text span
@@ -1290,8 +1303,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            backdrop.style.borderRadius = '14px 14px 0 0';
 	            backdrop.style.transformOrigin = '50% 90%';
 	            backdrop.style.marginTop = tooltipHeight.toString() + 'px';
-	            backdrop.style.marginLeft = (tooltipWidth / 2 - backdrop.offsetWidth / 2).toString() + 'px';
-	        } else if (tooltipPosition === "left") {
+	            backdrop.style.marginLeft = ((tooltipWidth / 2) - (backdrop.offsetWidth / 2)).toString() + 'px';
+	        }
+	        else if (tooltipPosition === "left") {
 	            var pos = getOffset(element);
 	            targetTop = pos.top + originHeight / 2 - tooltipHeight / 2;
 	            targetLeft = pos.left - tooltipWidth - margin;
@@ -1303,7 +1317,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            backdrop.style.transformOrigin = '95% 50%';
 	            backdrop.style.marginTop = (tooltipHeight / 2).toString() + 'px';
 	            backdrop.style.marginLeft = tooltipWidth.toString() + 'px';
-	        } else if (tooltipPosition === "right") {
+	        }
+	        else if (tooltipPosition === "right") {
 	            var pos = getOffset(element);
 	            targetTop = pos.top + originHeight / 2 - tooltipHeight / 2;
 	            targetLeft = pos.left + originWidth + margin;
@@ -1315,14 +1330,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            backdrop.style.transformOrigin = '5% 50%';
 	            backdrop.style.marginTop = (tooltipHeight / 2).toString() + 'px';
 	            backdrop.style.marginLeft = '0px';
-	        } else {
+	        }
+	        else {
 	            // Bottom Position
 	            var pos = getOffset(element);
 	            targetTop = pos.top + origin.offsetHeight + margin;
 	            targetLeft = pos.left + originWidth / 2 - tooltipWidth / 2;
 	            newCoordinates = repositionWithinScreen(targetLeft, targetTop, tooltipWidth, tooltipHeight);
 	            tooltipVerticalMovement = '+10px';
-	            backdrop.style.marginLeft = (tooltipWidth / 2 - backdrop.offsetWidth / 2).toString() + 'px';
+	            backdrop.style.marginLeft = ((tooltipWidth / 2) - (backdrop.offsetWidth / 2)).toString() + 'px';
 	        }
 	        // Set tooptip css placement
 	        tooltip.style.top = newCoordinates.y + 'px';
@@ -1334,7 +1350,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        if (tooltipPosition === "right" || tooltipPosition === "left") {
 	            scale_factor = tooltipWidth / 10;
-	            if (scale_factor < 6) scale_factor = 6;
+	            if (scale_factor < 6)
+	                scale_factor = 6;
 	        }
 	        Velocity(tooltip, { marginTop: tooltipVerticalMovement, marginLeft: tooltipHorizontalMovement }, { duration: 350, queue: false });
 	        Velocity(tooltip, { opacity: 1 }, { duration: 300, delay: 50, queue: false });
@@ -1353,7 +1370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                Velocity(backdrop, { opacity: 0, scale: 1 }, {
 	                    duration: 225,
 	                    queue: false,
-	                    complete: function complete() {
+	                    complete: function () {
 	                        backdrop.style.display = 'none';
 	                        tooltip.style.display = 'none';
 	                        started = false;
@@ -1364,56 +1381,60 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	}
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = default_1;
+	exports.default = default_1;
 	;
-	var repositionWithinScreen = function repositionWithinScreen(x, y, width, height) {
+	var repositionWithinScreen = function (x, y, width, height) {
 	    var newX = x;
 	    var newY = y;
 	    if (newX < 0) {
 	        newX = 4;
-	    } else if (newX + width > window.innerWidth + window.scrollX) {
+	    }
+	    else if (newX + width > window.innerWidth + window.scrollX) {
 	        newX = window.document.documentElement.offsetWidth - width;
 	    }
 	    if (newY < 0) {
 	        newY = 4;
-	    } else if (newY + height > window.innerHeight + window.scrollY) {
+	    }
+	    else if (newY + height > window.innerHeight + window.scrollY) {
 	        newY = window.document.documentElement.offsetHeight - height;
 	    }
 	    return { x: newX, y: newY };
 	};
-	//# sourceMappingURL=index.js.map
+
 
 /***/ },
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Badge = (function () {
-	    function Badge() {}
-	    Badge = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            alert: {
-	                type: String,
-	                required: false,
-	                twoWay: false,
-	                "default": null
-	            }
-	        },
-	        template: __webpack_require__(20)
-	    })], Badge);
+	    function Badge() {
+	    }
+	    Badge = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                alert: {
+	                    type: String,
+	                    required: false,
+	                    twoWay: false,
+	                    "default": null
+	                }
+	            },
+	            template: __webpack_require__(20)
+	        })
+	    ], Badge);
 	    return Badge;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Badge;
-	//# sourceMappingURL=index.js.map
+	exports.default = Badge;
+
 
 /***/ },
 /* 19 */
@@ -1478,27 +1499,27 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"badge\" :class=\"{new: !!alert}\">\r\n    <slot></slot>\r\n\r\n    <span v-if=\"alert\" class=\"new\">{{alert}}</span>\r\n</span>";
+	module.exports = "<span class=\"badge\" :class=\"{new: !!alert}\">\n    <slot></slot>\n\n    <span v-if=\"alert\" class=\"new\">{{alert}}</span>\n</span>";
 
 /***/ },
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var icon_1 = __webpack_require__(22);
 	var wave_effect_1 = __webpack_require__(8);
 	var Button = (function () {
-	    function Button() {}
+	    function Button() {
+	    }
 	    Object.defineProperty(Button.prototype, "computedClasses", {
-	        get: function get() {
+	        get: function () {
 	            var classes = {
 	                'btn-large': this.large,
 	                'disabled': this.disabled,
@@ -1510,174 +1531,180 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
-	    Button = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            type: {
-	                type: String,
-	                required: false,
-	                "default": null,
-	                twoWay: false
+	    Button = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                type: {
+	                    type: String,
+	                    required: false,
+	                    "default": null,
+	                    twoWay: false
+	                },
+	                icon: {
+	                    type: String,
+	                    required: false,
+	                    "default": null,
+	                    twoWay: false
+	                },
+	                iconAlignRight: {
+	                    type: Boolean,
+	                    required: false,
+	                    "default": false,
+	                    twoWay: false
+	                },
+	                large: {
+	                    type: Boolean,
+	                    required: false,
+	                    "default": false,
+	                    twoWay: false
+	                },
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    "default": false,
+	                    twoWay: false
+	                },
+	                floating: {
+	                    type: Boolean,
+	                    required: false,
+	                    "default": false,
+	                    twoWay: false
+	                }
 	            },
-	            icon: {
-	                type: String,
-	                required: false,
-	                "default": null,
-	                twoWay: false
+	            components: {
+	                mdIcon: icon_1.default
 	            },
-	            iconAlignRight: {
-	                type: Boolean,
-	                required: false,
-	                "default": false,
-	                twoWay: false
+	            directives: {
+	                waveEffect: wave_effect_1.default
 	            },
-	            large: {
-	                type: Boolean,
-	                required: false,
-	                "default": false,
-	                twoWay: false
-	            },
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                "default": false,
-	                twoWay: false
-	            },
-	            floating: {
-	                type: Boolean,
-	                required: false,
-	                "default": false,
-	                twoWay: false
-	            }
-	        },
-	        components: {
-	            mdIcon: icon_1["default"]
-	        },
-	        directives: {
-	            waveEffect: wave_effect_1["default"]
-	        },
-	        template: __webpack_require__(24)
-	    })], Button);
+	            template: __webpack_require__(24)
+	        })
+	    ], Button);
 	    return Button;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Button;
-	//# sourceMappingURL=index.js.map
+	exports.default = Button;
+
 
 /***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Icon = (function () {
-	    function Icon() {}
-	    Icon = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            right: {
-	                type: Boolean,
-	                required: false,
-	                "default": false
+	    function Icon() {
+	    }
+	    Icon = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                right: {
+	                    type: Boolean,
+	                    required: false,
+	                    "default": false
+	                },
+	                left: {
+	                    type: Boolean,
+	                    required: false,
+	                    "default": false
+	                }
 	            },
-	            left: {
-	                type: Boolean,
-	                required: false,
-	                "default": false
-	            }
-	        },
-	        template: __webpack_require__(23)
-	    })], Icon);
+	            template: __webpack_require__(23)
+	        })
+	    ], Icon);
 	    return Icon;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Icon;
-	//# sourceMappingURL=index.js.map
+	exports.default = Icon;
+
 
 /***/ },
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<i class=\"material-icons\"\r\n   :class=\"{right: right, left: left}\">\r\n    <slot></slot>\r\n</i>\r\n";
+	module.exports = "<i class=\"material-icons\"\n   :class=\"{right: right, left: left}\">\n    <slot></slot>\n</i>\n";
 
 /***/ },
 /* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "<a :class=\"computedClasses\" v-wave-effect class=\"md-button\">\r\n    <md-icon v-if=\"icon\" :right=\"iconAlignRight\" :left=\"!iconAlignRight\">\r\n        {{icon}}\r\n    </md-icon>\r\n    <slot></slot>\r\n</a>";
+	module.exports = "<a :class=\"computedClasses\" v-wave-effect class=\"md-button\">\n    <md-icon v-if=\"icon\" :right=\"iconAlignRight\" :left=\"!iconAlignRight\">\n        {{icon}}\n    </md-icon>\n    <slot></slot>\n</a>";
 
 /***/ },
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var navbar_1 = __webpack_require__(26);
 	var Breadcrumbs = (function () {
-	    function Breadcrumbs() {}
-	    Breadcrumbs = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            list: {
-	                type: Object,
-	                required: false,
-	                'default': {}
-	            }
-	        },
-	        components: {
-	            mdNavbar: navbar_1["default"]
-	        },
-	        template: __webpack_require__(32)
-	    })], Breadcrumbs);
+	    function Breadcrumbs() {
+	    }
+	    Breadcrumbs = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                list: {
+	                    type: Object,
+	                    required: false,
+	                    'default': {}
+	                }
+	            },
+	            components: {
+	                mdNavbar: navbar_1.default
+	            },
+	            template: __webpack_require__(32)
+	        })
+	    ], Breadcrumbs);
 	    return Breadcrumbs;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Breadcrumbs;
-	//# sourceMappingURL=index.js.map
+	exports.default = Breadcrumbs;
+
 
 /***/ },
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var icon_1 = __webpack_require__(22);
 	var sidenav_1 = __webpack_require__(27);
 	var Navbar = (function () {
-	    function Navbar() {}
+	    function Navbar() {
+	    }
 	    Object.defineProperty(Navbar.prototype, "logoClasses", {
-	        get: function get() {
+	        get: function () {
 	            return {
 	                center: this.center,
-	                right: !this.center && !this.right
+	                right: !this.center && !this.right,
 	            };
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Navbar.prototype, "listClasses", {
-	        get: function get() {
+	        get: function () {
 	            var classes = {
 	                right: this.right,
-	                left: this.left
+	                left: this.left,
 	            };
 	            if (this.mode) {
 	                classes[this.mode] = true;
@@ -1693,129 +1720,131 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Navbar.prototype.closeSideMenu = function () {
 	        this.$broadcast('sidenav::close');
 	    };
-	    Navbar = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            active: {
-	                type: String,
-	                required: false,
-	                'default': null
-	            },
-	            showActive: {
-	                type: Boolean,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            title: {
-	                type: String,
-	                required: false,
-	                'default': '',
-	                twoWay: false
-	            },
-	            titleHref: {
-	                type: String,
-	                required: false,
-	                'default': 'javascript:void(0)',
-	                twoWay: false
-	            },
-	            right: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            left: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            center: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            fixed: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            navClass: {
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            hamburger: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            mode: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            closeOnClick: {
-	                type: Boolean,
-	                required: false,
-	                'default': true,
-	                twoWay: false
-	            },
-	            onlySideNav: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            wrapperClass: {
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            }
-	        },
-	        components: {
-	            mdIcon: icon_1["default"],
-	            mdSidenav: sidenav_1["default"]
-	        },
-	        events: {
-	            'nav-item::activated': function navItemActivated(id, content) {
-	                // propagate event to children
-	                this.$broadcast('nav-item::activated', id);
-	                this.active = id;
-	                if (this.closeOnClick) {
-	                    this.$broadcast('sidenav::close');
+	    Navbar = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                active: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                showActive: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                title: {
+	                    type: String,
+	                    required: false,
+	                    'default': '',
+	                    twoWay: false
+	                },
+	                titleHref: {
+	                    type: String,
+	                    required: false,
+	                    'default': 'javascript:void(0)',
+	                    twoWay: false
+	                },
+	                right: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                left: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                center: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                fixed: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                navClass: {
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                hamburger: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                mode: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                closeOnClick: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': true,
+	                    twoWay: false
+	                },
+	                onlySideNav: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                wrapperClass: {
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
 	                }
-	            }
-	        },
-	        template: __webpack_require__(31)
-	    })], Navbar);
+	            },
+	            components: {
+	                mdIcon: icon_1.default,
+	                mdSidenav: sidenav_1.default
+	            },
+	            events: {
+	                'nav-item::activated': function (id, content) {
+	                    // propagate event to children
+	                    this.$broadcast('nav-item::activated', id);
+	                    this.active = id;
+	                    if (this.closeOnClick) {
+	                        this.$broadcast('sidenav::close');
+	                    }
+	                }
+	            },
+	            template: __webpack_require__(31)
+	        })
+	    ], Navbar);
 	    return Navbar;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Navbar;
-	//# sourceMappingURL=index.js.map
+	exports.default = Navbar;
+
 
 /***/ },
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var sidenav_overlay_1 = __webpack_require__(28);
 	var ESC = 27;
 	var SideNav = (function () {
-	    function SideNav() {}
+	    function SideNav() {
+	    }
 	    SideNav.prototype.ready = function () {
 	        var _this = this;
 	        this.active = this.fixed || this.active;
@@ -1829,7 +1858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    Object.defineProperty(SideNav.prototype, "computedStyle", {
-	        get: function get() {
+	        get: function () {
 	            if (this.active) {
 	                return {
 	                    left: 0
@@ -1855,74 +1884,78 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.close();
 	        }
 	    };
-	    SideNav = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            closeOnClick: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
+	    SideNav = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                closeOnClick: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                },
+	                active: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                },
+	                showActive: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                },
+	                fixed: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                }
 	            },
-	            active: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
+	            events: {
+	                'sidenav::open': function () {
+	                    this.open();
+	                },
+	                'sidenav::close': function () {
+	                    this.$nextTick(this.close); // delay close due events
+	                },
+	                'nav-item::activated': function (id) {
+	                    this.$broadcast('nav-item::activated', id);
+	                }
 	            },
-	            showActive: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
+	            components: {
+	                mdSidenavOverlay: sidenav_overlay_1.default
 	            },
-	            fixed: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        events: {
-	            'sidenav::open': function sidenavOpen() {
-	                this.open();
-	            },
-	            'sidenav::close': function sidenavClose() {
-	                this.$nextTick(this.close); // delay close due events
-	            },
-	            'nav-item::activated': function navItemActivated(id) {
-	                this.$broadcast('nav-item::activated', id);
-	            }
-	        },
-	        components: {
-	            mdSidenavOverlay: sidenav_overlay_1["default"]
-	        },
-	        template: __webpack_require__(30)
-	    })], SideNav);
+	            template: __webpack_require__(30)
+	        })
+	    ], SideNav);
 	    return SideNav;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = SideNav;
-	//# sourceMappingURL=index.js.map
+	exports.default = SideNav;
+
 
 /***/ },
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var SidenavOverlay = (function () {
-	    function SidenavOverlay() {}
-	    SidenavOverlay = __decorate([vue_class_component_1["default"]({
-	        template: __webpack_require__(29)
-	    })], SidenavOverlay);
+	    function SidenavOverlay() {
+	    }
+	    SidenavOverlay = __decorate([
+	        vue_class_component_1.default({
+	            template: __webpack_require__(29)
+	        })
+	    ], SidenavOverlay);
 	    return SidenavOverlay;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = SidenavOverlay;
-	//# sourceMappingURL=index.js.map
+	exports.default = SidenavOverlay;
+
 
 /***/ },
 /* 29 */
@@ -1934,36 +1967,36 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 30 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"md-sidenav\">\r\n    <ul v-if=\"active\" transition=\"side-nav\" :style=\"computedStyle\" :class=\"{fixed: fixed}\" class=\"side-nav\">\r\n        <slot></slot>\r\n    </ul>\r\n\r\n    <div v-if=\"!fixed\" @click=\"close\">\r\n        <md-sidenav-overlay v-if=\"active\" transition=\"modal-overlay\"></md-sidenav-overlay>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div class=\"md-sidenav\">\n    <ul v-if=\"active\" transition=\"side-nav\" :style=\"computedStyle\" :class=\"{fixed: fixed}\" class=\"side-nav\">\n        <slot></slot>\n    </ul>\n\n    <div v-if=\"!fixed\" @click=\"close\">\n        <md-sidenav-overlay v-if=\"active\" transition=\"modal-overlay\"></md-sidenav-overlay>\n    </div>\n</div>\n";
 
 /***/ },
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "<div :class=\"{'navbar-fixed': fixed}\"\r\n     :style=\"fixed ? {position: 'absolute', top: 0}: {}\"\r\n     class=\"md-navbar\">\r\n\r\n    <nav :class=\"navClass\">\r\n        <div class=\"nav-wrapper\" :class=\"wrapperClass\">\r\n            <slot name=\"content\">\r\n                <slot name=\"logo\">\r\n                    <a v-if=\"title\"\r\n                       :href=\"titleHref\" class=\"brand-logo\" :class=\"logoClasses\">\r\n                        {{title}}\r\n                    </a>\r\n                    <a v-if=\"hamburger\" href=\"javascript:void(0)\" class=\"button-collapse\"\r\n                       @click=\"openSideMenu\">\r\n                        <md-icon>menu</md-icon>\r\n                    </a>\r\n                </slot>\r\n\r\n                <slot name=\"navs\">\r\n                    <ul v-if=\"!onlySideNav\" :class=\"listClasses\">\r\n                        <slot></slot>\r\n                    </ul>\r\n                    <md-sidenav :close-on-click=\"closeOnClick\"> <!-- only if is active -->\r\n                        <slot></slot>\r\n                    </md-sidenav>\r\n                </slot>\r\n            </slot>\r\n        </div>\r\n    </nav>\r\n</div>\r\n";
+	module.exports = "<div :class=\"{'navbar-fixed': fixed}\"\n     :style=\"fixed ? {position: 'absolute', top: 0}: {}\"\n     class=\"md-navbar\">\n\n    <nav :class=\"navClass\">\n        <div class=\"nav-wrapper\" :class=\"wrapperClass\">\n            <slot name=\"content\">\n                <slot name=\"logo\">\n                    <a v-if=\"title\"\n                       :href=\"titleHref\" class=\"brand-logo\" :class=\"logoClasses\">\n                        {{title}}\n                    </a>\n                    <a v-if=\"hamburger\" href=\"javascript:void(0)\" class=\"button-collapse\"\n                       @click=\"openSideMenu\">\n                        <md-icon>menu</md-icon>\n                    </a>\n                </slot>\n\n                <slot name=\"navs\">\n                    <ul v-if=\"!onlySideNav\" :class=\"listClasses\">\n                        <slot></slot>\n                    </ul>\n                    <md-sidenav :close-on-click=\"closeOnClick\"> <!-- only if is active -->\n                        <slot></slot>\n                    </md-sidenav>\n                </slot>\n            </slot>\n        </div>\n    </nav>\n</div>\n";
 
 /***/ },
 /* 32 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-navbar class=\"md-breadcrumbs\">\r\n    <div slot=\"content\">\r\n        <a v-for=\"(label, url) in list\" :href=\"url\" class=\"breadcrumb\">\r\n            {{label}}\r\n        </a>\r\n    </div>\r\n</md-navbar>";
+	module.exports = "<md-navbar class=\"md-breadcrumbs\">\n    <div slot=\"content\">\n        <a v-for=\"(label, url) in list\" :href=\"url\" class=\"breadcrumb\">\n            {{label}}\n        </a>\n    </div>\n</md-navbar>";
 
 /***/ },
 /* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Velocity = __webpack_require__(15);
 	var Card = (function () {
-	    function Card() {}
+	    function Card() {
+	    }
 	    Card.prototype.data = function () {
 	        return {
 	            active: false
@@ -2000,7 +2033,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    duration: 225,
 	                    queue: false,
 	                    easing: 'easeInOutQuad',
-	                    complete: function complete() {
+	                    complete: function () {
 	                        reveal.style.display = 'none';
 	                    }
 	                });
@@ -2008,304 +2041,314 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    Object.defineProperty(Card.prototype, "imageSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'image' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Card.prototype, "titleSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'title' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Card.prototype, "actionsSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'actions' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Card.prototype, "revealSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'reveal' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
-	    Card = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            contentClass: {
-	                required: false,
-	                'default': null,
-	                twoWay: false
+	    Card = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                contentClass: {
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                titleInImage: {
+	                    type: Boolean,
+	                    required: false,
+	                    twoWay: false,
+	                    'default': false
+	                },
+	                small: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                medium: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                large: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                }
 	            },
-	            titleInImage: {
-	                type: Boolean,
-	                required: false,
-	                twoWay: false,
-	                'default': false
-	            },
-	            small: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            medium: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            large: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        template: __webpack_require__(34)
-	    })], Card);
+	            template: __webpack_require__(34)
+	        })
+	    ], Card);
 	    return Card;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Card;
-	//# sourceMappingURL=index.js.map
+	exports.default = Card;
+
 
 /***/ },
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<div :style=\"{overflow: revealSlot ? 'hidden' : 'initial'}\"\r\n     :class=\"{small: small, medium: medium, large: large}\"\r\n     class=\"md-card card\">\r\n    <slot name=\"card-content\">\r\n        <slot name=\"card-image\">\r\n            <div v-if=\"imageSlot\" class=\"card-image\">\r\n                <slot name=\"image\"></slot>\r\n                <div v-if=\"titleSlot && titleInImage\" class=\"card-title\">\r\n                    <slot name=\"title\"></slot>\r\n                </div>\r\n            </div>\r\n        </slot>\r\n\r\n        <div class=\"card-content\" :class=\"contentClass\">\r\n            <div v-if=\"titleSlot && !titleInImage\" class=\"card-title\">\r\n                <slot name=\"title\"></slot>\r\n            </div>\r\n            <slot></slot>\r\n        </div>\r\n\r\n        <slot name=\"card-action\">\r\n            <div v-if=\"actionsSlot\" class=\"card-action\">\r\n                <slot name=\"actions\"></slot>\r\n            </div>\r\n        </slot>\r\n\r\n        <div v-if=\"revealSlot\" v-el:reveal class=\"card-reveal\">\r\n            <i v-el:reveal-close class=\"material-icons right close\">close</i>\r\n            <slot name=\"reveal\"></slot>\r\n        </div>\r\n    </slot>\r\n</div>";
+	module.exports = "<div :style=\"{overflow: revealSlot ? 'hidden' : 'initial'}\"\n     :class=\"{small: small, medium: medium, large: large}\"\n     class=\"md-card card\">\n    <slot name=\"card-content\">\n        <slot name=\"card-image\">\n            <div v-if=\"imageSlot\" class=\"card-image\">\n                <slot name=\"image\"></slot>\n                <div v-if=\"titleSlot && titleInImage\" class=\"card-title\">\n                    <slot name=\"title\"></slot>\n                </div>\n            </div>\n        </slot>\n\n        <div class=\"card-content\" :class=\"contentClass\">\n            <div v-if=\"titleSlot && !titleInImage\" class=\"card-title\">\n                <slot name=\"title\"></slot>\n            </div>\n            <slot></slot>\n        </div>\n\n        <slot name=\"card-action\">\n            <div v-if=\"actionsSlot\" class=\"card-action\">\n                <slot name=\"actions\"></slot>\n            </div>\n        </slot>\n\n        <div v-if=\"revealSlot\" v-el:reveal class=\"card-reveal\">\n            <i v-el:reveal-close class=\"material-icons right close\">close</i>\n            <slot name=\"reveal\"></slot>\n        </div>\n    </slot>\n</div>";
 
 /***/ },
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var input_1 = __webpack_require__(12);
 	var bind_boolean_1 = __webpack_require__(4);
 	var CheckboxField = (function () {
-	    function CheckboxField() {}
+	    function CheckboxField() {
+	    }
 	    CheckboxField.prototype.hasSlot = function (name) {
-	        if (name === void 0) {
-	            name = 'default';
-	        }
+	        if (name === void 0) { name = 'default'; }
 	        return name in this._slotContents;
 	    };
 	    Object.defineProperty(CheckboxField.prototype, "group", {
-	        get: function get() {
+	        get: function () {
 	            return this.$parent.$data.group;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(CheckboxField.prototype, "resolvedName", {
-	        get: function get() {
+	        get: function () {
 	            return this.name || this.group;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
-	    CheckboxField = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                type: Boolean,
-	                required: false,
-	                'default': null
+	    CheckboxField = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': null
+	                },
+	                name: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': null
+	                }
 	            },
-	            name: {
-	                type: String,
-	                required: false,
-	                'default': null
+	            directives: {
+	                bindBoolean: bind_boolean_1.default
 	            },
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                'default': null
-	            }
-	        },
-	        directives: {
-	            bindBoolean: bind_boolean_1["default"]
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(36)
-	    })], CheckboxField);
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(36)
+	        })
+	    ], CheckboxField);
 	    return CheckboxField;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = CheckboxField;
-	//# sourceMappingURL=index.js.map
+	exports.default = CheckboxField;
+
 
 /***/ },
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"md-checkbox input-field\">\r\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <input v-model=\"value\"\r\n           :id=\"id\"\r\n           :name=\"resolvedName\"\r\n           v-bind-boolean:disabled=\"disabled\"\r\n           type=\"checkbox\"/>\r\n    <label v-if=\"hasSlot()\" :for=\"id\">\r\n        <slot></slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"md-checkbox input-field\">\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\n        <slot name=\"icon-name\"></slot>\n    </i>\n    <input v-model=\"value\"\n           :id=\"id\"\n           :name=\"resolvedName\"\n           v-bind-boolean:disabled=\"disabled\"\n           type=\"checkbox\"/>\n    <label v-if=\"hasSlot()\" :for=\"id\">\n        <slot></slot>\n    </label>\n</div>";
 
 /***/ },
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var CheckboxGroup = (function () {
-	    function CheckboxGroup() {}
-	    CheckboxGroup = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            group: {
-	                type: String,
-	                required: true
-	            }
-	        },
-	        template: __webpack_require__(38)
-	    })], CheckboxGroup);
+	    function CheckboxGroup() {
+	    }
+	    CheckboxGroup = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                group: {
+	                    type: String,
+	                    required: true
+	                }
+	            },
+	            template: __webpack_require__(38)
+	        })
+	    ], CheckboxGroup);
 	    return CheckboxGroup;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = CheckboxGroup;
-	//# sourceMappingURL=index.js.map
+	exports.default = CheckboxGroup;
+
 
 /***/ },
 /* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"input-field\">\r\n    <slot></slot>\r\n</div>";
+	module.exports = "<div class=\"input-field\">\n    <slot></slot>\n</div>";
 
 /***/ },
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Chip = (function () {
-	    function Chip() {}
-	    Chip = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            closeable: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
+	    function Chip() {
+	    }
+	    Chip = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                closeable: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                closed: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                }
 	            },
-	            closed: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        template: __webpack_require__(40)
-	    })], Chip);
+	            template: __webpack_require__(40)
+	        })
+	    ], Chip);
 	    return Chip;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Chip;
-	//# sourceMappingURL=index.js.map
+	exports.default = Chip;
+
 
 /***/ },
 /* 40 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-if=\"!closed\" class=\"chip md-chip\" transition=\"chip\">\r\n    <slot></slot>\r\n    <i v-if=\"closeable\"\r\n       @click=\"closed = true\" class=\"material-icons\">close</i>\r\n</div>";
+	module.exports = "<div v-if=\"!closed\" class=\"chip md-chip\" transition=\"chip\">\n    <slot></slot>\n    <i v-if=\"closeable\"\n       @click=\"closed = true\" class=\"material-icons\">close</i>\n</div>";
 
 /***/ },
 /* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var CircularPreloader = (function () {
-	    function CircularPreloader() {}
-	    CircularPreloader = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            size: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
+	    function CircularPreloader() {
+	    }
+	    CircularPreloader = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                size: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                color: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                flashing: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                }
 	            },
-	            color: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            flashing: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        template: __webpack_require__(42)
-	    })], CircularPreloader);
+	            template: __webpack_require__(42)
+	        })
+	    ], CircularPreloader);
 	    return CircularPreloader;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = CircularPreloader;
-	//# sourceMappingURL=index.js.map
+	exports.default = CircularPreloader;
+
 
 /***/ },
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"preloader-wrapper active\" :class=\"size\">\r\n    <div v-if=\"!flashing\" class=\"spinner-layer\" :class=\"'spinner-' + color + '-only'\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <!-- flashing -->\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-blue\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-red\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-yellow\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n\r\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-green\">\r\n        <div class=\"circle-clipper left\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"gap-patch\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n        <div class=\"circle-clipper right\">\r\n            <div class=\"circle\"></div>\r\n        </div>\r\n    </div>\r\n</div>";
+	module.exports = "<div class=\"preloader-wrapper active\" :class=\"size\">\n    <div v-if=\"!flashing\" class=\"spinner-layer\" :class=\"'spinner-' + color + '-only'\">\n        <div class=\"circle-clipper left\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"gap-patch\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"circle-clipper right\">\n            <div class=\"circle\"></div>\n        </div>\n    </div>\n\n    <!-- flashing -->\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-blue\">\n        <div class=\"circle-clipper left\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"gap-patch\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"circle-clipper right\">\n            <div class=\"circle\"></div>\n        </div>\n    </div>\n\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-red\">\n        <div class=\"circle-clipper left\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"gap-patch\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"circle-clipper right\">\n            <div class=\"circle\"></div>\n        </div>\n    </div>\n\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-yellow\">\n        <div class=\"circle-clipper left\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"gap-patch\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"circle-clipper right\">\n            <div class=\"circle\"></div>\n        </div>\n    </div>\n\n    <div v-if=\"flashing\" class=\"spinner-layer spinner-green\">\n        <div class=\"circle-clipper left\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"gap-patch\">\n            <div class=\"circle\"></div>\n        </div>\n        <div class=\"circle-clipper right\">\n            <div class=\"circle\"></div>\n        </div>\n    </div>\n</div>";
 
 /***/ },
 /* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Collapsible = (function () {
-	    function Collapsible() {}
+	    function Collapsible() {
+	    }
 	    Collapsible.prototype.ready = function () {
 	        var _this = this;
 	        if (typeof this.opened != "undefined") {
 	            if (this.expendable) {
-	                this.opened.forEach(function (id) {
-	                    return _this.$broadcast('collapsible::open', id, _this.expendable);
-	                });
-	            } else {
+	                this.opened
+	                    .forEach(function (id) { return _this.$broadcast('collapsible::open', id, _this.expendable); });
+	            }
+	            else {
 	                this.$broadcast('collapsible::open', this.opened, this.expendable);
 	            }
 	        }
@@ -2314,7 +2357,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (typeof this.opened != "undefined") {
 	            if (this.expendable) {
 	                this.opened.push(id);
-	            } else {
+	            }
+	            else {
 	                this.opened = id;
 	            }
 	        }
@@ -2326,7 +2370,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (typeof this.opened != "undefined") {
 	            if (this.expendable) {
 	                this.opened.$remove(id);
-	            } else {
+	            }
+	            else {
 	                this.opened = '';
 	            }
 	        }
@@ -2337,94 +2382,92 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Collapsible.prototype.openedChanged = function (value) {
 	        var _this = this;
 	        if (this.expendable) {
-	            var ids = this.$children.filter(function (component) {
-	                return component.$options.name == 'CollapsibleItem';
-	            }).map(function (item) {
-	                return item.id;
-	            });
+	            var ids = this.$children
+	                .filter(function (component) { return component.$options.name == 'CollapsibleItem'; })
+	                .map(function (item) { return item.id; });
 	            // close
-	            ids.filter(function (val) {
-	                return value.indexOf(val) < 0;
-	            }).forEach(function (id) {
-	                return _this.$broadcast('collapsible::close', id);
-	            });
+	            ids
+	                .filter(function (val) { return value.indexOf(val) < 0; })
+	                .forEach(function (id) { return _this.$broadcast('collapsible::close', id); });
 	            // open
 	            this.opened = value;
-	            this.opened.forEach(function (id) {
-	                return _this.$broadcast('collapsible::open', id, _this.expendable);
-	            });
-	        } else {
+	            this.opened
+	                .forEach(function (id) { return _this.$broadcast('collapsible::open', id, _this.expendable); });
+	        }
+	        else {
 	            this.$broadcast('collapsible::open', value, this.expendable);
 	        }
 	    };
-	    Collapsible = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            opened: {
-	                required: false
-	            },
-	            popout: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            expendable: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        watch: {
-	            expendable: function expendable() {
-	                console.log('Error: can not change expandable');
-	            },
-	            opened: {
-	                deep: true,
-	                handler: function handler(newValue, oldValue) {
-	                    this.openedChanged(newValue, oldValue);
+	    Collapsible = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                opened: {
+	                    required: false,
+	                },
+	                popout: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                expendable: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
 	                }
-	            }
-	        },
-	        events: {
-	            'collapsible::open': function collapsibleOpen(id) {
-	                return this.open(id);
 	            },
-	            'collapsible::close': function collapsibleClose(id) {
-	                return this.close(id);
-	            }
-	        },
-	        template: __webpack_require__(44)
-	    })], Collapsible);
+	            watch: {
+	                expendable: function () {
+	                    console.log('Error: can not change expandable');
+	                },
+	                opened: {
+	                    deep: true,
+	                    handler: function (newValue, oldValue) {
+	                        this.openedChanged(newValue, oldValue);
+	                    }
+	                }
+	            },
+	            events: {
+	                'collapsible::open': function (id) {
+	                    return this.open(id);
+	                },
+	                'collapsible::close': function (id) {
+	                    return this.close(id);
+	                }
+	            },
+	            template: __webpack_require__(44)
+	        })
+	    ], Collapsible);
 	    return Collapsible;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Collapsible;
-	//# sourceMappingURL=index.js.map
+	exports.default = Collapsible;
+
 
 /***/ },
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"collapsible\" :class=\"{popout: popout}\">\r\n    <slot></slot>\r\n</ul>";
+	module.exports = "<ul class=\"collapsible\" :class=\"{popout: popout}\">\n    <slot></slot>\n</ul>";
 
 /***/ },
 /* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var events_1 = __webpack_require__(11);
 	var Velocity = __webpack_require__(15);
 	var CollapsibleItem = (function () {
-	    function CollapsibleItem() {}
+	    function CollapsibleItem() {
+	    }
 	    CollapsibleItem.prototype.data = function () {
 	        return {
 	            active: false
@@ -2434,7 +2477,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.active = this.expanded;
 	    };
 	    Object.defineProperty(CollapsibleItem.prototype, "id", {
-	        get: function get() {
+	        get: function () {
 	            if (this.name) {
 	                return this.name;
 	            }
@@ -2444,7 +2487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Object.defineProperty(CollapsibleItem.prototype, "computedStyle", {
-	        get: function get() {
+	        get: function () {
 	            if (this.active) {
 	                return {
 	                    display: 'block'
@@ -2457,14 +2500,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    CollapsibleItem.prototype.openThis = function (immediately) {
 	        var _this = this;
-	        if (immediately === void 0) {
-	            immediately = false;
-	        }
+	        if (immediately === void 0) { immediately = false; }
 	        if (!this.active) {
 	            this.active = true;
 	            if (immediately) {
 	                this.$els.body.style.height = '';
-	            } else {
+	            }
+	            else {
 	                this.$nextTick(function () {
 	                    Velocity(_this.$els.body, 'slideDown', _this._slideConfig);
 	                });
@@ -2472,13 +2514,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    Object.defineProperty(CollapsibleItem.prototype, "_slideConfig", {
-	        get: function get() {
+	        get: function () {
 	            var _this = this;
 	            return {
 	                duration: 350,
 	                easing: "easeOutQuart",
 	                queue: false,
-	                complete: function complete() {
+	                complete: function () {
 	                    _this.$els.body.style.height = '';
 	                }
 	            };
@@ -2489,26 +2531,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    CollapsibleItem.prototype.open = function (id, expendable) {
 	        if (id === null || typeof id == "undefined") {
 	            this.openThis(true); // bulk open
-	        } else {
-	                if (id == this.id) {
-	                    this.openThis();
-	                } else {
-	                    if (!expendable) {
-	                        this.closeThis();
-	                    }
+	        }
+	        else {
+	            if (id == this.id) {
+	                this.openThis();
+	            }
+	            else {
+	                if (!expendable) {
+	                    this.closeThis();
 	                }
 	            }
+	        }
 	    };
 	    CollapsibleItem.prototype.closeThis = function (immediately) {
 	        var _this = this;
-	        if (immediately === void 0) {
-	            immediately = false;
-	        }
+	        if (immediately === void 0) { immediately = false; }
 	        if (this.active) {
 	            this.active = false;
 	            if (immediately) {
 	                this.$els.body.style.height = '';
-	            } else {
+	            }
+	            else {
 	                this.$nextTick(function () {
 	                    _this.$els.body.style.display = 'block';
 	                    Velocity(_this.$els.body, 'slideUp', _this._slideConfig);
@@ -2519,231 +2562,244 @@ return /******/ (function(modules) { // webpackBootstrap
 	    CollapsibleItem.prototype.close = function (id) {
 	        if (id === null || typeof id == "undefined") {
 	            this.closeThis(true); // bulk close
-	        } else {
-	                if (id == this.id) {
-	                    this.closeThis();
-	                }
+	        }
+	        else {
+	            if (id == this.id) {
+	                this.closeThis();
 	            }
+	        }
 	    };
 	    CollapsibleItem.prototype.toggle = function () {
 	        if (this.active) {
 	            this.$dispatch('collapsible::close', this.id);
-	        } else {
+	        }
+	        else {
 	            this.$dispatch('collapsible::open', this.id);
 	        }
 	    };
-	    CollapsibleItem = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            name: {
-	                type: String,
-	                required: false,
-	                'default': false,
-	                twoWay: false
+	    CollapsibleItem = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                name: {
+	                    type: String,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                expanded: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                }
 	            },
-	            expanded: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        mixins: [events_1["default"]],
-	        events: {
-	            'collapsible::open': function collapsibleOpen(id, expendable) {
-	                this.open(id, expendable);
+	            mixins: [
+	                events_1.default
+	            ],
+	            events: {
+	                'collapsible::open': function (id, expendable) {
+	                    this.open(id, expendable);
+	                },
+	                'collapsible::close': function (id) {
+	                    this.close(id);
+	                }
 	            },
-	            'collapsible::close': function collapsibleClose(id) {
-	                this.close(id);
-	            }
-	        },
-	        template: __webpack_require__(46)
-	    })], CollapsibleItem);
+	            template: __webpack_require__(46)
+	        })
+	    ], CollapsibleItem);
 	    return CollapsibleItem;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = CollapsibleItem;
-	//# sourceMappingURL=index.js.map
+	exports.default = CollapsibleItem;
+
 
 /***/ },
 /* 46 */
 /***/ function(module, exports) {
 
-	module.exports = "<li :class=\"{active: active}\">\r\n    <slot name=\"content\">\r\n        <div @click=\"toggle\" class=\"collapsible-header\">\r\n            <slot name=\"header\"></slot>\r\n        </div>\r\n        <div v-el:body class=\"collapsible-body\" :style=\"computedStyle\">\r\n            <slot name=\"body\"></slot>\r\n        </div>\r\n    </slot>\r\n</li>\r\n";
+	module.exports = "<li :class=\"{active: active}\">\n    <slot name=\"content\">\n        <div @click=\"toggle\" class=\"collapsible-header\">\n            <slot name=\"header\"></slot>\n        </div>\n        <div v-el:body class=\"collapsible-body\" :style=\"computedStyle\">\n            <slot name=\"body\"></slot>\n        </div>\n    </slot>\n</li>\n";
 
 /***/ },
 /* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Collection = (function () {
-	    function Collection() {}
+	    function Collection() {
+	    }
 	    Object.defineProperty(Collection.prototype, "headerSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'header' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
-	    Collection = __decorate([vue_class_component_1["default"]({
-	        template: __webpack_require__(48)
-	    })], Collection);
+	    Collection = __decorate([
+	        vue_class_component_1.default({
+	            template: __webpack_require__(48)
+	        })
+	    ], Collection);
 	    return Collection;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Collection;
-	//# sourceMappingURL=index.js.map
+	exports.default = Collection;
+
 
 /***/ },
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"collection\" :class=\"{'with-header': headerSlot}\">\r\n    <div v-if=\"headerSlot\" class=\"collection-header\">\r\n        <slot name=\"header\"></slot>\r\n    </div>\r\n    <slot></slot>\r\n</div>";
+	module.exports = "<div class=\"collection\" :class=\"{'with-header': headerSlot}\">\n    <div v-if=\"headerSlot\" class=\"collection-header\">\n        <slot name=\"header\"></slot>\n    </div>\n    <slot></slot>\n</div>";
 
 /***/ },
 /* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var CollectionList = (function () {
-	    function CollectionList() {}
+	    function CollectionList() {
+	    }
 	    Object.defineProperty(CollectionList.prototype, "headerSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'header' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
-	    CollectionList = __decorate([vue_class_component_1["default"]({
-	        template: __webpack_require__(50)
-	    })], CollectionList);
+	    CollectionList = __decorate([
+	        vue_class_component_1.default({
+	            template: __webpack_require__(50)
+	        })
+	    ], CollectionList);
 	    return CollectionList;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = CollectionList;
-	//# sourceMappingURL=index.js.map
+	exports.default = CollectionList;
+
 
 /***/ },
 /* 50 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"collection\" :class=\"{'with-header': headerSlot}\">\r\n    <div v-if=\"headerSlot\" class=\"collection-header\">\r\n        <slot name=\"header\"></slot>\r\n    </div>\r\n    <slot></slot>\r\n</ul>";
+	module.exports = "<ul class=\"collection\" :class=\"{'with-header': headerSlot}\">\n    <div v-if=\"headerSlot\" class=\"collection-header\">\n        <slot name=\"header\"></slot>\n    </div>\n    <slot></slot>\n</ul>";
 
 /***/ },
 /* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var CollectionItem = (function () {
-	    function CollectionItem() {}
+	    function CollectionItem() {
+	    }
 	    Object.defineProperty(CollectionItem.prototype, "secondaryContentSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'secondary-content' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
-	    CollectionItem = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            active: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        template: __webpack_require__(52)
-	    })], CollectionItem);
+	    CollectionItem = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                active: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                }
+	            },
+	            template: __webpack_require__(52)
+	        })
+	    ], CollectionItem);
 	    return CollectionItem;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = CollectionItem;
-	//# sourceMappingURL=index.js.map
+	exports.default = CollectionItem;
+
 
 /***/ },
 /* 52 */
 /***/ function(module, exports) {
 
-	module.exports = "<a class=\"md-collection-item collection-item\" :class=\"{active: active}\">\r\n    <slot></slot>\r\n    <span v-if=\"secondaryContentSlot\" class=\"secondary-content\">\r\n        <slot name=\"secondary-content\"></slot>\r\n    </span>\r\n</a>";
+	module.exports = "<a class=\"md-collection-item collection-item\" :class=\"{active: active}\">\n    <slot></slot>\n    <span v-if=\"secondaryContentSlot\" class=\"secondary-content\">\n        <slot name=\"secondary-content\"></slot>\n    </span>\n</a>";
 
 /***/ },
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var CollectionListItem = (function () {
-	    function CollectionListItem() {}
+	    function CollectionListItem() {
+	    }
 	    Object.defineProperty(CollectionListItem.prototype, "secondaryContentSlot", {
-	        get: function get() {
+	        get: function () {
 	            return 'secondary-content' in this._slotContents;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
-	    CollectionListItem = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            active: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        template: __webpack_require__(54)
-	    })], CollectionListItem);
+	    CollectionListItem = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                active: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                }
+	            },
+	            template: __webpack_require__(54)
+	        })
+	    ], CollectionListItem);
 	    return CollectionListItem;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = CollectionListItem;
-	//# sourceMappingURL=index.js.map
+	exports.default = CollectionListItem;
+
 
 /***/ },
 /* 54 */
 /***/ function(module, exports) {
 
-	module.exports = "<li class=\"md-collection-item collection-item\" :class=\"{active: active}\">\r\n    <slot></slot>\r\n    <span v-if=\"secondaryContentSlot\" class=\"secondary-content\">\r\n        <slot name=\"secondary-content\"></slot>\r\n    </span>\r\n</li>";
+	module.exports = "<li class=\"md-collection-item collection-item\" :class=\"{active: active}\">\n    <slot></slot>\n    <span v-if=\"secondaryContentSlot\" class=\"secondary-content\">\n        <slot name=\"secondary-content\"></slot>\n    </span>\n</li>";
 
 /***/ },
 /* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
@@ -2752,67 +2808,69 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dropdown_item_1 = __webpack_require__(57);
 	var click_away_1 = __webpack_require__(6);
 	var Dropdown = (function () {
-	    function Dropdown() {}
+	    function Dropdown() {
+	    }
 	    Dropdown.prototype.open = function (e) {
 	        this.$broadcast('dropdown-list::open', e);
 	    };
 	    Dropdown.prototype.close = function () {
 	        this.$broadcast('dropdown-list::close');
 	    };
-	    Dropdown = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            title: {
-	                type: String,
-	                required: false,
-	                'default': '',
-	                twoWay: false
+	    Dropdown = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                title: {
+	                    type: String,
+	                    required: false,
+	                    'default': '',
+	                    twoWay: false
+	                },
+	                value: {
+	                    type: String,
+	                    required: false,
+	                    'default': '',
+	                }
 	            },
-	            value: {
-	                type: String,
-	                required: false,
-	                'default': ''
-	            }
-	        },
-	        directives: {
-	            onClickAway: click_away_1["default"]
-	        },
-	        components: {
-	            mdButton: button_1["default"],
-	            mdDropdownList: dropdown_list_1["default"],
-	            mdDropdownItem: dropdown_item_1["default"]
-	        },
-	        events: {
-	            'dropdown-list::close': function dropdownListClose() {
-	                // emitted by item -> propagated do list
-	                this.$broadcast('dropdown-list::close');
-	                this.$dispatch('dropdown::close');
+	            directives: {
+	                onClickAway: click_away_1.default
 	            },
-	            'dropdown-item::selected': function dropdownItemSelected(id) {
-	                this.value = id;
-	                return true;
+	            components: {
+	                mdButton: button_1.default,
+	                mdDropdownList: dropdown_list_1.default,
+	                mdDropdownItem: dropdown_item_1.default
 	            },
-	            'dropdown::open': function dropdownOpen(e) {
-	                this.$broadcast('dropdown-list::open', e);
-	            }
-	        },
-	        template: __webpack_require__(61)
-	    })], Dropdown);
+	            events: {
+	                'dropdown-list::close': function () {
+	                    // emitted by item -> propagated do list
+	                    this.$broadcast('dropdown-list::close');
+	                    this.$dispatch('dropdown::close');
+	                },
+	                'dropdown-item::selected': function (id) {
+	                    this.value = id;
+	                    return true;
+	                },
+	                'dropdown::open': function (e) {
+	                    this.$broadcast('dropdown-list::open', e);
+	                }
+	            },
+	            template: __webpack_require__(61)
+	        })
+	    ], Dropdown);
 	    return Dropdown;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Dropdown;
-	//# sourceMappingURL=index.js.map
+	exports.default = Dropdown;
+
 
 /***/ },
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
@@ -2820,7 +2878,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dropdown_item_1 = __webpack_require__(57);
 	var utils_1 = __webpack_require__(59);
 	var DropdownList = (function () {
-	    function DropdownList() {}
+	    function DropdownList() {
+	    }
 	    DropdownList.prototype.data = function () {
 	        return {
 	            active: false,
@@ -2846,7 +2905,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 	    DropdownList.prototype.computeStyle = function (element) {
-	        var offset = utils_1["default"].getOffset(element);
+	        var offset = utils_1.default.getOffset(element);
 	        var width = element.offsetWidth || 100;
 	        var top = offset.top || 0;
 	        var left = offset.left || 0;
@@ -2859,42 +2918,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	            display: 'block'
 	        };
 	    };
-	    DropdownList = __decorate([vue_class_component_1["default"]({
-	        components: {
-	            mbButton: button_1["default"],
-	            mdDropdownItem: dropdown_item_1["default"]
-	        },
-	        events: {
-	            "dropdown-list::close": function dropdownListClose() {
-	                this.hide();
+	    DropdownList = __decorate([
+	        vue_class_component_1.default({
+	            components: {
+	                mbButton: button_1.default,
+	                mdDropdownItem: dropdown_item_1.default
 	            },
-	            "dropdown-list::open": function dropdownListOpen(e) {
-	                this.open(e);
-	            }
-	        },
-	        template: __webpack_require__(60)
-	    })], DropdownList);
+	            events: {
+	                "dropdown-list::close": function () {
+	                    this.hide();
+	                },
+	                "dropdown-list::open": function (e) {
+	                    this.open(e);
+	                }
+	            },
+	            template: __webpack_require__(60)
+	        })
+	    ], DropdownList);
 	    return DropdownList;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = DropdownList;
-	//# sourceMappingURL=index.js.map
+	exports.default = DropdownList;
+
 
 /***/ },
 /* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var DropdownItem = (function () {
-	    function DropdownItem() {}
+	    function DropdownItem() {
+	    }
 	    DropdownItem.prototype.select = function () {
 	        if (this.closing) {
 	            this.$dispatch('dropdown-list::close');
@@ -2902,7 +2963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.$dispatch('dropdown-item::selected', this.id);
 	    };
 	    Object.defineProperty(DropdownItem.prototype, "id", {
-	        get: function get() {
+	        get: function () {
 	            if (this.name) {
 	                return this.name;
 	            }
@@ -2911,34 +2972,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
-	    DropdownItem = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            closing: {
-	                type: Boolean,
-	                required: false,
-	                'default': true,
-	                twoWay: false
+	    DropdownItem = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                closing: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': true,
+	                    twoWay: false
+	                },
+	                name: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
 	            },
-	            name: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            }
-	        },
-	        template: __webpack_require__(58)
-	    })], DropdownItem);
+	            template: __webpack_require__(58)
+	        })
+	    ], DropdownItem);
 	    return DropdownItem;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = DropdownItem;
-	//# sourceMappingURL=index.js.map
+	exports.default = DropdownItem;
+
 
 /***/ },
 /* 58 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click.prevent=\"select\">\r\n    <a href=\"javascript:void(0)\">\r\n        <slot></slot>\r\n    </a>\r\n</li>";
+	module.exports = "<li @click.prevent=\"select\">\n    <a href=\"javascript:void(0)\">\n        <slot></slot>\n    </a>\n</li>";
 
 /***/ },
 /* 59 */
@@ -2946,7 +3009,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	var Utils = (function () {
-	    function Utils() {}
+	    function Utils() {
+	    }
 	    Utils.merge = function (objA, objB) {
 	        var result = {};
 	        Utils.addAll(result, objA);
@@ -2961,8 +3025,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return base;
 	    };
 	    Utils.getOffset = function (element) {
-	        var top = 0,
-	            left = 0;
+	        var top = 0, left = 0;
 	        do {
 	            top += element.offsetTop || 0;
 	            left += element.offsetLeft || 0;
@@ -2986,44 +3049,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	            skip = skip > 0 ? skip * -1 : skip * -1 + 1;
 	        }
-	        pager = pager.sort(function (n1, n2) {
-	            return n1 - n2;
-	        });
+	        pager = pager.sort(function (n1, n2) { return n1 - n2; });
 	        return pager;
 	    };
 	    return Utils;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Utils;
-	//# sourceMappingURL=index.js.map
+	exports.default = Utils;
+
 
 /***/ },
 /* 60 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"dropdown-content\"\r\n    :class=\"{active: active}\" :style=\"style\">\r\n    <slot></slot>\r\n</ul>\r\n";
+	module.exports = "<ul class=\"dropdown-content\"\n    :class=\"{active: active}\" :style=\"style\">\n    <slot></slot>\n</ul>\n";
 
 /***/ },
 /* 61 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-on-click-away=\"close\">\r\n    <md-dropdown-list>\r\n        <slot></slot>\r\n    </md-dropdown-list>\r\n\r\n    <span @click=\"open\">\r\n        <slot name=\"button\">\r\n            <md-button href=\"javascript:void(0)\"\r\n                 :class=\"{active: active}\"\r\n                 class=\"dropdown-button\">\r\n                {{title}}\r\n                <i class=\"mdi-navigation-arrow-drop-down right\"></i>\r\n            </md-button>\r\n        </slot>\r\n    </span>\r\n</div>\r\n";
+	module.exports = "<div v-on-click-away=\"close\">\n    <md-dropdown-list>\n        <slot></slot>\n    </md-dropdown-list>\n\n    <span @click=\"open\">\n        <slot name=\"button\">\n            <md-button href=\"javascript:void(0)\"\n                 :class=\"{active: active}\"\n                 class=\"dropdown-button\">\n                {{title}}\n                <i class=\"mdi-navigation-arrow-drop-down right\"></i>\n            </md-button>\n        </slot>\n    </span>\n</div>\n";
 
 /***/ },
 /* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var EventWrapper = (function () {
-	    function EventWrapper() {}
+	    function EventWrapper() {
+	    }
 	    EventWrapper.prototype.ready = function () {
 	        var self = this;
 	        this.events.forEach(function (event) {
@@ -3033,20 +3094,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	        });
 	    };
-	    EventWrapper = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            events: {
-	                type: Array,
-	                required: true
-	            }
-	        },
-	        template: __webpack_require__(63)
-	    })], EventWrapper);
+	    EventWrapper = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                events: {
+	                    type: Array,
+	                    required: true
+	                }
+	            },
+	            template: __webpack_require__(63)
+	        })
+	    ], EventWrapper);
 	    return EventWrapper;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = EventWrapper;
-	//# sourceMappingURL=index.js.map
+	exports.default = EventWrapper;
+
 
 /***/ },
 /* 63 */
@@ -3059,11 +3122,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
@@ -3071,7 +3133,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var icon_1 = __webpack_require__(22);
 	var Velocity = __webpack_require__(15);
 	var Fab = (function () {
-	    function Fab() {}
+	    function Fab() {
+	    }
 	    Fab.prototype.data = function () {
 	        return {
 	            active: false
@@ -3081,14 +3144,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.event == 'hover') {
 	            this.$els.fab.addEventListener('mouseenter', this.open);
 	            this.$els.fab.addEventListener('mouseleave', this.close);
-	        } else {
+	        }
+	        else {
 	            this.$els.fab.addEventListener(this.event, this.toggle);
 	        }
 	    };
 	    Fab.prototype.toggle = function () {
 	        if (!this.active) {
 	            this.open();
-	        } else {
+	        }
+	        else {
 	            this.close();
 	        }
 	    };
@@ -3098,7 +3163,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var offsetY, offsetX;
 	            if (this.horizontal) {
 	                offsetX = 40;
-	            } else {
+	            }
+	            else {
 	                offsetY = 40;
 	            }
 	            var items = Array.prototype.slice.call(this.$el.querySelectorAll('ul .btn-floating'));
@@ -3116,7 +3182,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var offsetY, offsetX;
 	            if (this.horizontal) {
 	                offsetX = 40;
-	            } else {
+	            }
+	            else {
 	                offsetY = 40;
 	            }
 	            var items = Array.prototype.slice.call(this.$el.querySelectorAll('ul .btn-floating'));
@@ -3124,122 +3191,128 @@ return /******/ (function(modules) { // webpackBootstrap
 	            Velocity(items, { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px' }, { duration: 80 });
 	        }
 	    };
-	    Fab = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            horizontal: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
+	    Fab = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                horizontal: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                },
+	                event: {
+	                    type: String,
+	                    required: false,
+	                    'default': 'hover'
+	                }
 	            },
-	            event: {
-	                type: String,
-	                required: false,
-	                'default': 'hover'
-	            }
-	        },
-	        components: {
-	            mdButton: button_1["default"],
-	            mdIcon: icon_1["default"]
-	        },
-	        template: __webpack_require__(65)
-	    })], Fab);
+	            components: {
+	                mdButton: button_1.default,
+	                mdIcon: icon_1.default
+	            },
+	            template: __webpack_require__(65)
+	        })
+	    ], Fab);
 	    return Fab;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Fab;
-	//# sourceMappingURL=index.js.map
+	exports.default = Fab;
+
 
 /***/ },
 /* 65 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-el:fab class=\"md-fab fixed-action-btn\" :class=\"{horizontal: horizontal}\">\r\n    <slot name=\"button\">\r\n        <md-button floating large class=\"red\">\r\n            <slot name=\"icon\">\r\n                <md-icon class=\"large\">\r\n                    <slot name=\"icon-name\">\r\n                        menu\r\n                    </slot>\r\n                </md-icon>\r\n            </slot>\r\n        </md-button>\r\n    </slot>\r\n    <ul :style=\"{visibility: active ? 'visible' : 'hidden'}\">\r\n        <slot></slot>\r\n    </ul>\r\n</div>";
+	module.exports = "<div v-el:fab class=\"md-fab fixed-action-btn\" :class=\"{horizontal: horizontal}\">\n    <slot name=\"button\">\n        <md-button floating large class=\"red\">\n            <slot name=\"icon\">\n                <md-icon class=\"large\">\n                    <slot name=\"icon-name\">\n                        menu\n                    </slot>\n                </md-icon>\n            </slot>\n        </md-button>\n    </slot>\n    <ul :style=\"{visibility: active ? 'visible' : 'hidden'}\">\n        <slot></slot>\n    </ul>\n</div>";
 
 /***/ },
 /* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var input_1 = __webpack_require__(12);
 	var bind_boolean_1 = __webpack_require__(4);
 	var FileInputField = (function () {
-	    function FileInputField() {}
+	    function FileInputField() {
+	    }
 	    FileInputField.prototype.selectFile = function (e) {
-	        this.value = Array.prototype.slice.call(e.target.files).map(function (f) {
-	            return f.name;
-	        }).join(', ');
+	        this.value = Array.prototype.slice.call(e.target.files)
+	            .map(function (f) { return f.name; })
+	            .join(', ');
 	    };
-	    FileInputField = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                type: String,
-	                required: false,
-	                'default': null
+	    FileInputField = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                name: {
+	                    type: String,
+	                    required: true
+	                },
+	                placeholder: {
+	                    type: String,
+	                    required: false,
+	                    'default': ''
+	                },
+	                multiple: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                }
 	            },
-	            name: {
-	                type: String,
-	                required: true
+	            directives: {
+	                bindBoolean: bind_boolean_1.default
 	            },
-	            placeholder: {
-	                type: String,
-	                required: false,
-	                'default': ''
-	            },
-	            multiple: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        directives: {
-	            bindBoolean: bind_boolean_1["default"]
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(67)
-	    })], FileInputField);
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(67)
+	        })
+	    ], FileInputField);
 	    return FileInputField;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = FileInputField;
-	//# sourceMappingURL=index.js.map
+	exports.default = FileInputField;
+
 
 /***/ },
 /* 67 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"file-field input-field\">\r\n    <div class=\"btn\">\r\n        <slot>\r\n            <span>File</span>\r\n        </slot>\r\n        <input @change=\"selectFile\" :name=\"name\"\r\n               v-bind-boolean:multiple=\"multiple\" type=\"file\">\r\n    </div>\r\n    <div class=\"file-path-wrapper\">\r\n        <input v-model=\"value\"\r\n               :placeholder=\"placeholder\"\r\n               class=\"file-path field\" type=\"text\">\r\n    </div>\r\n</div>";
+	module.exports = "<div class=\"file-field input-field\">\n    <div class=\"btn\">\n        <slot>\n            <span>File</span>\n        </slot>\n        <input @change=\"selectFile\" :name=\"name\"\n               v-bind-boolean:multiple=\"multiple\" type=\"file\">\n    </div>\n    <div class=\"file-path-wrapper\">\n        <input v-model=\"value\"\n               :placeholder=\"placeholder\"\n               class=\"file-path field\" type=\"text\">\n    </div>\n</div>";
 
 /***/ },
 /* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var input_1 = __webpack_require__(12);
 	var InputField = (function () {
-	    function InputField() {}
+	    function InputField() {
+	    }
 	    InputField.prototype.data = function () {
 	        return {
 	            active: false
 	        };
 	    };
 	    Object.defineProperty(InputField.prototype, "labelClasses", {
-	        get: function get() {
+	        get: function () {
 	            return {
 	                active: this.placeholder || this.active || this.value,
 	                disabled: this.disabled
@@ -3249,7 +3322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Object.defineProperty(InputField.prototype, "validationClass", {
-	        get: function get() {
+	        get: function () {
 	            return {
 	                invalid: this.errorMsg && this.valid == false,
 	                valid: this.successMsg && this.valid == true
@@ -3259,9 +3332,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    InputField.prototype.hasSlot = function (name) {
-	        if (name === void 0) {
-	            name = 'default';
-	        }
+	        if (name === void 0) { name = 'default'; }
 	        return name in this._slotContents;
 	    };
 	    InputField.prototype.activateField = function () {
@@ -3270,151 +3341,157 @@ return /******/ (function(modules) { // webpackBootstrap
 	    InputField.prototype.deactivateField = function () {
 	        this.active = false;
 	    };
-	    InputField = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                type: String,
-	                required: false,
-	                'default': null
+	    InputField = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                placeholder: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                type: {
+	                    type: String,
+	                    required: false,
+	                    'default': 'text',
+	                    twoWay: false
+	                },
+	                lazy: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                number: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                debounce: {
+	                    type: Number,
+	                    required: false,
+	                    'default': 0,
+	                    twoWay: false
+	                },
+	                errorMsg: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                successMsg: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                valid: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                }
 	            },
-	            placeholder: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            type: {
-	                type: String,
-	                required: false,
-	                'default': 'text',
-	                twoWay: false
-	            },
-	            lazy: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            number: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            debounce: {
-	                type: Number,
-	                required: false,
-	                'default': 0,
-	                twoWay: false
-	            },
-	            errorMsg: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            successMsg: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            valid: {
-	                type: Boolean,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            }
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(69)
-	    })], InputField);
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(69)
+	        })
+	    ], InputField);
 	    return InputField;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = InputField;
-	//# sourceMappingURL=index.js.map
+	exports.default = InputField;
+
 
 /***/ },
 /* 69 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"input-field\">\r\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <input v-if=\"disabled\"\r\n           v-model=\"value\"\r\n           :placeholder=\"placeholder\" :id=\"id\"\r\n           :type=\"type\"\r\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n           disabled=\"disabled\"/>\r\n    <input v-else\r\n           v-model=\"value\"\r\n           :placeholder=\"placeholder\" :id=\"id\"\r\n           :type=\"type\"\r\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n           @focus=\"activateField\"\r\n           @blur=\"deactivateField\"\r\n           class=\"validate\"\r\n           :class=\"validationClass\"/>\r\n    <label v-if=\"hasSlot()\" :for=\"id\" :class=\"labelClasses\"\r\n           :data-error=\"errorMsg\" :data-success=\"successMsg\">\r\n        <slot></slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"input-field\">\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\n        <slot name=\"icon-name\"></slot>\n    </i>\n    <input v-if=\"disabled\"\n           v-model=\"value\"\n           :placeholder=\"placeholder\" :id=\"id\"\n           :type=\"type\"\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\n           disabled=\"disabled\"/>\n    <input v-else\n           v-model=\"value\"\n           :placeholder=\"placeholder\" :id=\"id\"\n           :type=\"type\"\n           :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\n           @focus=\"activateField\"\n           @blur=\"deactivateField\"\n           class=\"validate\"\n           :class=\"validationClass\"/>\n    <label v-if=\"hasSlot()\" :for=\"id\" :class=\"labelClasses\"\n           :data-error=\"errorMsg\" :data-success=\"successMsg\">\n        <slot></slot>\n    </label>\n</div>";
 
 /***/ },
 /* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Optgroup = (function () {
-	    function Optgroup() {}
-	    Optgroup = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            label: {
-	                type: String,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        template: __webpack_require__(71)
-	    })], Optgroup);
+	    function Optgroup() {
+	    }
+	    Optgroup = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                label: {
+	                    type: String,
+	                    required: false,
+	                    'default': false
+	                }
+	            },
+	            template: __webpack_require__(71)
+	        })
+	    ], Optgroup);
 	    return Optgroup;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Optgroup;
-	//# sourceMappingURL=index.js.map
+	exports.default = Optgroup;
+
 
 /***/ },
 /* 71 */
 /***/ function(module, exports) {
 
-	module.exports = "<li class=\"optgroup\">\r\n    <span>\r\n        {{label}}\r\n    </span>\r\n</li>\r\n<slot></slot>";
+	module.exports = "<li class=\"optgroup\">\n    <span>\n        {{label}}\n    </span>\n</li>\n<slot></slot>";
 
 /***/ },
 /* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var bind_boolean_1 = __webpack_require__(4);
 	var input_1 = __webpack_require__(12);
 	var SelectOption = (function () {
-	    function SelectOption() {}
+	    function SelectOption() {
+	    }
 	    SelectOption.prototype.data = function () {
 	        return {
 	            active: false
 	        };
 	    };
 	    Object.defineProperty(SelectOption.prototype, "multiple", {
-	        get: function get() {
+	        get: function () {
 	            return this.$parent.multiple;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(SelectOption.prototype, "computedClasses", {
-	        get: function get() {
+	        get: function () {
 	            return {
 	                disabled: this.disabled,
 	                active: this.active && !this.disabled,
@@ -3427,7 +3504,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    SelectOption.prototype.toggle = function () {
 	        if (!this.active) {
 	            this.select();
-	        } else {
+	        }
+	        else {
 	            this.unselect();
 	        }
 	    };
@@ -3448,10 +3526,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (!this.active && this.value == value) {
 	                this.active = true;
 	            }
-	        } else {
+	        }
+	        else {
 	            if (this.value == value) {
 	                this.active = true;
-	            } else {
+	            }
+	            else {
 	                this.active = false;
 	            }
 	        }
@@ -3461,60 +3541,64 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (this.active && this.value == value) {
 	                this.active = false;
 	            }
-	        } else {
+	        }
+	        else {
 	            if (this.value == value) {
 	                this.active = false;
 	            }
 	        }
 	    };
-	    SelectOption = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
+	    SelectOption = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                },
+	                value: {
+	                    type: String,
+	                    required: true
+	                }
 	            },
-	            value: {
-	                type: String,
-	                required: true
-	            }
-	        },
-	        events: {
-	            'option::select': function optionSelect(value) {
-	                this.optionSelect(value);
+	            events: {
+	                'option::select': function (value) {
+	                    this.optionSelect(value);
+	                },
+	                'option::unselect': function (value) {
+	                    this.optionUnselect(value);
+	                }
 	            },
-	            'option::unselect': function optionUnselect(value) {
-	                this.optionUnselect(value);
-	            }
-	        },
-	        directives: {
-	            bindBoolean: bind_boolean_1["default"]
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(73)
-	    })], SelectOption);
+	            directives: {
+	                bindBoolean: bind_boolean_1.default
+	            },
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(73)
+	        })
+	    ], SelectOption);
 	    return SelectOption;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = SelectOption;
-	//# sourceMappingURL=index.js.map
+	exports.default = SelectOption;
+
 
 /***/ },
 /* 73 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click.prevent=\"toggle\" :class=\"computedClasses\">\r\n    <span>\r\n        <input v-show=\"multiple\" v-model=\"active\"\r\n               v-bind-boolean:disabled=\"disabled\"\r\n               type=\"checkbox\">\r\n        <label v-if=\"multiple\"></label>\r\n        <slot></slot>\r\n    </span>\r\n</li>";
+	module.exports = "<li @click.prevent=\"toggle\" :class=\"computedClasses\">\n    <span>\n        <input v-show=\"multiple\" v-model=\"active\"\n               v-bind-boolean:disabled=\"disabled\"\n               type=\"checkbox\">\n        <label v-if=\"multiple\"></label>\n        <slot></slot>\n    </span>\n</li>";
 
 /***/ },
 /* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
@@ -3522,108 +3606,112 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bind_raw_1 = __webpack_require__(5);
 	var input_1 = __webpack_require__(12);
 	var Radio = (function () {
-	    function Radio() {}
+	    function Radio() {
+	    }
 	    Object.defineProperty(Radio.prototype, "field", {
-	        get: function get() {
+	        get: function () {
 	            return this.$els.field;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Radio.prototype, "group", {
-	        get: function get() {
+	        get: function () {
 	            return this.$parent.group;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Radio.prototype.hasSlot = function (name) {
-	        if (name === void 0) {
-	            name = 'default';
-	        }
+	        if (name === void 0) { name = 'default'; }
 	        return name in this._slotContents;
 	    };
-	    Radio = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                type: String,
-	                required: false,
-	                'default': null
+	    Radio = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                radioValue: {
+	                    required: true
+	                },
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                }
 	            },
-	            radioValue: {
-	                required: true
+	            directives: {
+	                bindBoolean: bind_boolean_1.default,
+	                bindRaw: bind_raw_1.default
 	            },
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        directives: {
-	            bindBoolean: bind_boolean_1["default"],
-	            bindRaw: bind_raw_1["default"]
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(75)
-	    })], Radio);
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(75)
+	        })
+	    ], Radio);
 	    return Radio;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Radio;
-	//# sourceMappingURL=index.js.map
+	exports.default = Radio;
+
 
 /***/ },
 /* 75 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"md-radio\">\r\n    <input v-model=\"value\"\r\n           :value=\"radioValue\"\r\n           v-bind-boolean:disabled=\"disabled\"\r\n           v-bind-boolean:checked=\"checked\"\r\n           :id=\"id\" :name=\"group\"\r\n           type=\"radio\"/>\r\n    <label v-if=\"hasSlot()\" :for=\"id\">\r\n        <slot></slot>\r\n    </label>\r\n</span>";
+	module.exports = "<span class=\"md-radio\">\n    <input v-model=\"value\"\n           :value=\"radioValue\"\n           v-bind-boolean:disabled=\"disabled\"\n           v-bind-boolean:checked=\"checked\"\n           :id=\"id\" :name=\"group\"\n           type=\"radio\"/>\n    <label v-if=\"hasSlot()\" :for=\"id\">\n        <slot></slot>\n    </label>\n</span>";
 
 /***/ },
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var RadioGroup = (function () {
-	    function RadioGroup() {}
-	    RadioGroup = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            group: {
-	                type: String,
-	                required: true
-	            }
-	        },
-	        template: __webpack_require__(77)
-	    })], RadioGroup);
+	    function RadioGroup() {
+	    }
+	    RadioGroup = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                group: {
+	                    type: String,
+	                    required: true
+	                }
+	            },
+	            template: __webpack_require__(77)
+	        })
+	    ], RadioGroup);
 	    return RadioGroup;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = RadioGroup;
-	//# sourceMappingURL=index.js.map
+	exports.default = RadioGroup;
+
 
 /***/ },
 /* 77 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"input-field\">\r\n    <slot></slot>\r\n</div>";
+	module.exports = "<div class=\"input-field\">\n    <slot></slot>\n</div>";
 
 /***/ },
 /* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
@@ -3633,7 +3721,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bind_boolean_1 = __webpack_require__(4);
 	var Vue = __webpack_require__(2);
 	var SelectField = (function () {
-	    function SelectField() {}
+	    function SelectField() {
+	    }
 	    SelectField.prototype.data = function () {
 	        return {
 	            active: false,
@@ -3641,9 +3730,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    SelectField.prototype.compiled = function () {
-	        var options = this.$getAllChildren().filter(function (c) {
-	            return 'SelectOption' == c.$options.name;
-	        });
+	        var options = this.$getAllChildren().filter(function (c) { return 'SelectOption' == c.$options.name; });
 	        for (var i = 0; i < options.length; i++) {
 	            var option = options[i];
 	            var opt = this.createOption(option);
@@ -3654,7 +3741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.refreshDropdownOptions();
 	    };
 	    SelectField.prototype.createOption = function (option) {
-	        var content = option._slotContents ? option._slotContents["default"] : '';
+	        var content = option._slotContents ? option._slotContents.default : '';
 	        var value = option.$data.value;
 	        var disabled = option.$data.disabled;
 	        return {
@@ -3664,34 +3751,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    Object.defineProperty(SelectField.prototype, "multiple", {
-	        get: function get() {
+	        get: function () {
 	            return Array.isArray(this.value);
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(SelectField.prototype, "valueContent", {
-	        get: function get() {
+	        get: function () {
 	            return Array.isArray(this.value) ? this.valueContentMultiple : this.valueContentSingle;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(SelectField.prototype, "valueContentSingle", {
-	        get: function get() {
+	        get: function () {
 	            return this.options[this.value] ? this.options[this.value].content : '';
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(SelectField.prototype, "valueContentMultiple", {
-	        get: function get() {
+	        get: function () {
 	            var _this = this;
 	            if (this.value.length) {
 	                return this.value.map(function (value) {
 	                    return _this.options[value] ? _this.options[value].content : '';
 	                }).join(', ');
-	            } else {
+	            }
+	            else {
 	                return this.options[this.defaultSelect] ? this.options[this.defaultSelect].content : '';
 	            }
 	        },
@@ -3699,16 +3787,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Object.defineProperty(SelectField.prototype, "field", {
-	        get: function get() {
+	        get: function () {
 	            return this.$els.field;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    SelectField.prototype.hasSlot = function (name) {
-	        if (name === void 0) {
-	            name = 'default';
-	        }
+	        if (name === void 0) { name = 'default'; }
 	        return name in this._slotContents;
 	    };
 	    SelectField.prototype.refreshDropdownOptions = function () {
@@ -3717,7 +3803,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        options.forEach(function (o) {
 	            if (o.selected) {
 	                _this.$broadcast('option::select', o.value);
-	            } else if (_this.multiple) {
+	            }
+	            else if (_this.multiple) {
 	                _this.$broadcast('option::unselect', o.value);
 	            }
 	        });
@@ -3734,77 +3821,83 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.$broadcast('dropdown-list::close');
 	        }
 	    };
-	    SelectField = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                required: false,
-	                'default': null
-	            }
-	        },
-	        events: {
-	            'select::select': function selectSelect(value) {
-	                if (Array.isArray(this.value)) {
-	                    this.value.push(value);
-	                } else {
-	                    this.value = value;
-	                    this.close();
+	    SelectField = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    required: false,
+	                    'default': null
 	                }
-	                this.$broadcast('option::select', value);
-	                return true;
 	            },
-	            'select::unselect': function selectUnselect(value) {
-	                if (Array.isArray(this.value)) {
-	                    this.value.$remove(value);
-	                } else {
-	                    this.value = value;
+	            events: {
+	                'select::select': function (value) {
+	                    if (Array.isArray(this.value)) {
+	                        this.value.push(value);
+	                    }
+	                    else {
+	                        this.value = value;
+	                        this.close();
+	                    }
+	                    this.$broadcast('option::select', value);
+	                    return true;
+	                },
+	                'select::unselect': function (value) {
+	                    if (Array.isArray(this.value)) {
+	                        this.value.$remove(value);
+	                    }
+	                    else {
+	                        this.value = value;
+	                    }
+	                    this.$broadcast('option::unselect', value);
+	                    return true;
 	                }
-	                this.$broadcast('option::unselect', value);
-	                return true;
-	            }
-	        },
-	        watch: {
-	            value: function value() {
-	                this.$nextTick(this.refreshDropdownOptions);
-	            }
-	        },
-	        components: {
-	            mdDropdownList: dropdown_list_1["default"]
-	        },
-	        directives: {
-	            clickAway: click_away_1["default"],
-	            bindBoolean: bind_boolean_1["default"]
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(79)
-	    })], SelectField);
+	            },
+	            watch: {
+	                value: function () {
+	                    this.$nextTick(this.refreshDropdownOptions);
+	                }
+	            },
+	            components: {
+	                mdDropdownList: dropdown_list_1.default
+	            },
+	            directives: {
+	                clickAway: click_away_1.default,
+	                bindBoolean: bind_boolean_1.default
+	            },
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(79)
+	        })
+	    ], SelectField);
 	    return SelectField;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = SelectField;
-	//# sourceMappingURL=index.js.map
+	exports.default = SelectField;
+
 
 /***/ },
 /* 79 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"md-select input-field\" v-click-away=\"close\">\r\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <div class=\"select-wrapper\">\r\n        <span class=\"caret\">▼</span>\r\n        <input @click=\"open\" readonly=\"readonly\" :value=\"valueContent\"\r\n               type=\"text\" class=\"select-dropdown\">\r\n\r\n        <md-dropdown-list :active=\"active\" class=\"select-dropdown\">\r\n            <slot></slot>\r\n        </md-dropdown-list>\r\n\r\n        <select v-el:field\r\n                v-model=\"value\"\r\n                v-bind-boolean:multiple=\"multiple\"\r\n                :placeholder=\"placeholder\" :id=\"id\"\r\n                :type=\"type\">\r\n            <option v-for=\"opt in options\" :value=\"opt.value\" v-bind-boolean:disabled=\"opt.disabled\">{{opt.content}}</option>\r\n        </select>\r\n    </div>\r\n    <label v-if=\"hasSlot('label')\" :for=\"id\" :class=\"labelClasses\">\r\n        <slot name=\"label\"></slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"md-select input-field\" v-click-away=\"close\">\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\n        <slot name=\"icon-name\"></slot>\n    </i>\n    <div class=\"select-wrapper\">\n        <span class=\"caret\">▼</span>\n        <input @click=\"open\" readonly=\"readonly\" :value=\"valueContent\"\n               type=\"text\" class=\"select-dropdown\">\n\n        <md-dropdown-list :active=\"active\" class=\"select-dropdown\">\n            <slot></slot>\n        </md-dropdown-list>\n\n        <select v-el:field\n                v-model=\"value\"\n                v-bind-boolean:multiple=\"multiple\"\n                :placeholder=\"placeholder\" :id=\"id\"\n                :type=\"type\">\n            <option v-for=\"opt in options\" :value=\"opt.value\" v-bind-boolean:disabled=\"opt.disabled\">{{opt.content}}</option>\n        </select>\n    </div>\n    <label v-if=\"hasSlot('label')\" :for=\"id\" :class=\"labelClasses\">\n        <slot name=\"label\"></slot>\n    </label>\n</div>";
 
 /***/ },
 /* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var input_1 = __webpack_require__(12);
 	var TextArea = (function () {
-	    function TextArea() {}
+	    function TextArea() {
+	    }
 	    TextArea.prototype.data = function () {
 	        return {
 	            active: false
@@ -3814,7 +3907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.chars = this.value ? this.value.length : 0;
 	    };
 	    Object.defineProperty(TextArea.prototype, "labelClasses", {
-	        get: function get() {
+	        get: function () {
 	            return {
 	                active: this.active || this.value,
 	                disabled: this.disabled
@@ -3824,23 +3917,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Object.defineProperty(TextArea.prototype, "lines", {
-	        get: function get() {
+	        get: function () {
 	            return this.value ? this.value.split('\n').length : 0;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(TextArea.prototype, "field", {
-	        get: function get() {
+	        get: function () {
 	            return this.$els.field;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    TextArea.prototype.hasSlot = function (name) {
-	        if (name === void 0) {
-	            name = 'default';
-	        }
+	        if (name === void 0) { name = 'default'; }
 	        return name in this._slotContents;
 	    };
 	    TextArea.prototype.resize = function (e) {
@@ -3850,7 +3941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (chars < this.chars) {
 	            this.field.style.height = 'auto';
 	        }
-	        this.field.style.height = this.field.scrollHeight - paddingVertical + 'px';
+	        this.field.style.height = (this.field.scrollHeight - paddingVertical) + 'px';
 	        // Velocity(this.field, {height: this.field.scrollHeight - paddingVertical}, {
 	        //     duration: 10
 	        // });
@@ -3868,69 +3959,72 @@ return /******/ (function(modules) { // webpackBootstrap
 	    TextArea.prototype.deactivateField = function () {
 	        this.active = false;
 	    };
-	    TextArea = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                type: String,
-	                required: false,
-	                'default': null
+	    TextArea = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                autoresize: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': true,
+	                    twoWay: false
+	                },
+	                lazy: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                number: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                },
+	                debounce: {
+	                    "type": Number,
+	                    "required": false,
+	                    "default": 0,
+	                    "twoWay": false
+	                }
 	            },
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            autoresize: {
-	                type: Boolean,
-	                required: false,
-	                'default': true,
-	                twoWay: false
-	            },
-	            lazy: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            number: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            },
-	            debounce: {
-	                "type": Number,
-	                "required": false,
-	                "default": 0,
-	                "twoWay": false
-	            }
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(81)
-	    })], TextArea);
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(81)
+	        })
+	    ], TextArea);
 	    return TextArea;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = TextArea;
-	//# sourceMappingURL=index.js.map
+	exports.default = TextArea;
+
 
 /***/ },
 /* 81 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"md-textarea input-field\">\r\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\r\n        <slot name=\"icon-name\"></slot>\r\n    </i>\r\n    <textarea v-if=\"disabled\"\r\n              v-el:field\r\n              v-model=\"value\"\r\n              :id=\"id\" class=\r\n              :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n              disabled=\"disabled\">\r\n    </textarea>\r\n    <textarea v-else\r\n              v-el:field\r\n              v-model=\"value\"\r\n              :id=\"id\"\r\n              :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\r\n              @focus=\"activateField\"\r\n              @blur=\"deactivateField\"\r\n              @keyup=\"resize\"\r\n              class=\"materialize-textarea\">\r\n    </textarea>\r\n    <label v-if=\"hasSlot()\" :for=\"id\" :class=\"labelClasses\">\r\n        <slot></slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"md-textarea input-field\">\n    <i v-if=\"hasSlot('icon-name')\" class=\"material-icons prefix\">\n        <slot name=\"icon-name\"></slot>\n    </i>\n    <textarea v-if=\"disabled\"\n              v-el:field\n              v-model=\"value\"\n              :id=\"id\" class=\n              :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\n              disabled=\"disabled\">\n    </textarea>\n    <textarea v-else\n              v-el:field\n              v-model=\"value\"\n              :id=\"id\"\n              :lazy=\"lazy\" :number=\"number\" :debounce=\"debounce\"\n              @focus=\"activateField\"\n              @blur=\"deactivateField\"\n              @keyup=\"resize\"\n              class=\"materialize-textarea\">\n    </textarea>\n    <label v-if=\"hasSlot()\" :for=\"id\" :class=\"labelClasses\">\n        <slot></slot>\n    </label>\n</div>";
 
 /***/ },
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
@@ -3938,7 +4032,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var lean_overlay_1 = __webpack_require__(84);
 	var ESC = 27;
 	var Image = (function () {
-	    function Image() {}
+	    function Image() {
+	    }
 	    Image.prototype.data = function () {
 	        return {
 	            active: false
@@ -3951,7 +4046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _this = this;
 	        var img = this.$els.img;
 	        var placeholder = this.$els.placeholder;
-	        this.materialBox = new materialbox_1["default"](img, placeholder);
+	        this.materialBox = new materialbox_1.default(img, placeholder);
 	        // Return on ESC
 	        window.addEventListener('keyup', function (e) {
 	            if (e.keyCode === ESC) {
@@ -3965,7 +4060,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Image.prototype.toggle = function () {
 	        if (this.active) {
 	            this.close();
-	        } else {
+	        }
+	        else {
 	            this.maximialize();
 	        }
 	    };
@@ -3991,42 +4087,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	            top: el.offsetTop
 	        };
 	    };
-	    Image = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            src: {
-	                type: String,
-	                required: true,
-	                twoWay: false
+	    Image = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                src: {
+	                    type: String,
+	                    required: true,
+	                    twoWay: false
+	                },
+	                caption: {
+	                    type: String,
+	                    required: false,
+	                    "default": null,
+	                    twoWay: false
+	                },
+	                height: {
+	                    type: String,
+	                    required: false,
+	                    "default": null,
+	                    twoWay: false
+	                },
+	                width: {
+	                    type: String,
+	                    required: false,
+	                    "default": null,
+	                    twoWay: false
+	                }
 	            },
-	            caption: {
-	                type: String,
-	                required: false,
-	                "default": null,
-	                twoWay: false
+	            components: {
+	                mdLeanOverlay: lean_overlay_1.default
 	            },
-	            height: {
-	                type: String,
-	                required: false,
-	                "default": null,
-	                twoWay: false
-	            },
-	            width: {
-	                type: String,
-	                required: false,
-	                "default": null,
-	                twoWay: false
-	            }
-	        },
-	        components: {
-	            mdLeanOverlay: lean_overlay_1["default"]
-	        },
-	        template: __webpack_require__(86)
-	    })], Image);
+	            template: __webpack_require__(86)
+	        })
+	    ], Image);
 	    return Image;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Image;
-	//# sourceMappingURL=index.js.map
+	exports.default = Image;
+
 
 /***/ },
 /* 83 */
@@ -4067,7 +4165,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                curr.style.overflow = 'visible';
 	                if (ancestorsChanged === undefined) {
 	                    ancestorsChanged = curr;
-	                } else {
+	                }
+	                else {
 	                    ancestorsChanged = ancestorsChanged.add(curr);
 	                }
 	            }
@@ -4086,15 +4185,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ratio = originalHeight / originalWidth;
 	            newWidth = windowWidth * 0.9;
 	            newHeight = windowWidth * 0.9 * ratio;
-	        } else {
+	        }
+	        else {
 	            ratio = originalWidth / originalHeight;
-	            newWidth = windowHeight * 0.9 * ratio;
+	            newWidth = (windowHeight * 0.9) * ratio;
 	            newHeight = windowHeight * 0.9;
 	        }
 	        // Animate image + set z-index
 	        if (this.img.classList.contains('responsive-img')) {
 	            Velocity(this.img, { 'max-width': newWidth, 'width': originalWidth }, { duration: 0, queue: false,
-	                complete: function complete() {
+	                complete: function () {
 	                    this.img.style.left = 0 + 'px';
 	                    this.img.style.top = 0 + 'px';
 	                    Velocity(this.img, {
@@ -4109,20 +4209,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    });
 	                } // End Complete
 	            }); // End Velocity
-	        } else {
-	                this.img.style.left = 0 + 'px';
-	                this.img.style.top = 0 + 'px';
-	                Velocity(this.img, {
-	                    height: newHeight,
-	                    width: newWidth,
-	                    left: window.scrollX + windowWidth / 2 - this.placeholder.offsetLeft - newWidth / 2,
-	                    top: window.scrollY + windowHeight / 2 - this.placeholder.offsetTop - newHeight / 2
-	                }, {
-	                    duration: inDuration,
-	                    queue: false,
-	                    easing: 'easeOutQuad'
-	                }); // End Velocity
-	            }
+	        }
+	        else {
+	            this.img.style.left = 0 + 'px';
+	            this.img.style.top = 0 + 'px';
+	            Velocity(this.img, {
+	                height: newHeight,
+	                width: newWidth,
+	                left: window.scrollX + windowWidth / 2 - this.placeholder.offsetLeft - newWidth / 2,
+	                top: window.scrollY + windowHeight / 2 - this.placeholder.offsetTop - newHeight / 2
+	            }, {
+	                duration: inDuration,
+	                queue: false,
+	                easing: 'easeOutQuad'
+	            }); // End Velocity
+	        }
 	        // Return on scroll
 	        window.addEventListener('scroll', function () {
 	            if (this.overlayActive) {
@@ -4160,34 +4261,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    ;
 	    return MaterialBox;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports['default'] = MaterialBox;
-	//# sourceMappingURL=index.js.map
+	exports.default = MaterialBox;
+
 
 /***/ },
 /* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var LeanOverlay = (function () {
-	    function LeanOverlay() {}
-	    LeanOverlay = __decorate([vue_class_component_1["default"]({
-	        template: __webpack_require__(85)
-	    })], LeanOverlay);
+	    function LeanOverlay() {
+	    }
+	    LeanOverlay = __decorate([
+	        vue_class_component_1.default({
+	            template: __webpack_require__(85)
+	        })
+	    ], LeanOverlay);
 	    return LeanOverlay;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = LeanOverlay;
-	//# sourceMappingURL=index.js.map
+	exports.default = LeanOverlay;
+
 
 /***/ },
 /* 85 */
@@ -4199,25 +4302,25 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 86 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"md-image\">\r\n    <div v-el:placeholder class=\"material-placeholder\">\r\n        <img @click=\"toggle\" :height=\"height\" :width=\"width\"\r\n             v-el:img\r\n             class=\"materialboxed\"\r\n             :class=\"{active: active}\">\r\n    </div>\r\n\r\n    <md-lean-overlay v-if=\"active\" @click=\"toggle\" transition=\"modal-overlay\"></md-lean-overlay>\r\n    <div v-if=\"active && caption\" transition=\"fade\" class=\"caption-wrapper\">\r\n        <div class=\"materialbox-caption\" style=\"display: block\">\r\n            {{caption}}\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div class=\"md-image\">\n    <div v-el:placeholder class=\"material-placeholder\">\n        <img @click=\"toggle\" :height=\"height\" :width=\"width\"\n             v-el:img\n             class=\"materialboxed\"\n             :class=\"{active: active}\">\n    </div>\n\n    <md-lean-overlay v-if=\"active\" @click=\"toggle\" transition=\"modal-overlay\"></md-lean-overlay>\n    <div v-if=\"active && caption\" transition=\"fade\" class=\"caption-wrapper\">\n        <div class=\"materialbox-caption\" style=\"display: block\">\n            {{caption}}\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var LinearPreloader = (function () {
-	    function LinearPreloader() {}
+	    function LinearPreloader() {
+	    }
 	    Object.defineProperty(LinearPreloader.prototype, "computedStyle", {
-	        get: function get() {
+	        get: function () {
 	            if (this.value != null) {
 	                return {
 	                    width: this.value + '%'
@@ -4228,46 +4331,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true,
 	        configurable: true
 	    });
-	    LinearPreloader = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                type: Number,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            }
-	        },
-	        template: __webpack_require__(88)
-	    })], LinearPreloader);
+	    LinearPreloader = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    type: Number,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                }
+	            },
+	            template: __webpack_require__(88)
+	        })
+	    ], LinearPreloader);
 	    return LinearPreloader;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = LinearPreloader;
-	//# sourceMappingURL=index.js.map
+	exports.default = LinearPreloader;
+
 
 /***/ },
 /* 88 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"progress\">\r\n    <div :class=\"{determinate: value != null, indeterminate: value == null}\" :style=\"computedStyle\"></div>\r\n</div>";
+	module.exports = "<div class=\"progress\">\n    <div :class=\"{determinate: value != null, indeterminate: value == null}\" :style=\"computedStyle\"></div>\n</div>";
 
 /***/ },
 /* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var lean_overlay_1 = __webpack_require__(84);
 	var ESC = 27;
 	var Modal = (function () {
-	    function Modal() {}
+	    function Modal() {
+	    }
 	    Modal.prototype.data = function () {
 	        return {
 	            active: false
@@ -4283,7 +4388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 	    Object.defineProperty(Modal.prototype, "computedStyle", {
-	        get: function get() {
+	        get: function () {
 	            if (this.active) {
 	                return this.bottom ? {
 	                    'z-index': 1003,
@@ -4302,10 +4407,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Object.defineProperty(Modal.prototype, "computedClasses", {
-	        get: function get() {
+	        get: function () {
 	            var classes = '';
-	            if (this["class"]) {
-	                classes += this["class"];
+	            if (this.class) {
+	                classes += this.class;
 	            }
 	            if (this.bottom) {
 	                classes += ' ';
@@ -4317,7 +4422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Object.defineProperty(Modal.prototype, "transition", {
-	        get: function get() {
+	        get: function () {
 	            return this.bottom ? 'modal-bottom' : 'modal';
 	        },
 	        enumerable: true,
@@ -4334,95 +4439,100 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.result = null;
 	        }
 	    };
-	    Modal = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            id: {
-	                type: String,
-	                required: false,
-	                'default': null
-	            },
-	            result: {
-	                type: String,
-	                required: false,
-	                'default': null
-	            },
-	            'class': {
-	                type: String,
-	                required: false,
-	                'default': '',
-	                twoWay: false
-	            },
-	            bottom: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        components: {
-	            mdLeanOverlay: lean_overlay_1["default"]
-	        },
-	        events: {
-	            'modal::open': function modalOpen(id) {
-	                if (this.id === null || typeof this.id === "undefined") {
-	                    this.open();
-	                } else if (this.id == id) {
-	                    this.open();
+	    Modal = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                id: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                result: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                'class': {
+	                    type: String,
+	                    required: false,
+	                    'default': '',
+	                    twoWay: false
+	                },
+	                bottom: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
 	                }
 	            },
-	            'modal::close': function modalClose(result, id) {
-	                if (this.id === null || typeof this.id === "undefined" || this.id == id) {
-	                    this.close();
-	                    this.result = result;
-	                    return true;
+	            components: {
+	                mdLeanOverlay: lean_overlay_1.default
+	            },
+	            events: {
+	                'modal::open': function (id) {
+	                    if (this.id === null || typeof this.id === "undefined") {
+	                        this.open();
+	                    }
+	                    else if (this.id == id) {
+	                        this.open();
+	                    }
+	                },
+	                'modal::close': function (result, id) {
+	                    if ((this.id === null || typeof this.id === "undefined")
+	                        || (this.id == id)) {
+	                        this.close();
+	                        this.result = result;
+	                        return true;
+	                    }
 	                }
-	            }
-	        },
-	        watch: {
-	            active: function active(_active) {
-	                if (_active) {
-	                    window.document.body.style.overflow = 'hidden';
-	                } else {
-	                    window.document.body.style.overflow = 'visible';
+	            },
+	            watch: {
+	                active: function (active) {
+	                    if (active) {
+	                        window.document.body.style.overflow = 'hidden';
+	                    }
+	                    else {
+	                        window.document.body.style.overflow = 'visible';
+	                    }
 	                }
-	            }
-	        },
-	        template: __webpack_require__(90)
-	    })], Modal);
+	            },
+	            template: __webpack_require__(90)
+	        })
+	    ], Modal);
 	    return Modal;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Modal;
-	//# sourceMappingURL=index.js.map
+	exports.default = Modal;
+
 
 /***/ },
 /* 90 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-if=\"active\" :id=\"id\" :transition=\"transition\"\r\n     :style=\"computedStyle\" class=\"modal\" :class=\"computedClasses\">\r\n    <slot name=\"content\">\r\n        <div class=\"modal-content\">\r\n            <slot></slot>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n            <slot name=\"footer\"></slot>\r\n        </div>\r\n    </slot>\r\n</div>\r\n\r\n<md-lean-overlay v-if=\"active\" transition=\"modal-overlay\"\r\n                 @click=\"close\">\r\n</md-lean-overlay>";
+	module.exports = "<div v-if=\"active\" :id=\"id\" :transition=\"transition\"\n     :style=\"computedStyle\" class=\"modal\" :class=\"computedClasses\">\n    <slot name=\"content\">\n        <div class=\"modal-content\">\n            <slot></slot>\n        </div>\n        <div class=\"modal-footer\">\n            <slot name=\"footer\"></slot>\n        </div>\n    </slot>\n</div>\n\n<md-lean-overlay v-if=\"active\" transition=\"modal-overlay\"\n                 @click=\"close\">\n</md-lean-overlay>";
 
 /***/ },
 /* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var NavItem = (function () {
-	    function NavItem() {}
+	    function NavItem() {
+	    }
 	    NavItem.prototype.ready = function () {
 	        if (this.active == true) {
 	            this.$dispatch('nav-item::activated', this.id);
 	        }
 	    };
 	    Object.defineProperty(NavItem.prototype, "id", {
-	        get: function get() {
+	        get: function () {
 	            if (this.name != null) {
 	                return this.name;
 	            }
@@ -4432,14 +4542,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configurable: true
 	    });
 	    Object.defineProperty(NavItem.prototype, "content", {
-	        get: function get() {
-	            return this._slotContents ? this._slotContents["default"] : '';
+	        get: function () {
+	            return this._slotContents ? this._slotContents.default : '';
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(NavItem.prototype, "showActive", {
-	        get: function get() {
+	        get: function () {
 	            return this.$parent.showActive;
 	        },
 	        enumerable: true,
@@ -4448,57 +4558,58 @@ return /******/ (function(modules) { // webpackBootstrap
 	    NavItem.prototype.clicked = function () {
 	        this.$dispatch('nav-item::activated', this.id);
 	    };
-	    NavItem = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            name: {
-	                type: String,
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            href: {
-	                type: String,
-	                required: false,
-	                'default': 'javascript:void(0)',
-	                twoWay: false
-	            },
-	            active: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        events: {
-	            'nav-item::activated': function navItemActivated(id) {
-	                if (this.showActive == true) {
-	                    this.active = this.id == id;
+	    NavItem = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                name: {
+	                    type: String,
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                href: {
+	                    type: String,
+	                    required: false,
+	                    'default': 'javascript:void(0)',
+	                    twoWay: false
+	                },
+	                active: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
 	                }
-	            }
-	        },
-	        template: __webpack_require__(92)
-	    })], NavItem);
+	            },
+	            events: {
+	                'nav-item::activated': function (id) {
+	                    if (this.showActive == true) {
+	                        this.active = this.id == id;
+	                    }
+	                }
+	            },
+	            template: __webpack_require__(92)
+	        })
+	    ], NavItem);
 	    return NavItem;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = NavItem;
-	//# sourceMappingURL=index.js.map
+	exports.default = NavItem;
+
 
 /***/ },
 /* 92 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click=\"clicked\" :class=\"{active: active}\">\r\n    <slot name=\"content\">\r\n        <a :href=\"href\">\r\n            <slot></slot>\r\n        </a>\r\n    </slot>\r\n</li>";
+	module.exports = "<li @click=\"clicked\" :class=\"{active: active}\">\n    <slot name=\"content\">\n        <a :href=\"href\">\n            <slot></slot>\n        </a>\n    </slot>\n</li>";
 
 /***/ },
 /* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
@@ -4506,17 +4617,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var wave_effect_1 = __webpack_require__(8);
 	var utils_1 = __webpack_require__(59);
 	var Pagination = (function () {
-	    function Pagination() {}
+	    function Pagination() {
+	    }
 	    Object.defineProperty(Pagination.prototype, "pages", {
-	        get: function get() {
+	        get: function () {
 	            return Math.max(Math.ceil(this.totalRecords / this.pageSize), 1);
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Pagination.prototype, "pager", {
-	        get: function get() {
-	            return utils_1["default"].generatePagination(this);
+	        get: function () {
+	            return utils_1.default.generatePagination(this);
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -4536,11 +4648,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.itemClass.forEach(function (value, index, array) {
 	                classes[value] = true;
 	            });
-	        } else if (this.itemClass instanceof Object) {
+	        }
+	        else if (this.itemClass instanceof Object) {
 	            for (var key in this.itemClass) {
 	                classes[key] = this.itemClass[key];
 	            }
-	        } else {
+	        }
+	        else {
 	            classes[this.itemClass] = true;
 	        }
 	        classes['active'] = n == this.currentPage;
@@ -4559,88 +4673,90 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.currentPage++;
 	        }
 	    };
-	    Pagination = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            currentPage: {
-	                type: Number,
-	                'default': 0
+	    Pagination = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                currentPage: {
+	                    type: Number,
+	                    'default': 0,
+	                },
+	                pageSize: {
+	                    type: Number,
+	                    required: true,
+	                    twoWay: false
+	                },
+	                totalRecords: {
+	                    type: Number,
+	                    required: true,
+	                    twoWay: false
+	                },
+	                displayPages: {
+	                    type: Number,
+	                    required: false,
+	                    'default': 5,
+	                    twoWay: false
+	                },
+	                itemClass: {
+	                    required: false,
+	                    'default': null,
+	                    twoWay: false
+	                },
+	                firstLast: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false,
+	                    twoWay: false
+	                }
 	            },
-	            pageSize: {
-	                type: Number,
-	                required: true,
-	                twoWay: false
+	            components: {
+	                mdIcon: icon_1.default
 	            },
-	            totalRecords: {
-	                type: Number,
-	                required: true,
-	                twoWay: false
+	            directives: {
+	                waveEffect: wave_effect_1.default
 	            },
-	            displayPages: {
-	                type: Number,
-	                required: false,
-	                'default': 5,
-	                twoWay: false
-	            },
-	            itemClass: {
-	                required: false,
-	                'default': null,
-	                twoWay: false
-	            },
-	            firstLast: {
-	                type: Boolean,
-	                required: false,
-	                'default': false,
-	                twoWay: false
-	            }
-	        },
-	        components: {
-	            mdIcon: icon_1["default"]
-	        },
-	        directives: {
-	            waveEffect: wave_effect_1["default"]
-	        },
-	        watch: {
-	            currentPage: function currentPage() {
-	                this.$dispatch('pagination::selected', this.pagesWindow);
-	            },
-	            pages: {
-	                handler: function handler() {
-	                    if (this.currentPage >= this.pages) {
-	                        this.currentPage = this.pages - 1;
+	            watch: {
+	                currentPage: function () {
+	                    this.$dispatch('pagination::selected', this.pagesWindow);
+	                },
+	                pages: {
+	                    handler: function () {
+	                        if (this.currentPage >= this.pages) {
+	                            this.currentPage = this.pages - 1;
+	                        }
 	                    }
 	                }
-	            }
-	        },
-	        template: __webpack_require__(94)
-	    })], Pagination);
+	            },
+	            template: __webpack_require__(94)
+	        })
+	    ], Pagination);
 	    return Pagination;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Pagination;
-	//# sourceMappingURL=index.js.map
+	exports.default = Pagination;
+
 
 /***/ },
 /* 94 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"pagination\">\r\n    <li :class=\"{disabled: currentPage == 0}\">\r\n        <a v-if=\"firstLast\" @click.prevent=\"currentPage = 0\" href=\"#\"><i class=\"material-icons\">chevron_left</i></a>\r\n        <a @click.prevent=\"previousPage\" href=\"#\"><i class=\"material-icons\">chevron_left</i></a>\r\n    </li>\r\n\r\n    <li v-for=\"n in pager\"\r\n        @click.prevent=\"setCurrentPage(n)\"\r\n        :class=\"getClasses(n)\" v-wave-effect>\r\n        <a @click.prevent href=\"#\">{{n + 1}}</a>\r\n    </li>\r\n\r\n    <li :class=\"{disabled: currentPage == pages - 1}\">\r\n        <a @click.prevent=\"nextPage\" href=\"#\"><i class=\"material-icons\">chevron_right</i></a>\r\n        <a v-if=\"firstLast\" @click.prevent=\"currentPage = pages - 1\" href=\"#\"><i class=\"material-icons\">chevron_right</i></a>\r\n    </li>\r\n</ul>\r\n";
+	module.exports = "<ul class=\"pagination\">\n    <li :class=\"{disabled: currentPage == 0}\">\n        <a v-if=\"firstLast\" @click.prevent=\"currentPage = 0\" href=\"#\"><i class=\"material-icons\">chevron_left</i></a>\n        <a @click.prevent=\"previousPage\" href=\"#\"><i class=\"material-icons\">chevron_left</i></a>\n    </li>\n\n    <li v-for=\"n in pager\"\n        @click.prevent=\"setCurrentPage(n)\"\n        :class=\"getClasses(n)\" v-wave-effect>\n        <a @click.prevent href=\"#\">{{n + 1}}</a>\n    </li>\n\n    <li :class=\"{disabled: currentPage == pages - 1}\">\n        <a @click.prevent=\"nextPage\" href=\"#\"><i class=\"material-icons\">chevron_right</i></a>\n        <a v-if=\"firstLast\" @click.prevent=\"currentPage = pages - 1\" href=\"#\"><i class=\"material-icons\">chevron_right</i></a>\n    </li>\n</ul>\n";
 
 /***/ },
 /* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Vue = __webpack_require__(2);
 	var Slide = (function () {
-	    function Slide() {}
+	    function Slide() {
+	    }
 	    Slide.prototype.compiled = function () {
 	        // todo: remove hack webpack img src loading
 	        this.$els.img.setAttribute('src', this.img);
@@ -4657,14 +4773,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    Object.defineProperty(Slide.prototype, "src", {
-	        get: function get() {
+	        get: function () {
 	            return this.img;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Slide.prototype, "computedClasses", {
-	        get: function get() {
+	        get: function () {
 	            return this.classes;
 	        },
 	        enumerable: true,
@@ -4678,62 +4794,64 @@ return /******/ (function(modules) { // webpackBootstrap
 	        Vue.set(this.classes, 'fadeIn', val);
 	        Vue.set(this.classes, 'fadeOut', !val);
 	    };
-	    Slide = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            img: {
-	                type: String,
-	                required: false,
-	                'default': null
+	    Slide = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                img: {
+	                    type: String,
+	                    required: false,
+	                    'default': null
+	                },
+	                align: {
+	                    type: String,
+	                    required: false,
+	                    "default": ''
+	                }
 	            },
-	            align: {
-	                type: String,
-	                required: false,
-	                "default": ''
-	            }
-	        },
-	        events: {
-	            'slider::activate': function sliderActivate(index) {
-	                this.setActive(index);
-	            }
-	        },
-	        watch: {
-	            active: function active(val) {
-	                this._setClasses(val);
-	            }
-	        },
-	        template: __webpack_require__(96)
-	    })], Slide);
+	            events: {
+	                'slider::activate': function (index) {
+	                    this.setActive(index);
+	                }
+	            },
+	            watch: {
+	                active: function (val) {
+	                    this._setClasses(val);
+	                }
+	            },
+	            template: __webpack_require__(96)
+	        })
+	    ], Slide);
 	    return Slide;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Slide;
-	//# sourceMappingURL=index.js.map
+	exports.default = Slide;
+
 
 /***/ },
 /* 96 */
 /***/ function(module, exports) {
 
-	module.exports = "<li :class=\"computedClasses\">\r\n    <img v-el:img>\r\n    <div class=\"caption\" :class=\"align + '-align'\">\r\n        <slot></slot>\r\n    </div>\r\n</li>";
+	module.exports = "<li :class=\"computedClasses\">\n    <img v-el:img>\n    <div class=\"caption\" :class=\"align + '-align'\">\n        <slot></slot>\n    </div>\n</li>";
 
 /***/ },
 /* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Slider = (function () {
-	    function Slider() {}
+	    function Slider() {
+	    }
 	    Slider.prototype.data = function () {
 	        return {
 	            activeItem: 0,
-	            itemsCount: 0
+	            itemsCount: 0,
 	        };
 	    };
 	    Slider.prototype.ready = function () {
@@ -4762,110 +4880,117 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.activeItem = index;
 	        this.clearInterval();
 	    };
-	    Slider = __decorate([vue_class_component_1["default"]({
-	        interval: {
-	            type: Number,
-	            "default": 4000,
-	            validator: function validator(value) {
-	                return value > 1000;
-	            }
-	        },
-	        template: __webpack_require__(98)
-	    })], Slider);
+	    Slider = __decorate([
+	        vue_class_component_1.default({
+	            interval: {
+	                type: Number,
+	                "default": 4000,
+	                validator: function (value) {
+	                    return value > 1000;
+	                }
+	            },
+	            template: __webpack_require__(98)
+	        })
+	    ], Slider);
 	    return Slider;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Slider;
-	//# sourceMappingURL=index.js.map
+	exports.default = Slider;
+
 
 /***/ },
 /* 98 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"slider\">\r\n    <ul class=\"slides\">\r\n        <slot></slot>\r\n    </ul>\r\n    <ul class=\"indicators\">\r\n        <li v-for=\"index in itemsCount\"\r\n            @click=\"setActive(index)\"\r\n            @mouseover=\"activeItem == index && clearInterval(index)\"\r\n            @mouseout=\"setupInterval(index)\"\r\n            :class=\"{active: activeItem == index}\" class=\"indicator-item\"></li>\r\n    </ul>\r\n</div>";
+	module.exports = "<div class=\"slider\">\n    <ul class=\"slides\">\n        <slot></slot>\n    </ul>\n    <ul class=\"indicators\">\n        <li v-for=\"index in itemsCount\"\n            @click=\"setActive(index)\"\n            @mouseover=\"activeItem == index && clearInterval(index)\"\n            @mouseout=\"setupInterval(index)\"\n            :class=\"{active: activeItem == index}\" class=\"indicator-item\"></li>\n    </ul>\n</div>";
 
 /***/ },
 /* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var input_1 = __webpack_require__(12);
 	var bind_boolean_1 = __webpack_require__(4);
 	var Switch = (function () {
-	    function Switch() {}
-	    Switch = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            value: {
-	                type: Boolean,
-	                required: false,
-	                'default': null
+	    function Switch() {
+	    }
+	    Switch = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                value: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': null
+	                },
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    'default': false
+	                }
 	            },
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                'default': false
-	            }
-	        },
-	        directives: {
-	            bindBoolean: bind_boolean_1["default"]
-	        },
-	        mixins: [input_1["default"]],
-	        template: __webpack_require__(100)
-	    })], Switch);
+	            directives: {
+	                bindBoolean: bind_boolean_1.default
+	            },
+	            mixins: [
+	                input_1.default
+	            ],
+	            template: __webpack_require__(100)
+	        })
+	    ], Switch);
 	    return Switch;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Switch;
-	//# sourceMappingURL=index.js.map
+	exports.default = Switch;
+
 
 /***/ },
 /* 100 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"switch\">\r\n    <label>\r\n        <slot name=\"off\">Off</slot>\r\n        <input v-model=\"value\"\r\n               v-bind-boolean:disabled=\"disabled\"\r\n               type=\"checkbox\">\r\n        <span class=\"lever\"></span>\r\n        <slot name=\"on\">On</slot>\r\n    </label>\r\n</div>";
+	module.exports = "<div class=\"switch\">\n    <label>\n        <slot name=\"off\">Off</slot>\n        <input v-model=\"value\"\n               v-bind-boolean:disabled=\"disabled\"\n               type=\"checkbox\">\n        <span class=\"lever\"></span>\n        <slot name=\"on\">On</slot>\n    </label>\n</div>";
 
 /***/ },
 /* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Tab = (function () {
-	    function Tab() {}
+	    function Tab() {
+	    }
 	    Object.defineProperty(Tab.prototype, "computedClasses", {
-	        get: function get() {
+	        get: function () {
 	            return this.disabled ? ['disabled'] : [];
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Tab.prototype, "index", {
-	        get: function get() {
+	        get: function () {
 	            return this.$parent.$children.indexOf(this);
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
 	    Object.defineProperty(Tab.prototype, "id", {
-	        get: function get() {
+	        get: function () {
 	            if (this.name) {
 	                return this.name;
-	            } else {
+	            }
+	            else {
 	                return this.index;
 	            }
 	        },
@@ -4893,56 +5018,58 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.setAsSelected();
 	        }
 	    };
-	    Tab = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            disabled: {
-	                type: Boolean,
-	                required: false,
-	                "default": false,
-	                twoWay: false
+	    Tab = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                disabled: {
+	                    type: Boolean,
+	                    required: false,
+	                    "default": false,
+	                    twoWay: false
+	                },
+	                name: {
+	                    type: String,
+	                    required: false,
+	                    "default": null,
+	                    twoWay: false
+	                }
 	            },
-	            name: {
-	                type: String,
-	                required: false,
-	                "default": null,
-	                twoWay: false
-	            }
-	        },
-	        events: {
-	            'tab::select': function tabSelect(id) {
-	                this.select(id);
-	            }
-	        },
-	        template: __webpack_require__(102)
-	    })], Tab);
+	            events: {
+	                'tab::select': function (id) {
+	                    this.select(id);
+	                }
+	            },
+	            template: __webpack_require__(102)
+	        })
+	    ], Tab);
 	    return Tab;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Tab;
-	//# sourceMappingURL=index.js.map
+	exports.default = Tab;
+
 
 /***/ },
 /* 102 */
 /***/ function(module, exports) {
 
-	module.exports = "<li @click=\"setAsSelected\" class=\"tab col\" :class=\"computedClasses\">\r\n    <slot></slot>\r\n</li>";
+	module.exports = "<li @click=\"setAsSelected\" class=\"tab col\" :class=\"computedClasses\">\n    <slot></slot>\n</li>";
 
 /***/ },
 /* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-	    var c = arguments.length,
-	        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-	        d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var vue_class_component_1 = __webpack_require__(19);
 	var Velocity = __webpack_require__(15);
 	var Tabs = (function () {
-	    function Tabs() {}
+	    function Tabs() {
+	    }
 	    Tabs.prototype.data = function () {
 	        return {
 	            indicator: {
@@ -4961,44 +5088,47 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Tabs.prototype.moveIndicator = function (left, newLeft, right, newRight) {
 	        var indicator = this.$els.indicator;
 	        // Update indicator
-	        if (newLeft - left >= 0) {
+	        if ((newLeft - left) >= 0) {
 	            Velocity(indicator, { right: newRight }, { duration: 300, queue: false, easing: 'easeOutQuad' });
 	            Velocity(indicator, { left: newLeft }, { duration: 300, queue: false, easing: 'easeOutQuad', delay: 90 });
-	        } else {
+	        }
+	        else {
 	            Velocity(indicator, { left: newLeft }, { duration: 300, queue: false, easing: 'easeOutQuad' });
 	            Velocity(indicator, { right: newRight }, { duration: 300, queue: false, easing: 'easeOutQuad', delay: 90 });
 	        }
 	    };
-	    Tabs = __decorate([vue_class_component_1["default"]({
-	        props: {
-	            active: {
-	                required: false,
-	                'default': null
-	            }
-	        },
-	        watch: {
-	            active: function active(value) {
-	                this.$broadcast('tab::select', value);
-	            }
-	        },
-	        events: {
-	            'tabs::on-select': function tabsOnSelect(tab) {
-	                this.select(tab);
-	            }
-	        },
-	        template: __webpack_require__(104)
-	    })], Tabs);
+	    Tabs = __decorate([
+	        vue_class_component_1.default({
+	            props: {
+	                active: {
+	                    required: false,
+	                    'default': null
+	                }
+	            },
+	            watch: {
+	                active: function (value) {
+	                    this.$broadcast('tab::select', value);
+	                }
+	            },
+	            events: {
+	                'tabs::on-select': function (tab) {
+	                    this.select(tab);
+	                }
+	            },
+	            template: __webpack_require__(104)
+	        })
+	    ], Tabs);
 	    return Tabs;
-	})();
+	}());
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports["default"] = Tabs;
-	//# sourceMappingURL=index.js.map
+	exports.default = Tabs;
+
 
 /***/ },
 /* 104 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"md-tabs\">\r\n    <ul class=\"tabs\">\r\n        <slot></slot>\r\n        <div v-el:indicator class=\"indicator\"></div>\r\n    </ul>\r\n\r\n    <slot name=\"contents\"></slot>\r\n</div>\r\n";
+	module.exports = "<div class=\"md-tabs\">\n    <ul class=\"tabs\">\n        <slot></slot>\n        <div v-el:indicator class=\"indicator\"></div>\n    </ul>\n\n    <slot name=\"contents\"></slot>\n</div>\n";
 
 /***/ },
 /* 105 */

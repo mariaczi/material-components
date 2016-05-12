@@ -3,8 +3,11 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+    bail: true,
     resolve: {
-        root: path.resolve('./')
+        root: path.resolve('./'),
+        modulesDirectories: ['src', 'node_modules'],
+        extensions: ['', '.js', '.ts']
     },
     plugins: [
     ],

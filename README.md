@@ -34,6 +34,6 @@ Vue.use(VueMaterialComponents)
 
 ## Change log
 
-* **0.1.3** Plugin now uses the `Vue.use` syntax.
+* **0.2.0** Plugin now uses the `Vue.use` syntax.
 
 * Vue is now external dependency and must be linked before MaterialComponents

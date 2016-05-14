@@ -130,10 +130,10 @@
 <script src="assets/vue.js"></script>
 <script src="dist/vue-material-components.min.js"></script>
 <script>
+    Vue.use(VueMaterialComponents)
+
     new Vue({
-        el: '#content',
-        components: VueMaterialComponents.components,
-        directives: VueMaterialComponents.directives
+        el: '#content'
     })
 </script>
 </body>

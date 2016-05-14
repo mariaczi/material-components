@@ -58,18 +58,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var components_1 = __webpack_require__(1);
 	var directives_1 = __webpack_require__(3);
 	var mixins_1 = __webpack_require__(10);
-	var Vue = __webpack_require__(2);
 	module.exports = {
-	    registerAll: function () {
-	        this.registerComponents();
-	        this.registerDirectives();
-	    },
-	    registerComponents: function () {
+	    install: function (Vue) {
 	        for (var componentName in components_1.default) {
 	            Vue.component(componentName, components_1.default[componentName]);
 	        }
-	    },
-	    registerDirectives: function () {
 	        for (var directiveName in directives_1.default) {
 	            Vue.directive(directiveName, components_1.default[directiveName]);
 	        }
@@ -77,7 +70,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    components: components_1.default,
 	    directives: directives_1.default,
 	    mixins: mixins_1.default,
-	    Vue: Vue // only backward compatibility
 	};
 
 

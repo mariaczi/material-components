@@ -1,5 +1,6 @@
 import Component from 'vue-class-component';
 import mdDropdownList from '../../dropdown-list';
+import mdOption from '../../form/option';
 
 import inputMixin from '../../../mixins/input';
 import clickAway from '../../../directives/click-away';
@@ -12,12 +13,17 @@ var Vue: any = require('vue');
         value: {
             required: false,
             'default': null
-        }
+        },
+        options: {
+            type: Array,
+            required: true,
+        },
     },
     events: {
         'select::select': function(value) {
             if (Array.isArray(this.value)) {
                 this.value.push(value);
+                this.$nextTick(this.refreshDropdownOptions);
             }
             else {
                 this.value = value;
@@ -30,6 +36,7 @@ var Vue: any = require('vue');
         'select::unselect': function(value) {
             if (Array.isArray(this.value)) {
                 this.value.$remove(value);
+                this.$nextTick(this.refreshDropdownOptions);
             }
             else {
                 this.value = value;
@@ -40,11 +47,13 @@ var Vue: any = require('vue');
     },
     watch: {
         value: function () {
-            this.$nextTick(this.refreshDropdownOptions)
+            console.log('value changed');
+            this.$nextTick(this.refreshDropdownOptions);
         }
     },
     components: {
-        mdDropdownList
+        mdDropdownList,
+        mdOption
     },
     directives: {
         clickAway,
@@ -62,55 +71,59 @@ export default class SelectField {
     private _slotContents: any;
 
     private active: boolean;
-    private options: any;
+    public options: any;
     private defaultSelect: string;
     private value: any;
 
     data() {
         return {
             active: false,
-            options: {}
         }
     }
 
-    compiled() {
-        var options = this.$getAllChildren().filter((c: any) => {return 'SelectOption' == c.$options.name});
-        for (var i = 0; i < options.length; i++) {
-            var option = options[i];
-            var opt: any = this.createOption(option);
-            Vue.set(this.options, opt.value, opt);
-        }
-    }
+    // compiled() {
+    //     //var options = this.$getAllChildren().filter((c: any) => {return 'SelectOption' == c.$options.name});
+    //     var options = this.options;
+    //     for (var i = 0; i < options.length; i++) {
+    //         console.log('option created');
+    //         var option = options[i];
+    //         var opt: any = this.createOption(option);
+    //         Vue.set(this.options, opt.value, opt);
+    //     }
+    // }
 
     ready() {
        this.refreshDropdownOptions()
     }
 
-    createOption(option: any) {
-        var content = option._slotContents ? option._slotContents.default : '';
-        var value = option.$data.value;
-        var disabled = option.$data.disabled;
-
-        return {
-            content: content.textContent,
-            value: value,
-            disabled: disabled
-        };
-    }
+    // createOption(option: any) {
+    //     var content = option._slotContents ? option._slotContents.default : '';
+    //     var value = option.$data.value;
+    //     var disabled = option.$data.disabled;
+    //
+    //     return {
+    //         content: content.textContent,
+    //         value: value,
+    //         disabled: disabled
+    //     };
+    // }
 
     get multiple() {
         return Array.isArray(this.value);
     }
 
     get valueContent() {
+        console.log('get content');
         return Array.isArray(this.value) ? this.valueContentMultiple : this.valueContentSingle;
     }
 
     get valueContentSingle() {
+        console.log('get single');
         return this.options[this.value] ? this.options[this.value].content : '';
     }
 
     get valueContentMultiple() {
+        console.log('get multiple');
         if (this.value.length) {
             return this.value.map((value) => {
                 return this.options[value] ? this.options[value].content : '';
@@ -119,6 +132,10 @@ export default class SelectField {
         else {
             return this.options[this.defaultSelect] ? this.options[this.defaultSelect].content : ''
         }
+    }
+
+    get optionsSource() {
+        return this.options;
     }
 
     get field() {
@@ -130,6 +147,7 @@ export default class SelectField {
     }
 
     refreshDropdownOptions() {
+        console.log('refreshed');
         var options = Array.prototype.slice.call(this.field.options);
         options.forEach((o: HTMLOptionElement) => {
             if (o.selected) {

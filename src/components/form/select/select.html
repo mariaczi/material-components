@@ -8,8 +8,11 @@
                type="text" class="select-dropdown">
 
         <md-dropdown-list :active="active" class="select-dropdown">
-            <slot></slot>
+            <!--<slot>-->
+
+            <!--</slot>-->
         </md-dropdown-list>
+        <md-option v-for="opt in optionsSource" :value="opt.value" v-bind-boolean:disabled="opt.disabled">{{opt.content}}</md-option>
 
         <select v-el:field
                 v-model="value"

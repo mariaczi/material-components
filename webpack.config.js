@@ -15,7 +15,11 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel'
+                loader: 'babel',
+                include: [
+                    path.resolve(__dirname, 'src')
+                ],
+                exclude: /node_modules/
             },
             {
                 test: /\.ts$/,
